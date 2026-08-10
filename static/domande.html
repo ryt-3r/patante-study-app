@@ -15,43 +15,37 @@
         
         .error-box { background: #ff5252; color: white; padding: 15px; border-radius: 5px; margin: 20px auto; max-width: 600px; font-weight: bold; }
         
-        .study-card { background: #1e1e1e; border-radius: 8px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; flex-direction: row; gap: 20px; align-items: flex-start; }
-        .image-wrapper { flex: 0 0 220px; text-align: center; }
-        .study-card img { max-width: 100%; max-height: 200px; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
-        .questions-wrapper { flex: 1; display: flex; flex-direction: row; gap: 15px; }
-        .question-list { flex: 1; }
-        .question-list h3 { margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 1px solid #444; font-size: 1.1em; }
-        .vero-section h3 { color: #4caf50; }
-        .falso-section h3 { color: #ff5252; }
-        ul { list-style-type: none; padding-left: 0; margin: 0; }
+        .study-card { background: #1e1e1e; border-radius: 8px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 20px; align-items: center; }
+        .image-wrapper { text-align: center; width: 100%; }
+        .study-card img { max-width: 100%; max-height: 250px; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        .questions-wrapper { width: 100%; }
         
-        li { font-size: 1em; margin-bottom: 6px; padding: 8px 10px; background: #2c2c2c; border-radius: 5px; line-height: 1.3; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; transition: background 0.2s; }
-        .vero-section li { border-left: 4px solid #4caf50; }
-        .falso-section li { border-left: 4px solid #ff5252; }
+        /* NEW: Sequence Alignment Grid Layout */
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; width: 100%; align-items: stretch; }
+        .grid-header { font-size: 1.3em; font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid #444; text-align: center; }
+        .v-head { color: #4caf50; }
+        .f-head { color: #ff5252; }
         
-        .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.2em; opacity: 0.3; filter: grayscale(100%); transition: 0.2s; padding: 0; margin: 0; }
-        li.is-flagged { background: #3d3014; }
-        li.is-flagged .flag-btn { opacity: 1; filter: none; }
+        .cell-card { padding: 12px 15px; background: #2c2c2c; border-radius: 6px; line-height: 1.4; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; transition: background 0.2s; font-size: 1.05em; }
+        .v-card { border-left: 5px solid #4caf50; }
+        .f-card { border-left: 5px solid #ff5252; }
+        .empty-cell { background: transparent; }
+        
+        .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.2em; opacity: 0.3; filter: grayscale(100%); transition: 0.2s; padding: 0; margin: 0; flex-shrink: 0; }
+        .cell-card.is-flagged { background: #3d3014; }
+        .cell-card.is-flagged .flag-btn { opacity: 1; filter: none; }
 
         .clickable-word { cursor: pointer; border-bottom: 1px dotted #888; transition: 0.2s; padding: 0 2px; display: inline-block; }
         .clickable-word:hover { background-color: #0056b3; color: white; border-radius: 3px; }
         
-        /* UPDATED: Smart Context Panel with room for the close button */
         #translation-panel { 
             display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
             background: #1e1e1e; border: 2px solid #2ea043; color: white; padding: 30px 20px 20px 20px; 
             border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 1000; 
             text-align: left; min-width: 300px; max-width: 90%; font-size: 1.1em; 
         }
-        
-        /* NEW: The Close Button */
-        .close-btn {
-            position: absolute; top: 5px; right: 15px; cursor: pointer;
-            color: #aaa; font-size: 1.8em; font-weight: bold; transition: 0.2s;
-            line-height: 1;
-        }
+        .close-btn { position: absolute; top: 5px; right: 15px; cursor: pointer; color: #aaa; font-size: 1.8em; font-weight: bold; transition: 0.2s; line-height: 1; }
         .close-btn:hover { color: #fff; }
-
         .tr-row { margin-bottom: 10px; }
         .tr-label { color: #888; font-size: 0.9em; text-transform: uppercase; }
         .tr-it { font-weight: bold; }
@@ -60,10 +54,11 @@
         .tr-sentence .tr-en { color: #4caf50; font-weight: normal; }
 
         @media (max-width: 800px) {
-            .study-card { flex-direction: column; }
-            .questions-wrapper { flex-direction: column; }
-            .image-wrapper { flex: auto; max-width: 100%; margin: 0 auto; }
-            #translation-panel { width: 85%; font-size: 1em; }
+            .study-card { padding: 10px; }
+            .comparison-grid { display: flex; flex-direction: column; gap: 10px; }
+            .grid-header { display: none; }
+            .empty-cell { display: none; }
+            #translation-panel { width: 90%; font-size: 1em; padding: 30px 15px 15px 15px; }
         }
     </style>
 </head>
@@ -187,14 +182,14 @@
         }
 
         async function toggleFlag(id, newStatus, btnEl) {
-            const li = btnEl.closest('li');
+            const card = btnEl.closest('.cell-card');
             if (newStatus === 1) {
-                li.classList.add('is-flagged');
+                card.classList.add('is-flagged');
                 btnEl.setAttribute('onclick', `toggleFlag(${id}, 0, this)`);
             } else {
-                li.classList.remove('is-flagged');
+                card.classList.remove('is-flagged');
                 btnEl.setAttribute('onclick', `toggleFlag(${id}, 1, this)`);
-                if (currentMode === 'flagged') li.style.display = 'none';
+                if (currentMode === 'flagged') card.style.display = 'none';
             }
             await fetch('/api/toggle_flag', {
                 method: 'POST',
@@ -209,7 +204,6 @@
             }).join(' ');
         }
 
-        // NEW: Function to manually close the popup
         function closeTranslation() {
             document.getElementById('translation-panel').style.display = 'none';
         }
@@ -230,12 +224,7 @@
             const sentence = words.join(' ');
             
             const panel = document.getElementById('translation-panel');
-            
-            // Replaced the simple loading text with one that includes the X button
-            panel.innerHTML = `
-                <span class="close-btn" onclick="closeTranslation()">&times;</span>
-                <div style="text-align:center; margin-top:10px;">Analisi contesto in corso... ⏳</div>
-            `;
+            panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; margin-top:10px;">Analisi contesto in corso... ⏳</div>`;
             panel.style.display = 'block';
             
             try {
@@ -258,30 +247,87 @@
                     </div>
                 `;
             } catch (err) {
-                panel.innerHTML = `
-                    <span class="close-btn" onclick="closeTranslation()">&times;</span>
-                    <div style="text-align:center; color:#ff5252; margin-top:10px;">Errore di connessione.</div>
-                `;
+                panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; color:#ff5252; margin-top:10px;">Errore di connessione.</div>`;
             }
         }
 
-        function buildListHtml(questions, typeTitle) {
-            if (questions.length === 0) return "";
-            const isVero = typeTitle === 'Vero';
-            let html = `<div class="question-list ${isVero ? 'vero-section' : 'falso-section'}">
-                            <h3>${typeTitle}</h3>
-                            <ul>`;
-            questions.forEach(q => { 
-                const flaggedClass = q.flagged === 1 ? 'is-flagged' : '';
-                const nextStatus = q.flagged === 1 ? 0 : 1;
-                const clickableText = makeWordsClickable(q.domanda);
-                
-                html += `<li class="${flaggedClass}">
-                            <span class="question-text">${clickableText}</span>
-                            <button class="flag-btn" onclick="toggleFlag(${q.id}, ${nextStatus}, this)" title="Salva/Rimuovi">🚩</button>
-                         </li>`; 
+        // NEW: Jaccard Similarity Algorithm for finding best Falso matches
+        function calculateSimilarity(str1, str2) {
+            if(!str1 || !str2) return 0;
+            const set1 = new Set(str1.toLowerCase().split(' '));
+            const set2 = new Set(str2.toLowerCase().split(' '));
+            let intersection = 0;
+            for(let w of set1) if(set2.has(w)) intersection++;
+            const union = set1.size + set2.size - intersection;
+            return intersection / union;
+        }
+
+        // NEW: Generates a synchronized grid instead of isolated lists
+        function buildComparisonGrid(veroList, falsoList) {
+            // 1. Prefix Clustering (Alphabetical sorting naturally groups identical phrase starts)
+            veroList.sort((a, b) => a.domanda.localeCompare(b.domanda));
+            falsoList.sort((a, b) => a.domanda.localeCompare(b.domanda));
+
+            let pairs = [];
+            let remainingFalso = [...falsoList];
+
+            // 2. Sequence Alignment (Pairing the closest True/False matches)
+            veroList.forEach(v => {
+                let bestIdx = -1;
+                let maxSim = 0;
+                for(let i=0; i<remainingFalso.length; i++) {
+                    let sim = calculateSimilarity(v.domanda, remainingFalso[i].domanda);
+                    // Requires at least a 35% word overlap to be considered a paired "trick" question
+                    if(sim > maxSim && sim > 0.35) { 
+                        maxSim = sim;
+                        bestIdx = i;
+                    }
+                }
+                let f = null;
+                if(bestIdx !== -1) {
+                    f = remainingFalso.splice(bestIdx, 1)[0];
+                }
+                pairs.push({ v: v, f: f });
             });
-            html += `</ul></div>`;
+
+            // 3. Append leftover false questions that had no close Vero equivalent
+            remainingFalso.forEach(f => pairs.push({ v: null, f: f }));
+
+            if(pairs.length === 0) return "";
+            
+            // 4. Generate the side-by-side grid
+            let html = `<div class="comparison-grid">
+                            <div class="grid-header v-head">Vero</div>
+                            <div class="grid-header f-head">Falso</div>`;
+            
+            pairs.forEach(pair => {
+                // Render Vero Cell
+                if(pair.v) {
+                    const flagged = pair.v.flagged === 1 ? 'is-flagged' : '';
+                    const nextStatus = pair.v.flagged === 1 ? 0 : 1;
+                    const text = makeWordsClickable(pair.v.domanda);
+                    html += `<div class="cell-card v-card ${flagged}">
+                                <span class="question-text">${text}</span>
+                                <button class="flag-btn" onclick="toggleFlag(${pair.v.id}, ${nextStatus}, this)">🚩</button>
+                             </div>`;
+                } else {
+                    html += `<div class="empty-cell"></div>`;
+                }
+                
+                // Render Falso Cell
+                if(pair.f) {
+                    const flagged = pair.f.flagged === 1 ? 'is-flagged' : '';
+                    const nextStatus = pair.f.flagged === 1 ? 0 : 1;
+                    const text = makeWordsClickable(pair.f.domanda);
+                    html += `<div class="cell-card f-card ${flagged}">
+                                <span class="question-text">${text}</span>
+                                <button class="flag-btn" onclick="toggleFlag(${pair.f.id}, ${nextStatus}, this)">🚩</button>
+                             </div>`;
+                } else {
+                    html += `<div class="empty-cell"></div>`;
+                }
+            });
+            html += `</div>`;
             return html;
         }
 
@@ -330,11 +376,13 @@
                     if (item.figura && item.figura !== "no_image") {
                         html += `<div class="image-wrapper"><img src="/${item.figura}" alt="Segnale stradale"></div>`;
                     } else {
-                        html += `<div class="image-wrapper" style="display: flex; align-items: center; justify-content: center; color: #444; font-style: italic;">Nessuna figura</div>`;
+                        html += `<div class="image-wrapper" style="color: #444; font-style: italic; padding: 20px 0;">Nessuna figura</div>`;
                     }
                     html += `<div class="questions-wrapper">`;
-                    html += buildListHtml(item.vero, 'Vero');
-                    html += buildListHtml(item.falso, 'Falso');
+                    
+                    // Injecting the new Grid Builder
+                    html += buildComparisonGrid(item.vero, item.falso);
+                    
                     html += `</div></div>`;
                     container.innerHTML += html;
                 });
