@@ -33,38 +33,43 @@
         li.is-flagged { background: #3d3014; }
         li.is-flagged .flag-btn { opacity: 1; filter: none; }
 
-        /* NEW: Clickable Word Styles */
         .clickable-word { cursor: pointer; border-bottom: 1px dotted #888; transition: 0.2s; padding: 0 2px; display: inline-block; }
         .clickable-word:hover { background-color: #0056b3; color: white; border-radius: 3px; }
         
-        /* NEW: Translation Panel */
+        /* UPDATED: Smart Context Panel with room for the close button */
         #translation-panel { 
-            display: none; 
-            position: fixed; 
-            bottom: 30px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            background: #2ea043; 
-            color: white; 
-            padding: 15px 30px; 
-            border-radius: 8px; 
-            box-shadow: 0 8px 16px rgba(0,0,0,0.7); 
-            font-size: 1.3em; 
-            z-index: 1000; 
-            font-weight: bold;
-            text-align: center;
+            display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
+            background: #1e1e1e; border: 2px solid #2ea043; color: white; padding: 30px 20px 20px 20px; 
+            border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 1000; 
+            text-align: left; min-width: 300px; max-width: 90%; font-size: 1.1em; 
         }
+        
+        /* NEW: The Close Button */
+        .close-btn {
+            position: absolute; top: 5px; right: 15px; cursor: pointer;
+            color: #aaa; font-size: 1.8em; font-weight: bold; transition: 0.2s;
+            line-height: 1;
+        }
+        .close-btn:hover { color: #fff; }
+
+        .tr-row { margin-bottom: 10px; }
+        .tr-label { color: #888; font-size: 0.9em; text-transform: uppercase; }
+        .tr-it { font-weight: bold; }
+        .tr-en { color: #ffeb3b; font-weight: bold; }
+        .tr-sentence { border-top: 1px solid #444; padding-top: 10px; margin-top: 10px; font-size: 0.95em; line-height: 1.4; color: #ccc; }
+        .tr-sentence .tr-en { color: #4caf50; font-weight: normal; }
 
         @media (max-width: 800px) {
             .study-card { flex-direction: column; }
             .questions-wrapper { flex-direction: column; }
             .image-wrapper { flex: auto; max-width: 100%; margin: 0 auto; }
-            #translation-panel { width: 80%; font-size: 1.1em; }
+            #translation-panel { width: 85%; font-size: 1em; }
         }
     </style>
 </head>
 <body>
     <div class="menu-bar">
+        <a href="/" style="color:#aaa; text-decoration:none; text-align:center; display:block; margin-bottom:5px;">← Torna all'Hub</a>
         <div class="filters">
             <select id="category-select" onchange="onCategoryChange()">
                 <option value="all">1. Scegli il Capitolo...</option>
@@ -83,13 +88,10 @@
     
     <div id="message-area">Caricamento in corso...</div>
     <div id="content-container"></div>
-    
-    <!-- NEW: Hidden element that pops up when you translate -->
     <div id="translation-panel"></div>
     
     <script>
         let currentMode = 'normal';
-        let translationTimer = null; // Used to auto-hide the translation
 
         function cleanText(text) { 
             if (!text) return "Argomento Sconosciuto";
@@ -101,10 +103,7 @@
                 const res = await fetch('/api/categories');
                 const data = await res.json();
                 
-                if (data.error) {
-                    document.getElementById('message-area').innerHTML = `<div class="error-box">${data.error}</div>`;
-                    return;
-                }
+                if (data.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${data.error}</div>`; return; }
                 
                 const select = document.getElementById('category-select');
                 const total = data.reduce((sum, cat) => sum + cat.count, 0);
@@ -117,7 +116,6 @@
                     select.appendChild(option);
                 });
                 document.getElementById('message-area').innerText = "Seleziona un Capitolo (1) per iniziare.";
-                
             } catch (err) {
                 document.getElementById('message-area').innerHTML = `<div class="error-box">Errore Fatale: Impossibile leggere il database.</div>`;
             }
@@ -141,10 +139,7 @@
                     const res = await fetch(`/api/subcategories?category=${encodeURIComponent(catSelect.value)}`);
                     const subcats = await res.json();
                     
-                    if (subcats.error) {
-                        document.getElementById('message-area').innerHTML = `<div class="error-box">${subcats.error}</div>`;
-                        return;
-                    }
+                    if (subcats.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${subcats.error}</div>`; return; }
                     
                     const total = subcats.reduce((sum, sub) => sum + sub.count, 0);
                     subSelect.innerHTML = `<option value="all">2. Scegli l'Argomento (${total})</option>`;
@@ -156,9 +151,7 @@
                         subSelect.appendChild(option);
                     });
                     document.getElementById('message-area').innerText = "Seleziona un Argomento (2) o usa il tasto 🚩 Ripassa Salvate.";
-                } catch(err) {
-                    document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento degli argomenti.</div>`;
-                }
+                } catch(err) { document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento.</div>`; }
             }
         }
 
@@ -178,10 +171,7 @@
                     const res = await fetch(`/api/figures?category=${encodeURIComponent(catSelect.value)}&subcategory=${encodeURIComponent(subSelect.value)}`);
                     const figures = await res.json();
                     
-                    if (figures.error) {
-                        document.getElementById('message-area').innerHTML = `<div class="error-box">${figures.error}</div>`;
-                        return;
-                    }
+                    if (figures.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${figures.error}</div>`; return; }
 
                     const total = figures.reduce((sum, fig) => sum + fig.count, 0);
                     figSelect.innerHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
@@ -192,26 +182,20 @@
                         figSelect.appendChild(option);
                     });
                     loadContent(); 
-                } catch(err) {
-                    document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento delle figure.</div>`;
-                }
+                } catch(err) { document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento.</div>`; }
             }
         }
 
         async function toggleFlag(id, newStatus, btnEl) {
             const li = btnEl.closest('li');
-            
             if (newStatus === 1) {
                 li.classList.add('is-flagged');
                 btnEl.setAttribute('onclick', `toggleFlag(${id}, 0, this)`);
             } else {
                 li.classList.remove('is-flagged');
                 btnEl.setAttribute('onclick', `toggleFlag(${id}, 1, this)`);
-                if (currentMode === 'flagged') {
-                    li.style.display = 'none';
-                }
+                if (currentMode === 'flagged') li.style.display = 'none';
             }
-
             await fetch('/api/toggle_flag', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -219,38 +203,66 @@
             });
         }
 
-        // NEW: Translates the clicked word via the backend API
-        async function translateWord(word) {
+        function makeWordsClickable(sentence) {
+            return sentence.split(' ').map((word, i) => {
+                return `<span class="clickable-word" data-index="${i}" onclick="handleWordClick(this)">${word}</span>`;
+            }).join(' ');
+        }
+
+        // NEW: Function to manually close the popup
+        function closeTranslation() {
+            document.getElementById('translation-panel').style.display = 'none';
+        }
+
+        async function handleWordClick(element) {
+            const qTextSpan = element.closest('.question-text');
+            const words = Array.from(qTextSpan.querySelectorAll('.clickable-word')).map(span => span.innerText);
+            const i = parseInt(element.getAttribute('data-index'));
+            
+            const word = words[i];
+            
+            let chunk = [];
+            if (i > 0) chunk.push(words[i-1]);
+            chunk.push(word);
+            if (i < words.length - 1) chunk.push(words[i+1]);
+            
+            const phrase = chunk.join(' ');
+            const sentence = words.join(' ');
+            
             const panel = document.getElementById('translation-panel');
             
-            // Clear previous hide timer if you click a new word quickly
-            if (translationTimer) clearTimeout(translationTimer);
-            
-            panel.innerText = `Traduzione in corso...`;
+            // Replaced the simple loading text with one that includes the X button
+            panel.innerHTML = `
+                <span class="close-btn" onclick="closeTranslation()">&times;</span>
+                <div style="text-align:center; margin-top:10px;">Analisi contesto in corso... ⏳</div>
+            `;
             panel.style.display = 'block';
             
             try {
-                const res = await fetch(`/api/translate?word=${encodeURIComponent(word)}`);
+                const res = await fetch('/api/translate_smart', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ word: word, phrase: phrase, sentence: sentence })
+                });
                 const data = await res.json();
                 
-                if (data.error) {
-                    panel.innerText = `Errore: Impossibile tradurre.`;
-                } else {
-                    panel.innerHTML = `IT: <strong>${word}</strong> <br> EN: <span style="color: #ffeb3b;">${data.translation}</span>`;
-                }
+                if (data.error) throw new Error(data.error);
+                
+                panel.innerHTML = `
+                    <span class="close-btn" onclick="closeTranslation()">&times;</span>
+                    <div class="tr-row" style="margin-top:5px;"><span class="tr-label">Parola:</span> <span class="tr-it">${word}</span> ➔ <span class="tr-en">${data.word}</span></div>
+                    <div class="tr-row"><span class="tr-label">Contesto (3 Parole):</span> <span class="tr-it">${phrase}</span> ➔ <span class="tr-en">${data.phrase}</span></div>
+                    <div class="tr-sentence">
+                        <div style="margin-bottom:5px;"><em>"${sentence}"</em></div>
+                        <div class="tr-en">➔ "${data.sentence}"</div>
+                    </div>
+                `;
             } catch (err) {
-                panel.innerText = "Errore di connessione.";
+                panel.innerHTML = `
+                    <span class="close-btn" onclick="closeTranslation()">&times;</span>
+                    <div style="text-align:center; color:#ff5252; margin-top:10px;">Errore di connessione.</div>
+                `;
             }
-            
-            // Auto-hide the panel after 4 seconds
-            translationTimer = setTimeout(() => { panel.style.display = 'none'; }, 4000);
-        }
-
-        // NEW: Splits the sentence into individual words and wraps them in spans
-        function makeWordsClickable(sentence) {
-            return sentence.split(' ').map(word => {
-                return `<span class="clickable-word" onclick="translateWord(this.innerText)">${word}</span>`;
-            }).join(' ');
         }
 
         function buildListHtml(questions, typeTitle) {
@@ -262,12 +274,10 @@
             questions.forEach(q => { 
                 const flaggedClass = q.flagged === 1 ? 'is-flagged' : '';
                 const nextStatus = q.flagged === 1 ? 0 : 1;
-                
-                // Wrap the text before rendering
                 const clickableText = makeWordsClickable(q.domanda);
                 
                 html += `<li class="${flaggedClass}">
-                            <span>${clickableText}</span>
+                            <span class="question-text">${clickableText}</span>
                             <button class="flag-btn" onclick="toggleFlag(${q.id}, ${nextStatus}, this)" title="Salva/Rimuovi">🚩</button>
                          </li>`; 
             });
@@ -277,10 +287,7 @@
 
         async function loadFlagged() {
             const cat = document.getElementById('category-select').value;
-            if (cat === 'all') {
-                alert("Seleziona prima un Capitolo (1) per vedere le sue domande salvate!");
-                return;
-            }
+            if (cat === 'all') { alert("Seleziona prima un Capitolo (1) per vedere le sue domande salvate!"); return; }
             
             document.getElementById('subcategory-select').value = 'all';
             document.getElementById('figure-select').innerHTML = '<option value="all">3. Tutte le Figure</option>';
@@ -294,9 +301,7 @@
             const cat = document.getElementById('category-select').value;
             const sub = document.getElementById('subcategory-select').value;
             const fig = document.getElementById('figure-select').value;
-            
             if (sub === 'all') return;
-            
             currentMode = 'normal';
             fetchAndRender(cat, sub, fig, 'false');
         }
@@ -312,37 +317,29 @@
                 const res = await fetch(url);
                 const result = await res.json();
                 
-                if (result.error) {
-                    msgArea.innerHTML = `<div class="error-box">${result.error}</div>`;
-                    return;
-                }
-                
+                if (result.error) { msgArea.innerHTML = `<div class="error-box">${result.error}</div>`; return; }
                 if (result.message) { msgArea.innerText = result.message; return; }
                 if (result.data.length === 0) { 
-                    msgArea.innerText = isFlagged === 'true' ? "Nessuna domanda salvata in questo Capitolo." : "Nessuna domanda trovata."; 
-                    return; 
+                    msgArea.innerText = isFlagged === 'true' ? "Nessuna domanda salvata in questo Capitolo." : "Nessuna domanda trovata."; return; 
                 }
                 
                 msgArea.innerText = "";
                 
                 result.data.forEach(item => {
                     let html = `<div class="study-card">`;
-                    
                     if (item.figura && item.figura !== "no_image") {
                         html += `<div class="image-wrapper"><img src="/${item.figura}" alt="Segnale stradale"></div>`;
                     } else {
                         html += `<div class="image-wrapper" style="display: flex; align-items: center; justify-content: center; color: #444; font-style: italic;">Nessuna figura</div>`;
                     }
-                    
                     html += `<div class="questions-wrapper">`;
                     html += buildListHtml(item.vero, 'Vero');
                     html += buildListHtml(item.falso, 'Falso');
                     html += `</div></div>`;
-                    
                     container.innerHTML += html;
                 });
             } catch (error) {
-                msgArea.innerHTML = `<div class="error-box">Errore durante il caricamento dei dati. Controlla la console del terminale.</div>`;
+                msgArea.innerHTML = `<div class="error-box">Errore durante il caricamento dei dati.</div>`;
             }
         }
         
