@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
+from typing import List
 import sqlite3
 import os
 import re
@@ -33,13 +34,18 @@ class ExamAnswer(BaseModel):
     is_guessed: bool
 
 class ExamSubmit(BaseModel):
-    answers: list[ExamAnswer]
+    answers: List[ExamAnswer]
+
+# NEW: Model for Smart Context Translation
+class TranslateReq(BaseModel):
+    word: str
+    phrase: str
+    sentence: str
 
 # --- Database Initialization with Safety Nets ---
 def init_db():
     if not os.path.exists('patente_quiz.db'):
         return
-    # Added a timeout in case the database is briefly locked
     conn = sqlite3.connect('patente_quiz.db', timeout=10)
     
     def safe_add_column(col_name, col_type):
@@ -47,7 +53,7 @@ def init_db():
             conn.execute(f"ALTER TABLE questions ADD COLUMN {col_name} {col_type}")
             conn.commit()
         except sqlite3.OperationalError:
-            pass # Column already exists or DB locked
+            pass 
             
     safe_add_column("flagged", "INTEGER DEFAULT 0")
     safe_add_column("status", "TEXT DEFAULT 'unseen'")
@@ -85,7 +91,7 @@ def read_official():
 def get_categories():
     try:
         conn = get_db_connection()
-        categories = conn.execute('SELECT categoria, COUNT(*) as count FROM questions GROUP BY categoria ORDER BY count DESC').fetchall()
+        categories = conn.execute('SELECT categoria, COUNT(*) as count FROM questions WHERE categoria IS NOT NULL GROUP BY categoria ORDER BY count DESC').fetchall()
         conn.close()
         return [{"name": str(row['categoria']), "count": row['count']} for row in categories]
     except Exception as e: return {"error": str(e)}
@@ -94,7 +100,7 @@ def get_categories():
 def get_subcategories(category: str):
     try:
         conn = get_db_connection()
-        subcats = conn.execute('SELECT sottocategoria, COUNT(*) as count FROM questions WHERE categoria = ? GROUP BY sottocategoria ORDER BY count DESC', (category,)).fetchall()
+        subcats = conn.execute('SELECT sottocategoria, COUNT(*) as count FROM questions WHERE categoria = ? AND sottocategoria IS NOT NULL GROUP BY sottocategoria ORDER BY count DESC', (category,)).fetchall()
         conn.close()
         return [{"name": str(row['sottocategoria']), "count": row['count']} for row in subcats]
     except Exception as e: return {"error": str(e)}
@@ -151,16 +157,25 @@ def toggle_flag(update: FlagUpdate):
     conn.close()
     return {"success": True}
 
-@app.get("/api/translate")
-def translate_word(word: str):
+# NEW: Smart Context Translation Endpoint
+@app.post("/api/translate_smart")
+def translate_smart(req: TranslateReq):
     try:
-        clean_word = re.sub(r'[^\w\s\']', '', word).strip()
-        if not clean_word: return {"translation": ""}
         translator = GoogleTranslator(source='it', target='en')
-        return {"translation": translator.translate(clean_word).lower()}
-    except Exception as e: return {"error": str(e)}
+        
+        # Strip common punctuation for cleaner word/phrase translation
+        clean_w = re.sub(r'[^\w\s\']', '', req.word).strip()
+        clean_p = re.sub(r'[^\w\s\']', '', req.phrase).strip()
+        
+        t_word = translator.translate(clean_w).lower() if clean_w else ""
+        t_phrase = translator.translate(clean_p).lower() if clean_p else ""
+        t_sentence = translator.translate(req.sentence)
+        
+        return {"word": t_word, "phrase": t_phrase, "sentence": t_sentence}
+    except Exception as e: 
+        return {"error": str(e)}
 
-# --- Unified Stats API (Supports Both Quizzes) ---
+# --- Unified Stats API ---
 @app.get("/api/stats")
 def get_stats(category: str = 'all', subcategory: str = 'all', figure: str = 'all'):
     try:
@@ -181,7 +196,6 @@ def get_stats(category: str = 'all', subcategory: str = 'all', figure: str = 'al
         query += ' GROUP BY status'
         stats = conn.execute(query, params).fetchall()
         
-        # Self-healing check if memory columns failed to create
         try:
             ew = conn.execute('SELECT COUNT(*) as c FROM questions WHERE ever_wrong = 1').fetchone()['c']
             eg = conn.execute('SELECT COUNT(*) as c FROM questions WHERE ever_guessed = 1').fetchone()['c']
@@ -259,10 +273,11 @@ def reset_progress(req: ResetRequest):
 def generate_exam():
     try:
         conn = get_db_connection()
-        all_cats = [row['categoria'] for row in conn.execute('SELECT DISTINCT categoria FROM questions').fetchall()]
+        all_cats = [row['categoria'] for row in conn.execute('SELECT DISTINCT categoria FROM questions WHERE categoria IS NOT NULL').fetchall()]
         
         important_keywords = ['pericolo', 'divieto', 'obbligo', 'precedenza', 'orizzontale', 'semafor', 'velocit', 'distanza', 'incroc', 'norme', 'sorpasso', 'ingombro', 'sicurezza', 'incident', 'psico']
-        important_cats = [c for c in all_cats if any(kw in c.lower() for kw in important_keywords)]
+        
+        important_cats = [c for c in all_cats if any(kw in str(c).lower() for kw in important_keywords)]
         less_cats = [c for c in all_cats if c not in important_cats]
         
         random.shuffle(important_cats)
@@ -272,14 +287,12 @@ def generate_exam():
         exam_questions = []
         
         def fetch_questions(cat, limit):
-            # Try/Catch completely isolates database read failures
             try:
                 query = '''SELECT id, domanda, figura, risposta FROM questions 
                            WHERE categoria = ? AND (status = 'unseen' OR ever_wrong = 1 OR ever_guessed = 1)
                            ORDER BY RANDOM() LIMIT ?'''
                 return [dict(row) for row in conn.execute(query, (cat, limit)).fetchall()]
-            except sqlite3.OperationalError:
-                # Failsafe if the ever_wrong columns are missing
+            except Exception:
                 query = '''SELECT id, domanda, figura, risposta FROM questions 
                            WHERE categoria = ? AND status = 'unseen'
                            ORDER BY RANDOM() LIMIT ?'''
@@ -301,14 +314,13 @@ def submit_exam(submit: ExamSubmit):
         conn = get_db_connection()
         for ans in submit.answers:
             new_status = 'correct' if ans.is_correct else 'wrong'
-            
             try:
                 if not ans.is_correct:
                     conn.execute('UPDATE questions SET ever_wrong = 1 WHERE id = ?', (ans.id,))
                 if ans.is_guessed:
                     conn.execute('UPDATE questions SET ever_guessed = 1 WHERE id = ?', (ans.id,))
-            except sqlite3.OperationalError:
-                pass # Silently proceed if memory columns failed to create
+            except Exception:
+                pass 
                 
             conn.execute('UPDATE questions SET status = ? WHERE id = ?', (new_status, ans.id))
             
