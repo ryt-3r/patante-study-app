@@ -39,6 +39,14 @@ def get_db_connection():
 def read_root():
     return FileResponse("static/index.html", media_type="text/html")
 
+@app.get("/domande")
+def read_domande():
+    return FileResponse("static/domande.html", media_type="text/html")
+
+@app.get("/quiz")
+def read_quiz():
+    return FileResponse("static/quiz.html", media_type="text/html")
+
 @app.get("/api/categories")
 def get_categories():
     try:
