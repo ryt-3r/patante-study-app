@@ -6,9 +6,16 @@
     <title>Schede Studio - Patente B</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background-color: #121212; color: #e0e0e0; }
+        
+        /* Centered Home Button */
+        .top-nav { text-align: center; margin-bottom: 15px; }
+        .btn-home { background: #333; color: #fff; text-decoration: none; padding: 10px 25px; border-radius: 8px; font-size: 1.1em; font-weight: bold; display: inline-block; transition: 0.2s; border: 1px solid #555; }
+        .btn-home:hover { background: #444; border-color: #2ea043; transform: translateY(-2px); }
+        
         .menu-bar { background: #1e1e1e; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 15px; }
         .filters { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
         .filters select { flex: 1; min-width: 250px; max-width: 400px; padding: 10px; font-size: 1.1em; border-radius: 5px; cursor: pointer; background-color: #2c2c2c; color: #e0e0e0; border: 1px solid #444; }
+        .filters select optgroup { font-weight: bold; color: #aaa; font-style: normal; }
         .btn-flag-review { background-color: #b07005; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 1.1em; cursor: pointer; font-weight: bold; transition: 0.2s; white-space: nowrap; }
         .btn-flag-review:hover { background-color: #d1870a; }
         #message-area { text-align: center; font-size: 1.2em; color: #aaaaaa; margin-top: 40px; font-style: italic; }
@@ -20,16 +27,21 @@
         .study-card img { max-width: 100%; max-height: 250px; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
         .questions-wrapper { width: 100%; }
         
-        /* NEW: Sequence Alignment Grid Layout */
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; width: 100%; align-items: stretch; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; width: 100%; align-items: stretch; }
         .grid-header { font-size: 1.3em; font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid #444; text-align: center; }
         .v-head { color: #4caf50; }
         .f-head { color: #ff5252; }
         
-        .cell-card { padding: 12px 15px; background: #2c2c2c; border-radius: 6px; line-height: 1.4; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; transition: background 0.2s; font-size: 1.05em; }
+        .cell-card { padding: 12px 15px; background: #2c2c2c; border-radius: 6px; line-height: 1.4; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; transition: background 0.2s; font-size: 1.05em; border: 1px solid transparent; }
         .v-card { border-left: 5px solid #4caf50; }
         .f-card { border-left: 5px solid #ff5252; }
-        .empty-cell { background: transparent; }
+        
+        /* NEW: Special Trick Question Styling */
+        .matched-pair { border-top: 1px solid #9c27b0; border-right: 1px solid #9c27b0; border-bottom: 1px solid #9c27b0; background-color: #231c26; box-shadow: inset 0 0 8px rgba(156, 39, 176, 0.1); }
+        .matched-pair.v-card { border-left: 5px solid #4caf50; }
+        .matched-pair.f-card { border-left: 5px solid #ff5252; }
+        
+        .empty-cell { background: transparent; border: none; }
         
         .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.2em; opacity: 0.3; filter: grayscale(100%); transition: 0.2s; padding: 0; margin: 0; flex-shrink: 0; }
         .cell-card.is-flagged { background: #3d3014; }
@@ -63,8 +75,11 @@
     </style>
 </head>
 <body>
+    <div class="top-nav">
+        <a href="/" class="btn-home">← Torna alla Home</a>
+    </div>
+    
     <div class="menu-bar">
-        <a href="/" style="color:#aaa; text-decoration:none; text-align:center; display:block; margin-bottom:5px;">← Torna all'Hub</a>
         <div class="filters">
             <select id="category-select" onchange="onCategoryChange()">
                 <option value="all">1. Scegli il Capitolo...</option>
@@ -104,12 +119,23 @@
                 const total = data.reduce((sum, cat) => sum + cat.count, 0);
                 select.innerHTML = `<option value="all">1. Scegli il Capitolo (${total})</option>`;
                 
+                let impGroup = document.createElement('optgroup');
+                impGroup.label = "15 Argomenti Più Importanti (Alta Priorità)";
+                
+                let lessGroup = document.createElement('optgroup');
+                lessGroup.label = "10 Argomenti Meno Importanti";
+                
                 data.forEach(cat => {
                     const option = document.createElement('option');
                     option.value = cat.name;
                     option.textContent = `${cleanText(cat.name)} (${cat.count})`;
-                    select.appendChild(option);
+                    
+                    if (cat.is_important) impGroup.appendChild(option);
+                    else lessGroup.appendChild(option);
                 });
+                
+                select.appendChild(impGroup);
+                select.appendChild(lessGroup);
                 document.getElementById('message-area').innerText = "Seleziona un Capitolo (1) per iniziare.";
             } catch (err) {
                 document.getElementById('message-area').innerHTML = `<div class="error-box">Errore Fatale: Impossibile leggere il database.</div>`;
@@ -251,7 +277,6 @@
             }
         }
 
-        // NEW: Jaccard Similarity Algorithm for finding best Falso matches
         function calculateSimilarity(str1, str2) {
             if(!str1 || !str2) return 0;
             const set1 = new Set(str1.toLowerCase().split(' '));
@@ -261,72 +286,72 @@
             const union = set1.size + set2.size - intersection;
             return intersection / union;
         }
+        
+        function renderCell(q, type, isMatched) {
+            const flagged = q.flagged === 1 ? 'is-flagged' : '';
+            const nextStatus = q.flagged === 1 ? 0 : 1;
+            const text = makeWordsClickable(q.domanda);
+            const cardClass = type === 'v' ? 'v-card' : 'f-card';
+            const matchedClass = isMatched ? 'matched-pair' : '';
+            
+            return `<div class="cell-card ${cardClass} ${flagged} ${matchedClass}">
+                        <span class="question-text">${text}</span>
+                        <button class="flag-btn" onclick="toggleFlag(${q.id}, ${nextStatus}, this)">🚩</button>
+                    </div>`;
+        }
 
-        // NEW: Generates a synchronized grid instead of isolated lists
         function buildComparisonGrid(veroList, falsoList) {
-            // 1. Prefix Clustering (Alphabetical sorting naturally groups identical phrase starts)
             veroList.sort((a, b) => a.domanda.localeCompare(b.domanda));
             falsoList.sort((a, b) => a.domanda.localeCompare(b.domanda));
 
-            let pairs = [];
+            let matchedPairs = [];
+            let unmatchedVero = [];
             let remainingFalso = [...falsoList];
 
-            // 2. Sequence Alignment (Pairing the closest True/False matches)
+            // 1. Find Trick Matches
             veroList.forEach(v => {
                 let bestIdx = -1;
                 let maxSim = 0;
                 for(let i=0; i<remainingFalso.length; i++) {
                     let sim = calculateSimilarity(v.domanda, remainingFalso[i].domanda);
-                    // Requires at least a 35% word overlap to be considered a paired "trick" question
                     if(sim > maxSim && sim > 0.35) { 
                         maxSim = sim;
                         bestIdx = i;
                     }
                 }
-                let f = null;
+                
                 if(bestIdx !== -1) {
-                    f = remainingFalso.splice(bestIdx, 1)[0];
+                    let f = remainingFalso.splice(bestIdx, 1)[0];
+                    matchedPairs.push({ v: v, f: f });
+                } else {
+                    unmatchedVero.push(v);
                 }
-                pairs.push({ v: v, f: f });
             });
 
-            // 3. Append leftover false questions that had no close Vero equivalent
-            remainingFalso.forEach(f => pairs.push({ v: null, f: f }));
+            let unmatchedFalso = remainingFalso;
 
-            if(pairs.length === 0) return "";
+            if(matchedPairs.length === 0 && unmatchedVero.length === 0 && unmatchedFalso.length === 0) return "";
             
-            // 4. Generate the side-by-side grid
             let html = `<div class="comparison-grid">
                             <div class="grid-header v-head">Vero</div>
                             <div class="grid-header f-head">Falso</div>`;
             
-            pairs.forEach(pair => {
-                // Render Vero Cell
-                if(pair.v) {
-                    const flagged = pair.v.flagged === 1 ? 'is-flagged' : '';
-                    const nextStatus = pair.v.flagged === 1 ? 0 : 1;
-                    const text = makeWordsClickable(pair.v.domanda);
-                    html += `<div class="cell-card v-card ${flagged}">
-                                <span class="question-text">${text}</span>
-                                <button class="flag-btn" onclick="toggleFlag(${pair.v.id}, ${nextStatus}, this)">🚩</button>
-                             </div>`;
-                } else {
-                    html += `<div class="empty-cell"></div>`;
-                }
-                
-                // Render Falso Cell
-                if(pair.f) {
-                    const flagged = pair.f.flagged === 1 ? 'is-flagged' : '';
-                    const nextStatus = pair.f.flagged === 1 ? 0 : 1;
-                    const text = makeWordsClickable(pair.f.domanda);
-                    html += `<div class="cell-card f-card ${flagged}">
-                                <span class="question-text">${text}</span>
-                                <button class="flag-btn" onclick="toggleFlag(${pair.f.id}, ${nextStatus}, this)">🚩</button>
-                             </div>`;
-                } else {
-                    html += `<div class="empty-cell"></div>`;
-                }
+            // 2. Render Matched Pairs (Top of the grid, highlighted)
+            matchedPairs.forEach(pair => {
+                html += renderCell(pair.v, 'v', true);
+                html += renderCell(pair.f, 'f', true);
             });
+            
+            // 3. Render Unmatched Items (Packed tightly to eliminate gaps)
+            const maxLen = Math.max(unmatchedVero.length, unmatchedFalso.length);
+            for(let i=0; i<maxLen; i++) {
+                if(i < unmatchedVero.length) html += renderCell(unmatchedVero[i], 'v', false);
+                else html += `<div class="empty-cell"></div>`;
+                
+                if(i < unmatchedFalso.length) html += renderCell(unmatchedFalso[i], 'f', false);
+                else html += `<div class="empty-cell"></div>`;
+            }
+            
             html += `</div>`;
             return html;
         }
@@ -380,7 +405,6 @@
                     }
                     html += `<div class="questions-wrapper">`;
                     
-                    // Injecting the new Grid Builder
                     html += buildComparisonGrid(item.vero, item.falso);
                     
                     html += `</div></div>`;
