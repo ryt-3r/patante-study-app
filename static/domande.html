@@ -5,103 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schede Studio - Patente B</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background-color: #121212; color: #e0e0e0; }
+        /* Sleek, Native Apple Typography Stack */
+        body { 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
+            font-weight: 300; 
+            letter-spacing: -0.2px; 
+            max-width: 1200px; margin: 0 auto; padding: 0 20px 60px 20px; 
+            
+            /* Ambient Dark Room Mesh Gradient */
+            background-color: #0a0a0f;
+            background-image: 
+                radial-gradient(circle at 0% 0%, #161e30 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, #1b1624 0%, transparent 50%);
+            background-attachment: fixed;
+            
+            color: #d1d5db; 
+            line-height: 1.6;
+        }
+
+        /* UNPINNED COMPRESSED COMMAND CENTER */
+        .menu-bar { 
+            background: rgba(15, 23, 42, 0.95); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 12px 15px; 
+            border-radius: 16px; 
+            margin: 25px 0; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+            display: flex; 
+            flex-direction: row; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            justify-content: center; 
+            align-items: center; 
+            border: 1px solid #334155; 
+        }
         
-        /* Centered Home Button */
-        .top-nav { text-align: center; margin-bottom: 15px; }
-        .btn-home { background: #333; color: #fff; text-decoration: none; padding: 10px 25px; border-radius: 8px; font-size: 1.1em; font-weight: bold; display: inline-block; transition: 0.2s; border: 1px solid #555; }
-        .btn-home:hover { background: #444; border-color: #2ea043; transform: translateY(-2px); }
+        .btn-home-small { 
+            background: rgba(30, 41, 59, 0.8); color: #cbd5e1; text-decoration: none; 
+            padding: 10px 16px; border-radius: 8px; font-size: 0.95em; font-weight: 600; 
+            border: 1px solid #475569; transition: 0.2s; white-space: nowrap;
+        }
+        .btn-home-small:hover { background: rgba(39, 55, 77, 0.9); color: #f8fafc; }
+
+        .menu-bar select { 
+            flex: 1; min-width: 180px; max-width: 280px; padding: 10px 12px; font-size: 0.95em; 
+            font-family: inherit; font-weight: 400; border-radius: 8px; cursor: pointer; 
+            background-color: #0f172a; color: #f1f5f9; border: 1px solid #475569; 
+            transition: border 0.2s; outline: none; 
+        }
+        .menu-bar select:focus { border-color: #38bdf8; }
+        .menu-bar select optgroup { font-weight: 600; color: #94a3b8; }
         
-        .menu-bar { background: #1e1e1e; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 15px; }
-        .filters { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
-        .filters select { flex: 1; min-width: 250px; max-width: 400px; padding: 10px; font-size: 1.1em; border-radius: 5px; cursor: pointer; background-color: #2c2c2c; color: #e0e0e0; border: 1px solid #444; }
-        .filters select optgroup { font-weight: bold; color: #aaa; font-style: normal; }
-        .btn-flag-review { background-color: #b07005; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 1.1em; cursor: pointer; font-weight: bold; transition: 0.2s; white-space: nowrap; }
-        .btn-flag-review:hover { background-color: #d1870a; }
-        #message-area { text-align: center; font-size: 1.2em; color: #aaaaaa; margin-top: 40px; font-style: italic; }
+        .btn-flag-review { 
+            padding: 10px 16px; cursor: pointer; border: 1px solid #d97706; border-radius: 8px; 
+            background: rgba(217, 119, 6, 0.2); color: #fcd34d; transition: 0.2s; 
+            font-weight: 600; font-family: inherit; font-size: 0.95em; white-space: nowrap;
+        }
+        .btn-flag-review:hover { background: rgba(217, 119, 6, 0.4); color: #fff; }
         
-        .error-box { background: #ff5252; color: white; padding: 15px; border-radius: 5px; margin: 20px auto; max-width: 600px; font-weight: bold; }
+        #message-area { text-align: center; font-size: 1.2em; color: #64748b; margin-top: 20px; font-weight: 500; }
+        .error-box { background: rgba(127, 29, 29, 0.8); backdrop-filter: blur(5px); color: #fca5a5; padding: 15px; border-radius: 12px; margin: 20px auto; max-width: 600px; font-weight: 500; border: 1px solid #991b1b; }
         
-        .study-card { background: #1e1e1e; border-radius: 8px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 20px; align-items: center; }
-        .image-wrapper { text-align: center; width: 100%; }
-        .study-card img { max-width: 100%; max-height: 250px; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        /* Study Cards & Matching Grid */
+        .study-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 20px; align-items: center; border: 1px solid #334155; }
+        .image-wrapper { text-align: center; width: 100%; background: #ffffff; padding: 10px; border-radius: 12px; max-width: fit-content; margin: 0 auto; }
+        .study-card img { max-width: 100%; max-height: 150px; border-radius: 8px; } 
+        
         .questions-wrapper { width: 100%; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; width: 100%; align-items: stretch; }
         
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; width: 100%; align-items: stretch; }
-        .grid-header { font-size: 1.3em; font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid #444; text-align: center; }
-        .v-head { color: #4caf50; }
-        .f-head { color: #ff5252; }
+        .grid-header { font-size: 1.1em; font-weight: 600; padding-bottom: 8px; text-align: center; text-transform: uppercase; letter-spacing: 1.5px; }
+        .v-head { color: #6ee7b7; border-bottom: 1px solid rgba(5, 150, 105, 0.5); }
+        .f-head { color: #fca5a5; border-bottom: 1px solid rgba(225, 29, 72, 0.5); }
         
-        .cell-card { padding: 12px 15px; background: #2c2c2c; border-radius: 6px; line-height: 1.4; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; transition: background 0.2s; font-size: 1.05em; border: 1px solid transparent; }
-        .v-card { border-left: 5px solid #4caf50; }
-        .f-card { border-left: 5px solid #ff5252; }
+        .cell-card { padding: 15px 20px; background: rgba(39, 53, 73, 0.5); border-radius: 12px; display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; font-size: 1.1em; font-weight: 400; color: #f8fafc; transition: all 0.2s ease; border: 1px solid transparent; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .cell-card:hover { transform: translateY(-2px); box-shadow: 0 8px 12px rgba(0,0,0,0.15); background: rgba(39, 53, 73, 0.8); }
         
-        /* NEW: Special Trick Question Styling */
-        .matched-pair { border-top: 1px solid #9c27b0; border-right: 1px solid #9c27b0; border-bottom: 1px solid #9c27b0; background-color: #231c26; box-shadow: inset 0 0 8px rgba(156, 39, 176, 0.1); }
-        .matched-pair.v-card { border-left: 5px solid #4caf50; }
-        .matched-pair.f-card { border-left: 5px solid #ff5252; }
+        .v-card { border-left: 4px solid #34d399; }
+        .f-card { border-left: 4px solid #fb7185; }
         
-        .empty-cell { background: transparent; border: none; }
+        .matched-pair.v-card { 
+            background: linear-gradient(145deg, rgba(6, 78, 59, 0.6) 0%, rgba(30, 41, 59, 0.8) 100%); 
+            border: 1px solid rgba(52, 211, 153, 0.3); 
+            border-left: 6px solid #10b981; 
+            box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.05), 0 8px 16px rgba(0,0,0,0.3); 
+        }
+        .matched-pair.f-card { 
+            background: linear-gradient(145deg, rgba(136, 19, 55, 0.6) 0%, rgba(30, 41, 59, 0.8) 100%); 
+            border: 1px solid rgba(251, 113, 133, 0.3); 
+            border-left: 6px solid #e11d48; 
+            box-shadow: inset 0 0 20px rgba(225, 29, 72, 0.05), 0 8px 16px rgba(0,0,0,0.3); 
+        }
         
-        .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.2em; opacity: 0.3; filter: grayscale(100%); transition: 0.2s; padding: 0; margin: 0; flex-shrink: 0; }
-        .cell-card.is-flagged { background: #3d3014; }
+        .empty-cell { background: transparent; border: none; box-shadow: none; }
+        
+        .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.3em; opacity: 0.2; filter: grayscale(100%); transition: all 0.2s; padding: 0; margin: 0; flex-shrink: 0; }
+        .flag-btn:hover { opacity: 0.8; transform: scale(1.1); }
+        .cell-card.is-flagged { background: rgba(69, 41, 26, 0.8); border-color: #9a3412; }
         .cell-card.is-flagged .flag-btn { opacity: 1; filter: none; }
 
-        .clickable-word { cursor: pointer; border-bottom: 1px dotted #888; transition: 0.2s; padding: 0 2px; display: inline-block; }
-        .clickable-word:hover { background-color: #0056b3; color: white; border-radius: 3px; }
+        .clickable-word { cursor: pointer; transition: color 0.2s; display: inline; padding: 2px 0; }
+        .clickable-word:hover { color: #38bdf8; text-shadow: 0 0 8px rgba(56, 189, 248, 0.4); }
         
         #translation-panel { 
-            display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
-            background: #1e1e1e; border: 2px solid #2ea043; color: white; padding: 30px 20px 20px 20px; 
-            border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 1000; 
-            text-align: left; min-width: 300px; max-width: 90%; font-size: 1.1em; 
+            display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
+            background: rgba(30, 41, 59, 0.95); border: 1px solid #38bdf8; color: #f1f5f9; padding: 25px 30px; 
+            border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.3); 
+            z-index: 1000; text-align: left; min-width: 320px; max-width: 90%; font-size: 1.1em; 
+            backdrop-filter: blur(10px);
         }
-        .close-btn { position: absolute; top: 5px; right: 15px; cursor: pointer; color: #aaa; font-size: 1.8em; font-weight: bold; transition: 0.2s; line-height: 1; }
-        .close-btn:hover { color: #fff; }
-        .tr-row { margin-bottom: 10px; }
-        .tr-label { color: #888; font-size: 0.9em; text-transform: uppercase; }
-        .tr-it { font-weight: bold; }
-        .tr-en { color: #ffeb3b; font-weight: bold; }
-        .tr-sentence { border-top: 1px solid #444; padding-top: 10px; margin-top: 10px; font-size: 0.95em; line-height: 1.4; color: #ccc; }
-        .tr-sentence .tr-en { color: #4caf50; font-weight: normal; }
+        .close-btn { position: absolute; top: 12px; right: 18px; cursor: pointer; color: #64748b; font-size: 1.8em; font-weight: 400; transition: color 0.2s; line-height: 1; }
+        .close-btn:hover { color: #f1f5f9; }
+        
+        .tr-row { margin-bottom: 12px; }
+        .tr-label { color: #94a3b8; font-size: 0.85em; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
+        .tr-it { font-weight: 400; color: #e2e8f0; }
+        .tr-en { color: #38bdf8; font-weight: 500; margin-left: 8px; }
+        .tr-sentence { border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 15px; margin-top: 15px; font-size: 0.95em; line-height: 1.5; color: #cbd5e1; font-weight: 300; }
+        .tr-sentence .tr-en { color: #6ee7b7; font-weight: 400; margin-left: 0; display: block; margin-top: 5px; }
 
         @media (max-width: 800px) {
-            .study-card { padding: 10px; }
-            .comparison-grid { display: flex; flex-direction: column; gap: 10px; }
+            body { padding: 0 10px 40px 10px; }
+            .menu-bar { 
+                padding: 10px; margin: 15px 0; gap: 8px; border-radius: 12px;
+            }
+            .menu-bar select, .btn-flag-review, .btn-home-small { 
+                width: 100%; min-width: 100%; padding: 8px 10px; font-size: 0.95em; box-sizing: border-box; text-align: center;
+            }
+            
+            #message-area { margin-top: 15px; font-size: 1em; }
+            .study-card { padding: 12px; gap: 12px; margin-bottom: 15px; border-radius: 12px; }
+            .study-card img { max-height: 120px; }
+            .comparison-grid { display: flex; flex-direction: column; gap: 6px; }
             .grid-header { display: none; }
             .empty-cell { display: none; }
-            #translation-panel { width: 90%; font-size: 1em; padding: 30px 15px 15px 15px; }
+            .cell-card { padding: 10px 15px; font-size: 1.05em; line-height: 1.3; border-radius: 8px; }
+            #translation-panel { width: 92%; font-size: 1em; padding: 20px 15px; bottom: 15px; }
         }
     </style>
 </head>
 <body>
-    <div class="top-nav">
-        <a href="/" class="btn-home">← Torna alla Home</a>
-    </div>
     
+    <!-- Top Command Center -->
     <div class="menu-bar">
-        <div class="filters">
-            <select id="category-select" onchange="onCategoryChange()">
-                <option value="all">1. Scegli il Capitolo...</option>
-            </select>
-            <button class="btn-flag-review" onclick="loadFlagged()">🚩 Ripassa Salvate</button>
-        </div>
-        <div class="filters">
-            <select id="subcategory-select" onchange="onSubcategoryChange()" disabled>
-                <option value="all">2. Scegli l'Argomento...</option>
-            </select>
-            <select id="figure-select" onchange="loadContent()" disabled>
-                <option value="all">3. Tutte le Figure</option>
-            </select>
-        </div>
+        <a href="/" class="btn-home-small">← Home</a>
+        <select class="category-select" onchange="onCategoryChange(this)">
+            <option value="all">1. Scegli il Capitolo...</option>
+        </select>
+        <select class="subcategory-select" onchange="onSubcategoryChange(this)" disabled>
+            <option value="all">2. Scegli l'Argomento...</option>
+        </select>
+        <select class="figure-select" onchange="onFigureChange(this)" disabled>
+            <option value="all">3. Tutte le Figure</option>
+        </select>
+        <button class="btn-flag-review" onclick="loadFlagged()">🚩 Ripassa Salvate</button>
     </div>
     
     <div id="message-area">Caricamento in corso...</div>
     <div id="content-container"></div>
     <div id="translation-panel"></div>
+
+    <!-- Bottom Command Center (Duplicated) -->
+    <div class="menu-bar" style="margin-top: 30px;">
+        <a href="/" class="btn-home-small">← Home</a>
+        <select class="category-select" onchange="onCategoryChange(this)">
+            <option value="all">1. Scegli il Capitolo...</option>
+        </select>
+        <select class="subcategory-select" onchange="onSubcategoryChange(this)" disabled>
+            <option value="all">2. Scegli l'Argomento...</option>
+        </select>
+        <select class="figure-select" onchange="onFigureChange(this)" disabled>
+            <option value="all">3. Tutte le Figure</option>
+        </select>
+        <button class="btn-flag-review" onclick="loadFlagged()">🚩 Ripassa Salvate</button>
+    </div>
     
     <script>
         let currentMode = 'normal';
+
+        // Synchronize all dropdowns (Top and Bottom)
+        function syncSelects(className, value) {
+            document.querySelectorAll('.' + className).forEach(el => el.value = value);
+        }
 
         function cleanText(text) { 
             if (!text) return "Argomento Sconosciuto";
@@ -115,96 +200,101 @@
                 
                 if (data.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${data.error}</div>`; return; }
                 
-                const select = document.getElementById('category-select');
                 const total = data.reduce((sum, cat) => sum + cat.count, 0);
-                select.innerHTML = `<option value="all">1. Scegli il Capitolo (${total})</option>`;
-                
-                let impGroup = document.createElement('optgroup');
-                impGroup.label = "15 Argomenti Più Importanti (Alta Priorità)";
-                
-                let lessGroup = document.createElement('optgroup');
-                lessGroup.label = "10 Argomenti Meno Importanti";
+                let impGroup = `<optgroup label="15 Argomenti Più Importanti (Alta Priorità)">`;
+                let lessGroup = `<optgroup label="10 Argomenti Meno Importanti">`;
                 
                 data.forEach(cat => {
-                    const option = document.createElement('option');
-                    option.value = cat.name;
-                    option.textContent = `${cleanText(cat.name)} (${cat.count})`;
-                    
-                    if (cat.is_important) impGroup.appendChild(option);
-                    else lessGroup.appendChild(option);
+                    const optHTML = `<option value="${cat.name}">${cleanText(cat.name)} (${cat.count})</option>`;
+                    if (cat.is_important) impGroup += optHTML;
+                    else lessGroup += optHTML;
                 });
                 
-                select.appendChild(impGroup);
-                select.appendChild(lessGroup);
+                impGroup += `</optgroup>`;
+                lessGroup += `</optgroup>`;
+                
+                const finalHTML = `<option value="all">1. Scegli il Capitolo (${total})</option>` + impGroup + lessGroup;
+                
+                document.querySelectorAll('.category-select').forEach(el => el.innerHTML = finalHTML);
                 document.getElementById('message-area').innerText = "Seleziona un Capitolo (1) per iniziare.";
             } catch (err) {
                 document.getElementById('message-area').innerHTML = `<div class="error-box">Errore Fatale: Impossibile leggere il database.</div>`;
             }
         }
 
-        async function onCategoryChange() {
-            const catSelect = document.getElementById('category-select');
-            const subSelect = document.getElementById('subcategory-select');
-            const figSelect = document.getElementById('figure-select');
+        async function onCategoryChange(element) {
+            const val = element ? element.value : document.querySelector('.category-select').value;
+            syncSelects('category-select', val);
             
-            subSelect.innerHTML = '<option value="all">2. Scegli l\'Argomento...</option>';
-            figSelect.innerHTML = '<option value="all">3. Tutte le Figure</option>';
+            document.querySelectorAll('.subcategory-select').forEach(el => {
+                el.innerHTML = '<option value="all">2. Scegli l\'Argomento...</option>';
+                el.disabled = true;
+            });
+            document.querySelectorAll('.figure-select').forEach(el => {
+                el.innerHTML = '<option value="all">3. Tutte le Figure</option>';
+                el.disabled = true;
+            });
             document.getElementById('content-container').innerHTML = '';
             
-            if (catSelect.value === 'all') {
-                subSelect.disabled = true; figSelect.disabled = true;
+            if (val === 'all') {
                 document.getElementById('message-area').innerText = "Seleziona un Capitolo (1) per iniziare.";
             } else {
-                subSelect.disabled = false; figSelect.disabled = true;
+                document.querySelectorAll('.subcategory-select').forEach(el => el.disabled = false);
                 try {
-                    const res = await fetch(`/api/subcategories?category=${encodeURIComponent(catSelect.value)}`);
+                    const res = await fetch(`/api/subcategories?category=${encodeURIComponent(val)}`);
                     const subcats = await res.json();
                     
                     if (subcats.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${subcats.error}</div>`; return; }
                     
                     const total = subcats.reduce((sum, sub) => sum + sub.count, 0);
-                    subSelect.innerHTML = `<option value="all">2. Scegli l'Argomento (${total})</option>`;
+                    let subHTML = `<option value="all">2. Scegli l'Argomento (${total})</option>`;
                     
                     subcats.forEach(sub => {
-                        const option = document.createElement('option');
-                        option.value = sub.name;
-                        option.textContent = `${cleanText(sub.name)} (${sub.count})`;
-                        subSelect.appendChild(option);
+                        subHTML += `<option value="${sub.name}">${cleanText(sub.name)} (${sub.count})</option>`;
                     });
+                    
+                    document.querySelectorAll('.subcategory-select').forEach(el => el.innerHTML = subHTML);
                     document.getElementById('message-area').innerText = "Seleziona un Argomento (2) o usa il tasto 🚩 Ripassa Salvate.";
                 } catch(err) { document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento.</div>`; }
             }
         }
 
-        async function onSubcategoryChange() {
-            const catSelect = document.getElementById('category-select');
-            const subSelect = document.getElementById('subcategory-select');
-            const figSelect = document.getElementById('figure-select');
-            figSelect.innerHTML = '<option value="all">3. Tutte le Figure</option>';
+        async function onSubcategoryChange(element) {
+            const catVal = document.querySelector('.category-select').value;
+            const subVal = element ? element.value : document.querySelector('.subcategory-select').value;
+            syncSelects('subcategory-select', subVal);
             
-            if (subSelect.value === 'all') {
-                figSelect.disabled = true;
+            document.querySelectorAll('.figure-select').forEach(el => {
+                el.innerHTML = '<option value="all">3. Tutte le Figure</option>';
+            });
+            
+            if (subVal === 'all') {
+                document.querySelectorAll('.figure-select').forEach(el => el.disabled = true);
                 document.getElementById('content-container').innerHTML = '';
                 document.getElementById('message-area').innerText = "Seleziona un Argomento (2) per visualizzare le domande.";
             } else {
-                figSelect.disabled = false;
+                document.querySelectorAll('.figure-select').forEach(el => el.disabled = false);
                 try {
-                    const res = await fetch(`/api/figures?category=${encodeURIComponent(catSelect.value)}&subcategory=${encodeURIComponent(subSelect.value)}`);
+                    const res = await fetch(`/api/figures?category=${encodeURIComponent(catVal)}&subcategory=${encodeURIComponent(subVal)}`);
                     const figures = await res.json();
                     
                     if (figures.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${figures.error}</div>`; return; }
 
                     const total = figures.reduce((sum, fig) => sum + fig.count, 0);
-                    figSelect.innerHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
+                    let figHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
                     figures.forEach(fig => {
-                        const option = document.createElement('option');
-                        option.value = fig.name;
-                        option.textContent = `Figura: ${fig.name.split('/').pop()} (${fig.count})`;
-                        figSelect.appendChild(option);
+                        figHTML += `<option value="${fig.name}">Figura: ${fig.name.split('/').pop()} (${fig.count})</option>`;
                     });
+                    
+                    document.querySelectorAll('.figure-select').forEach(el => el.innerHTML = figHTML);
                     loadContent(); 
                 } catch(err) { document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento.</div>`; }
             }
+        }
+
+        function onFigureChange(element) {
+            syncSelects('figure-select', element.value);
+            loadContent();
         }
 
         async function toggleFlag(id, newStatus, btnEl) {
@@ -250,7 +340,7 @@
             const sentence = words.join(' ');
             
             const panel = document.getElementById('translation-panel');
-            panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; margin-top:10px;">Analisi contesto in corso... ⏳</div>`;
+            panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; margin-top:10px; color: #38bdf8; font-weight: 500;">Analisi contesto in corso... ⏳</div>`;
             panel.style.display = 'block';
             
             try {
@@ -265,15 +355,21 @@
                 
                 panel.innerHTML = `
                     <span class="close-btn" onclick="closeTranslation()">&times;</span>
-                    <div class="tr-row" style="margin-top:5px;"><span class="tr-label">Parola:</span> <span class="tr-it">${word}</span> ➔ <span class="tr-en">${data.word}</span></div>
-                    <div class="tr-row"><span class="tr-label">Contesto (3 Parole):</span> <span class="tr-it">${phrase}</span> ➔ <span class="tr-en">${data.phrase}</span></div>
+                    <div class="tr-row">
+                        <span class="tr-label">Parola</span>
+                        <span class="tr-it">${word}</span> <span style="color:#64748b; margin:0 5px;">➔</span> <span class="tr-en">${data.word}</span>
+                    </div>
+                    <div class="tr-row">
+                        <span class="tr-label">Contesto (3 Parole)</span>
+                        <span class="tr-it">${phrase}</span> <span style="color:#64748b; margin:0 5px;">➔</span> <span class="tr-en">${data.phrase}</span>
+                    </div>
                     <div class="tr-sentence">
-                        <div style="margin-bottom:5px;"><em>"${sentence}"</em></div>
-                        <div class="tr-en">➔ "${data.sentence}"</div>
+                        <em>"${sentence}"</em>
+                        <span class="tr-en">"${data.sentence}"</span>
                     </div>
                 `;
             } catch (err) {
-                panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; color:#ff5252; margin-top:10px;">Errore di connessione.</div>`;
+                panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; color:#fca5a5; margin-top:10px; font-weight: 500;">Errore di connessione.</div>`;
             }
         }
 
@@ -308,7 +404,6 @@
             let unmatchedVero = [];
             let remainingFalso = [...falsoList];
 
-            // 1. Find Trick Matches
             veroList.forEach(v => {
                 let bestIdx = -1;
                 let maxSim = 0;
@@ -336,13 +431,11 @@
                             <div class="grid-header v-head">Vero</div>
                             <div class="grid-header f-head">Falso</div>`;
             
-            // 2. Render Matched Pairs (Top of the grid, highlighted)
             matchedPairs.forEach(pair => {
                 html += renderCell(pair.v, 'v', true);
                 html += renderCell(pair.f, 'f', true);
             });
             
-            // 3. Render Unmatched Items (Packed tightly to eliminate gaps)
             const maxLen = Math.max(unmatchedVero.length, unmatchedFalso.length);
             for(let i=0; i<maxLen; i++) {
                 if(i < unmatchedVero.length) html += renderCell(unmatchedVero[i], 'v', false);
@@ -357,21 +450,23 @@
         }
 
         async function loadFlagged() {
-            const cat = document.getElementById('category-select').value;
+            const cat = document.querySelector('.category-select').value;
             if (cat === 'all') { alert("Seleziona prima un Capitolo (1) per vedere le sue domande salvate!"); return; }
             
-            document.getElementById('subcategory-select').value = 'all';
-            document.getElementById('figure-select').innerHTML = '<option value="all">3. Tutte le Figure</option>';
-            document.getElementById('figure-select').disabled = true;
+            syncSelects('subcategory-select', 'all');
+            document.querySelectorAll('.figure-select').forEach(el => {
+                el.innerHTML = '<option value="all">3. Tutte le Figure</option>';
+                el.disabled = true;
+            });
             
             currentMode = 'flagged';
             fetchAndRender(cat, 'all', 'all', 'true');
         }
 
         async function loadContent() {
-            const cat = document.getElementById('category-select').value;
-            const sub = document.getElementById('subcategory-select').value;
-            const fig = document.getElementById('figure-select').value;
+            const cat = document.querySelector('.category-select').value;
+            const sub = document.querySelector('.subcategory-select').value;
+            const fig = document.querySelector('.figure-select').value;
             if (sub === 'all') return;
             currentMode = 'normal';
             fetchAndRender(cat, sub, fig, 'false');
@@ -401,7 +496,7 @@
                     if (item.figura && item.figura !== "no_image") {
                         html += `<div class="image-wrapper"><img src="/${item.figura}" alt="Segnale stradale"></div>`;
                     } else {
-                        html += `<div class="image-wrapper" style="color: #444; font-style: italic; padding: 20px 0;">Nessuna figura</div>`;
+                        html += `<div class="image-wrapper" style="color: #64748b; font-style: italic; font-weight: 400; background: transparent; padding: 5px;">Nessuna figura associata</div>`;
                     }
                     html += `<div class="questions-wrapper">`;
                     
