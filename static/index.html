@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patente B - Hub</title>
+    <title>Patente B - AI Study Hub</title>
     <style>
-        /* Sleek, Native Apple Typography Stack */
+        /* THE GLOBAL THEME */
         body { 
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif; 
-            margin: 0; padding: 20px; 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
+            font-weight: 300; 
+            letter-spacing: -0.2px; 
+            margin: 0; padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             
             /* Ambient Dark Room Mesh Gradient */
             background-color: #0a0a0f;
@@ -18,84 +24,155 @@
             background-attachment: fixed;
             
             color: #d1d5db; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; box-sizing: border-box;
-            font-weight: 300;
-            letter-spacing: -0.2px;
+            line-height: 1.6;
         }
-        
-        h1 { 
-            font-size: 3.5em; 
-            margin-bottom: 50px; 
-            text-align: center; 
-            color: #f8fafc; 
-            font-weight: 600;
-            letter-spacing: -1.5px;
-            text-shadow: 0 4px 20px rgba(255,255,255,0.1);
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 40px 20px;
+            box-sizing: border-box;
         }
-        
-        .button-container { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 900px; }
-        
-        /* Premium Frosted Glass Buttons */
-        .hub-button {
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.4) 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .hero h1 { font-size: 2.8em; font-weight: 700; color: #f8fafc; margin: 0 0 10px 0; letter-spacing: -1px; }
+        .hero h1 span { color: #38bdf8; }
+        .hero p { font-size: 1.2em; color: #94a3b8; margin: 0; max-width: 600px; margin: 0 auto; }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        .feature-card {
             background: rgba(30, 41, 59, 0.6);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid #334155;
-            border-radius: 24px;
-            padding: 40px 30px; 
-            font-size: 1.2em; 
-            font-weight: 500; 
-            color: #f8fafc;
-            cursor: pointer; 
-            text-decoration: none; 
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); 
-            text-align: center; 
-            flex: 1; 
-            min-width: 240px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .hub-button:hover { 
-            background: rgba(39, 53, 73, 0.9);
-            transform: translateY(-6px) scale(1.02); 
+
+        .feature-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #475569; transition: 0.3s;
         }
-        
-        /* Subtle colored accent borders and glows */
-        .btn-study { border-bottom: 3px solid rgba(52, 211, 153, 0.6); }
-        .btn-study:hover { border-color: #34d399; box-shadow: 0 15px 30px rgba(52, 211, 153, 0.15); }
-        
-        .btn-practice { border-bottom: 3px solid rgba(56, 189, 248, 0.6); }
-        .btn-practice:hover { border-color: #38bdf8; box-shadow: 0 15px 30px rgba(56, 189, 248, 0.15); }
-        
-        .btn-exam { border-bottom: 3px solid rgba(251, 113, 133, 0.6); } 
-        .btn-exam:hover { border-color: #fb7185; box-shadow: 0 15px 30px rgba(251, 113, 133, 0.15); }
-        
-        .btn-jaccard { border-bottom: 3px solid rgba(167, 139, 250, 0.6); } 
-        .btn-jaccard:hover { border-color: #a78bfa; box-shadow: 0 15px 30px rgba(167, 139, 250, 0.15); }
-        
-        .icon { font-size: 3.2em; display: block; margin-bottom: 20px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); }
+
+        /* Hover States for the 5 Sections */
+        .feature-card.questions:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); }
+        .feature-card.questions:hover::before { background: #38bdf8; }
+
+        .feature-card.library:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(167, 139, 250, 0.15); border-color: rgba(167, 139, 250, 0.4); }
+        .feature-card.library:hover::before { background: #a78bfa; }
+
+        .feature-card.all-quiz:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(52, 211, 153, 0.15); border-color: rgba(52, 211, 153, 0.4); }
+        .feature-card.all-quiz:hover::before { background: #34d399; }
+
+        .feature-card.official-quiz:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(251, 191, 36, 0.15); border-color: rgba(251, 191, 36, 0.4); }
+        .feature-card.official-quiz:hover::before { background: #fbbf24; }
+
+        .feature-card.jaccard-quiz:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(251, 113, 133, 0.15); border-color: rgba(251, 113, 133, 0.4); }
+        .feature-card.jaccard-quiz:hover::before { background: #fb7185; }
+
+        .feature-icon { font-size: 3em; margin-bottom: 15px; line-height: 1; }
+        .feature-card h2 { font-size: 1.4em; font-weight: 600; color: #f1f5f9; margin: 0 0 10px 0; }
+        .feature-card p { font-size: 0.95em; color: #94a3b8; margin: 0; line-height: 1.5; }
+
+        @media (max-width: 800px) {
+            .container { padding: 20px 15px; }
+            .hero { padding: 30px 15px; margin-bottom: 30px; border-radius: 20px; }
+            .hero h1 { font-size: 2.2em; }
+            .feature-grid { grid-template-columns: 1fr; gap: 15px; }
+            .feature-card { padding: 25px 20px; flex-direction: row; text-align: left; gap: 20px; border-radius: 16px; }
+            .feature-card::before { left: 0; top: 0; bottom: 0; height: auto; width: 4px; }
+            .feature-icon { font-size: 2.5em; margin: 0; }
+            .feature-card h2 { font-size: 1.25em; margin-bottom: 5px; }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Patente B</h1>
-    
-    <div class="button-container">
-        <a href="/domande" class="hub-button btn-study">
-            <span class="icon">📚</span>
-            STUDIA DOMANDE
-        </a>
-        <a href="/quiz" class="hub-button btn-practice">
-            <span class="icon">🚦</span>
-            PRATICA LIBERA
-        </a>
-        <a href="/official" class="hub-button btn-exam">
-            <span class="icon">⏱️</span>
-            ESAME UFFICIALE
-        </a>
-        <a href="/jaccard" class="hub-button btn-jaccard">
-            <span class="icon">🧬</span>
-            ESAME JACCARD
-        </a>
+    <div class="container">
+        
+        <div class="hero">
+            <h1>Patente B <span>Study Hub</span></h1>
+            <p>Piattaforma di studio potenziata dall'Intelligenza Artificiale locale.</p>
+        </div>
+
+        <div class="feature-grid">
+            
+            <!-- 1. Questions (Schede Studio) -->
+            <a href="/domande" class="feature-card questions">
+                <div class="feature-icon">📚</div>
+                <div>
+                    <h2>Questions</h2>
+                    <p>Esplora tutte le domande divise per argomento con il traduttore e i trucchi AI integrati.</p>
+                </div>
+            </a>
+
+            <!-- 2. AI Library -->
+            <a href="/libreria" class="feature-card library">
+                <div class="feature-icon">🧠</div>
+                <div>
+                    <h2>AI Library</h2>
+                    <p>Consulta tutte le regole, le eccezioni e le parole trappola in un'unica libreria intelligente.</p>
+                </div>
+            </a>
+
+            <!-- 3. All Quiz -->
+            <!-- Assicurati che l'href qui sotto corrisponda alla tua route in app.py -->
+            <a href="/all_quiz" class="feature-card all-quiz">
+                <div class="feature-icon">📝</div>
+                <div>
+                    <h2>All Quiz</h2>
+                    <p>Mettiti alla prova con sessioni di quiz complete che coprono l'intero database.</p>
+                </div>
+            </a>
+
+            <!-- 4. Official Quiz -->
+            <!-- Assicurati che l'href qui sotto corrisponda alla tua route in app.py -->
+            <a href="/official_quiz" class="feature-card official-quiz">
+                <div class="feature-icon">🏛️</div>
+                <div>
+                    <h2>Official Quiz</h2>
+                    <p>Simulazione dell'esame ufficiale: 30 domande in 20 minuti con le regole ministeriali.</p>
+                </div>
+            </a>
+
+            <!-- 5. Jaccard Quiz -->
+            <!-- Assicurati che l'href qui sotto corrisponda alla tua route in app.py -->
+            <a href="/jaccard_quiz" class="feature-card jaccard-quiz">
+                <div class="feature-icon">🎯</div>
+                <div>
+                    <h2>Jaccard Quiz</h2>
+                    <p>Sfida l'algoritmo di similarità per imparare a distinguere le domande a trabocchetto.</p>
+                </div>
+            </a>
+
+        </div>
     </div>
 
 </body>
