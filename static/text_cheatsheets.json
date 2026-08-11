@@ -1,0 +1,3387 @@
+{
+    "attraversamento-pedonale": {
+        "regola_base": "L'attraversamento pedonale è una parte della carreggiata segnalata con strisce bianche parallele, dove i veicoli devono dare precedenza ai pedoni e dove è vietata sia la sosta che la fermata dei veicoli. È destinato esclusivamente al transito dei pedoni che attraversano.",
+        "parole_trappola": [
+            "striscia gialla",
+            "vietato al transito dei veicoli",
+            "al di fuori della carreggiata",
+            "fermata consentita ma non sosta",
+            "non fa parte della carreggiata"
+        ],
+        "eccezioni_e_contesti": "In alcuni casi, come nei passaggi pedonali con segnaletica speciale (es. passaggi pedonali con semafori o segnali di interruzione del traffico), le regole possono essere modificate localmente. Inoltre, in aree urbane con segnaletica particolare (es. zone a traffico limitato), potrebbero esserci eccezioni per veicoli autorizzati, ma queste non riguardano l'attraversamento pedonale stesso."
+    },
+    "strade-extraurbane-principali": {
+        "regola_base": "Le strade extraurbane principali sono strade a più corsie, con carreggiate separate, segnalate da cartelli di inizio e fine, e possono includere intersezioni a livello sfalsato. Sono progettate per veicoli a motore, ma non sono accessibili a tutti i tipi di veicoli (es. ciclomotori, quadricicli leggeri). Non sono adatte a velocità superiori a 130 km/h in ogni tratto, e non sono contraddistinte da segnaletica verde. Non hanno una sola corsia per senso di marcia, né sono prive di curve o dossi. Non richiedono pannelli a messaggio variabile.",
+        "parole_trappola": "velocità massima di 130 km/h, segnaletica verde, unica carreggiata, stessa velocità delle autostrade, quadricicli leggeri, ciclomotori, curve né dossi, pannelli a messaggio variabile",
+        "eccezioni_e_contesti": "Le strade extraurbane principali possono avere velocità massime inferiori a 130 km/h a seconda delle condizioni (es. presenza di curve, segnaletica). Non sono sempre dotate di corsie di accelerazione. I ciclomotori e i quadricicli leggeri non possono transitare, salvo specifiche eccezioni non previste dalla normativa. Le intersezioni a livello sfalsato sono consentite, ma non sono obbligatorie. La segnaletica non è verde, ma è di tipo standard (es. bianco su rosso o giallo)."
+    },
+    "isola-traffico": {
+        "regola_base": "L'isola di traffico è un elemento stradale che serve a guidare e incanalare il traffico verso diverse direzioni, è delimitata da strisce bianche continue, può essere a raso o rialzata, e viene evidenziata con zebrature bianche. È una zona dove è vietato il transito dei veicoli, inclusi i motocicli e i ciclomotori, e non è destinata al transito pedonale, alla sosta, al parcheggio o all'inversione di marcia.",
+        "parole_trappola": [
+            "separare la carreggiata dalla banchina",
+            "transito dei pedoni",
+            "piazzola di sosta",
+            "taxi e autobus urbani",
+            "centro storico",
+            "inversione di marcia",
+            "al di fuori della strada",
+            "fermata dei veicoli",
+            "salita/discesa passeggeri",
+            "parcheggio",
+            "area pedonale",
+            "transito ciclomotori"
+        ],
+        "eccezioni_e_contesti": "Non esistono eccezioni significative per l'uso dell'isola di traffico in termini di regole di transito, ma in alcuni contesti urbani o stradali particolari (es. aree di sosta temporanea o zone di transizione) potrebbero essere presenti segnali aggiuntivi che ne modificano l'uso. Tuttavia, in assenza di specifiche indicazioni, l'isola di traffico rimane sempre una zona vietata al transito veicolare."
+    },
+    "intersezione-livelli-sfalsati": {
+        "regola_base": "L'intersezione a livelli sfalsati è un incrocio tra strade situate a diverse altezze, realizzato tramite rampe, sovrappassi o sottopassi per consentire il passaggio senza conflitti diretti tra i veicoli, migliorando la sicurezza e la fluidità del traffico.",
+        "parole_trappola": [
+            "binari del treno",
+            "limiti massimi generali di velocità",
+            "regolata da semafori"
+        ],
+        "eccezioni_e_contesti": "Non tutte le intersezioni a livelli sfalsati sono regolate da semafori; alcune possono essere gestite da segnali stradali o da segnaletica orizzontale. I limiti di velocità valgono sempre, salvo specifiche indicazioni. L'intersezione a livelli sfalsati non è mai un incrocio con binari ferroviari, che sono invece intersezioni a raso o a livello ferroviario."
+    },
+    "intersezione-raso": {
+        "regola_base": "L'intersezione a raso è un incrocio tra due o più strade al livello dello stesso piano, senza passaggi sotterranei o sopraelevati. Richiede prudenza e attenzione ai veicoli provenienti da tutte le direzioni, e può essere regolata da semafori o segnali stradali.",
+        "parole_trappola": [
+            "binari del tram",
+            "passaggio a livello",
+            "livelli sfalsati",
+            "sovrappassi e sottopassi",
+            "passo carrabile"
+        ],
+        "eccezioni_e_contesti": "Non esistono eccezioni strutturali per l'intersezione a raso, ma in contesti urbani o speciali (es. passaggi a livello) possono esserci segnali aggiuntivi o regole specifiche. L'intersezione a raso non implica necessariamente la presenza di semafori, ma può essere regolata da segnali o segnaletica stradale."
+    },
+    "zona-traffico-limitato": {
+        "regola_base": "Una zona a traffico limitato è un'area delimitata da segnali stradali specifici, dove la circolazione è limitata in base a orari, tipi di veicoli o categorie di utenti, e solo i veicoli autorizzati possono circolare.",
+        "parole_trappola": [
+            "numero massimo di veicoli",
+            "solo ciclomotori e biciclette",
+            "vietata a tutti i veicoli a motore",
+            "vietata ai pedoni durante le ore notturne"
+        ],
+        "eccezioni_e_contesti": "Le zone a traffico limitato possono avere regole diverse in base alla città o all'orario (es. giorni feriali vs weekend). Alcune zone possono consentire l'accesso ai veicoli elettrici o ai mezzi di trasporto pubblico anche se non autorizzati in altri casi. I pedoni non sono mai vietati, e i segnali stradali indicano sempre l'accesso autorizzato o vietato per veicoli, non per pedoni."
+    },
+    "passaggio-livello": {
+        "regola_base": "Un passaggio a livello è un'intersezione tra una strada e una linea ferroviaria, dotata di barriere, semibarriere, luci rosse, pannelli distanziometrici, croce di San Andrea e dispositivi acustici per garantire la sicurezza dei veicoli e dei pedoni.",
+        "parole_trappola": [
+            "cavalcavia",
+            "luci gialle lampeggianti",
+            "attraversamento autostradale",
+            "corsie di accelerazione",
+            "passo carrabile",
+            "sottopassaggio"
+        ],
+        "eccezioni_e_contesti": "Non tutti i passaggi a livello sono identici: alcuni possono avere semibarriere invece di barriere, o essere dotati di segnali diversi in base alla tipologia (ferroviaria, tranviaria, stradale). Inoltre, in contesti urbani o speciali, possono essere presenti elementi come sottopassaggi o passaggi carrabili, ma questi non sono definiti 'passaggi a livello' secondo la normativa stradale e ferroviaria."
+    },
+    "aree-pedonali": {
+        "regola_base": "Le aree pedonali sono zone esclusivamente destinate ai pedoni, ma possono essere attraversate da veicoli specifici previsti dalla legge, come quelli elettrici (se consentiti), veicoli di servizio (per disabili, polizia, vigili del fuoco in emergenza), e biciclette. I pedoni hanno sempre precedenza, e i veicoli devono circolare con prudenza e rispetto per la sicurezza.",
+        "parole_trappola": [
+            "tutti i motocicli",
+            "trattori stradali",
+            "ciclomotori solo di giorno",
+            "tutti gli autoveicoli",
+            "quadricicli a motore"
+        ],
+        "eccezioni_e_contesti": "Le eccezioni riguardano veicoli autorizzati in base a norme specifiche (es. veicoli elettrici, emergenze, disabili). Non esistono eccezioni per veicoli come i trattori stradali o i quadricicli a motore. Le restrizioni sono sempre in base a norme di sicurezza e a specifiche autorizzazioni legali."
+    },
+    "strada-definizione": {
+        "regola_base": "La strada è un'area pubblica destinata alla circolazione di pedoni, animali e veicoli, e può essere suddivisa in carreggiate, piste ciclabili, marciapiedi e banchine. Può essere a senso unico o doppio senso di circolazione, e non è riservata a un solo tipo di utente.",
+        "parole_trappola": [
+            "riservata",
+            "qualsiasi area asfaltata",
+            "limitata lateralmente dagli attraversamenti pedonali",
+            "non comprende"
+        ],
+        "eccezioni_e_contesti": "In alcuni contesti (es. strade private, aree di servizio o zone a traffico limitato) possono esserci restrizioni specifiche. Inoltre, le strade possono essere temporaneamente chiuse o modificare il senso di circolazione per lavori o eventi."
+    },
+    "autostrada": {
+        "regola_base": "Autostrada: corsie separate, ingresso/uscita controllate, veicoli limitati, recintata laterale.",
+        "parole_trappola": [
+            "tutti i tipi",
+            "ciclomotori",
+            "piste ciclabili",
+            "motocicli fino a 125 cm³",
+            "solo autovetture"
+        ],
+        "eccezioni_e_contesti": "Veicoli speciali autorizzati su richiesta o con permesso specifico."
+    },
+    "carreggiata": {
+        "regola_base": "Carreggiata: area per veicoli in movimento, senza piste o marciapiedi.",
+        "parole_trappola": [
+            "carri a trazione animale",
+            "sosta di emergenza",
+            "autocarri",
+            "traccia innevata",
+            "piazzole di sosta"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: strade a senso unico, corsie multiple, ma sempre per veicoli in movimento."
+    },
+    "parti-carreggiata": {
+        "regola_base": "Tutte le aree per veicoli sono carreggiata.",
+        "parole_trappola": [
+            "emergenza",
+            "banchine",
+            "marciapiedi"
+        ],
+        "eccezioni_e_contesti": "Autostrade: corsie di emergenza non sono carreggiata."
+    },
+    "corsia": {
+        "regola_base": "Corsia: spazio per una fila di veicoli, con regole specifiche.",
+        "parole_trappola": [
+            "pedoni",
+            "doppio senso",
+            "vetture da corsa",
+            "due carreggiate",
+            "scorrimento veloce"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: corsie di emergenza, sorpasso, uscite autostrade."
+    },
+    "corsia-accelerazione": {
+        "regola_base": "Per entrare in autostrada o strade extraurbane principali.",
+        "parole_trappola": [
+            "sorpasso",
+            "uscire",
+            "abbandonare",
+            "area di sosta"
+        ],
+        "eccezioni_e_contesti": "Non usata per sorpasso o per uscire da piazzole."
+    },
+    "corsia-decelerazione": {
+        "regola_base": "Per uscire dall'autostrada o strada principale, decelera in corsia dedicata.",
+        "parole_trappola": [
+            "sosta",
+            "piazzola",
+            "entrare in autostrada"
+        ],
+        "eccezioni_e_contesti": "Non usare per fermarsi o invertire direzione."
+    },
+    "banchina": {
+        "regola_base": "Banchina: area esterna carreggiata, vietato transito veicoli.",
+        "parole_trappola": [
+            "veicoli lenti",
+            "sosta consentita",
+            "divide corsie",
+            "parte carreggiata"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: solo in caso di emergenza o segnalazione stradale."
+    },
+    "marciapiede": {
+        "regola_base": "Marciapiede: area rialzata o delimitata, esclusiva pedoni, fuori carreggiata.",
+        "parole_trappola": [
+            "carreggiata",
+            "biciclette",
+            "ciclomotori",
+            "sosta",
+            "rialzato"
+        ],
+        "eccezioni_e_contesti": "Sosta solo con segnaletica specifica. Non in zone pedonali o ciclabili."
+    },
+    "salvagente": {
+        "regola_base": "Salvagente: aiuto pedonale e accesso mezzi pubblici.",
+        "parole_trappola": [
+            "dividere sensi marcia",
+            "incanalare veicoli",
+            "primo soccorso",
+            "itinerario ciclopedonale"
+        ],
+        "eccezioni_e_contesti": "Non esiste in strade a doppio senso o senza pedoni."
+    },
+    "passo-carrabile": {
+        "regola_base": "Accesso veicoli a proprietà laterali, con segnale e autorizzazione.",
+        "parole_trappola": [
+            "parcheggio scambiatore",
+            "carri animali",
+            "autocarri",
+            "salvagente pedoni",
+            "circolazione rotatoria"
+        ],
+        "eccezioni_e_contesti": "Fermata consentita, sosta vietata. Solo accesso proprietà private."
+    },
+    "tricicli-motore": {
+        "regola_base": "Tricicli a motore: 3 ruote, cilindrata >50cc, vel. >45km/h, revisione ogni 2 anni dopo 4.",
+        "parole_trappola": [
+            "senza patente",
+            "sidecar",
+            "cilindrata <50cc",
+            "non soggetti a revisione"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutti i tricicli a motore obbligatoriamente soggetti a revisione."
+    },
+    "macchine-agricole": {
+        "regola_base": "Macchine agricole immatricolate possono circolare per trasporto e operazioni.",
+        "parole_trappola": [
+            "velocità superiore",
+            "passeggeri",
+            "patente A",
+            "in piedi",
+            "eccezionali"
+        ],
+        "eccezioni_e_contesti": "Solo per trasporto prodotti agricoli o forestali, con limiti di velocità e passeggeri."
+    },
+    "caravan": {
+        "regola_base": "Caravan: alloggio mobile, solo fermo, con targa.",
+        "parole_trappola": [
+            "circolazione",
+            "agricoli",
+            "attrezzature turistiche e sportive"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola ferma in ogni contesto."
+    },
+    "autocaravan-camper": {
+        "regola_base": "Autocaravan sono veicoli autonomi, con alloggio, soggetti a revisione.",
+        "parole_trappola": [
+            "rimorchi",
+            "lavori agricoli",
+            "opere stradali",
+            "in piedi",
+            "ogni cinque anni"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole fisse per tutti i camper."
+    },
+    "ciclomotori": {
+        "regola_base": "Ciclomotori: 2-3 ruote, motore ≤50 cm³, max 45 km/h, revisione ogni 2 anni dopo 4.",
+        "parole_trappola": [
+            "non più di due ruote",
+            "pedalata assistita",
+            "cilindrata >50",
+            "cambio manuale",
+            "60 km/h",
+            "non soggetti a revisione"
+        ],
+        "eccezioni_e_contesti": "Biciclette elettriche non sono ciclomotori, anche se con motore ≤0,25 kW."
+    },
+    "quadricicli": {
+        "regola_base": "Quadricicli leggeri: cilindrata ≤50 cm³, potenza ≤15 kW, assimilati a ciclomotori, revisione obbligatoria.",
+        "parole_trappola": [
+            "senza patente",
+            "sostituire scarico",
+            "aumentare cilindrata",
+            "senza casco",
+            "non soggetti a revisione"
+        ],
+        "eccezioni_e_contesti": "Quadricicli non leggeri: patente B, casco obbligatorio, revisione richiesta."
+    },
+    "strisce-pannelli-retroriflettenti": {
+        "regola_base": "Autocarri >3,5t: strisce laterali e posteriori retroriflettenti bianche o gialle.",
+        "parole_trappola": [
+            "inferiore a 3,5t",
+            "pannelli gialli e rossi",
+            "velocità min/max",
+            "caravan",
+            "autobus rosso/bianco"
+        ],
+        "eccezioni_e_contesti": "Veicoli non obbligati: autovetture, caravan, autobus (con limiti specifici)."
+    },
+    "motocicli": {
+        "regola_base": "Motocicli: due ruote, cilindrata >50 cm³, revisione ogni 2 anni dopo i primi 4.",
+        "parole_trappola": [
+            "tre ruote",
+            "più di due ruote",
+            "fino a 125 cm³",
+            "fino a 50 cm³",
+            "quadricicli leggeri"
+        ],
+        "eccezioni_e_contesti": "Ciclomotori esclusi. Cambio automatico permesso."
+    },
+    "autoveicoli": {
+        "regola_base": "Autoveicoli: veicoli a motore con 4+ ruote, esclusi quadricicli.",
+        "parole_trappola": [
+            "tutti",
+            "compresi",
+            "due ruote",
+            "senza motore",
+            "qualsiasi",
+            "merce"
+        ],
+        "eccezioni_e_contesti": "Quadricicli esclusi. Autobus e autocarri inclusi."
+    },
+    "autovetture": {
+        "regola_base": "Autovettura: 4 ruote, max 9 posti, motore o elettrico, soggetta a revisione.",
+        "parole_trappola": [
+            "trazione posteriore",
+            "non possono trainare",
+            "motore anteriore",
+            "dieci posti",
+            "blindato",
+            "autocarro",
+            "cinque posti",
+            "cinque anni"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: autobus, autocarri, veicoli blindati, rimorchi, revisione annuale."
+    },
+    "rimorchi": {
+        "regola_base": "Rimorchi privi di motore, trainati. Leggeri fino a 750 kg. Autosnodato e caravan non sono rimorchi.",
+        "parole_trappola": [
+            "caravan",
+            "500 kg",
+            "frenante",
+            "silenziatore"
+        ],
+        "eccezioni_e_contesti": "Autosnodato e caravan non sono rimorchi, anche se trainati."
+    },
+    "traffico-intenso": {
+        "regola_base": "Lascia liberi tutti gli incroci, passaggi e immissioni anche in traffico intenso.",
+        "parole_trappola": [
+            "solo semaforo",
+            "cavalcavia",
+            "gallerie",
+            "abitazioni private",
+            "sottovia"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Obbligo assoluto in ogni caso."
+    },
+    "file-veicoli": {
+        "regola_base": "Mantieni distanza, osserva lontano, lascia sbocchi, non avvicinarti troppo al veicolo che precede.",
+        "parole_trappola": [
+            "luci di emergenza",
+            "distrarsi a bassa velocità",
+            "spostarsi a sinistra",
+            "al centro della carreggiata",
+            "sorpassarlo subito"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole valide sempre, anche in condizioni difficili."
+    },
+    "centro-abitato": {
+        "regola_base": "Attenzione, prudenza e concentrazione obbligatorie in centro abitato.",
+        "parole_trappola": [
+            "sostare in incroci",
+            "file parallele",
+            "pedoni devono dare precedenza"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: regole valide ovunque nel centro abitato."
+    },
+    "segnaletica-stradale": {
+        "regola_base": "Spostare o rimuovere segnaletica è vietato sempre.",
+        "parole_trappola": [
+            "consentito",
+            "avvisato",
+            "barriere",
+            "coni stradali"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Segnaletica non si sposta mai."
+    },
+    "gare-velocita": {
+        "regola_base": "Gare di velocità non autorizzate su strade pubbliche sono vietate e puniti severamente.",
+        "parole_trappola": [
+            "consentite",
+            "ore 23.00-6.00",
+            "solo due autovetture",
+            "motocicli e non autoveicoli"
+        ],
+        "eccezioni_e_contesti": "Solo gare ufficiali autorizzate sono consentite."
+    },
+    "inquinamento-strade": {
+        "regola_base": "Vietato gettare mozziconi accesi o sporcare strade con veicoli.",
+        "parole_trappola": [
+            "lanciare",
+            "parcheggiare",
+            "brecciolino",
+            "accelerando bruscamente"
+        ],
+        "eccezioni_e_contesti": "Eccezioni solo per veicoli a due ruote con animale in gabbia."
+    },
+    "comportamento-conducente": {
+        "regola_base": "Conducente deve essere prudente, paziente e rispettoso verso tutti.",
+        "parole_trappola": [
+            "precedenza",
+            "potenza",
+            "divisa",
+            "impazienza",
+            "grande dimensione"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: prudenza e rispetto sono sempre obbligatori."
+    },
+    "attenzion-conducente": {
+        "regola_base": "Attenzione: bassa velocità = rischio grave per ciclisti/motociclisti.",
+        "parole_trappola": [
+            "non crea problemi",
+            "solo autocarri",
+            "slalom tra veicoli",
+            "parcheggiare sul marciapiede",
+            "circolare sul marciapiede"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: attenzione sempre, anche a bassa velocità."
+    },
+    "prudenza-conducente": {
+        "regola_base": "Prudenza con persone fragili e guidatori incerti.",
+        "parole_trappola": [
+            "patente estera",
+            "autoveicoli elettrici",
+            "taxi",
+            "tricicli",
+            "bastone bianco-rosso"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Prudenza obbligatoria sempre."
+    },
+    "persone-anziane": {
+        "regola_base": "Anziani: attenzione, slowness, non reagiscono prontamente, non guardano bene, non avvicinare.",
+        "parole_trappola": [
+            "riflessi rapidi",
+            "attraversano rapidamente",
+            "campo visivo maggiore",
+            "lampeggiare e suonare",
+            "precedenza solo da sinistra"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sempre cautela. Anziani non sono più reattivi o attenti."
+    },
+    "conducente-precedenze": {
+        "regola_base": "Fermati e lascia passare pedoni non vedenti con bastone bianco o bianco-rosso, anche fuori strisce.",
+        "parole_trappola": [
+            "accelerare",
+            "passare per primo",
+            "oltre 100 metri",
+            "solo con bastone bianco-rosso",
+            "camminerà rapidamente",
+            "suonare clacson"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Precedenza obbligatoria in tutti i casi descritti."
+    },
+    "vicinanza-pedonale": {
+        "regola_base": "Sempre pronto a fermarsi. Pedoni imprevedibili, specialmente bambini e anziani.",
+        "parole_trappola": [
+            "reazione rapida",
+            "cenno con la mano",
+            "bastone bianco-rosso",
+            "accelerare",
+            "rinunciato",
+            "affiancati"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sempre pronti a fermarsi. Visibilità è fondamentale."
+    },
+    "bambini-semaforo": {
+        "regola_base": "Prudenza con bambini al semaforo, anche con luce verde o gialla.",
+        "parole_trappola": [
+            "accompagnati da adulto",
+            "gesto di consenso",
+            "luci verdi pedonali",
+            "luce gialla lampeggiante"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: prudenza sempre, anche con luce verde."
+    },
+    "piazzole": {
+        "regola_base": "Rallenta sempre. Attento ai bambini. Prepara freno. Scuolabus ha precedenza.",
+        "parole_trappola": [
+            "non rallentare",
+            "precedenza",
+            "suonare",
+            "retromarcia",
+            "portiere aperte",
+            "non necessario"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sempre prudenza. Bambini imprevedibili. Scuolabus sempre prioritario."
+    },
+    "taxi-conducente": {
+        "regola_base": "Fermati per pedoni. Taxi non possono fermarsi. Attenzione a pedoni improvvisi.",
+        "parole_trappola": [
+            "precedenza ai taxi",
+            "sostare dalle 20.00 alle 8.00",
+            "lato sinistro"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole valide sempre."
+    },
+    "ciclisti-pedoni": {
+        "regola_base": "Sorpassa con prudenza e distanza sicura. Non è vietato, ma richiede attenzione.",
+        "parole_trappola": [
+            "2 metri",
+            "vietato",
+            "non deve dare precedenza",
+            "velocità 30 km/h"
+        ],
+        "eccezioni_e_contesti": "Strade extraurbane: clacson consigliato. Notte: attenzione a pedoni."
+    },
+    "gravidanza-carrozzine": {
+        "regola_base": "Prudenza con donne incinte e carrozzine. Non ostacolare scivoli. Non avvicinare troppo.",
+        "parole_trappola": [
+            "passo più rapido",
+            "rapidamente",
+            "solo dalle ore",
+            "darle la precedenza solo se",
+            "lasciare il veicolo in sosta sul marciapiede"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole valide sempre, in ogni contesto."
+    },
+    "strisce-strada": {
+        "regola_base": "Strisce continue: vietato superare. Discontinue: permesso.",
+        "parole_trappola": [
+            "bianche",
+            "azzurre"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Solo colore bianco per segnaletica."
+    },
+    "regolamenti-segnaletica": {
+        "regola_base": "Scritte gialle per bus, taxi, stop, passaggi a livello e località.",
+        "parole_trappola": [
+            "DARE PRECEDENZA",
+            "stazione di servizio",
+            "pubblicitaria",
+            "corridori ciclisti",
+            "bianco",
+            "GIOCHI"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le scritte devono essere gialle e contestualizzate."
+    },
+    "carreggiata-doppio-senso-circolazione": {
+        "regola_base": "Striscia mezza continua o tratteggiata. Superamento consentito solo in sorpasso.",
+        "parole_trappola": [
+            "sempre",
+            "mai",
+            "proibito",
+            "sempre superabile",
+            "senza sorpasso"
+        ],
+        "eccezioni_e_contesti": "Sorpasso solo se sicuro e consentito dal segnale o dalla strada."
+    },
+    "striscia-bianca-laterale": {
+        "regola_base": "Striscia bianca laterale: segna confine carreggiata e banchina.",
+        "parole_trappola": [
+            "discontinua",
+            "corsia di emergenza",
+            "inizio di una banchina"
+        ],
+        "eccezioni_e_contesti": "Non separa banchina in tutti i casi, dipende dal contesto."
+    },
+    "agenti-traffico": {
+        "regola_base": "Esibire patente, assicurazione, carta di circolazione e triangolo di pericolo.",
+        "parole_trappola": [
+            "valigetta pronto soccorso",
+            "certificato proprietà",
+            "codice fiscale",
+            "bollo"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le regole sono obbligatorie in ogni contesto."
+    },
+    "addetti-polizia-postale": {
+        "regola_base": "Poliziotti stradali riconoscibili da divisa, paletta bianco-rossa e segnale distintivo.",
+        "parole_trappola": [
+            "paletta bianca e nera",
+            "guantoni",
+            "strisce rifrangenti"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola universale per tutti i servizi stradali."
+    },
+    "fischeitto": {
+        "regola_base": "Fischio prolungato: arresto immediato, liberare incrocio, lasciare passare soccorso.",
+        "parole_trappola": [
+            "tornare indietro",
+            "solo destra",
+            "mettersi in marcia",
+            "veicoli pesanti"
+        ],
+        "eccezioni_e_contesti": "Soccorso in emergenza ha priorità, anche se non è il fischio."
+    },
+    "vicinanze-passaggio-livello": {
+        "regola_base": "Fermarsi sulla linea d'arresto quando luci rosse e semibarriera alzata.",
+        "parole_trappola": [
+            "accelerare",
+            "passare velocemente",
+            "terzo pannello",
+            "unico binario",
+            "fischio treno",
+            "altri veicoli"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Fermarsi sempre. Luci rosse = pericolo."
+    },
+    "regolazione-conducente-velocita": {
+        "regola_base": "Velocità in base a veicolo, strada, traffico, condizioni e limiti.",
+        "parole_trappola": [
+            "esclusivamente",
+            "abilità",
+            "marca pneumatici",
+            "distanza luogo"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola universale in ogni contesto."
+    },
+    "obbligo-regolazione": {
+        "regola_base": "Mantieni controllo e riduci velocità in ogni situazione pericolosa.",
+        "parole_trappola": [
+            "senso unico",
+            "fuori dai centri",
+            "strade provinciali",
+            "ore diurne",
+            "rettilinei",
+            "in salita",
+            "qualsiasi segnale",
+            "agenti del traffico",
+            "strade extraurbane",
+            "autovettura scarica",
+            "autovelox"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: regola velocità sempre in ogni condizione."
+    },
+    "riduzione-velocita": {
+        "regola_base": "Riduci velocità e ferma quando pedoni, animali o pericoli imminenti sono sulla strada.",
+        "parole_trappola": [
+            "passi carrabili",
+            "fermate autobus",
+            "cavalcavia",
+            "autovelox",
+            "ogni volta",
+            "uscita centri abitati"
+        ],
+        "eccezioni_e_contesti": "Non obbligatorio in zone senza pericoli o segnali specifici."
+    },
+    "limite-velocita-generali": {
+        "regola_base": "Limiti velocità dipendono strada, veicolo e condizioni.",
+        "parole_trappola": [
+            "sempre",
+            "qualsiasi",
+            "150 km/h",
+            "70 km/h",
+            "60 km/h",
+            "50 km/h",
+            "120 km/h"
+        ],
+        "eccezioni_e_contesti": "Segnali stradali possono modificare limiti. Piovere o neve riducono velocità."
+    },
+    "limiti-velocita-eta": {
+        "regola_base": "Limiti più bassi per guidatori con patente poco tempo.",
+        "parole_trappola": [
+            "frizione abbassata",
+            "110 km/h",
+            "tratti di strada in curva"
+        ],
+        "eccezioni_e_contesti": "Eccezioni solo per veicoli speciali o condizioni stradali."
+    },
+    "limiti-strade-extraurbane-velocita": {
+        "regola_base": "Autostrade: 130 km/h auto, 80 km/h con rimorchio. Motocicli: 130 km/h. Autocaravan: 130 km/h fino a 3,5t.",
+        "parole_trappola": [
+            "rimorchio",
+            "pioggia",
+            "120 km/h",
+            "100 km/h",
+            "70 km/h caravan",
+            "80 km/h imbarcazioni"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per condizioni meteo o veicoli speciali. Limiti ridotti in alcuni casi."
+    },
+    "regolazione-velocita": {
+        "regola_base": "Regola velocità per non intralciare e per dare precedenza.",
+        "parole_trappola": [
+            "mezz'ora",
+            "alimentazione",
+            "veicoli che seguono",
+            "tipo di cambio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Solo regola per sicurezza e precedenza."
+    },
+    "doveri-velocita": {
+        "regola_base": "Velocità adeguata a sicurezza, visibilità, condizioni e carico.",
+        "parole_trappola": [
+            "tempo a disposizione",
+            "fuori dai centri abitati"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: sempre rispetto alla sicurezza e alle condizioni."
+    },
+    "norme-velocita": {
+        "regola_base": "Limiti veloci dipendono strada, veicolo e segnali.",
+        "parole_trappola": [
+            "150 km/h sempre",
+            "80 km/h in città",
+            "100 km/h per tutti"
+        ],
+        "eccezioni_e_contesti": "Pioggia, grandine, segnali specifici modificano limiti."
+    },
+    "strade-extraurbane-secondarie": {
+        "regola_base": "90 km/h per auto, moto, autocaravan fino a 3,5t. 70 km/h per autotreni e rimorchi per imbarcazioni.",
+        "parole_trappola": [
+            "ciclomotori",
+            "quadricicli non leggeri",
+            "80 km/h",
+            "100 km/h",
+            "carrello appendice 80 km/h"
+        ],
+        "eccezioni_e_contesti": "Eccezioni solo per autotreni e rimorchi per imbarcazioni: 70 km/h."
+    },
+    "contrassegni-velocita": {
+        "regola_base": "Adatta velocità a traffico, condizioni stradali e presenza di pedoni o animali.",
+        "parole_trappola": [
+            "velocità massima",
+            "segnalazioni stradali",
+            "limiti legali",
+            "fondo asciutto"
+        ],
+        "eccezioni_e_contesti": "In zone residenziali o scolastiche, sempre riduci velocità anche senza ostacoli."
+    },
+    "moderazione-velocita": {
+        "regola_base": "Moderare velocità in zone pericolose o visibilità ridotta.",
+        "parole_trappola": [
+            "tramonto",
+            "dopo incrocio",
+            "fretta",
+            "salute",
+            "superiore a 30 km/h",
+            "seguito da autobus"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: sempre moderare in pericolo o visibilità ridotta."
+    },
+    "diminuzione-velocita": {
+        "regola_base": "Diminuisci velocità in caso di condizioni atmosferiche o stradali critiche.",
+        "parole_trappola": [
+            "limite massimo",
+            "segnale di indicazione",
+            "valido fino ad un chilometro"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: sempre attento alle condizioni stradali e meteo."
+    },
+    "limiti-particolari": {
+        "regola_base": "Limiti specifici per veicoli con rimorchi e contesti particolari.",
+        "parole_trappola": [
+            "170 km/h",
+            "150 km/h",
+            "130 km/h notturna",
+            "90 km/h",
+            "discesa",
+            "gommoni",
+            "aliante",
+            "luci gialle"
+        ],
+        "eccezioni_e_contesti": "Velocità regolata in presenza di lavori o segnali di pericolo."
+    },
+    "velocita-incroci": {
+        "regola_base": "Diritto di precedenza non esonera da colpa se si va troppo veloci.",
+        "parole_trappola": [
+            "completamente privi di responsabilità",
+            "solo del conducente",
+            "nessun obbligo di rallentare",
+            "che ha impegnato per primo"
+        ],
+        "eccezioni_e_contesti": "Velocità eccessiva comporta responsabilità anche con precedenza."
+    },
+    "pericolo-velocita": {
+        "regola_base": "Spostare veicolo fuori binari o far scendere persone. Frenare con motore acceso in discesa.",
+        "parole_trappola": [
+            "sovraccarico di corrente",
+            "anomalia al differenziale",
+            "risparmiare carburante",
+            "estrarre chiave",
+            "stessa forza frenante"
+        ],
+        "eccezioni_e_contesti": "In discesa lunga: motore acceso. Servosterzo/servofreno: rischio maggiore con motore spento."
+    },
+    "pallone-carreggiata": {
+        "regola_base": "Rallentare, prevedere bambini, non sterzare bruscamente.",
+        "parole_trappola": [
+            "sterzare bruscamente",
+            "scansarlo",
+            "non occorre rallentare",
+            "segnalazione luminosa"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sempre in centro abitato, con bambini in gioco."
+    },
+    "macchine-parcheggiate": {
+        "regola_base": "Evita di passare vicino a auto con persone a bordo.",
+        "parole_trappola": [
+            "bassa velocità",
+            "portiere aperte",
+            "conducente sceso",
+            "alta velocità"
+        ],
+        "eccezioni_e_contesti": "Non pericoloso se si è in sicurezza e non si crea ostacolo."
+    },
+    "Comportamenti-passaggio-livello": {
+        "regola_base": "Sgomberare immediatamente. Non abbandonare veicolo. Non accelerare. Segnalare pericolo.",
+        "parole_trappola": [
+            "scendere e abbandonare",
+            "sganciare rimorchio",
+            "scaricare veicolo",
+            "svuotare serbatoio",
+            "velocità elevata",
+            "lieve sanzione",
+            "ore notturne",
+            "spegnere motore",
+            "allontanarsi 100m",
+            "non spostare veicoli"
+        ],
+        "eccezioni_e_contesti": "In caso di guasto, chiedere aiuto. Non tentare di sfondare barriere."
+    },
+    "condizioni-sicurezza": {
+        "regola_base": "Distanza di sicurezza varia per velocità, condizioni, veicolo e carico.",
+        "parole_trappola": [
+            "cilindrata",
+            "potenza",
+            "larghezza",
+            "marcia innestata",
+            "70 metri",
+            "10 metri",
+            "alimentazione"
+        ],
+        "eccezioni_e_contesti": "Sgombraneve e spanditrice: 20 metri. Autotreni: 100 metri su strade extraurbane."
+    },
+    "distanza-sicurezza": {
+        "regola_base": "Distanza di sicurezza dipende dalla velocità e dalle condizioni del conducente.",
+        "parole_trappola": [
+            "larghezza",
+            "corsie",
+            "servosterzo",
+            "veicolo che segue",
+            "limite velocità retro",
+            "fissa",
+            "sopra certa velocità"
+        ],
+        "eccezioni_e_contesti": "Non applicabile in strade a traffico molto denso o in condizioni di emergenza."
+    },
+    "distanza-situazioni": {
+        "regola_base": "Distanza dipende da aderenza e tempo di reazione.",
+        "parole_trappola": [
+            "100 metri",
+            "freno di stazionamento",
+            "corsia d'emergenza",
+            "20 metri"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Distanza è sempre variabile in base alle condizioni stradali."
+    },
+    "distanza-reazione": {
+        "regola_base": "Distanza di sicurezza evita tamponamenti, non scontri laterali o frontali.",
+        "parole_trappola": [
+            "scontro frontale",
+            "scontro laterale",
+            "inferiore al tempo di reazione"
+        ],
+        "eccezioni_e_contesti": "In condizioni di emergenza, distanza può essere ridotta ma non sotto il minimo sicuro."
+    },
+    "distanza-minima": {
+        "regola_base": "Distanza minima = velocità / 10 + 1 metri, ma mai meno di 2 metri.",
+        "parole_trappola": [
+            "2 metri",
+            "5 metri",
+            "15 metri",
+            "20 metri",
+            "25 metri"
+        ],
+        "eccezioni_e_contesti": "In città o traffico denso, distanza minima è più corta."
+    },
+    "distrazione-conducente": {
+        "regola_base": "Distrazione causa incidenti. Cellulare, sigaretta, radio: tutti rischiano.",
+        "parole_trappola": [
+            "non è determinata",
+            "non rappresenta un pericolo",
+            "pochi secondi"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Anche un attimo di distrazione è pericoloso."
+    },
+    "spazio-secondo": {
+        "regola_base": "Velocità in km/h divisa per 3,6 dà metri al secondo.",
+        "parole_trappola": [
+            "20",
+            "4",
+            "10",
+            "15"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Formula matematica universale."
+    },
+    "spazio-frenatura": {
+        "regola_base": "Spazio frenatura = distanza per fermarsi, dipende dalla velocità.",
+        "parole_trappola": [
+            "indipendente",
+            "raddoppia",
+            "velocità"
+        ],
+        "eccezioni_e_contesti": "Su strade bagnate o con pneumatici usati, si allunga."
+    },
+    "diminuzione-aumento-frenatura": {
+        "regola_base": "Frenatura aumenta con bassa aderenza, bagnato, neve, discesa. Diminuisce in salita.",
+        "parole_trappola": [
+            "riflessi pronti",
+            "ruote bloccate",
+            "dosso",
+            "salita aumenta",
+            "discesa diminuisce"
+        ],
+        "eccezioni_e_contesti": "In salita frenatura è più breve. In discesa più lunga. Aderenza è chiave."
+    },
+    "spazio-arresto": {
+        "regola_base": "Spazio arresto = reazione + frenata. Dipende da velocità, pneumatici, asfalto.",
+        "parole_trappola": [
+            "indipendente",
+            "pari",
+            "non dipende",
+            "solo reazione",
+            "solo frenata"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Valido sempre in condizioni normali di guida."
+    },
+    "aumento-spazio-arresto": {
+        "regola_base": "Velocità, superficie e usura pneumatici aumentano spazio arresto.",
+        "parole_trappola": [
+            "non usurati",
+            "diminuisce velocità",
+            "asfalto ruvido"
+        ],
+        "eccezioni_e_contesti": "Strade bagnate o con ghiaccio aumentano spazio arresto."
+    },
+    "condizioni-influenza-sicurezza": {
+        "regola_base": "Distanza di sicurezza dipende da velocità, attenzione, carico, aderenza e freni.",
+        "parole_trappola": [
+            "corsie",
+            "dimensione veicolo precedente",
+            "marce cambio",
+            "numero ruote",
+            "servosterzo"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: tutte le variabili citate sono fattori reali."
+    },
+    "sicurezza-dipendenza": {
+        "regola_base": "Distanza di sicurezza dipende da attenzione, salute e contesto stradale.",
+        "parole_trappola": [
+            "potenza",
+            "freno a mano",
+            "veicoli che seguono",
+            "quadricicli a motore"
+        ],
+        "eccezioni_e_contesti": "In colonna, aumenta la distanza per evitare tamponamenti a catena."
+    },
+    "metri-distanza-sicurezza": {
+        "regola_base": "Distanza di sicurezza: tempo di reazione + frenata. Sempre, anche per sorpasso.",
+        "parole_trappola": [
+            "spazio di frenatura",
+            "uguale",
+            "percorre durante il tempo di reazione"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Distanza minima sempre garantita."
+    },
+    "distanza-sicurezza-veicoli": {
+        "regola_base": "Aumenta distanza con carichi sporgenti o instabili.",
+        "parole_trappola": [
+            "100 metri",
+            "gallerie",
+            "autostrada",
+            "autocarro",
+            "frenatura lunga"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: distanza sempre aumentata per carichi sporgenti o instabili."
+    },
+    "pericolo-intralcio": {
+        "regola_base": "Pericolo o intralcio? Sì, se ostacola la circolazione.",
+        "parole_trappola": [
+            "immettersi",
+            "regolare velocità",
+            "fermare momentaneamente"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: fermata autorizzata, segnalazione, strade a senso unico."
+    },
+    "guida-veicolo": {
+        "regola_base": "Guida con prudenza, rispetto e regole stradali.",
+        "parole_trappola": [
+            "sempre",
+            "centro strada",
+            "abbaglianti di giorno",
+            "sorpassare ogni condizione",
+            "trombe bitonali"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: segnali stradali, condizioni meteo, traffico denso."
+    },
+    "carico-veicoli": {
+        "regola_base": "Carico sicuro, visibile, non ostacola guida o caduta.",
+        "parole_trappola": [
+            "tre decimi laterale",
+            "10% altezza",
+            "panno rosso",
+            "pannello giallo-rosso",
+            "nessun carico",
+            "sacchetti non assicurati"
+        ],
+        "eccezioni_e_contesti": "Animali in gabbia su moto: consentito solo se ben fissato."
+    },
+    "uso-corretto-strada": {
+        "regola_base": "Velocità adeguata, prudenza, precedenza pedoni, luci corrette, specchi prima di direzione.",
+        "parole_trappola": [
+            "impegnare rapidamente",
+            "arrestarsi sempre",
+            "luce abbagliante",
+            "velocità elevata"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: segnali stradali, condizioni meteo, emergenze."
+    },
+    "prossimita-incrocio": {
+        "regola_base": "Segui segnaletica. Non cambi corsia. Non fermati. Non chiedi consigli. Procedi con prudenza.",
+        "parole_trappola": [
+            "cambiare corsia",
+            "fermarsi",
+            "chiedere consiglio",
+            "retrocedere",
+            "attendi semaforo",
+            "indicatori di direzione"
+        ],
+        "eccezioni_e_contesti": "In caso di pericolo o segnaletica speciale, agisci con cautela e priorità alla sicurezza."
+    },
+    "centro-abitato-pedone": {
+        "regola_base": "Riduci velocità, ferma se necessario, non aspetta che il pedone ti dica di andare.",
+        "parole_trappola": [
+            "abbaglianti",
+            "richiamare",
+            "precedenza",
+            "proseguire",
+            "curarci"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Pedone ha sempre diritto di precedenza."
+    },
+    "corteo-centro-abitato": {
+        "regola_base": "Fermati a destra, non suonare, non retrocedere, non invertire, attendi che il corteo passi.",
+        "parole_trappola": [
+            "suonare clacson",
+            "farsi strada",
+            "luci di profondità",
+            "passare rapidamente",
+            "retrocedere rapidamente",
+            "regolarti sulla densità"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola universale in centri abitati."
+    },
+    "incrocio-urbano": {
+        "regola_base": "Attendere pazientemente, non suonare, non agire pericolosamente.",
+        "parole_trappola": [
+            "suonare insistentemente",
+            "richiamare con clacson",
+            "tirare freno a mano",
+            "invertire senso marcia"
+        ],
+        "eccezioni_e_contesti": "Solo se pericolo imminente o aiuto necessario e sicuro."
+    },
+    "strada-extraurbana-notte": {
+        "regola_base": "Usa anabbaglianti, rallenta, guarda altrove, non brusche manovre.",
+        "parole_trappola": [
+            "retrovisore interno",
+            "fari abbaglianti",
+            "fermarsi immediatamente",
+            "trombe bitonali",
+            "cercare di ripararsi gli occhi"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola valida sempre di notte su strada extraurbana."
+    },
+    "evitare-pericolo": {
+        "regola_base": "Guida con attenzione, buonsenso e senso civico.",
+        "parole_trappola": [
+            "limiti massimi",
+            "velocità costante",
+            "precedenza a tutti",
+            "limiti minimi"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: sempre prudenza e rispetto."
+    },
+    "condizioni-traffico-intenso": {
+        "regola_base": "Adatta velocità, mantieni distanza, non suona clacson.",
+        "parole_trappola": [
+            "cambiare corsia",
+            "corsie riservate",
+            "lampeggio simultaneo"
+        ],
+        "eccezioni_e_contesti": "Solo in caso di emergenza o per superare ostacoli."
+    },
+    "svolta-destra": {
+        "regola_base": "Tenersi al margine destro, segnalare, moderare velocità, non creare pericoli.",
+        "parole_trappola": [
+            "margine sinistro",
+            "corsia di sinistra",
+            "colonnina luminosa",
+            "centro dell'incrocio",
+            "precedenza ai pedoni"
+        ],
+        "eccezioni_e_contesti": "In caso di pedoni o ciclisti, fermarsi e dare precedenza."
+    },
+    "impegno-delle-corsie": {
+        "regola_base": "Sosta solo in aree segnalate su strade extraurbane principali.",
+        "parole_trappola": [
+            "quattro carreggiate",
+            "sorpasso",
+            "centrali"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per emergenze o segnali stradali specifici."
+    },
+    "cambio-corsia": {
+        "regola_base": "Controlla corsia libera davanti/dietro, segnala con indicatore, non creare pericolo.",
+        "parole_trappola": [
+            "non deve azionare indicatore",
+            "avvisatore acustico",
+            "striscia continua"
+        ],
+        "eccezioni_e_contesti": "In corsia unica o strade strette, segnale solo se necessario."
+    },
+    "svolta-carreggiata-doppio-senso": {
+        "regola_base": "Avvicinati al centro, precedi da destra, salvo segnalazioni.",
+        "parole_trappola": [
+            "margine sinistro",
+            "velocemente",
+            "da sinistra",
+            "suonare clacson"
+        ],
+        "eccezioni_e_contesti": "Segnali stradali o segnaletica stradale prevale su regole generali."
+    },
+    "utilizzo-corsie-file-parallele": {
+        "regola_base": "Veicoli a destra, animali e ciclismo vicino margine destro.",
+        "parole_trappola": [
+            "margine sinistro",
+            "corsie riservate",
+            "file parallele",
+            "emergenza",
+            "svolta a sinistra"
+        ],
+        "eccezioni_e_contesti": "Incroci regolati: file parallele consentite."
+    },
+    "attenzione-cambio-corsia": {
+        "regola_base": "Segnala, controlla, cambia solo se sicuro e senza intralcio.",
+        "parole_trappola": [
+            "facoltativo",
+            "non occorre",
+            "obbligatorio ridurre",
+            "a cavallo delle strisce"
+        ],
+        "eccezioni_e_contesti": "In corsia di destra, attenzione a veicoli in arrivo."
+    },
+    "svolte-cambi-direzioni": {
+        "regola_base": "Segnala in anticipo, teniti al margine, indicatore acceso in inversione.",
+        "parole_trappola": [
+            "clacson",
+            "trombe",
+            "obbligatorio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole valide sempre."
+    },
+    "strada-doppio-senso-marcia": {
+        "regola_base": "Svoltare a sinistra: usare corsie destinate, non contromano.",
+        "parole_trappola": [
+            "contromano",
+            "margine destro",
+            "arrestarsi",
+            "linea continua"
+        ],
+        "eccezioni_e_contesti": "Solo se segnale o pericolo richiedono deviazione."
+    },
+    "durante-marcia": {
+        "regola_base": "Svolta a sinistra: segnala in anticipo. File parallele solo con autorizzazione.",
+        "parole_trappola": [
+            "qualsiasi corsia",
+            "non regolato",
+            "centri urbani",
+            "indicatore sinistro",
+            "motocicli tra veicoli"
+        ],
+        "eccezioni_e_contesti": "Solo in incroci regolati o con agenti. Non in strade a una carreggiata."
+    },
+    "obbligo-precedenza": {
+        "regola_base": "Dare precedenza a tram, treni, veicoli in movimento, retromarcia e inversione.",
+        "parole_trappola": [
+            "rotatoria",
+            "semaforo giallo lampeggiante",
+            "svolta a sinistra"
+        ],
+        "eccezioni_e_contesti": "Semaforo rosso: fermarsi. Rotatoria: dare precedenza a destra."
+    },
+    "vicinanza-incrocio": {
+        "regola_base": "Osserva, segnala, sposta, procedi solo se sicuro, usa prudenza.",
+        "parole_trappola": [
+            "passare sempre prima",
+            "sorpassare velocemente",
+            "suonare clacson"
+        ],
+        "eccezioni_e_contesti": "In centri abitati, non suonare clacson. Precedenza a destra solo se sicuro."
+    },
+    "corrispondenza-incroci": {
+        "regola_base": "Nessun zig zag, inversione, sosta, fermata, sorpasso bicicletta in prossimità degli incroci.",
+        "parole_trappola": [
+            "fari anabbaglianti",
+            "velocità 60 km/h",
+            "non azionare indicatore",
+            "sorpasso semaforo",
+            "non rallentare giallo lampeggiante",
+            "clacson trombe"
+        ],
+        "eccezioni_e_contesti": "Eccezioni solo per segnali stradali o regolamenti specifici."
+    },
+    "proprieta-privata": {
+        "regola_base": "Chi arriva da sinistra ha precedenza. Prudenza e tolleranza sono fondamentali.",
+        "parole_trappola": [
+            "strada più stretta",
+            "suonare il clacson",
+            "precedenza sui pedoni"
+        ],
+        "eccezioni_e_contesti": "In retromarcia, procedi lentamente. Pedoni hanno sempre diritto di passaggio."
+    },
+    "svolta-destra-autotreno": {
+        "regola_base": "Autotreno a destra: rallenta, si allarga, non sorpassare, tenere distanza.",
+        "parole_trappola": [
+            "sorpassarlo subito",
+            "appena aziona",
+            "segnalazione luminosa di pericolo"
+        ],
+        "eccezioni_e_contesti": "In incrocio: rinuncia a sorpassare per sicurezza."
+    },
+    "inversione-marcia-conducente": {
+        "regola_base": "Dare precedenza, segnalare, evitare pericolo, rinunciare in traffico o scarsa visibilità.",
+        "parole_trappola": [
+            "segna luminosa pericolo",
+            "curva",
+            "linea mezzeria continua",
+            "scarsa visibilità",
+            "strade larghe"
+        ],
+        "eccezioni_e_contesti": "Non è consentita in zone pedonali o con segnale divieto inversione."
+    },
+    "manovre-consentite": {
+        "regola_base": "Inversione vietata in curve, incroci, scarsa visibilità, dossi su strade a doppio senso.",
+        "parole_trappola": [
+            "manca segnaletica",
+            "linea continua",
+            "fuori centri abitati",
+            "autostrade tre corsie"
+        ],
+        "eccezioni_e_contesti": "Solo in aree specifiche autorizzate, con segnaletica e sicurezza assicurata."
+    },
+    "incroci-circolazione-rotatoria": {
+        "regola_base": "Dare precedenza a destra, salvo segnale 'Dare precedenza' o regole specifiche.",
+        "parole_trappola": [
+            "obbligatorio",
+            "sempre",
+            "retromarcia",
+            "sorpassare a sinistra"
+        ],
+        "eccezioni_e_contesti": "Con segnale 'Dare precedenza', precedenza a sinistra. Discesa: chi scende arresta."
+    },
+    "arresto-veicolo": {
+        "regola_base": "Chi scende deve arrestarsi. Chi sale deve aspettare. Semaforo: fermarsi solo se necessario.",
+        "parole_trappola": [
+            "STOP senza linea",
+            "salita deve fermarsi",
+            "strisce pedonali per fermarsi"
+        ],
+        "eccezioni_e_contesti": "Piazzola di scambio: chi è vicino deve accostare. Semaforo rosso: fermarsi solo se pedoni in arrivo."
+    },
+    "auto-della-polizia": {
+        "regola_base": "Segui segnalazioni luminose sulla polizia. Accostare o rallentare come indicato.",
+        "parole_trappola": [
+            "alto rischio",
+            "svoltare",
+            "veicoli pesanti",
+            "rallentare"
+        ],
+        "eccezioni_e_contesti": "Solo voi siete obbligati a fermarvi con 'ALT POLIZIA'."
+    },
+    "immissione-flusso-della-circolazione": {
+        "regola_base": "Assicurati di non creare pericolo, segnala con anticipo, rispetta la precedenza.",
+        "parole_trappola": [
+            "evitare di azionare",
+            "solo in presenza",
+            "ad eccezione delle biciclette"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: precedenza sempre, anche per biciclette."
+    },
+    "partenza-margine-della-carreggiata": {
+        "regola_base": "Allacciare cintura e casco prima di immettersi nel flusso.",
+        "parole_trappola": [
+            "dopo aver concluso",
+            "può indossare",
+            "può allacciare"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Obbligo assoluto prima dell’immissione."
+    },
+    "arresto-margine-destro-della-carreggiata": {
+        "regola_base": "Fermarsi senza pericolo, segnalare, evitare brusche frenate.",
+        "parole_trappola": [
+            "lampeggiando ripetutamente",
+            "quattro frecce",
+            "traffico scarso"
+        ],
+        "eccezioni_e_contesti": "Non richiesto in strade deserte o in emergenza."
+    },
+    "mancato-rispetto-delle-norme": {
+        "regola_base": "Mancato rispetto norme = perdita punti patente.",
+        "parole_trappola": [
+            "sanzione pecuniaria",
+            "4 punti",
+            "margine destro",
+            "senza segnalare"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sanzioni sempre punti o multa."
+    },
+    "utilizzo-specchi-retrovisori": {
+        "regola_base": "Specchi retrovisori per visione posteriore e sicurezza nelle manovre.",
+        "parole_trappola": [
+            "non deve essere utilizzata",
+            "proporzionali alla cilindrata",
+            "possono essere sostituiti",
+            "senza specchi si può circolare"
+        ],
+        "eccezioni_e_contesti": "Non necessari se veicolo dotato di sensori e visibilità totale."
+    },
+    "Posizione-degli-specchi-retrovisori": {
+        "regola_base": "Specchio sinistro: vedi strada laterale, non il veicolo stesso.",
+        "parole_trappola": [
+            "bambini",
+            "chiuso",
+            "centri abitati",
+            "non controllare",
+            "fissi",
+            "ogni mille km",
+            "poggiatesta",
+            "navigatore"
+        ],
+        "eccezioni_e_contesti": "Solo in strade strette o manovre complesse, controllo visivo diretto è obbligatorio."
+    },
+    "conducente-intende-sorpassare": {
+        "regola_base": "Sorpasso solo se sicuro, visibile, libero e senza ostacoli.",
+        "parole_trappola": [
+            "unico obbligo",
+            "frecce",
+            "solo",
+            "semplicemente",
+            "divieto di sorpasso"
+        ],
+        "eccezioni_e_contesti": "Non sorpassare in curve, pendenze o zone a traffico intenso."
+    },
+    "manovra-sorpasso": {
+        "regola_base": "Sorpasso a sinistra, segnale, distanza, rientro a destra, non accelerare, non sorpassare se pericoloso.",
+        "parole_trappola": [
+            "segna acustico",
+            "non obbligo indicatore",
+            "immediato spostamento",
+            "gareggiare velocità",
+            "spazio insufficiente"
+        ],
+        "eccezioni_e_contesti": "Strade a una corsia: sorpasso solo a destra, tenersi a destra."
+    },
+    "tram-sorpassi": {
+        "regola_base": "Sorpasso a destra solo se sicuro e consentito dal contesto.",
+        "parole_trappola": [
+            "sempre",
+            "autostrade",
+            "sinistra",
+            "secondo sorpasso",
+            "salvagente"
+        ],
+        "eccezioni_e_contesti": "Strade a senso unico e larghezza sufficiente consentono sorpasso su entrambi i lati."
+    },
+    "spazio-necessario-sorpasso": {
+        "regola_base": "Sorpasso vietato in curve, dossi, scarsa visibilità, se impedisce il passaggio.",
+        "parole_trappola": [
+            "consentito in curva",
+            "rallenta",
+            "indipendente dalla lunghezza",
+            "motocicli",
+            "corsie riservate"
+        ],
+        "eccezioni_e_contesti": "Consentito in intersezioni regolate, se strada a due carreggiate e segnaletica presente."
+    },
+    "sorpasso-vietato": {
+        "regola_base": "Sorpasso vietato dove segnale o pericolo. Solo a sinistra, se sicuro e consentito.",
+        "parole_trappola": [
+            "centri urbani",
+            "mantenere destra",
+            "non accelerare",
+            "rientrare immediatamente",
+            "autobus",
+            "indicatore destro",
+            "neve",
+            "passi carrabili",
+            "ospedali",
+            "stazioni servizio"
+        ],
+        "eccezioni_e_contesti": "Sorpasso consentito solo se sicuro, in rettilineo, senza ostacoli e con visibilità."
+    },
+    "sorpasso-prossimita-dosso": {
+        "regola_base": "Sorpasso consentito in prossimità di dosso su strade a senso unico o a due corsie per senso.",
+        "parole_trappola": [
+            "veicoli a trazione animale",
+            "scia del veicolo",
+            "invadere l'opposta semicarreggiata",
+            "linea bianca discontinua",
+            "tram al centro"
+        ],
+        "eccezioni_e_contesti": "Vietato se segnale o veicolo in emergenza, o in presenza di ostacoli."
+    },
+    "pericolosita-sorpasso": {
+        "regola_base": "Evita di tagliare strada, rischi di collisione, urti frontali, larghezza ridotta.",
+        "parole_trappola": [
+            "mantenersi a lungo",
+            "avvisatore acustico continuo",
+            "velocità doppia",
+            "delineatori",
+            "vietato di notte",
+            "linea tratteggiata",
+            "autobus di linea",
+            "100 m",
+            "segnalare acusticamente",
+            "potenza motore",
+            "filobus fermo",
+            "senso unico"
+        ],
+        "eccezioni_e_contesti": "Sorpasso vietato in montagna con autobus, strade a senso unico, o con segnali specifici."
+    },
+    "conducente-veicolo-sorpassare": {
+        "regola_base": "Non gareggiare, non accelerare, tenersi a destra, fermarsi se necessario.",
+        "parole_trappola": [
+            "portarsi al centro",
+            "lampeggio simultaneo",
+            "ridurre sempre velocità",
+            "marce basse",
+            "caravan non superabile"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: strade a senso unico, veicoli molto lenti, discese a forte pendenza."
+    },
+    "sorpasso-autostrada": {
+        "regola_base": "Sorpasso solo se sicuro, con distanza e attenzione costante.",
+        "parole_trappola": [
+            "piazzola di sosta",
+            "luci anabbaglianti sempre accese"
+        ],
+        "eccezioni_e_contesti": "Sorpasso vietato in curve o in presenza di veicoli in sorpasso."
+    },
+    "disco-orario-parchimetro": {
+        "regola_base": "Esposizione visibile del tagliando o orario di arrivo obbligatoria.",
+        "parole_trappola": [
+            "orario di fine",
+            "aggiornare senza spostare",
+            "breve sosta",
+            "trascrivere solo ora"
+        ],
+        "eccezioni_e_contesti": "Escluso per disabili o fermate brevi per passeggeri."
+    },
+    "conducente-autoveicolo-sosta": {
+        "regola_base": "Sempre controlla veicoli e pedoni prima di aprire portiera.",
+        "parole_trappola": [
+            "motore acceso",
+            "veicoli di fronte",
+            "poco tempo"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola valida in tutti i casi."
+    },
+    "prima-iniziare-guidare": {
+        "regola_base": "Controlla sedile, specchi, documenti, patente, stato veicolo, carico, visibilità, comandi, cinture.",
+        "parole_trappola": [
+            "contachilometri",
+            "airbag",
+            "pretensionatore",
+            "lungo viaggio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le regole sono sempre obbligatorie."
+    },
+    "fermata-veicolo": {
+        "regola_base": "Fermata: breve sospensione per persone/informazioni. Arresto: per circolazione.",
+        "parole_trappola": [
+            "conducente",
+            "dieci minuti",
+            "più di uno",
+            "circolazione"
+        ],
+        "eccezioni_e_contesti": "Fermata vietata in zone vietate o in movimento."
+    },
+    "durante-fermata": {
+        "regola_base": "Fermata senza intralcio, conducente presente e pronto a ripartire.",
+        "parole_trappola": [
+            "allontanarsi",
+            "motore acceso",
+            "sempre consentita"
+        ],
+        "eccezioni_e_contesti": "Solo in caso di emergenza o autorizzazione esplicita."
+    },
+    "fermata-fuori-centri-abitati": {
+        "regola_base": "Fuori centri, fermata fuori carreggiata, mai su ciclabili, almeno 1 metro per pedoni.",
+        "parole_trappola": [
+            "marciapiede rialzato",
+            "pista ciclabile",
+            "vicino margine destro"
+        ],
+        "eccezioni_e_contesti": "Se impossibile, fermata al margine destro della carreggiata."
+    },
+    "fermata-vietata": {
+        "regola_base": "Fermata vietata vicino binari, gallerie, sottovia, curve e dossi.",
+        "parole_trappola": [
+            "margine destro",
+            "margine sinistro",
+            "di breve durata",
+            "sbocco passi carrabili",
+            "aree mercato"
+        ],
+        "eccezioni_e_contesti": "Diversa segnalazione autorizza fermata in alcuni casi."
+    },
+    "fermate-cartelli-intersezione": {
+        "regola_base": "Fermata vietata vicino segnali, semafori, intersezioni e corsie di canalizzazione.",
+        "parole_trappola": [
+            "ore di esercizio",
+            "non occulta vista",
+            "autostrade",
+            "più di 5 metri",
+            "corsie di accelerazione"
+        ],
+        "eccezioni_e_contesti": "Diversa segnalazione o emergenza possono esimere."
+    },
+    "divieto-sosta-fermata": {
+        "regola_base": "Sosta e fermata vietate su attraversamenti, piste ciclabili, marciapiedi.",
+        "parole_trappola": [
+            "per far scendere",
+            "brevissima durata",
+            "seconda fila",
+            "ore notturne"
+        ],
+        "eccezioni_e_contesti": "Fermata consentita allo sbocco passi carrabili e davanti cassonetti."
+    },
+    "cautele-durante-sosta": {
+        "regola_base": "Sosta: conducente può allontanarsi, ma deve garantire sicurezza e immobilizzare veicolo.",
+        "parole_trappola": [
+            "ore notturne",
+            "tre ore",
+            "quarta marcia",
+            "folle"
+        ],
+        "eccezioni_e_contesti": "In pendenza: freno a mano + rapporto basso + ruote verso marciapiede."
+    },
+    "sosta-fuori-centri-abitati": {
+        "regola_base": "Fuori centri, sosta fuori carreggiata. Se impossibile, al margine destro.",
+        "parole_trappola": [
+            "marciapiede rialzato",
+            "piste ciclabili",
+            "non deve effettuare"
+        ],
+        "eccezioni_e_contesti": "Diversa segnalazione o pericolo autorizza sosta in carreggiata."
+    },
+    "zone-spazi-sosta": {
+        "regola_base": "Sosta solo in aree segnalate, con spazio minimo 3 metri.",
+        "parole_trappola": [
+            "sempre consentita",
+            "brevissima durata",
+            "non occorre utilizzarlo",
+            "fuori dall'apposito spazio"
+        ],
+        "eccezioni_e_contesti": "Sosta consentita solo se spazio ≥3m e segnaletica presente."
+    },
+    "zone-vietata-sosta": {
+        "regola_base": "Sosta vietata in prossimità passaggi a livello, binari, gallerie, sottovia, dossi.",
+        "parole_trappola": [
+            "prossimità",
+            "tranviarie",
+            "illuminato",
+            "fermata",
+            "consentita"
+        ],
+        "eccezioni_e_contesti": "Diversa segnalazione autorizza sosta in gallerie, sottovia, etc."
+    },
+    "zone-divieto-fermata": {
+        "regola_base": "Sosta e fermata vietate in curve, vicino segnali, semafori, preselezione, intersezioni e sbocchi passi carrabili.",
+        "parole_trappola": [
+            "non è vietata in prossimità",
+            "solo la sosta",
+            "di breve durata",
+            "sui marciapiedi",
+            "sulle piste ciclabili"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Vietato sempre in tutti i casi menzionati."
+    },
+    "zone-sosta-fermata-autobus": {
+        "regola_base": "Sosta vietata dove impedisce accesso o movimento veicoli in sosta.",
+        "parole_trappola": [
+            "doppia fila",
+            "breve durata",
+            "luci di emergenza",
+            "spazio sufficiente"
+        ],
+        "eccezioni_e_contesti": "Veicoli a due ruote in seconda fila: consentita."
+    },
+    "soste-veicoli-persone-invalide": {
+        "regola_base": "Sosta vietata in aree riservate a persone invalide e mercato.",
+        "parole_trappola": [
+            "consentita",
+            "breve durata",
+            "se non si protrae",
+            "soltanto se"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sosta vietata sempre in aree riservate."
+    },
+    "sosta-cassonetti-rifiuti-urbani": {
+        "regola_base": "Sosta vietata davanti a cassonetti rifiuti urbani.",
+        "parole_trappola": [
+            "brevi soste",
+            "fermata",
+            "vietate negli spazi"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sosta sempre vietata davanti a cassonetti."
+    },
+    "sosta-codice-strada-distributori": {
+        "regola_base": "Sosta vietata solo durante orari di apertura, 5m prima/dopo.",
+        "parole_trappola": [
+            "anche quando chiusi",
+            "condizionata dalla presenza di cartelli"
+        ],
+        "eccezioni_e_contesti": "Centri abitati: rimorchio staccato vietato salvo segnalazione."
+    },
+    "sosta-sottrazione-punti": {
+        "regola_base": "Sosta vietata in aree riservate: sottrazione punti.",
+        "parole_trappola": [
+            "disco orario",
+            "segnaletica luminosa",
+            "sanzione pecuniaria",
+            "sospensione patente",
+            "orari consentiti"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: sosta vietata sempre in aree riservate."
+    },
+    "sosta-emergenza": {
+        "regola_base": "Sosta per avaria o malessere, non per circolazione o discesa/salita invalidi.",
+        "parole_trappola": [
+            "esigenze della circolazione",
+            "invalida",
+            "salire",
+            "discesa"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Solo avaria o malessere."
+    },
+    "discesa-veicolo": {
+        "regola_base": "Apri porte e scendi solo se sicuro. Controlla intorno e specchi.",
+        "parole_trappola": [
+            "indicatore di direzione",
+            "vietato",
+            "motore acceso",
+            "freno a mano in salita"
+        ],
+        "eccezioni_e_contesti": "In sosta, spegni motore. In discesa, freno a mano non obbligatorio."
+    },
+    "ingombro-carreggiata-caduta-carico": {
+        "regola_base": "Conducente deve rimuovere carico, segnalare e liberare transito.",
+        "parole_trappola": [
+            "STOP",
+            "restare a bordo",
+            "soccorsi"
+        ],
+        "eccezioni_e_contesti": "Su strada extraurbana: segnale triangolo, non STOP."
+    },
+    "ingombro-avaria": {
+        "regola_base": "Spostare veicolo o segnalare pericolo. Non ignorare traffico o rimanere inerte.",
+        "parole_trappola": [
+            "traffico scarso",
+            "ricostruzione corretta",
+            "informare polizia",
+            "segnali manuali efficaci"
+        ],
+        "eccezioni_e_contesti": "Solo in caso di impossibilità, segnalare con triangolo mobile."
+    },
+    "caduta-spargimento-materie-pericolose": {
+        "regola_base": "Segnala con triangolo, segnali manuali e materiali antiscivolo.",
+        "parole_trappola": [
+            "evitare di presegnalare",
+            "deviare il traffico",
+            "solo dalla parte dove"
+        ],
+        "eccezioni_e_contesti": "Sul tratto extraurbano, segnale mobile anche in mezzo carreggiata."
+    },
+    "segnale-mobile-triangolare": {
+        "regola_base": "Obbligo di segnalare veicoli e carichi fermi con triangolo mobile fuori centri abitati, notte o visibilità insufficiente.",
+        "parole_trappola": [
+            "consigliabile",
+            "facoltativo",
+            "nei centri abitati",
+            "sul carico",
+            "50 metri",
+            "150 metri"
+        ],
+        "eccezioni_e_contesti": "In centri abitati, segnalazione non obbligatoria se visibilità sufficiente."
+    },
+    "posizione-triangolo": {
+        "regola_base": "Triangolo su corsia occupata, almeno 1 metro dal bordo esterno.",
+        "parole_trappola": [
+            "corsia immediatamente a sinistra",
+            "striscia di separazione"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola fissa per tutti i casi."
+    },
+    "giubbotto-alta-visibilita": {
+        "regola_base": "Obbligo indossare giubbotto visibilità durante presegnalazione con segnale mobile di pericolo.",
+        "parole_trappola": [
+            "facoltativo",
+            "non deve",
+            "di notte",
+            "nei centri abitati",
+            "per guasto"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Obbligo sempre attivo durante presegnalazione."
+    },
+    "divieto-circolazione": {
+        "regola_base": "Vietato circolare su autostrade e strade extraurbane principali con veicoli non idonei.",
+        "parole_trappola": [
+            "consigliabile",
+            "ammissibili",
+            "animali vivi",
+            "50 km/h",
+            "non muniti di pneumatici"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per veicoli speciali autorizzati o in emergenza."
+    },
+    "traino-veicoli-avaria": {
+        "regola_base": "Traino solo veicoli di soccorso autorizzati in autostrada.",
+        "parole_trappola": [
+            "pedoni",
+            "animali",
+            "debitamente custoditi",
+            "aree di servizio"
+        ],
+        "eccezioni_e_contesti": "Solo per soccorso. Non per traino privato."
+    },
+    "aree-servizio": {
+        "regola_base": "Vietato chiedere/concedere passaggi. Campeggio solo in aree destinate. Sosta max 24 ore.",
+        "parole_trappola": [
+            "concedere passaggi",
+            "campeggiare su strade extraurbane",
+            "sosta max 3 ore"
+        ],
+        "eccezioni_e_contesti": "Solo in aree destinate e autorizzate. Per disabili: non è vietato passare."
+    },
+    "proiettori-anabbaglianti": {
+        "regola_base": "Obbligatorio giorno su autostrade e strade extraurbane principali.",
+        "parole_trappola": [
+            "facoltativo",
+            "perfetta visibilità"
+        ],
+        "eccezioni_e_contesti": "Non obbligatorio in zone urbane o strade secondarie."
+    },
+    "retromarcia-inversione-marcia": {
+        "regola_base": "Vietato invertire senso marcia su autostrade e strade extraurbane principali.",
+        "parole_trappola": [
+            "invertire senso marcia",
+            "casi di emergenza",
+            "breve tratto",
+            "traffico intenso"
+        ],
+        "eccezioni_e_contesti": "Permanenza in corsia emergenza per avaria, senza retromarcia."
+    },
+    "ingorgo-uscita-immissione": {
+        "regola_base": "Precedenza, segnalazione, corsia destra, decelerazione, emergenza solo per uscita.",
+        "parole_trappola": [
+            "tratto successivo",
+            "non intenso",
+            "file parallele"
+        ],
+        "eccezioni_e_contesti": "Solo in emergenza o uscita, con segnalazione obbligatoria."
+    },
+    "rampe-svincoli-autostradali": {
+        "regola_base": "Sosta solo in emergenza, massimo 3 ore, per malessere passeggeri.",
+        "parole_trappola": [
+            "vietato",
+            "fino a 24 ore",
+            "fermarsi in caso di malessere"
+        ],
+        "eccezioni_e_contesti": "Sosta consentita solo su corsia di emergenza, non su carreggiata."
+    },
+    "automobilista-fermo-autostrada": {
+        "regola_base": "Non fermarti per aiutare un veicolo fermo in autostrada.",
+        "parole_trappola": [
+            "accompagnare",
+            "soccorso",
+            "retrocedere",
+            "trainare",
+            "casello di uscita"
+        ],
+        "eccezioni_e_contesti": "Solo se il veicolo è in pericolo o se hai un'auto con attrezzatura di soccorso."
+    },
+    "trasporto-animali-persone": {
+        "regola_base": "Conducente deve vedere bene. Posti massimi sulla carta. Animali in gabbia o vano posteriore.",
+        "parole_trappola": [
+            "non comprende il conducente",
+            "massimo dieci",
+            "al guinzaglio"
+        ],
+        "eccezioni_e_contesti": "Veicoli speciali o con permesso straordinario possono superare i limiti."
+    },
+    "trasporto-traino-motocicli": {
+        "regola_base": "Vietato trasporto minori, traino, oggetti non assicurati o che limitano visibilità.",
+        "parole_trappola": [
+            "maggiorenne",
+            "autovetture",
+            "sporgono longitudinalmente"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole assolute per sicurezza."
+    },
+    "sistemazione-carico-veicoli": {
+        "regola_base": "Carico deve essere sicuro, visibile, stabile e non ostacolare guida o segnali.",
+        "parole_trappola": [
+            "solo se",
+            "soltanto durante",
+            "extraurbana",
+            "notturna"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: regola valida sempre, giorno o notte, strada o campagna."
+    },
+    "sporgenza-carico": {
+        "regola_base": "Carico non deve sporgere oltre sagoma stabilita. Eccezioni limitate e sicurezza obbligatoria.",
+        "parole_trappola": [
+            "cose indivisibili",
+            "strisciano sul terreno",
+            "3/10 della larghezza"
+        ],
+        "eccezioni_e_contesti": "Sporgenza laterale massima 30 cm, solo se entro sagoma e sicura."
+    },
+    "regole-traino-veicoli": {
+        "regola_base": "Un veicolo può trainare solo uno, con collegamento solido e segnalazione.",
+        "parole_trappola": [
+            "autostrada",
+            "anche se non è possibile segnalarlo",
+            "4 punti",
+            "mancanza di altra idonea segnalazione"
+        ],
+        "eccezioni_e_contesti": "Trasporti eccezionali: più veicoli autorizzati con autorizzazione."
+    },
+    "ciclisti-velocipedi": {
+        "regola_base": "Conducenti devono essere prudenti con ciclisti per rischio imprevisto e difficoltà di valutazione.",
+        "parole_trappola": [
+            "bambini",
+            "sicurezza",
+            "valutabile",
+            "extraurbano",
+            "sbandamenti"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Prudenza obbligatoria in ogni contesto."
+    },
+    "conducente-autovettura-autoveicolo": {
+        "regola_base": "Conducente deve sempre prevedere e rispettare ciclomotoristi.",
+        "parole_trappola": [
+            "facile",
+            "superare",
+            "nonostante",
+            "non tenuto",
+            "risultato facile"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: prudenza obbligatoria in ogni situazione."
+    },
+    "rischi-strade-extraurbane": {
+        "regola_base": "Veicoli lenti su strade extraurbane sono rischi per autovetture veloci.",
+        "parole_trappola": [
+            "fattore di sicurezza",
+            "risulta facile",
+            "velocità sostenuta"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: strade con segnaletica specifica o veicoli con segnale di pericolo."
+    },
+    "massa-veicoli": {
+        "regola_base": "Massa diversa aumenta rischio collisione. Piccoli veicoli più vulnerabili.",
+        "parole_trappola": [
+            "garanzia di sicurezza",
+            "massa differenziata",
+            "prestazioni facilitano sicurezza"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: veicoli pesanti con freni e sicurezza adeguati."
+    },
+    "conducente-fuoristrada": {
+        "regola_base": "Fuoristrada più alto e pesante: più pericolo per altri. Guida con estrema prudenza.",
+        "parole_trappola": [
+            "massima sicurezza",
+            "bull bars",
+            "indicata nei centri abitati"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Prudenza obbligatoria in ogni contesto urbano o extraurbano."
+    },
+    "valutazioni-pericolo": {
+        "regola_base": "Valuta sempre rischi da veicoli pesanti e veloci.",
+        "parole_trappola": [
+            "non costituiscono",
+            "rischi maggiori",
+            "qualsiasi altro veicolo"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Valuta sempre, in ogni contesto."
+    },
+    "campo-visibilita": {
+        "regola_base": "Conducente deve sempre controllare attentamente l'area visibile, anche se il veicolo è costruito per essere visibile.",
+        "parole_trappola": [
+            "affrettato",
+            "consentito",
+            "altezza",
+            "rimovibile",
+            "adeguata visibilità di tutti gli ostacoli"
+        ],
+        "eccezioni_e_contesti": "Veicoli fuoristrada: visibilità ridotta per bambini e pedoni in basso."
+    },
+    "circolazione-autocarri": {
+        "regola_base": "Autocarri devono vigilare pedoni/ciclisti anche se non visibili.",
+        "parole_trappola": [
+            "controllo sicuro",
+            "sicuramente avvistabile",
+            "facilmente avvistare"
+        ],
+        "eccezioni_e_contesti": "In colonna, visibilità ridotta. Pedoni/ciclisti possono essere nascosti."
+    },
+    "giubbotto-retroriflettente": {
+        "regola_base": "Giubbotto retroriflettente obbligatorio solo in caso di sosta fuori centri abitati.",
+        "parole_trappola": [
+            "sostituire",
+            "giallo",
+            "protegge",
+            "numero pari",
+            "chiedere aiuto",
+            "sostituire ruota"
+        ],
+        "eccezioni_e_contesti": "In aree urbane: bretelle retroriflettenti obbligatorie."
+    },
+    "circolazione-dietro-veicolo": {
+        "regola_base": "Aumenta distanza, non sorpassare, attento a cadute, non stringerti al margine.",
+        "parole_trappola": [
+            "stringersi al margine",
+            "sorpassare subito",
+            "arrestarsi bruscamente",
+            "diminuire distanza"
+        ],
+        "eccezioni_e_contesti": "In salita o curva, più attenzione. Mai sorpassare se pericolo imminente."
+    },
+    "traino-rimorchio": {
+        "regola_base": "Trainare rimorchio richiede attenzione, controllo, sicurezza e regolamenti obbligatori.",
+        "parole_trappola": [
+            "carico massimo al gancio",
+            "non occorre collegamento elettrico",
+            "sterzo sempre bloccato",
+            "distanza 3 metri",
+            "fascia di ingombro minore"
+        ],
+        "eccezioni_e_contesti": "Eccezioni solo per veicoli speciali o autorizzazioni specifiche."
+    },
+    "numero-persone-trasportabili": {
+        "regola_base": "Posti massimi indicati sulla carta di circolazione, compreso il conducente.",
+        "parole_trappola": [
+            "motocicli",
+            "quattro",
+            "cinque",
+            "non comprende il conducente"
+        ],
+        "eccezioni_e_contesti": "Veicoli speciali o modificati possono avere eccezioni specifiche."
+    },
+    "Comportamenti-guida-caravan": {
+        "regola_base": "Carico basso e bilanciato riduce rischio ribaltamento in curva.",
+        "parole_trappola": [
+            "alloggio",
+            "circolazione",
+            "cinture di sicurezza"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole valide sempre in strada."
+    },
+    "Dotazione-rimorchio": {
+        "regola_base": "Freno a inerzia frena dopo spinta sulla motrice. Freno di stazionamento + cunei in pendenza.",
+        "parole_trappola": [
+            "simultaneamente",
+            "privo di impianto frenante",
+            "spostarsi all’indietro",
+            "frena un secondo prima"
+        ],
+        "eccezioni_e_contesti": "In pendenza, cunei obbligatori. Freno a inerzia non funziona in inattività prolungata."
+    },
+    "Conduzione-veicoli-rimorchio": {
+        "regola_base": "Rimorchi devono essere assicurati, segnalati, e rispettare limiti di massa e larghezza.",
+        "parole_trappola": [
+            "strisce retroriflettenti",
+            "rimorchi non immatricolati",
+            "parte integrante",
+            "targa da motrice",
+            "revisione periodica"
+        ],
+        "eccezioni_e_contesti": "T.A.T.S. per uso privato, non commerciale, con limiti di sporgenza."
+    },
+    "Guida-veicoli-rimorchio": {
+        "regola_base": "Attenzione a pedoni, curve, discese, carico e stabilità del veicolo.",
+        "parole_trappola": [
+            "stesso percorso",
+            "ruotino abbassato",
+            "sensori parcheggio",
+            "consumi non aumentano"
+        ],
+        "eccezioni_e_contesti": "In rettilineo, il rimorchio segue la motrice senza rischio."
+    },
+    "Carichi-organi-traino": {
+        "regola_base": "Organi di traino puliti, lubrificati, integri, con oscillazioni e carichi entro limiti.",
+        "parole_trappola": [
+            "sgrassati con benzina",
+            "non omologato",
+            "non necessario collegamento elettrico",
+            "saldatura",
+            "carico concentrato al gancio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutti i veicoli devono rispettare le norme."
+    },
+    "utilizzo-rimorchio": {
+        "regola_base": "Merce stabile, pneumatici controllati, rimorchio inattivo con sostegni.",
+        "parole_trappola": [
+            "pressione uguale",
+            "gonfiaggio identico",
+            "trainante e rimorchio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole valide sempre."
+    },
+    "luci-anabbaglianti": {
+        "regola_base": "Anabbaglianti obbligatori giorno su strade extraurbane. Non abbagliare mai.",
+        "parole_trappola": [
+            "proiettori abbaglianti",
+            "luci di posizione sufficienti",
+            "qualsiasi colore"
+        ],
+        "eccezioni_e_contesti": "In caso di nebbia o pioggia, usare fari bassi o anabbaglianti."
+    },
+    "dispositivi-utilizzare-durante-marcia": {
+        "regola_base": "Luci anabbaglianti obbligatorie in città al buio e in visibilità ridotta.",
+        "parole_trappola": [
+            "luci abbaglianti",
+            "luci anabbaglianti in sosta fuori carreggiata",
+            "luci di sosta sempre accese"
+        ],
+        "eccezioni_e_contesti": "In nebbia <50m: luce posteriore nebbia. Notte: luci di sosta solo in sosta al margine."
+    },
+    "obbligo-anabbaglianti": {
+        "regola_base": "Anabbaglianti obbligatori in gallerie e scarsa visibilità.",
+        "parole_trappola": [
+            "solo se",
+            "scarsamente illuminate"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Obbligo in tutti i casi di scarsa visibilità."
+    },
+    "uso-luci-anabbaglianti": {
+        "regola_base": "Anabbaglianti obbligatori giorno e notte, fuori centri, nebbia o neve, con luce posteriore per nebbia se necessario.",
+        "parole_trappola": [
+            "gallerie illuminate",
+            "luci di posizione",
+            "sorpasso polizia"
+        ],
+        "eccezioni_e_contesti": "In gallerie illuminate, luci alte o full beam."
+    },
+    "catadiottri": {
+        "regola_base": "Catadiottri riflettono luce, rossi posteriori, bianchi anteriori, sui rimorchi e carrelli-appendice.",
+        "parole_trappola": [
+            "accendere",
+            "luci di posizione",
+            "sostituiscono",
+            "mezz'ora dopo tramonto"
+        ],
+        "eccezioni_e_contesti": "Non si accendono mai: sono riflettori, non luci attive."
+    },
+    "funzione-catadiottri": {
+        "regola_base": "Indicano presenza e ingombro, visibilità notturna e guasto veicoli.",
+        "parole_trappola": [
+            "indicatori di direzione",
+            "materiale infiammabile",
+            "sostituire"
+        ],
+        "eccezioni_e_contesti": "Non sostituiscono luci di direzione o segnalano svolte."
+    },
+    "targa-posteriore-veicolo": {
+        "regola_base": "Targa posteriore deve essere illuminata con luce bianca per visibilità.",
+        "parole_trappola": [
+            "solo di notte",
+            "sosta fuori strada"
+        ],
+        "eccezioni_e_contesti": "Non richiesta in stazioni o parcheggi interni."
+    },
+    "spie-auto": {
+        "regola_base": "Spie critiche rosse: olio, acqua, freno, cinture, pericolo.",
+        "parole_trappola": [
+            "indicatori",
+            "anabbaglianti",
+            "abbaglianti",
+            "fendinebbia",
+            "sbrinare"
+        ],
+        "eccezioni_e_contesti": "Luci diurne e fendinebbia: gialle o bianche, mai rosse."
+    },
+    "utilizzo-degli-indicatori-direzione": {
+        "regola_base": "Usa indicatori per ogni cambio corsia, svolta, fermata, immissione o uscita.",
+        "parole_trappola": [
+            "senso unico",
+            "doppio senso",
+            "frenare bruscamente",
+            "tornante verso sinistra"
+        ],
+        "eccezioni_e_contesti": "Non necessari in autostrada se già in corsia corretta."
+    },
+    "necessita-utilizzo-indicatori-direzione": {
+        "regola_base": "Indicatore obbligatorio per ogni manovra: cambio corsia, sorpasso, parcheggio, svolta, retromarcia.",
+        "parole_trappola": [
+            "file parallele",
+            "500 metri",
+            "termina sorpasso",
+            "margine destro",
+            "semaforo rosso",
+            "arresto interruzione"
+        ],
+        "eccezioni_e_contesti": "Non richiesto in rettilineo senza manovra o in arresto a semaforo rosso."
+    },
+    "uso-abbaglianti": {
+        "regola_base": "Abbaglianti vietati in città. Solo fuori, se nessun altro veicolo e scarsa illuminazione.",
+        "parole_trappola": [
+            "nebbia fitta",
+            "gallerie urbane",
+            "feriti gravi",
+            "controsole di giorno"
+        ],
+        "eccezioni_e_contesti": "Sostituisci con anabbaglianti se incroci altri veicoli, anche in campagna."
+    },
+    "uso-intermittente-proiettori-profondita": {
+        "regola_base": "Per avvertire e sorpassare, anche in città, giorno e notte.",
+        "parole_trappola": [
+            "soltanto extraurbane",
+            "unicamente di giorno",
+            "feriti o ammalati gravi",
+            "illuminazione esterna",
+            "pericolo immediato"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Consentito sempre, ovunque, per avvertire o sorpassare."
+    },
+    "uso-proiettori-fuori-centri-abitati": {
+        "regola_base": "Spegni proiettori, usa anabbaglianti se rischi di abbagliare altri utenti strada.",
+        "parole_trappola": [
+            "prolungato",
+            "batteria",
+            "autovettura"
+        ],
+        "eccezioni_e_contesti": "Valido solo fuori centri abitati, non in città o zone illuminate."
+    },
+    "cintura-sicurezza": {
+        "regola_base": "Cintura obbligatoria. Non si può alterarne funzionamento. Airbag non sostituiscono cintura.",
+        "parole_trappola": [
+            "airbag",
+            "velocità",
+            "30 km/h",
+            "sostituire",
+            "alterare"
+        ],
+        "eccezioni_e_contesti": "Eccezioni solo per disabili o in caso di emergenza specifica."
+    },
+    "veicoli-airbag": {
+        "regola_base": "Airbag disattivato per seggiolino anteriore. Non usare airbag se non c'è comando.",
+        "parole_trappola": [
+            "obbligo cinture",
+            "non c'è comando",
+            "air-bag"
+        ],
+        "eccezioni_e_contesti": "Solo per bambini. Non per adulti. Solo se sedile anteriore."
+    },
+    "poggiatesta": {
+        "regola_base": "Poggiatesta previene colpo di frusta se regolato bene.",
+        "parole_trappola": [
+            "rilassare muscolatura",
+            "funzione estetica"
+        ],
+        "eccezioni_e_contesti": "Non utile se non regolato o in caso di guida a mano libera."
+    },
+    "situazioni-particolari-sicurezza": {
+        "regola_base": "Cintura obbligatoria per tutti, salvo casi specifici certificati.",
+        "parole_trappola": [
+            "postino",
+            "oltre 65 anni",
+            "foglio rosa"
+        ],
+        "eccezioni_e_contesti": "Solo con certificato medico o per istruttori in attività professionale."
+    },
+    "casco-obbligatorio": {
+        "regola_base": "Casco obbligatorio per tutti i ciclomotori e motocicli, anche per maggiorenni.",
+        "parole_trappola": [
+            "solo se minorenni",
+            "titolare patente B",
+            "non obbligatorio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Obbligatorio sempre, indipendentemente dall'età o dalla patente."
+    },
+    "Scopo-utilizzo-cinture-sicurezza": {
+        "regola_base": "Cinture di sicurezza obbligatorie, omologate, efficienti, in ogni situazione di marcia.",
+        "parole_trappola": [
+            "velocità inferiore",
+            "consigliato",
+            "anziani",
+            "air-bag",
+            "disabilitare",
+            "obese",
+            "arrotolatore",
+            "urbana",
+            "bambini in braccio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Obbligatorie sempre, anche in città o per brevi tragitti."
+    },
+    "sistemi-trasporto-bambini": {
+        "regola_base": "Bambini sotto 1,50 m devono usare sistemi omologati adeguati.",
+        "parole_trappola": [
+            "unico tipo",
+            "urbani",
+            "40 km/h",
+            "in braccio",
+            "artigianale",
+            "ASL"
+        ],
+        "eccezioni_e_contesti": "Airbag disattivato, solo con comando specifico, sedile anteriore."
+    },
+    "caratteristiche-airbag": {
+        "regola_base": "Airbag gonfia automaticamente in millisecondi, protegge, funziona solo con cinture.",
+        "parole_trappola": [
+            "pulsante",
+            "gonfiare periodicamente",
+            "soltanto extraurbani",
+            "tarare velocità",
+            "meno di 4 porte"
+        ],
+        "eccezioni_e_contesti": "Non attiva in incidenti leggeri o se disattivato."
+    },
+    "utilizzo-casco": {
+        "regola_base": "Casco obbligatorio, sempre indossato e correttamente allacciato. Visiera integra e pulita. Sostituire dopo urti o danni.",
+        "parole_trappola": [
+            "benzina",
+            "adesivi",
+            "venti anni",
+            "temperatura superiore",
+            "nastro adesivo",
+            "non obbligatorio",
+            "ricambio visiera"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Casco obbligatorio in tutti i casi di guida, anche a bassa velocità."
+    },
+    "stivali-uso-motociclistico": {
+        "regola_base": "Stivali motociclistici proteggono piedi e caviglie, sono omologati e privi di nastri liberi.",
+        "parole_trappola": [
+            "scarpe da trekking",
+            "doppie stringhe",
+            "suola in acciaio",
+            "coprono ginocchio",
+            "gomma ignifuga",
+            "calzature per caccia"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regola universale per tutti i motociclisti."
+    },
+    "guanti-uso-motociclistico": {
+        "regola_base": "Guanti protettivi obbligatori per sicurezza e presa sicura.",
+        "parole_trappola": [
+            "non esistono",
+            "sostituiti da sci",
+            "intervenire più rapidamente",
+            "colore nero",
+            "coprono gomito",
+            "inutile estate"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: guanti non omologati non validi. Non obbligatori per ciclomotori a 3 ruote."
+    },
+    "giacche-indumenti-motociclistico": {
+        "regola_base": "Giacche protettive: resistenza taglio, abrasione, inserti rigidi.",
+        "parole_trappola": [
+            "lavaggio",
+            "estivo",
+            "unicamente nero"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: colori e tessuti validi se omologati."
+    },
+    "veicoli-strade-pubbliche": {
+        "regola_base": "Nessun veicolo senza assicurazione, patente o immatricolazione può circolare.",
+        "parole_trappola": [
+            "ricevuta tassa possesso",
+            "targa prova",
+            "carta intestata a altro",
+            "garanzia scaduta",
+            "certificato proprietà"
+        ],
+        "eccezioni_e_contesti": "Veicoli in prova o per trasporto personale possono essere esclusi da alcune regole."
+    },
+    "documenti-circolazione": {
+        "regola_base": "Targa, carta di circolazione e triangolo obbligatori per circolare.",
+        "parole_trappola": [
+            "kasko",
+            "assicurativo"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per veicoli in transito o in riparazione."
+    },
+    "targhe-veicoli": {
+        "regola_base": "Targhe saldamente posizionate, leggibili, pulite, non contraffatte, con 'P' per principianti.",
+        "parole_trappola": [
+            "piegate",
+            "adattarle meglio"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le regole sono obbligatorie in ogni contesto."
+    },
+    "Abilitazioni-patente-AM": {
+        "regola_base": "AM per ciclomotori leggeri, fino a 50 cm³, a partire da 14 anni.",
+        "parole_trappola": [
+            "quadricicli non leggeri",
+            "motocicli",
+            "Unione Europea",
+            "senza esami",
+            "3 anni",
+            "7 kW",
+            "motore elettrico",
+            "patente A1"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. AM solo per ciclomotori leggeri, senza limiti di potenza oltre 50 cm³."
+    },
+    "Patente-categoria-a1": {
+        "regola_base": "A1: motocicli fino a 125cc, tricicli fino a 15kW, macchine agricole, AM, 16 anni.",
+        "parole_trappola": [
+            "solo AM",
+            "tutti i motocicli",
+            "potenza superiore",
+            "macchine operatrici",
+            "trasportare passeggeri",
+            "diventa A2/A automaticamente"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Validità stabile. Nessun rinnovo automatico."
+    },
+    "Patente-categoria-a2": {
+        "regola_base": "A2: motocicli fino a 35 kW, trasporto passeggeri solo se previsto, validità per A dopo 2 anni.",
+        "parole_trappola": [
+            "20 anni",
+            "25 kW",
+            "triplo potenza",
+            "AM obbligatorio",
+            "150 cm³",
+            "solo ciclomotori",
+            "non tricicli"
+        ],
+        "eccezioni_e_contesti": "Valida per macchine agricole e veicoli AM/A1, senza limiti di cilindrata."
+    },
+    "Patente-categoria-A": {
+        "regola_base": "Patente A: motocicli, tricicli, quadricicli, con limiti età e potenza.",
+        "parole_trappola": [
+            "qualsiasi cilindrata",
+            "quadricicli non leggeri",
+            "18 anni",
+            "21 anni",
+            "solo in Italia",
+            "necessario 24 anni"
+        ],
+        "eccezioni_e_contesti": "Accesso graduale a 20 anni con A2 da 2 anni. Accesso diretto a 24 anni senza A2."
+    },
+    "Patente-categoria-B1": {
+        "regola_base": "B1 per quadricicli non leggeri e alcuni quadricicli a manubrio.",
+        "parole_trappola": [
+            "motocicli",
+            "tricicli",
+            "autovetture monoposto",
+            "patente A1",
+            "esame teorico integrativo"
+        ],
+        "eccezioni_e_contesti": "Valida solo per quadricicli non leggeri e quadricicli a manubrio."
+    },
+    "Patente-categoria-B": {
+        "regola_base": "Categoria B: auto fino a 3,5t, rimorchi leggeri, camper, agricole, tricicli, quadricicli.",
+        "parole_trappola": [
+            "autobus",
+            "autocarri >3,5t",
+            "potenza >55kW/t",
+            "motocicli",
+            "tutti i camper",
+            "rimorchi >3,5t"
+        ],
+        "eccezioni_e_contesti": "Solo in Italia, con 21 anni, per tricicli >15kW e quadricicli a motore."
+    },
+    "Codice-armonizzato-96": {
+        "regola_base": "Patente B con 96: guida auto trainanti rimorchi fino a 4.250 kg.",
+        "parole_trappola": [
+            "autosnodati",
+            "motocicli",
+            "patente A",
+            "superiore a 4.250 kg",
+            "solo in Italia"
+        ],
+        "eccezioni_e_contesti": "Valido solo per veicoli trainanti rimorchi non leggeri."
+    },
+    "Patente-categoria-BE": {
+        "regola_base": "BE permette autoveicolo ≤3.5t + rimorchio ≤3.5t, complessivo >4.25t.",
+        "parole_trappola": [
+            "minibus",
+            "A",
+            "C1",
+            "rimorchio >3.5t",
+            "21 anni"
+        ],
+        "eccezioni_e_contesti": "Valida per veicoli AM, B1, B, B96. Non per C1 o A."
+    },
+    "Ritiro-patente-guida": {
+        "regola_base": "Ritiro immediato per ebbrezza, patente scaduta, incidenti gravi, carico non sistemato, mancata revisione.",
+        "parole_trappola": [
+            "passeggero in ebbrezza",
+            "patente estera",
+            "pneumatici diversi",
+            "decremento punti",
+            "carta di circolazione",
+            "certificato di proprietà"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: violazioni minori, sanzioni non immediate, contesti specifici come emergenze o trasporto."
+    },
+    "revisione-patente-guida": {
+        "regola_base": "Revisione per dubbi fisici, psichici, incidenti, ebbrezza, azzeramento punti, e fallimento esame.",
+        "parole_trappola": [
+            "requisiti morali",
+            "due infrazioni",
+            "perdita permanente",
+            "revisione veicolo scaduta",
+            "auto storica",
+            "veicolo non di proprietà",
+            "guida senza patente",
+            "permesso speciale"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Revisione obbligatoria solo nei casi specifici elencati."
+    },
+    "revoca-patente-guida": {
+        "regola_base": "Revoca per gravi infrazioni o perdita permanente requisiti.",
+        "parole_trappola": [
+            "patente scaduta",
+            "guida senza patente",
+            "temporanea",
+            "polizia",
+            "dichiarazione scritta"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: guida senza patente non è revoca, ma sanzione."
+    },
+    "sospensione-patente-guida": {
+        "regola_base": "Sospensione per violazioni gravi o reati stradali.",
+        "parole_trappola": [
+            "patente sospesa",
+            "perdita requisiti",
+            "20 km/h",
+            "patente illeggibile",
+            "bollo auto"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per neopatentati o casi specifici di emergenza."
+    },
+    "violazioni-decurtazione-punti-patente": {
+        "regola_base": "Patente iniziale 20 punti. Decurtazione per infrazioni specifiche. Recupero 6 punti con corso. Rinnovo automatico dopo 2 anni senza infrazioni.",
+        "parole_trappola": [
+            "30 punti",
+            "qualsiasi infrazione",
+            "triplo",
+            "9 punti",
+            "30 punti",
+            "revoca",
+            "sospensione"
+        ],
+        "eccezioni_e_contesti": "Primi 3 anni: doppio punteggio. Due infrazioni: massimo 15 punti. Revoca solo per infrazioni gravi."
+    },
+    "perdita-punti-patente": {
+        "regola_base": "Infrazioni gravi causano perdita punti patente.",
+        "parole_trappola": [
+            "piste private",
+            "lasciare in sosta",
+            "senza patente",
+            "carta di circolazione",
+            "certificato di proprietà",
+            "motociclo >35kW",
+            "autovettura >115kW",
+            "categoria C",
+            "meno di 6 mesi",
+            "giorno festivo",
+            "revisione periodica"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per veicoli o contesti specifici non comportano perdita punti."
+    },
+    "Validita-delle-patenti-guida": {
+        "regola_base": "Patente confermata con accertamento sanitario da medico autorizzato.",
+        "parole_trappola": [
+            "Prefetto",
+            "prova tecnica",
+            "due visite",
+            "8 anni",
+            "non scade",
+            "non può rinnovare"
+        ],
+        "eccezioni_e_contesti": "Validità varia per età: 10 anni <50, 5 anni 50-70, 3 anni 70-80, 2 anni >80."
+    },
+    "causa-probabile-incidenti": {
+        "regola_base": "Struttura stradale difettosa causa incidenti.",
+        "parole_trappola": [
+            "carreggiate",
+            "corsie",
+            "senso unico",
+            "pianeggiante",
+            "guardrails",
+            "semaforica",
+            "curve pericolose"
+        ],
+        "eccezioni_e_contesti": "Strade ben segnalate e manutenute non causano incidenti."
+    },
+    "caso-pioggia": {
+        "regola_base": "Riduci velocità, usa tergicristalli, aumenta distanza, evita appannamento, manovra con prudenza.",
+        "parole_trappola": [
+            "passare velocemente",
+            "coprire radiatore",
+            "frenare energicamente",
+            "quattro frecce",
+            "pedale frizione abbassato"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le regole valgono sempre in pioggia."
+    },
+    "aquaplanning": {
+        "regola_base": "Ruote scivolano su acqua, perdono aderenza, rischio controllo veicolo.",
+        "parole_trappola": [
+            "bassa velocità",
+            "riduce sbandamento",
+            "pendenza laterale",
+            "aumenta aderenza",
+            "rafforza contatto",
+            "non dipende battistrada"
+        ],
+        "eccezioni_e_contesti": "Non si verifica su strade asciutte o con pneumatici nuovi e ben gonfiati."
+    },
+    "strade-coperte-neve": {
+        "regola_base": "Pneumatici invernali o catene, velocità ridotta, distanza maggiore, manovre dolci.",
+        "parole_trappola": [
+            "frenare a fondo",
+            "accelerare al massimo",
+            "sterzare bruscamente",
+            "frenare con maggiore energia"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole valide in tutte le condizioni nevose."
+    },
+    "tratti-strada-ghiacciati": {
+        "regola_base": "Velocità moderata, distanza maggiore, marce basse, evita accelerazioni brusche.",
+        "parole_trappola": [
+            "vicino alla barriera",
+            "gomme chiodate solo anteriori",
+            "frenare energicamente",
+            "cambio in folle"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le regole valgono sempre."
+    },
+    "nebbia-fitta": {
+        "regola_base": "Guida con prudenza, luci fendinebbia, segnaletica, fermati fuori carreggiata se necessario.",
+        "parole_trappola": [
+            "zig zag",
+            "clacson continuativo",
+            "cintura sganciata",
+            "luci di posizione solo",
+            "indicatore di direzione"
+        ],
+        "eccezioni_e_contesti": "In caso di emergenza o forza maggiore, fermati fuori carreggiata."
+    },
+    "obblighi-dopo-incidente-stradale": {
+        "regola_base": "Fermarsi, aiutare, segnalare, fornire dati, non toccare tracce, denunciare assicurazione.",
+        "parole_trappola": [
+            "coprire con telo",
+            "marciapiede",
+            "spia rossa accesa",
+            "aumentare cilindrata",
+            "premere a fondo freno",
+            "modificare centralina"
+        ],
+        "eccezioni_e_contesti": "In caso di pericolo imminente, si può muovere per evitare danni maggiori."
+    },
+    "salita-discesa-passeggero": {
+        "regola_base": "Salita/discesa solo dal lato sicuro, fermi e con controllo adulto.",
+        "parole_trappola": [
+            "privi di qualsiasi rischio",
+            "lato opposto al traffico"
+        ],
+        "eccezioni_e_contesti": "In emergenza, non aspettare fermata."
+    },
+    "infossamento": {
+        "regola_base": "Innesta marcia superiore, usa oggetti per aumentare l'aderenza.",
+        "parole_trappola": [
+            "ghiacciata",
+            "aderenza minore",
+            "partire con la prima marcia"
+        ],
+        "eccezioni_e_contesti": "Non applicabile su strade bagnate o con ghiaccio."
+    },
+    "tamponamenti-stradali": {
+        "regola_base": "Velocità, distanza e disattenzione causano tamponamenti.",
+        "parole_trappola": [
+            "freno di stazionamento",
+            "servosterzo"
+        ],
+        "eccezioni_e_contesti": "Eccezioni rare: guasti meccanici o condizioni meteorologiche estreme."
+    },
+    "pannelli-galleria": {
+        "regola_base": "Aumenta distanza, segui segnaletica, obbedisci istruzioni vocali in caso di incendio.",
+        "parole_trappola": [
+            "segnaletica di emergenza",
+            "netto contrasto",
+            "ordini vocali"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Segui sempre le istruzioni vocali prioritarie."
+    },
+    "segni-stanchezza": {
+        "regola_base": "Riposare in piazzola di sosta se stanco.",
+        "parole_trappola": [
+            "avvicinarsi",
+            "veicolo che lo precede",
+            "marcia"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Riposo obbligatorio in tutti i casi di stanchezza."
+    },
+    "eccesso-bevande-alcoliche": {
+        "regola_base": "Alcol richiede tempo per essere metabolizzato. Nessun cibo o caffè accelera il recupero.",
+        "parole_trappola": [
+            "cibi salati",
+            "caffè amaro",
+            "recuperare velocemente"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Alcol non si elimina rapidamente, mai con cibo o caffè."
+    },
+    "idoneita-alla-guida": {
+        "regola_base": "Farmaci, alcol, droghe: compromettono idoneità alla guida.",
+        "parole_trappola": [
+            "caffè",
+            "gassate",
+            "integratori",
+            "sali minerali"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: tutti i farmaci possono essere pericolosi."
+    },
+    "assunzione-droghe": {
+        "regola_base": "Qualsiasi droga altera la guida. Nessuna esenzione.",
+        "parole_trappola": [
+            "LSD",
+            "anfetamina",
+            "marijuana",
+            "non compromette"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Droghe = rischio guida. Sempre."
+    },
+    "guida-alimentazione": {
+        "regola_base": "Pasti pesanti e alcolici riducono attenzione e reazione.",
+        "parole_trappola": [
+            "bevande superalcoliche",
+            "pasto abbondante",
+            "non compromette"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: guida sempre con attenzione, anche dopo pasti leggeri."
+    },
+    "guida-stato-ebbrezza": {
+        "regola_base": "Ebbrezza alcolica = arresto e sanzioni legali.",
+        "parole_trappola": [
+            "veicolo senza motore",
+            "tempi di reazione più rapidi"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: ebbrezza = sempre sanzionata."
+    },
+    "soccorso-ferito": {
+        "regola_base": "Soccorrere un ferito è obbligatorio per legge, anche se non si è soccorritori.",
+        "parole_trappola": [
+            "dovere morale",
+            "solo se grave",
+            "pericoloso per la sicurezza",
+            "solo medici",
+            "intralcio alla circolazione"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: se si è in pericolo immediato o non si ha competenze specifiche."
+    },
+    "primo-soccorso": {
+        "regola_base": "Salvare vite con interventi rapidi e sicuri.",
+        "parole_trappola": [
+            "chiedere come è avvenuto",
+            "allontanare in ogni caso",
+            "non toccare se non arriva la polizia"
+        ],
+        "eccezioni_e_contesti": "Non toccare se pericolo imminente o esplosivo."
+    },
+    "infortunato-ferita-sanguinante": {
+        "regola_base": "Coprire ferite sanguinanti con materiale sterile o pulito. Non toccare corpi estranei.",
+        "parole_trappola": [
+            "togliere corpi estranei",
+            "dargli da bere",
+            "acqua calda",
+            "non coprire"
+        ],
+        "eccezioni_e_contesti": "Sangue non sanguinante: non necessario tamponare."
+    },
+    "emorragia-esterna": {
+        "regola_base": "Tampona, pressione, chiamata soccorsi. Non camminare, non dargli acqua.",
+        "parole_trappola": [
+            "medicare",
+            "far camminare",
+            "non dargli acqua"
+        ],
+        "eccezioni_e_contesti": "Se ferita grave, non trasportare. Solo se stabile, seduto o sdraiato."
+    },
+    "corpo-estraneo-occhio": {
+        "regola_base": "Bendare occhio con corpo estraneo. Non toccare. Non rimuovere.",
+        "parole_trappola": [
+            "togliere",
+            "massaggiare",
+            "tenere aperti",
+            "mai bendare"
+        ],
+        "eccezioni_e_contesti": "Solo se corpo estraneo visibile e non inferto, si può rimuovere con strumento sterile."
+    },
+    "stato-shock": {
+        "regola_base": "Pelle pallida, fredda, sudorazione, battiti accelerati, confusione mentale.",
+        "parole_trappola": [
+            "forte aumento temperatura",
+            "macchie scure",
+            "colorito rosso",
+            "vampate di calore"
+        ],
+        "eccezioni_e_contesti": "In shock da calore: pelle rossa, sudorazione abbondante, febbre."
+    },
+    "ferito-stato-shock": {
+        "regola_base": "Disteso, gambe sollevate, coperto, non muovere.",
+        "parole_trappola": [
+            "camminare",
+            "seduta",
+            "schiaffi",
+            "superalcolici"
+        ],
+        "eccezioni_e_contesti": "Se trauma toracico, posizione laterale."
+    },
+    "ferito-stato-incoscienza": {
+        "regola_base": "Verifica respiro, non muovere se trauma vertebrale sospetto, liberare ostruzioni, monitorare costantemente.",
+        "parole_trappola": [
+            "bevande alcooliche",
+            "bloccare mani",
+            "fasciare testa",
+            "posizione semiseduta"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Primo soccorso standard sempre valido."
+    },
+    "infortunato-della-strada": {
+        "regola_base": "Semi-seduto, comprimere ferite, aspettare soccorso.",
+        "parole_trappola": [
+            "profondi respiri",
+            "gambe sollevate",
+            "stare alzato"
+        ],
+        "eccezioni_e_contesti": "Solo se il paziente è inconscio, non metterlo semi-seduto."
+    },
+    "infortunato-fratture-agli-arti": {
+        "regola_base": "Non muovere, bloccare, coprire, anti-shock.",
+        "parole_trappola": [
+            "camminare",
+            "muovere",
+            "riposizionare",
+            "bevanda superalcolica"
+        ],
+        "eccezioni_e_contesti": "Solo se il paziente è in pericolo immediato, si può intervenire."
+    },
+    "ferito-ustionato": {
+        "regola_base": "Spegni fiamme, non toccare vestiti attaccati, usa acqua fredda, copri con materiale sterile.",
+        "parole_trappola": [
+            "aspettare che si spengano da sole",
+            "togliere vestiti attaccati",
+            "disinfettare con alcool"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le regole valgono sempre."
+    },
+    "attivita-soccorritore": {
+        "regola_base": "Valuta, assisti, agisci con le tue capacità, senza superare i tuoi limiti.",
+        "parole_trappola": [
+            "allontanarsi",
+            "aspettare solo",
+            "identificare nome",
+            "somministrare farmaci"
+        ],
+        "eccezioni_e_contesti": "In caso di pericolo imminente, agisci subito per salvare vite."
+    },
+    "cause-shock": {
+        "regola_base": "Shock può essere causato da dolore, emozioni, perdita sangue o trauma.",
+        "parole_trappola": [
+            "mai",
+            "non può",
+            "non si verifica",
+            "non rappresenta"
+        ],
+        "eccezioni_e_contesti": "Shock può essere reversibile con trattamento immediato."
+    },
+    "assunzione-alcool": {
+        "regola_base": "Alcool riduce sicurezza: rallenta riflessi, causa sonnolenza e distrugge concentrazione.",
+        "parole_trappola": [
+            "più sicura",
+            "aumenta concentrazione",
+            "più vigili",
+            "migliora vista",
+            "più allegra"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: alcool sempre pericoloso, anche in piccole dosi."
+    },
+    "occhiali-lenti-contatto": {
+        "regola_base": "Occhiali o lenti a contatto obbligatori se indicato sulla patente.",
+        "parole_trappola": [
+            "miopia supera 6 diottrie",
+            "mezz'ora dopo tramonto",
+            "scarsa visibilità",
+            "solo su autostrade"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Obbligo sempre se indicato sulla patente."
+    },
+    "risarcimento-danni": {
+        "regola_base": "Chi risarcisce i danni, libera l'obbligo civile. Può accordarsi, riparare, o chiedere consulenza.",
+        "parole_trappola": [
+            "revocata",
+            "responsabilità penale",
+            "ammontare del danno"
+        ],
+        "eccezioni_e_contesti": "Non vale per responsabilità penale o sanzioni amministrative."
+    },
+    "responsabile-sinistro-stradale": {
+        "regola_base": "Responsabile pagherà danni, può essere punito, sospeso o revocato patente.",
+        "parole_trappola": [
+            "sempre arresto",
+            "solo categoria inferiore",
+            "in ogni caso revoca",
+            "non sanzioni"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per minori colpevoli o casi di emergenza."
+    },
+    "responsabilita-penale": {
+        "regola_base": "Responsabilità penale esclusa solo se reato non sussiste o forza maggiore.",
+        "parole_trappola": [
+            "soccorso",
+            "risarcimento",
+            "assicurazione",
+            "danni involontari alle sole cose"
+        ],
+        "eccezioni_e_contesti": "Esclusa solo se il fatto non costituisce reato o è imputabile a forza maggiore."
+    },
+    "casi-responsabilita-penale": {
+        "regola_base": "Responsabilità penale solo per lesioni gravi, omicidio colposo o violazioni del Codice Penale.",
+        "parole_trappola": [
+            "ogni caso",
+            "veicolo distrutto",
+            "danni alle cose",
+            "proprietario non identificato"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: danni lievi, responsabilità civile, identificazione del conducente."
+    },
+    "responsabilita-civile": {
+        "regola_base": "Responsabilità civile stradale: risarcire danni a persone e cose, indipendentemente da altre responsabilità.",
+        "parole_trappola": [
+            "esclusa",
+            "solo cose",
+            "lieve entità",
+            "aggravata",
+            "massimali"
+        ],
+        "eccezioni_e_contesti": "Non esistono eccezioni: danno grave o lieve, responsabilità civile sempre presente."
+    },
+    "assicurazione": {
+        "regola_base": "RCA copre terzi e beni pubblici. Risarcimento diretto solo per 1 veicolo e lesioni lievi.",
+        "parole_trappola": [
+            "motociclo",
+            "fotografie",
+            "taxi"
+        ],
+        "eccezioni_e_contesti": "Risarcimento diretto non valido se più di due veicoli coinvolti."
+    },
+    "responsabilita-danni": {
+        "regola_base": "Conducente responsabile civile; proprietario solo se danni causati contro la sua volontà.",
+        "parole_trappola": [
+            "proprietario penale",
+            "solo conducente",
+            "danni alle cose"
+        ],
+        "eccezioni_e_contesti": "Proprietario esente se prova che veicolo non era a sua disposizione."
+    },
+    "assicurazione-scaduta": {
+        "regola_base": "Veicolo senza assicurazione non può circolare né essere lasciato in sosta.",
+        "parole_trappola": [
+            "brevi tragitti",
+            "solo sul territorio italiano",
+            "collaudo tecnico",
+            "pagare personalmente"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sanzioni immediate per qualsiasi uso o sosta."
+    },
+    "fondo-garanzia-vittime-strada": {
+        "regola_base": "Risarcisce vittime di veicoli non assicurati o non identificati.",
+        "parole_trappola": [
+            "vitalizio",
+            "premio",
+            "convenzione facoltativa",
+            "minorenni"
+        ],
+        "eccezioni_e_contesti": "Non copre danni a veicoli né conducenti responsabili."
+    },
+    "furto-incendio": {
+        "regola_base": "Polizze non obbligatorie, risarcimento limitato al valore del veicolo, denuncia anche all'estero.",
+        "parole_trappola": [
+            "rendita vitalizia",
+            "meccanismo staccabatteria",
+            "antifurto obbligatorio",
+            "incendi accidentali esclusi"
+        ],
+        "eccezioni_e_contesti": "Valore massimo risarcimento: valore al momento del danno. Denuncia estera richiesta."
+    },
+    "massimali-della-polizza": {
+        "regola_base": "Massimali sono importi massimi che l'assicuratore paga in caso di sinistro.",
+        "parole_trappola": [
+            "riscuote",
+            "aumentano ogni anno",
+            "restituiti al cliente"
+        ],
+        "eccezioni_e_contesti": "Non cambiano automaticamente; richiedono aggiornamento volontario del cliente."
+    },
+    "formula-bonus-malus": {
+        "regola_base": "Premio cambia annualmente per incidenti causati.",
+        "parole_trappola": [
+            "motocicli",
+            "anni",
+            "giudice",
+            "due incidenti",
+            "automaticamente annullato"
+        ],
+        "eccezioni_e_contesti": "Non si applica a veicoli non a motocicli."
+    },
+    "coperture-assicurazione": {
+        "regola_base": "R.C.A. copre danni a terzi in UE, solo per responsabilità civile, non penale o amministrativa.",
+        "parole_trappola": [
+            "responsabilità penale",
+            "sanzioni amministrative",
+            "massimale",
+            "proprietario",
+            "danni alle cose"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: danno superiore al massimale, o responsabilità penale non coperta."
+    },
+    "imprese-assicuratrici": {
+        "regola_base": "R.C.A. obbligatoria. Certificato da tenere a bordo.",
+        "parole_trappola": [
+            "elenco autocarrozzerie",
+            "libretto pronto soccorso",
+            "manuale evitare incidenti",
+            "risarcimento solo proprietario"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. R.C.A. copre sempre danni causati dal veicolo."
+    },
+    "psicologia-traffico": {
+        "regola_base": "Attenzione, concentrazione e rispetto delle norme sono fondamentali per guidare in sicurezza.",
+        "parole_trappola": [
+            "pericoloso",
+            "non necessario",
+            "influenza",
+            "può",
+            "sempre",
+            "illimitata",
+            "tutti gli stimoli",
+            "non è importante"
+        ],
+        "eccezioni_e_contesti": "In caso di emergenza, le regole possono essere superate per salvare vite."
+    },
+    "consumi-carburante": {
+        "regola_base": "Consumo aumenta con peso, velocità, apertura finestre, pneumatici sgonfiati, bagagli sul tetto.",
+        "parole_trappola": [
+            "tettuccio scorrevole",
+            "climatizzatore",
+            "veicoli ibridi",
+            "accelerare e frenare energicamente"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: veicoli ibridi più efficienti, climatizzatore a bassa potenza, strade in salita."
+    },
+    "rumori-fastidiosi": {
+        "regola_base": "Mantieni silenzio, usa clacson solo in caso di pericolo.",
+        "parole_trappola": [
+            "mantenere motore acceso",
+            "chiudere con forza portiere",
+            "sostituire clacson con luci notte"
+        ],
+        "eccezioni_e_contesti": "Solo in emergenza o pericolo immediato si può usare il clacson."
+    },
+    "rumore-veicoli-motore": {
+        "regola_base": "Rumore aumenta con silenziatore guasto. Guida dolce riduce rumore.",
+        "parole_trappola": [
+            "solo dal motore"
+        ],
+        "eccezioni_e_contesti": "Rumore può provenire da altri componenti, non solo motore."
+    },
+    "diminuire-rumore": {
+        "regola_base": "Marmitta efficiente e freni in ordine riducono rumore. Clacson minimo.",
+        "parole_trappola": [
+            "fori",
+            "tubo più piccolo",
+            "eliminare parte finale"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le azioni devono essere legali e sicure."
+    },
+    "rimorchi-pneumatici": {
+        "regola_base": "Rimorchi vuoti o a forte velocità aumentano rumore per strisciamento pneumatici.",
+        "parole_trappola": [
+            "strisciamento",
+            "velocità",
+            "rumore",
+            "sobbalzano",
+            "pneumatici"
+        ],
+        "eccezioni_e_contesti": "Rumore minore con rimorchi pieni o su strade lisce."
+    },
+    "inquinamento-aria": {
+        "regola_base": "Guida con accelerazioni lente e marce adatte per ridurre inquinamento.",
+        "parole_trappola": [
+            "frizione",
+            "differenziale",
+            "ammortizzatori",
+            "pressione pneumatici",
+            "motore caldo subito"
+        ],
+        "eccezioni_e_contesti": "Marmitta catalitica funziona solo a temperatura ottimale, non subito dopo avviamento."
+    },
+    "inquinamento-atmosferico": {
+        "regola_base": "Veicoli ben manutenuti e guidati con attenzione riducono l'inquinamento.",
+        "parole_trappola": [
+            "accelerare a fondo",
+            "climatizzatore acceso",
+            "Euro 0"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: regole valide sempre, anche in emergenza."
+    },
+    "iniettori-fumi-scarico": {
+        "regola_base": "Iniettori difettosi aumentano inquinamento e fumo scuro.",
+        "parole_trappola": [
+            "umidità"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutti i punti VERO sono corretti."
+    },
+    "accorgimenti-ridurre-inquinamento": {
+        "regola_base": "Veicoli leggeri, elettrici o a gas, spegni motore, evita brevi percorsi, sanzioni per emissioni alte.",
+        "parole_trappola": [
+            "sistemare bagagli sul tetto",
+            "marce basse",
+            "accelera con frizione",
+            "cambio in folle"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le azioni false non riducono inquinamento."
+    },
+    "sostituzione-filtri": {
+        "regola_base": "Filtro aria e controlli motori riducono inquinamento. Accelerare poco aiuta.",
+        "parole_trappola": [
+            "colpo di acceleratore",
+            "motore al massimo",
+            "filtro antipolline",
+            "filtro olio stagionale"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le azioni sono generali per tutti i veicoli."
+    },
+    "salvaguardare-ambiente": {
+        "regola_base": "Usa climatizzatore solo quando necessario per ridurre inquinamento.",
+        "parole_trappola": [
+            "premere più volte",
+            "a fondo il pedale",
+            "raggiunga temperatura"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: accelerare a fondo è sempre dannoso per ambiente."
+    },
+    "aumento-limitazione-consumi": {
+        "regola_base": "Chiudere finestrini, sistemare bagagli, evitare carico sul tetto e tettuccio aperto riducono i consumi.",
+        "parole_trappola": [
+            "ricircolo aria",
+            "Euro 4",
+            "trainare rimorchio"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: veicoli elettrici, condizioni meteorologiche estreme, carico pesante."
+    },
+    "veicoli-modificati": {
+        "regola_base": "Modifiche motore/marmitta richiedono autorizzazione. Sanzioni per non conformità.",
+        "parole_trappola": [
+            "liberamente",
+            "diminuire l'inquinamento"
+        ],
+        "eccezioni_e_contesti": "Modifiche per uso sportivo o ecologico con autorizzazione specifica."
+    },
+    "scarico-smaltimento": {
+        "regola_base": "Scarichi pericolosi vietati. Smaltimento in centri autorizzati. Proteggi pelle da oli.",
+        "parole_trappola": [
+            "non viene sanzionato",
+            "esclusivamente al concessionario"
+        ],
+        "eccezioni_e_contesti": "Solo autodemolitori autorizzati per demolizioni. Batterie: ritiro gratuito al rivenditore."
+    },
+    "divieti-generici": {
+        "regola_base": "Vietato danneggiare, sporcare, gettare rifiuti o immettersi con ruote sporche.",
+        "parole_trappola": [
+            "tutte le strade",
+            "vietato il transito",
+            "parcheggiare nelle zone residenziali",
+            "avvisatori acustici"
+        ],
+        "eccezioni_e_contesti": "Eccezioni per veicoli speciali o aree specifiche (es. parcheggi autorizzati)."
+    },
+    "forza-aderente": {
+        "regola_base": "Forza aderente permette movimento e contrasta slittamento laterale.",
+        "parole_trappola": [
+            "vento laterale",
+            "surriscaldamento freni"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Valida sempre in curva o frenata."
+    },
+    "aumento-della-forza-aderente": {
+        "regola_base": "Asfalto rugoso aumenta aderenza. Bagnato ne diminuisce.",
+        "parole_trappola": [
+            "bagnato",
+            "foglie",
+            "ghiaccio",
+            "fango"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Solo superfici asciutte e lisce aumentano aderenza."
+    },
+    "coefficiente-aderenza": {
+        "regola_base": "Aderenza bassa = frenata più lunga e rischio pattinamento.",
+        "parole_trappola": [
+            "riduce lo spazio di frenatura",
+            "solo in curva"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Aderenza bassa = sempre più cautela."
+    },
+    "coefficiente-basso-aderenza": {
+        "regola_base": "Basso aderenza = più rischio slittamento, frenata più lunga, velocità curva ridotta.",
+        "parole_trappola": [
+            "non condiziona",
+            "riduce lo spazio",
+            "diminuisce i consumi",
+            "riduce lo slittamento"
+        ],
+        "eccezioni_e_contesti": "Su strade bagnate o innevate, effetti sono più evidenti."
+    },
+    "conduzione-motociclo": {
+        "regola_base": "Aderenza ridotta in pioggia su rotaie e segnaletica.",
+        "parole_trappola": [
+            "non dipende",
+            "trasporta un passeggero"
+        ],
+        "eccezioni_e_contesti": "Aderenza non cambia con passeggero. Dipende solo da condizioni stradali."
+    },
+    "asfalto-forza-aderente": {
+        "regola_base": "Aderenza migliore su asfalto asciutto e pulito.",
+        "parole_trappola": [
+            "ghiaccio",
+            "fango",
+            "pressione pneumatici"
+        ],
+        "eccezioni_e_contesti": "Aderenza ridotta in bagnato, neve o ghiaccio, anche con pneumatici nuovi."
+    },
+    "percorrenza-curva": {
+        "regola_base": "Curva: forza centrifuga spinge verso esterno, velocità eccessiva causa sbandamento o ribaltamento.",
+        "parole_trappola": [
+            "verso l'interno",
+            "aumentare velocità per evitare"
+        ],
+        "eccezioni_e_contesti": "Su strade bagnate o con ghiaccio, riduci sempre velocità."
+    },
+    "ribaltamento-curva": {
+        "regola_base": "Carico alto, non fissato, carreggiata stretta, curva stretta: aumenta rischio ribaltamento.",
+        "parole_trappola": [
+            "carreggiata larga",
+            "carico in basso",
+            "curva larga"
+        ],
+        "eccezioni_e_contesti": "Veicoli con centro di gravità basso o aderenza elevata riducono il rischio."
+    },
+    "forza-ribaltante": {
+        "regola_base": "Velocità più alta = forza ribaltante più forte.",
+        "parole_trappola": [
+            "diminuisce",
+            "velocità",
+            "in curva"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Valida sempre in curva."
+    },
+    "funzioni": {
+        "regola_base": "L'A.B.S. impedisce il bloccaggio delle ruote, migliorando sicurezza e controllo in frenata.",
+        "parole_trappola": [
+            "favorisce il bloccaggio",
+            "impedisce di modificare traiettoria",
+            "non agisce sulle ruote motrici",
+            "non si attiva con pneumatici usurati"
+        ],
+        "eccezioni_e_contesti": "Non funziona se il sistema è guasto o disattivato dall'utente."
+    },
+    "pressione-gonfiaggio": {
+        "regola_base": "Controlla pressione pneumatici quando freddi, adatta a carico e passeggeri.",
+        "parole_trappola": [
+            "gomma calda",
+            "materiale cerchioni",
+            "aumentare pressione",
+            "rimorchio uguale"
+        ],
+        "eccezioni_e_contesti": "Veicoli con sistema TPMS: monitoraggio automatico, ma sempre verificare manualmente."
+    },
+    "pneumatici-tubeless": {
+        "regola_base": "Spessore minimo battistrada: 1,6 mm auto, 1,0 mm moto. Tubeless sgonfiano lentamente. Riparazione possibile con cautele.",
+        "parole_trappola": [
+            "bombolette mastice",
+            "gonfiano lentamente (camera d'aria)",
+            "estrarre chiodo subito",
+            "azoto minore pressione"
+        ],
+        "eccezioni_e_contesti": "Riparazione tubeless solo se non esplode. Non sostituire pneumatici solo per età."
+    },
+    "pneumatici-neve": {
+        "regola_base": "Pneumatici chiodati: uso limitato. Invernali: tutti i ruoti. Catene non omologate: sanzione come sprovvisto.",
+        "parole_trappola": [
+            "solo su due ruote",
+            "ruote posteriori",
+            "non danneggiano",
+            "limiti di velocità"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Regole fisse per sicurezza stradale invernale."
+    },
+    "sostituzione-ruota": {
+        "regola_base": "Staziona, blocca, solleva, stringi dopo abbassare, non metterti sotto.",
+        "parole_trappola": [
+            "togliere bulloni prima",
+            "punto qualsiasi",
+            "più lontano",
+            "120 km/h",
+            "non consentito trasportare"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Sicurezza obbligatoria in tutti i casi."
+    },
+    "frenate-emergenza": {
+        "regola_base": "Premi forte e costante il freno. ABS non richiede rilascio.",
+        "parole_trappola": [
+            "diminuire pressione",
+            "frenare in folle",
+            "freno di stazionamento in marcia"
+        ],
+        "eccezioni_e_contesti": "Frenata in curva o bagnato: riduci potenza. Non frenare in folle."
+    },
+    "rischio-incendio-veicolo": {
+        "regola_base": "Spegni elettrico, usa sabbia o coperta bagnata per spegnere incendi.",
+        "parole_trappola": [
+            "svuotare serbatoio",
+            "interruttore inerziale",
+            "smontare serbatoio GPL"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Azioni immediate e sicure solo con materiali a portata di mano."
+    },
+    "varie-manutenzione": {
+        "regola_base": "Non mettere oggetti sotto sedile, non usare telefono, fissare bambini, climatizzatore per sbrinare.",
+        "parole_trappola": [
+            "compore sms",
+            "programmare in movimento",
+            "non prescrittivo",
+            "sorpassare immediatamente"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: solo in caso di emergenza o se il veicolo è sicuro."
+    },
+    "pulizia-cristalli": {
+        "regola_base": "Vetri puliti e visibili sono fondamentali per la sicurezza stradale.",
+        "parole_trappola": [
+            "nastro adesivo trasparente",
+            "disappannamento"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: pulizia obbligatoria in ogni condizione."
+    },
+    "condizioni-pneumatici": {
+        "regola_base": "Pneumatici omologati, uguali per asse, pressione corretta, controllo laterale.",
+        "parole_trappola": [
+            "invertire posizione",
+            "solo ruote motrici",
+            "diminuire pressione",
+            "consumo centrale e bordi"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le regole sono sempre valide."
+    },
+    "frenata-freno-stazionamento": {
+        "regola_base": "Frenata trasforma energia in calore. Freno di stazionamento solo per sosta. Servofreno non funziona a motore spento.",
+        "parole_trappola": [
+            "circuiti sigillati",
+            "frenatura di servizio",
+            "motore spento",
+            "retromarcia in emergenza"
+        ],
+        "eccezioni_e_contesti": "Freno di stazionamento non sostituisce frenata di servizio. Non usare in emergenza."
+    },
+    "frenatura-poco-efficiente": {
+        "regola_base": "Frenatura inefficace da guarnizioni, tamburi, dischi, pressione pneumatici, carico, surriscaldamento, squilibrio laterale.",
+        "parole_trappola": [
+            "freno di stazionamento",
+            "lubrificazione",
+            "gioco pedale frizione",
+            "servosterzo",
+            "freni a disco posteriore",
+            "pneumatici invernali",
+            "alimentazione a metano",
+            "surriscaldamento refrigerante",
+            "freno a mano parziale",
+            "cambio pastiglie da conducente"
+        ],
+        "eccezioni_e_contesti": "Eccezioni: nessuna. Tutte le cause false non sono mai reali."
+    },
+    "sospensioni-veicolo-motore": {
+        "regola_base": "Sospensioni collegano telaio e ruote, assorbono urti, assicurano aderenza e comfort.",
+        "parole_trappola": [
+            "mantenere fermo",
+            "solo anteriori",
+            "irrigidire",
+            "non funzionano rettilinea"
+        ],
+        "eccezioni_e_contesti": "Funzionano anche su strada rettilinea, ma smorzano piccole irregolarità."
+    },
+    "cause-sospensioni-inefficienti": {
+        "regola_base": "Sospensioni inefficienti causano perdita di tenuta, comfort e sicurezza.",
+        "parole_trappola": [
+            "non comporta",
+            "sufficiente aumentare pressione",
+            "ogni trentamila km",
+            "materiali elastici",
+            "non necessitare manutenzione",
+            "non collaborano alla dirigibilità",
+            "una sola rottura non comporta problemi"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione: sospensioni sempre critiche per sicurezza e comfort."
+    },
+    "ammortizzatori-sovraccarico": {
+        "regola_base": "Ammortizzatori riducono oscillazioni e migliorano tenuta strada. Sovraccarico li logora.",
+        "parole_trappola": [
+            "non necessitano di verifiche",
+            "stile prudente basta",
+            "aumentare pressione pneumatici",
+            "regolare rigidità",
+            "proprietario controlla"
+        ],
+        "eccezioni_e_contesti": "Sovraccarico non sempre causa guasto: dipende dal modello e dal carico distribuito."
+    },
+    "ammortizzatori-veicoli-motore": {
+        "regola_base": "Ammortizzatori scarichi danneggiano sospensioni, pneumatici e tenuta di strada.",
+        "parole_trappola": [
+            "motore",
+            "lubrificante",
+            "telaio",
+            "sospensione rinforzata",
+            "solo uno",
+            "sigillato"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutti i casi sono veri o falsi come indicato."
+    },
+    "Sterzo-servosterzo": {
+        "regola_base": "Sterzo pesante = servosterzo guasto. Foratura = sterzo tira verso la ruota forata.",
+        "parole_trappola": [
+            "frenante",
+            "opposta",
+            "posteriori",
+            "facilità",
+            "bassa",
+            "regolato",
+            "sospensioni",
+            "olio",
+            "temperatura"
+        ],
+        "eccezioni_e_contesti": "In auto elettriche, servosterzo funziona anche con motore spento."
+    },
+    "impianto-scarico": {
+        "regola_base": "Impianto scarico riduce rumore, inquinamento e convoglia gas trattati.",
+        "parole_trappola": [
+            "cambio lubrificante",
+            "veicoli elettrici",
+            "fuori centri abitati",
+            "lana di vetro",
+            "personalmente",
+            "autocertificazione",
+            "manomissione"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Tutte le modifiche richiedono autorizzazione e rispettano norme."
+    },
+    "interruttore-emergenza": {
+        "regola_base": "Spegnimento rapido senza toccare la chiave, solo in emergenza o pendenze.",
+        "parole_trappola": [
+            "sostituisce",
+            "pedivella",
+            "blocco ruote",
+            "cavalletto",
+            "piede destro",
+            "freno stazionamento",
+            "antifurto"
+        ],
+        "eccezioni_e_contesti": "Usa la chiave per spegnimento normale. Interruttore solo emergenza."
+    },
+    "catena-trasmissione": {
+        "regola_base": "Catena trasmissione: controlla usura, tensione e lubrificazione. Sostituisci se usurata.",
+        "parole_trappola": [
+            "autolubrificante",
+            "non pregiudica sicurezza",
+            "rinforzare con filo",
+            "tenditore automatico",
+            "pulire con sgrassante",
+            "modificare rapporto"
+        ],
+        "eccezioni_e_contesti": "Nessuna eccezione. Controllo periodico obbligatorio in tutti i casi."
+    },
+    "Livello-olio-liquidi": {
+        "regola_base": "Olio e liquidi freni: controllo solo in piano, motore spento, dopo minuti.",
+        "parole_trappola": [
+            "sigillati",
+            "cavalletto",
+            "raffreddamento",
+            "meccanico",
+            "finestrella raffreddamento"
+        ],
+        "eccezioni_e_contesti": "Motocicli con sistema di controllo visivo olio: finestrella sulla coppa."
+    }
+}

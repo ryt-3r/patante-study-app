@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria AI - Patente B</title>
+    <style>
+        /* GLOBAL THEME */
+        body { 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
+            font-weight: 300; letter-spacing: -0.2px; margin: 0; padding: 0; min-height: 100vh;
+            background-color: #0a0a0f;
+            background-image: radial-gradient(circle at 0% 0%, #161e30 0%, transparent 50%), radial-gradient(circle at 100% 100%, #1b1624 0%, transparent 50%);
+            background-attachment: fixed; color: #d1d5db; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px 20px 80px 20px; }
+
+        /* COMMAND CENTER */
+        .menu-bar { 
+            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 12px 15px; border-radius: 16px; margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 1px solid #334155;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        
+        .btn-home { 
+            background: rgba(30, 41, 59, 0.8); color: #cbd5e1; text-decoration: none; 
+            padding: 10px 20px; border-radius: 8px; font-weight: 600; border: 1px solid #475569; transition: 0.2s; 
+        }
+        .btn-home:hover { background: rgba(39, 55, 77, 0.9); color: #f8fafc; }
+
+        .view-toggles { display: flex; gap: 10px; }
+        .tab-btn {
+            background: transparent; border: 1px solid #475569; color: #94a3b8; padding: 8px 16px;
+            border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.2s;
+        }
+        .tab-btn.active { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
+        .tab-btn:not(.active):hover { color: #f1f5f9; border-color: #94a3b8; }
+
+        /* HEADER */
+        .header-title { text-align: center; margin-bottom: 30px; }
+        .header-title h1 { font-size: 2.5em; margin: 0; color: #f8fafc; }
+        .header-title p { color: #94a3b8; font-size: 1.1em; margin-top: 5px; }
+
+        /* SEARCH BAR */
+        .search-container { margin-bottom: 30px; width: 100%; }
+        #search-bar {
+            width: 100%; padding: 15px 20px; border-radius: 12px; border: 1px solid #475569; 
+            background: rgba(15, 23, 42, 0.8); color: #f1f5f9; font-size: 1.1em; 
+            box-sizing: border-box; outline: none; transition: all 0.2s; font-family: inherit;
+        }
+        #search-bar:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.2); }
+        #search-bar::placeholder { color: #64748b; }
+
+        /* SMART ACCORDION (Collapsible Categories) */
+        .category-group {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .category-group summary {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 18px 25px;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #f8fafc;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid transparent;
+            transition: background 0.2s;
+        }
+        
+        .category-group summary::-webkit-details-marker { display: none; }
+        .category-group summary:hover { background: rgba(30, 41, 59, 0.9); }
+        
+        .category-group summary::after {
+            content: "▼"; font-size: 0.8em; color: #94a3b8; transition: transform 0.3s ease;
+        }
+        .category-group[open] summary::after { transform: rotate(180deg); color: #38bdf8; }
+        .category-group[open] summary { border-bottom: 1px solid #334155; }
+        
+        .category-count {
+            background: rgba(56, 189, 248, 0.1); color: #38bdf8;
+            padding: 4px 12px; border-radius: 20px; font-size: 0.75em; font-weight: 700; margin-left: 15px;
+        }
+
+        .category-content { padding: 25px; }
+
+        /* GRID LAYOUT */
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+        /* CARD DESIGN */
+        .ai-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid #334155; border-top: 4px solid #38bdf8;
+            border-radius: 12px; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: flex; flex-direction: column; gap: 15px; transition: transform 0.2s;
+        }
+        .ai-card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 15px; }
+        .card-title-group { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; flex: 1; padding-right: 15px; }
+        .card-title { font-size: 1.1em; font-weight: 600; color: #e0f2fe; margin: 0; text-transform: capitalize; line-height: 1.3; }
+        .card-image { width: 75px; height: 75px; background: white; border-radius: 8px; padding: 5px; object-fit: contain; flex-shrink: 0; }
+
+        /* LANG TOGGLE */
+        .lang-toggle { display: flex; background: rgba(15, 23, 42, 0.8); border-radius: 6px; border: 1px solid #475569; overflow: hidden; }
+        .lang-toggle button { background: transparent; border: none; color: #94a3b8; padding: 4px 10px; font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 0.75em; }
+        .lang-toggle button.active { background: #38bdf8; color: #0f172a; }
+
+        .hint-section { margin-bottom: 12px; }
+        .hint-label { font-weight: 600; color: #94a3b8; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 3px;}
+        .hint-text { color: #f1f5f9; font-size: 0.95em; line-height: 1.5; }
+        .trap-text { color: #fca5a5; font-weight: 500; } 
+        .rule-text { color: #6ee7b7; font-weight: 400; }
+
+        #loader { text-align: center; color: #38bdf8; font-size: 1.2em; margin-top: 50px; }
+
+        @media (max-width: 800px) {
+            .menu-bar { flex-direction: column; gap: 15px; }
+            .view-toggles { width: 100%; }
+            .tab-btn { flex: 1; text-align: center; }
+            .library-grid { grid-template-columns: 1fr; }
+            .category-group summary { padding: 15px; font-size: 1.1em; }
+            .category-content { padding: 15px; }
+            #search-bar { padding: 12px 15px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="menu-bar">
+            <a href="/" class="btn-home">← Home</a>
+            <div class="view-toggles">
+                <button class="tab-btn active" onclick="switchView('images')" id="btn-images">🖼️ Con Figura</button>
+                <button class="tab-btn" onclick="switchView('texts')" id="btn-texts">📝 Solo Testo</button>
+            </div>
+        </div>
+
+        <div class="header-title">
+            <h1>Libreria Trucchi AI</h1>
+            <p>I tuoi appunti intelligenti. Regole, eccezioni e trappole.</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="🔍 Cerca per titolo, regola, o parola trappola (es. freno, 145)..." oninput="filterCards()">
+        </div>
+
+        <div id="loader">Caricamento database AI... ⏳</div>
+        
+        <div id="main-content" style="display: none;">
+            <!-- Categories will be injected here automatically -->
+        </div>
+    </div>
+
+    <script>
+        let imageCheatsheets = {};
+        let textCheatsheets = {};
+        window.cardStore = {}; 
+
+        async function fetchAIData() {
+            document.getElementById('loader').style.display = 'block';
+            try {
+                const imgRes = await fetch('/static/cheatsheets.json');
+                if (imgRes.ok) imageCheatsheets = await imgRes.json();
+                
+                const txtRes = await fetch('/static/text_cheatsheets.json');
+                if (txtRes.ok) textCheatsheets = await txtRes.json();
+                
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                switchView('images'); 
+            } catch (e) {
+                document.getElementById('loader').innerHTML = "<span style='color:#fca5a5'>Errore nel caricamento dei file JSON.</span>";
+            }
+        }
+
+        function cleanTitle(text) { 
+            let t = text.replace('img_sign/', '').replace('.png', '').replace('.jpg', '');
+            return t.split('-').join(' ');
+        }
+
+        // 🧠 THE EXHAUSTIVE CATEGORIZER
+        function getCategory(title, type) {
+            const t = title.toLowerCase();
+            
+            if (type === 'texts') {
+                // 1. Segnali
+                if (t.includes('pericolo') || t.includes('precedenza') || t.includes('incroc')) return "⚠️ Segnali di Pericolo & Precedenza";
+                if (t.includes('divieto') || t.includes('obbligo')) return "⛔ Segnali di Divieto & Obbligo";
+                if (t.includes('indicazion') || t.includes('pannell')) return "🟦 Segnali di Indicazione & Pannelli";
+                
+                // 2. Traffico e Segnaletica
+                if (t.includes('orizzontale') || t.includes('strisce') || t.includes('semafor') || t.includes('agent') || t.includes('polizia') || t.includes('vigil') || t.includes('segnaletic')) return "🚦 Segnaletica, Semafori & Agenti";
+                
+                // 3. Regole base
+                if (t.includes('velocit') || t.includes('distanz') || t.includes('limit')) return "📏 Velocità & Distanze di Sicurezza";
+                if (t.includes('sorpass') || t.includes('manovr') || t.includes('retromarcia') || t.includes('inversion') || t.includes('svolta') || t.includes('corsia')) return "🛣️ Manovre, Incroci & Sorpassi";
+                if (t.includes('sosta') || t.includes('fermata') || t.includes('parcheggio') || t.includes('partenz') || t.includes('arresto')) return "🅿️ Fermata, Sosta & Partenza";
+                if (t.includes('autostrad') || t.includes('extraurbana') || t.includes('carreggiata') || t.includes('pedonali') || t.includes('ztl') || t.includes('strad') || t.includes('marciapiede') || t.includes('traffico')) return "🛣️ Tipi di Strada e Norme";
+                
+                // 4. Utenti e Sicurezza
+                if (t.includes('pedon') || t.includes('ciclist') || t.includes('bambin') || t.includes('anzian') || t.includes('ciech') || t.includes('disabil') || t.includes('vulnerabil') || t.includes('ruote') || t.includes('moto')) return "🚶 Rispetto degli Utenti Vulnerabili";
+                if (t.includes('cintur') || t.includes('airbag') || t.includes('casco') || t.includes('seggiolin') || t.includes('abbigliament') || t.includes('protezion') || t.includes('sicurezza')) return "🛡️ Dispositivi di Sicurezza";
+                
+                // 5. Veicolo e Fisica
+                if (t.includes('luci') || t.includes('spie') || t.includes('illuminazione') || t.includes('fari') || t.includes('visibilit')) return "💡 Illuminazione & Spie";
+                if (t.includes('freni') || t.includes('pneumatic') || t.includes('aderenza') || t.includes('aquaplan') || t.includes('ammortizzatori') || t.includes('sospension') || t.includes('motore') || t.includes('traino') || t.includes('rimorch') || t.includes('carico') || t.includes('bagagli') || t.includes('specchietti') || t.includes('manutenzione') || t.includes('meccanica') || t.includes('massa') || t.includes('peso') || t.includes('veicol')) return "⚙️ Meccanica, Fisica & Uso Veicolo";
+
+                // 6. Amministrazione e Salute
+                if (t.includes('patente') || t.includes('document') || t.includes('targhe') || t.includes('revisione') || t.includes('responsabilit') || t.includes('civile') || t.includes('penal') || t.includes('sanzion') || t.includes('assicurazion') || t.includes('rca') || t.includes('foglio rosa') || t.includes('punti') || t.includes('massimal')) return "📄 Documenti, Patenti & Responsabilità";
+                if (t.includes('soccorso') || t.includes('incident') || t.includes('ferit') || t.includes('psico') || t.includes('alcol') || t.includes('drog') || t.includes('farmaci') || t.includes('stanchezza') || t.includes('sonno') || t.includes('rifless') || t.includes('salute') || t.includes('ebbrezza')) return "🚑 Salute, Primo Soccorso & Incidenti";
+                if (t.includes('inquinament') || t.includes('ambient') || t.includes('consum') || t.includes('scarico') || t.includes('rumor') || t.includes('emission')) return "🌍 Rispetto dell'Ambiente";
+
+                // 7. General catch-all
+                if (t.includes('guida') || t.includes('comportament') || t.includes('conducent') || t.includes('norm') || t.includes('regol') || t.includes('attenzion') || t.includes('dover')) return "📚 Norme Generali di Comportamento";
+
+                return "📚 Altri Argomenti";
+            } else {
+                let match = title.match(/\d+/);
+                if (match) {
+                    let num = parseInt(match[0]);
+                    let lower = Math.floor(num / 50) * 50;
+                    let upper = lower + 49;
+                    return `🖼️ Figure ${lower} - ${upper}`;
+                }
+                return "🖼️ Altre Figure";
+            }
+        }
+
+        // DEEP LIVE SEARCH FILTER
+        function filterCards() {
+            const query = document.getElementById('search-bar').value.toLowerCase().trim();
+            const categories = document.querySelectorAll('.category-group');
+            
+            categories.forEach(cat => {
+                let hasVisible = false;
+                const cards = cat.querySelectorAll('.ai-card');
+                
+                cards.forEach(card => {
+                    const title = card.querySelector('.card-title').innerText.toLowerCase();
+                    const trapText = card.querySelector('.trap-text') ? card.querySelector('.trap-text').innerText.toLowerCase() : "";
+                    const ruleText = card.querySelector('.rule-text') ? card.querySelector('.rule-text').innerText.toLowerCase() : "";
+                    
+                    if (title.includes(query) || trapText.includes(query) || ruleText.includes(query)) {
+                        card.style.display = 'flex';
+                        hasVisible = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                cat.style.display = hasVisible ? 'block' : 'none';
+                
+                if (query !== '' && hasVisible) {
+                    cat.open = true;
+                } else if (query === '') {
+                    cat.open = false;
+                }
+            });
+        }
+
+        // Translation Engine
+        async function translateTextAPI(text) {
+            if (!text || text === "N/A") return text;
+            const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=it&tl=en&dt=t&q=${encodeURIComponent(text)}`);
+            const data = await res.json();
+            return data[0].map(item => item[0]).join('');
+        }
+
+        async function switchLang(id, lang) {
+            document.getElementById(`btn-it-${id}`).classList.remove('active');
+            document.getElementById(`btn-en-${id}`).classList.remove('active');
+            document.getElementById(`btn-${lang}-${id}`).classList.add('active');
+
+            const data = window.cardStore[id];
+            const ruleEl = document.getElementById(`text-rule-${id}`);
+            const trapEl = document.getElementById(`text-trap-${id}`);
+            const excEl = document.getElementById(`text-exc-${id}`);
+            
+            if (lang === 'it') {
+                ruleEl.innerText = data.it.regola_base || "N/A";
+                trapEl.innerText = data.it.parole_trappola || "N/A";
+                excEl.innerText = data.it.eccezioni_e_contesti || "N/A";
+                return;
+            }
+
+            if (lang === 'en') {
+                if (data.en) {
+                    ruleEl.innerText = data.en.regola_base;
+                    trapEl.innerText = data.en.parole_trappola;
+                    excEl.innerText = data.en.eccezioni_e_contesti;
+                } else {
+                    ruleEl.innerText = "Translating... ⏳"; trapEl.innerText = "Translating... ⏳"; excEl.innerText = "Translating... ⏳";
+                    try {
+                        const rule = await translateTextAPI(data.it.regola_base);
+                        const trap = await translateTextAPI(data.it.parole_trappola);
+                        const exc = await translateTextAPI(data.it.eccezioni_e_contesti);
+                        data.en = { regola_base: rule, parole_trappola: trap, eccezioni_e_contesti: exc };
+                        ruleEl.innerText = rule; trapEl.innerText = trap; excEl.innerText = exc;
+                    } catch (e) { ruleEl.innerText = "Translation error."; }
+                }
+            }
+        }
+
+        function buildCard(id, title, imgPath, cheatData) {
+            window.cardStore[id] = { it: cheatData, en: null };
+            let imgHTML = imgPath ? `<img src="/${imgPath}" class="card-image" loading="lazy" alt="Figura">` : '';
+            
+            return `
+            <div class="ai-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <h3 class="card-title">${title}</h3>
+                        <div class="lang-toggle">
+                            <button class="active" id="btn-it-${id}" onclick="switchLang('${id}', 'it')">IT</button>
+                            <button id="btn-en-${id}" onclick="switchLang('${id}', 'en')">EN</button>
+                        </div>
+                    </div>
+                    ${imgHTML}
+                </div>
+                
+                <div class="hint-section">
+                    <span class="hint-label">🎯 Regola Base (Vero)</span>
+                    <span class="hint-text rule-text" id="text-rule-${id}">${cheatData.regola_base || "N/A"}</span>
+                </div>
+                
+                <div class="hint-section">
+                    <span class="hint-label">🚩 Parole Trappola (Falso)</span>
+                    <span class="hint-text trap-text" id="text-trap-${id}">${cheatData.parole_trappola || "N/A"}</span>
+                </div>
+                
+                <div class="hint-section">
+                    <span class="hint-label">⚠️ Eccezioni e Limiti</span>
+                    <span class="hint-text" id="text-exc-${id}">${cheatData.eccezioni_e_contesti || "N/A"}</span>
+                </div>
+            </div>`;
+        }
+
+        function switchView(type) {
+            document.getElementById('btn-images').classList.remove('active');
+            document.getElementById('btn-texts').classList.remove('active');
+            document.getElementById(`btn-${type}`).classList.add('active');
+            
+            document.getElementById('search-bar').value = '';
+            
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = ''; 
+            
+            let categorizedCards = {};
+            let count = 0;
+
+            if (type === 'images') {
+                for (const [path, data] of Object.entries(imageCheatsheets)) {
+                    count++;
+                    const title = cleanTitle(path);
+                    const category = getCategory(title, 'images');
+                    if (!categorizedCards[category]) categorizedCards[category] = [];
+                    categorizedCards[category].push({ id: `img_${count}`, title: title, path: path, data: data });
+                }
+            } else {
+                for (const [topic, data] of Object.entries(textCheatsheets)) {
+                    count++;
+                    const title = cleanTitle(topic);
+                    const category = getCategory(title, 'texts');
+                    if (!categorizedCards[category]) categorizedCards[category] = [];
+                    categorizedCards[category].push({ id: `txt_${count}`, title: title, path: null, data: data });
+                }
+            }
+
+            const sortedCategories = Object.keys(categorizedCards).sort((a, b) => {
+                let matchA = a.match(/\d+/);
+                let matchB = b.match(/\d+/);
+                if (matchA && matchB) return parseInt(matchA[0]) - parseInt(matchB[0]);
+                return a.localeCompare(b);
+            });
+            
+            sortedCategories.forEach(category => {
+                const cards = categorizedCards[category];
+                
+                cards.sort((a, b) => {
+                    let numA = a.title.match(/\d+/);
+                    let numB = b.title.match(/\d+/);
+                    if (numA && numB) return parseInt(numA[0]) - parseInt(numB[0]);
+                    return a.title.localeCompare(b.title);
+                });
+                
+                let cardsHTML = '';
+                cards.forEach(card => {
+                    cardsHTML += buildCard(card.id, card.title, card.path, card.data);
+                });
+
+                const sectionHTML = `
+                <details class="category-group">
+                    <summary>
+                        <div>
+                            ${category}
+                            <span class="category-count">${cards.length}</span>
+                        </div>
+                    </summary>
+                    <div class="category-content">
+                        <div class="library-grid">
+                            ${cardsHTML}
+                        </div>
+                    </div>
+                </details>`;
+                
+                mainContent.innerHTML += sectionHTML;
+            });
+            
+            if (Object.keys(categorizedCards).length === 0) {
+                mainContent.innerHTML = `<div style="text-align:center; color:#64748b; padding: 40px;">Nessun dato trovato in questa vista.</div>`;
+            }
+        }
+
+        fetchAIData();
+    </script>
+</body>
+</html>

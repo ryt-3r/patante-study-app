@@ -63,14 +63,54 @@
         }
         .btn-flag-review:hover { background: rgba(217, 119, 6, 0.4); color: #fff; }
         
-        #message-area { text-align: center; font-size: 1.2em; color: #64748b; margin-top: 20px; font-weight: 500; }
+        #message-area { text-align: center; font-size: 1.2em; color: #64748b; margin-top: 20px; margin-bottom: 20px; font-weight: 500; }
         .error-box { background: rgba(127, 29, 29, 0.8); backdrop-filter: blur(5px); color: #fca5a5; padding: 15px; border-radius: 12px; margin: 20px auto; max-width: 600px; font-weight: 500; border: 1px solid #991b1b; }
         
+        /* THE TOPIC GALLERY GRID */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; width: 100%; margin-bottom: 30px; }
+        .gallery-item { background: rgba(30, 41, 59, 0.6); border: 1px solid #334155; border-radius: 16px; padding: 15px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 15px; }
+        .gallery-item:hover { transform: translateY(-4px); background: rgba(39, 53, 73, 0.8); border-color: #38bdf8; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
+        .gallery-img-wrapper { width: 100%; height: 140px; display: flex; align-items: center; justify-content: center; background: #ffffff; border-radius: 10px; overflow: hidden; padding: 10px; box-sizing: border-box; }
+        .gallery-img-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+        .no-img-square { color: #64748b; font-style: italic; font-size: 0.9em; text-align: center; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.5); border-radius: 8px; }
+        .gallery-title { font-size: 1.05em; font-weight: 500; color: #f8fafc; text-align: center; line-height: 1.3; }
+
         /* Study Cards & Matching Grid */
         .study-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 20px; align-items: center; border: 1px solid #334155; }
         .image-wrapper { text-align: center; width: 100%; background: #ffffff; padding: 10px; border-radius: 12px; max-width: fit-content; margin: 0 auto; }
         .study-card img { max-width: 100%; max-height: 150px; border-radius: 8px; } 
         
+        /* NEW: AI CHEAT SHEET UI WITH IT/EN TOGGLE */
+        .ai-controls { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: -5px; }
+        .btn-ai-trick {
+            background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; 
+            padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.95em; 
+            transition: all 0.2s ease; display: flex; align-items: center; gap: 8px;
+        }
+        .btn-ai-trick:hover { background: rgba(56, 189, 248, 0.2); box-shadow: 0 0 15px rgba(56,189,248,0.25); transform: translateY(-1px); }
+        
+        .ai-hint-box {
+            width: 100%; max-width: 800px; background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.95) 100%);
+            border: 1px solid #334155; border-left: 4px solid #38bdf8; border-radius: 12px; padding: 20px;
+            display: none; color: #cbd5e1; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: left;
+        }
+        
+        /* Header & Lang Toggle */
+        .ai-header-controls { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 12px; margin-bottom: 15px; }
+        .ai-hint-box h4 { margin: 0; color: #e0f2fe; font-size: 1.1em; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        
+        .lang-toggle { display: flex; background: rgba(15, 23, 42, 0.8); border-radius: 8px; border: 1px solid #475569; overflow: hidden; }
+        .lang-toggle button { background: transparent; border: none; color: #94a3b8; padding: 5px 14px; font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 0.85em; letter-spacing: 0.5px; }
+        .lang-toggle button.active { background: #38bdf8; color: #0f172a; }
+        .lang-toggle button:not(.active):hover { color: #f1f5f9; background: rgba(56, 189, 248, 0.15); }
+
+        .hint-section { margin-bottom: 12px; }
+        .hint-section:last-child { margin-bottom: 0; }
+        .hint-label { font-weight: 600; color: #94a3b8; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 3px;}
+        .hint-text { color: #f1f5f9; font-size: 1.05em; line-height: 1.5; }
+        .trap-text { color: #fca5a5; font-weight: 500; } 
+        .rule-text { color: #6ee7b7; font-weight: 400; }
+
         .questions-wrapper { width: 100%; }
         .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; width: 100%; align-items: stretch; }
         
@@ -84,21 +124,10 @@
         .v-card { border-left: 4px solid #34d399; }
         .f-card { border-left: 4px solid #fb7185; }
         
-        .matched-pair.v-card { 
-            background: linear-gradient(145deg, rgba(6, 78, 59, 0.6) 0%, rgba(30, 41, 59, 0.8) 100%); 
-            border: 1px solid rgba(52, 211, 153, 0.3); 
-            border-left: 6px solid #10b981; 
-            box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.05), 0 8px 16px rgba(0,0,0,0.3); 
-        }
-        .matched-pair.f-card { 
-            background: linear-gradient(145deg, rgba(136, 19, 55, 0.6) 0%, rgba(30, 41, 59, 0.8) 100%); 
-            border: 1px solid rgba(251, 113, 133, 0.3); 
-            border-left: 6px solid #e11d48; 
-            box-shadow: inset 0 0 20px rgba(225, 29, 72, 0.05), 0 8px 16px rgba(0,0,0,0.3); 
-        }
+        .matched-pair.v-card { background: linear-gradient(145deg, rgba(6, 78, 59, 0.6) 0%, rgba(30, 41, 59, 0.8) 100%); border: 1px solid rgba(52, 211, 153, 0.3); border-left: 6px solid #10b981; }
+        .matched-pair.f-card { background: linear-gradient(145deg, rgba(136, 19, 55, 0.6) 0%, rgba(30, 41, 59, 0.8) 100%); border: 1px solid rgba(251, 113, 133, 0.3); border-left: 6px solid #e11d48; }
         
         .empty-cell { background: transparent; border: none; box-shadow: none; }
-        
         .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.3em; opacity: 0.2; filter: grayscale(100%); transition: all 0.2s; padding: 0; margin: 0; flex-shrink: 0; }
         .flag-btn:hover { opacity: 0.8; transform: scale(1.1); }
         .cell-card.is-flagged { background: rgba(69, 41, 26, 0.8); border-color: #9a3412; }
@@ -107,46 +136,28 @@
         .clickable-word { cursor: pointer; transition: color 0.2s; display: inline; padding: 2px 0; }
         .clickable-word:hover { color: #38bdf8; text-shadow: 0 0 8px rgba(56, 189, 248, 0.4); }
         
-        #translation-panel { 
-            display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
-            background: rgba(30, 41, 59, 0.95); border: 1px solid #38bdf8; color: #f1f5f9; padding: 25px 30px; 
-            border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.3); 
-            z-index: 1000; text-align: left; min-width: 320px; max-width: 90%; font-size: 1.1em; 
-            backdrop-filter: blur(10px);
-        }
+        #translation-panel { display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(30, 41, 59, 0.95); border: 1px solid #38bdf8; color: #f1f5f9; padding: 25px 30px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.3); z-index: 1000; text-align: left; min-width: 320px; max-width: 90%; font-size: 1.1em; backdrop-filter: blur(10px); }
         .close-btn { position: absolute; top: 12px; right: 18px; cursor: pointer; color: #64748b; font-size: 1.8em; font-weight: 400; transition: color 0.2s; line-height: 1; }
         .close-btn:hover { color: #f1f5f9; }
         
         .tr-row { margin-bottom: 12px; }
-        .tr-label { color: #94a3b8; font-size: 0.85em; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
+        .tr-label { color: #94a3b8; font-size: 0.85em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 2px; }
         .tr-it { font-weight: 400; color: #e2e8f0; }
         .tr-en { color: #38bdf8; font-weight: 500; margin-left: 8px; }
-        .tr-sentence { border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 15px; margin-top: 15px; font-size: 0.95em; line-height: 1.5; color: #cbd5e1; font-weight: 300; }
-        .tr-sentence .tr-en { color: #6ee7b7; font-weight: 400; margin-left: 0; display: block; margin-top: 5px; }
+        .tr-sentence { border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 15px; margin-top: 15px; font-size: 0.95em; line-height: 1.5; color: #cbd5e1; }
 
         @media (max-width: 800px) {
             body { padding: 0 10px 40px 10px; }
-            .menu-bar { 
-                padding: 10px; margin: 15px 0; gap: 8px; border-radius: 12px;
-            }
-            .menu-bar select, .btn-flag-review, .btn-home-small { 
-                width: 100%; min-width: 100%; padding: 8px 10px; font-size: 0.95em; box-sizing: border-box; text-align: center;
-            }
-            
-            #message-area { margin-top: 15px; font-size: 1em; }
-            .study-card { padding: 12px; gap: 12px; margin-bottom: 15px; border-radius: 12px; }
-            .study-card img { max-height: 120px; }
+            .menu-bar { padding: 10px; margin: 15px 0; gap: 8px; border-radius: 12px; }
+            .menu-bar select, .btn-flag-review, .btn-home-small { width: 100%; text-align: center; }
+            .ai-header-controls { flex-direction: column; gap: 10px; align-items: flex-start; }
             .comparison-grid { display: flex; flex-direction: column; gap: 6px; }
-            .grid-header { display: none; }
-            .empty-cell { display: none; }
-            .cell-card { padding: 10px 15px; font-size: 1.05em; line-height: 1.3; border-radius: 8px; }
-            #translation-panel { width: 92%; font-size: 1em; padding: 20px 15px; bottom: 15px; }
+            .grid-header, .empty-cell { display: none; }
         }
     </style>
 </head>
 <body>
     
-    <!-- Top Command Center -->
     <div class="menu-bar">
         <a href="/" class="btn-home-small">← Home</a>
         <select class="category-select" onchange="onCategoryChange(this)">
@@ -161,11 +172,10 @@
         <button class="btn-flag-review" onclick="loadFlagged()">🚩 Ripassa Salvate</button>
     </div>
     
-    <div id="message-area">Caricamento in corso...</div>
+    <div id="message-area">Seleziona un Capitolo (1) per iniziare.</div>
     <div id="content-container"></div>
     <div id="translation-panel"></div>
 
-    <!-- Bottom Command Center (Duplicated) -->
     <div class="menu-bar" style="margin-top: 30px;">
         <a href="/" class="btn-home-small">← Home</a>
         <select class="category-select" onchange="onCategoryChange(this)">
@@ -182,12 +192,94 @@
     
     <script>
         let currentMode = 'normal';
+        let imageCheatsheets = {};
+        let textCheatsheets = {};
+        
+        // Global store for the translated state of each study card
+        window.cheatSheetDataStore = {};
 
-        // Synchronize all dropdowns (Top and Bottom)
-        function syncSelects(className, value) {
-            document.querySelectorAll('.' + className).forEach(el => el.value = value);
+        async function fetchAIData() {
+            try {
+                const imgRes = await fetch('/static/cheatsheets.json');
+                if (imgRes.ok) imageCheatsheets = await imgRes.json();
+            } catch (e) {}
+            
+            try {
+                const txtRes = await fetch('/static/text_cheatsheets.json');
+                if (txtRes.ok) textCheatsheets = await txtRes.json();
+            } catch (e) {}
+        }
+        
+        function toggleAIHint(index) {
+            const box = document.getElementById(`ai-hint-${index}`);
+            box.style.display = (box.style.display === 'none' || box.style.display === '') ? 'block' : 'none';
         }
 
+        // Translation API Request (Free public endpoint)
+        async function translateTextAPI(text) {
+            if (!text || text === "N/A") return text;
+            const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=it&tl=en&dt=t&q=${encodeURIComponent(text)}`);
+            const data = await res.json();
+            return data[0].map(item => item[0]).join('');
+        }
+
+        // Handle IT/EN Switch for Cheat Sheets
+        async function switchLang(index, lang) {
+            document.getElementById(`btn-it-${index}`).classList.remove('active');
+            document.getElementById(`btn-en-${index}`).classList.remove('active');
+            document.getElementById(`btn-${lang}-${index}`).classList.add('active');
+
+            const data = window.cheatSheetDataStore[index];
+            const ruleEl = document.getElementById(`text-rule-${index}`);
+            const trapEl = document.getElementById(`text-trap-${index}`);
+            const excEl = document.getElementById(`text-exc-${index}`);
+            
+            const lRule = document.getElementById(`label-rule-${index}`);
+            const lTrap = document.getElementById(`label-trap-${index}`);
+            const lExc = document.getElementById(`label-exc-${index}`);
+
+            if (lang === 'it') {
+                ruleEl.innerText = data.it.regola_base || "N/A";
+                trapEl.innerText = data.it.parole_trappola || "N/A";
+                excEl.innerText = data.it.eccezioni_e_contesti || "N/A";
+                lRule.innerText = "🎯 Regola Base (Vero)";
+                lTrap.innerText = "🚩 Parole Trappola (Falso)";
+                lExc.innerText = "⚠️ Eccezioni e Limiti";
+                return;
+            }
+
+            if (lang === 'en') {
+                if (data.en) {
+                    ruleEl.innerText = data.en.regola_base;
+                    trapEl.innerText = data.en.parole_trappola;
+                    excEl.innerText = data.en.eccezioni_e_contesti;
+                } else {
+                    ruleEl.innerText = "Translating... ⏳";
+                    trapEl.innerText = "Translating... ⏳";
+                    excEl.innerText = "Translating... ⏳";
+
+                    try {
+                        const rule = await translateTextAPI(data.it.regola_base);
+                        const trap = await translateTextAPI(data.it.parole_trappola);
+                        const exc = await translateTextAPI(data.it.eccezioni_e_contesti);
+
+                        data.en = { regola_base: rule, parole_trappola: trap, eccezioni_e_contesti: exc };
+                        
+                        ruleEl.innerText = rule;
+                        trapEl.innerText = trap;
+                        excEl.innerText = exc;
+                    } catch (e) {
+                        ruleEl.innerText = "Translation error. Please check connection.";
+                    }
+                }
+                lRule.innerText = "🎯 Core Rule (True)";
+                lTrap.innerText = "🚩 Trap Words (False)";
+                lExc.innerText = "⚠️ Exceptions & Limits";
+            }
+        }
+
+        function sanitizeId(str) { return str.replace(/[^a-zA-Z0-9]/g, '_'); }
+        function syncSelects(className, value) { document.querySelectorAll('.' + className).forEach(el => el.value = value); }
         function cleanText(text) { 
             if (!text) return "Argomento Sconosciuto";
             return String(text).split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); 
@@ -198,42 +290,33 @@
                 const res = await fetch('/api/categories');
                 const data = await res.json();
                 
-                if (data.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${data.error}</div>`; return; }
-                
                 const total = data.reduce((sum, cat) => sum + cat.count, 0);
                 let impGroup = `<optgroup label="15 Argomenti Più Importanti (Alta Priorità)">`;
                 let lessGroup = `<optgroup label="10 Argomenti Meno Importanti">`;
                 
                 data.forEach(cat => {
                     const optHTML = `<option value="${cat.name}">${cleanText(cat.name)} (${cat.count})</option>`;
-                    if (cat.is_important) impGroup += optHTML;
-                    else lessGroup += optHTML;
+                    if (cat.is_important) impGroup += optHTML; else lessGroup += optHTML;
                 });
                 
-                impGroup += `</optgroup>`;
-                lessGroup += `</optgroup>`;
-                
+                impGroup += `</optgroup>`; lessGroup += `</optgroup>`;
                 const finalHTML = `<option value="all">1. Scegli il Capitolo (${total})</option>` + impGroup + lessGroup;
-                
                 document.querySelectorAll('.category-select').forEach(el => el.innerHTML = finalHTML);
-                document.getElementById('message-area').innerText = "Seleziona un Capitolo (1) per iniziare.";
-            } catch (err) {
-                document.getElementById('message-area').innerHTML = `<div class="error-box">Errore Fatale: Impossibile leggere il database.</div>`;
-            }
+            } catch (err) {}
+        }
+
+        function diveIntoSubcategory(subName) {
+            syncSelects('subcategory-select', subName);
+            onSubcategoryChange(document.querySelector('.subcategory-select'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         async function onCategoryChange(element) {
             const val = element ? element.value : document.querySelector('.category-select').value;
             syncSelects('category-select', val);
             
-            document.querySelectorAll('.subcategory-select').forEach(el => {
-                el.innerHTML = '<option value="all">2. Scegli l\'Argomento...</option>';
-                el.disabled = true;
-            });
-            document.querySelectorAll('.figure-select').forEach(el => {
-                el.innerHTML = '<option value="all">3. Tutte le Figure</option>';
-                el.disabled = true;
-            });
+            document.querySelectorAll('.subcategory-select').forEach(el => { el.innerHTML = '<option value="all">2. Scegli l\'Argomento...</option>'; el.disabled = true; });
+            document.querySelectorAll('.figure-select').forEach(el => { el.innerHTML = '<option value="all">3. Tutte le Figure</option>'; el.disabled = true; });
             document.getElementById('content-container').innerHTML = '';
             
             if (val === 'all') {
@@ -244,18 +327,40 @@
                     const res = await fetch(`/api/subcategories?category=${encodeURIComponent(val)}`);
                     const subcats = await res.json();
                     
-                    if (subcats.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${subcats.error}</div>`; return; }
-                    
                     const total = subcats.reduce((sum, sub) => sum + sub.count, 0);
                     let subHTML = `<option value="all">2. Scegli l'Argomento (${total})</option>`;
-                    
-                    subcats.forEach(sub => {
-                        subHTML += `<option value="${sub.name}">${cleanText(sub.name)} (${sub.count})</option>`;
-                    });
-                    
+                    subcats.forEach(sub => { subHTML += `<option value="${sub.name}">${cleanText(sub.name)} (${sub.count})</option>`; });
                     document.querySelectorAll('.subcategory-select').forEach(el => el.innerHTML = subHTML);
-                    document.getElementById('message-area').innerText = "Seleziona un Argomento (2) o usa il tasto 🚩 Ripassa Salvate.";
-                } catch(err) { document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento.</div>`; }
+                    
+                    document.getElementById('message-area').innerHTML = `Esplora la galleria o seleziona un Argomento (2).`;
+                    let galleryHTML = '<div class="gallery-grid">';
+                    subcats.forEach(sub => {
+                        const safeName = sub.name.replace(/'/g, "\\'");
+                        galleryHTML += `
+                            <div class="gallery-item" onclick="diveIntoSubcategory('${safeName}')">
+                                <div class="gallery-img-wrapper" id="gal-img-${sanitizeId(sub.name)}">
+                                    <div class="no-img-square loading-spinner">⏳</div>
+                                </div>
+                                <div class="gallery-title">${cleanText(sub.name)} <br><span style="color:#94a3b8; font-size:0.85em;">(${sub.count} domande)</span></div>
+                            </div>
+                        `;
+                    });
+                    galleryHTML += '</div>';
+                    document.getElementById('content-container').innerHTML = galleryHTML;
+
+                    subcats.forEach(async (sub) => {
+                        try {
+                            const figRes = await fetch(`/api/figures?category=${encodeURIComponent(val)}&subcategory=${encodeURIComponent(sub.name)}`);
+                            const figures = await figRes.json();
+                            const wrapper = document.getElementById(`gal-img-${sanitizeId(sub.name)}`);
+                            if(wrapper) {
+                                let firstFig = figures.find(f => f.name && f.name !== 'no_image' && f.name !== 'all');
+                                if(firstFig) wrapper.innerHTML = `<img src="/${firstFig.name}" loading="lazy" alt="Anteprima">`;
+                                else wrapper.innerHTML = `<div class="no-img-square">Nessuna Immagine</div>`;
+                            }
+                        } catch(e) {}
+                    });
+                } catch(err) {}
             }
         }
 
@@ -264,31 +369,23 @@
             const subVal = element ? element.value : document.querySelector('.subcategory-select').value;
             syncSelects('subcategory-select', subVal);
             
-            document.querySelectorAll('.figure-select').forEach(el => {
-                el.innerHTML = '<option value="all">3. Tutte le Figure</option>';
-            });
+            document.querySelectorAll('.figure-select').forEach(el => { el.innerHTML = '<option value="all">3. Tutte le Figure</option>'; });
             
             if (subVal === 'all') {
                 document.querySelectorAll('.figure-select').forEach(el => el.disabled = true);
-                document.getElementById('content-container').innerHTML = '';
-                document.getElementById('message-area').innerText = "Seleziona un Argomento (2) per visualizzare le domande.";
+                onCategoryChange(document.querySelector('.category-select'));
             } else {
                 document.querySelectorAll('.figure-select').forEach(el => el.disabled = false);
                 try {
                     const res = await fetch(`/api/figures?category=${encodeURIComponent(catVal)}&subcategory=${encodeURIComponent(subVal)}`);
                     const figures = await res.json();
                     
-                    if (figures.error) { document.getElementById('message-area').innerHTML = `<div class="error-box">${figures.error}</div>`; return; }
-
                     const total = figures.reduce((sum, fig) => sum + fig.count, 0);
                     let figHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
-                    figures.forEach(fig => {
-                        figHTML += `<option value="${fig.name}">Figura: ${fig.name.split('/').pop()} (${fig.count})</option>`;
-                    });
-                    
+                    figures.forEach(fig => { figHTML += `<option value="${fig.name}">Figura: ${fig.name.split('/').pop()} (${fig.count})</option>`; });
                     document.querySelectorAll('.figure-select').forEach(el => el.innerHTML = figHTML);
                     loadContent(); 
-                } catch(err) { document.getElementById('message-area').innerHTML = `<div class="error-box">Errore durante il caricamento.</div>`; }
+                } catch(err) {}
             }
         }
 
@@ -315,14 +412,10 @@
         }
 
         function makeWordsClickable(sentence) {
-            return sentence.split(' ').map((word, i) => {
-                return `<span class="clickable-word" data-index="${i}" onclick="handleWordClick(this)">${word}</span>`;
-            }).join(' ');
+            return sentence.split(' ').map((word, i) => { return `<span class="clickable-word" data-index="${i}" onclick="handleWordClick(this)">${word}</span>`; }).join(' ');
         }
 
-        function closeTranslation() {
-            document.getElementById('translation-panel').style.display = 'none';
-        }
+        function closeTranslation() { document.getElementById('translation-panel').style.display = 'none'; }
 
         async function handleWordClick(element) {
             const qTextSpan = element.closest('.question-text');
@@ -330,7 +423,6 @@
             const i = parseInt(element.getAttribute('data-index'));
             
             const word = words[i];
-            
             let chunk = [];
             if (i > 0) chunk.push(words[i-1]);
             chunk.push(word);
@@ -351,25 +443,14 @@
                 });
                 const data = await res.json();
                 
-                if (data.error) throw new Error(data.error);
-                
                 panel.innerHTML = `
                     <span class="close-btn" onclick="closeTranslation()">&times;</span>
-                    <div class="tr-row">
-                        <span class="tr-label">Parola</span>
-                        <span class="tr-it">${word}</span> <span style="color:#64748b; margin:0 5px;">➔</span> <span class="tr-en">${data.word}</span>
-                    </div>
-                    <div class="tr-row">
-                        <span class="tr-label">Contesto (3 Parole)</span>
-                        <span class="tr-it">${phrase}</span> <span style="color:#64748b; margin:0 5px;">➔</span> <span class="tr-en">${data.phrase}</span>
-                    </div>
-                    <div class="tr-sentence">
-                        <em>"${sentence}"</em>
-                        <span class="tr-en">"${data.sentence}"</span>
-                    </div>
+                    <div class="tr-row"><span class="tr-label">Parola</span><span class="tr-it">${word}</span> <span style="color:#64748b; margin:0 5px;">➔</span> <span class="tr-en">${data.word}</span></div>
+                    <div class="tr-row"><span class="tr-label">Contesto (3 Parole)</span><span class="tr-it">${phrase}</span> <span style="color:#64748b; margin:0 5px;">➔</span> <span class="tr-en">${data.phrase}</span></div>
+                    <div class="tr-sentence"><em>"${sentence}"</em><span class="tr-en">"${data.sentence}"</span></div>
                 `;
             } catch (err) {
-                panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; color:#fca5a5; margin-top:10px; font-weight: 500;">Errore di connessione.</div>`;
+                panel.innerHTML = `<span class="close-btn" onclick="closeTranslation()">&times;</span><div style="text-align:center; color:#fca5a5; margin-top:10px;">Errore di connessione.</div>`;
             }
         }
 
@@ -379,8 +460,7 @@
             const set2 = new Set(str2.toLowerCase().split(' '));
             let intersection = 0;
             for(let w of set1) if(set2.has(w)) intersection++;
-            const union = set1.size + set2.size - intersection;
-            return intersection / union;
+            return intersection / (set1.size + set2.size - intersection);
         }
         
         function renderCell(q, type, isMatched) {
@@ -399,68 +479,37 @@
         function buildComparisonGrid(veroList, falsoList) {
             veroList.sort((a, b) => a.domanda.localeCompare(b.domanda));
             falsoList.sort((a, b) => a.domanda.localeCompare(b.domanda));
-
-            let matchedPairs = [];
-            let unmatchedVero = [];
-            let remainingFalso = [...falsoList];
+            let matchedPairs = [], unmatchedVero = [], remainingFalso = [...falsoList];
 
             veroList.forEach(v => {
-                let bestIdx = -1;
-                let maxSim = 0;
+                let bestIdx = -1, maxSim = 0;
                 for(let i=0; i<remainingFalso.length; i++) {
                     let sim = calculateSimilarity(v.domanda, remainingFalso[i].domanda);
-                    if(sim > maxSim && sim > 0.35) { 
-                        maxSim = sim;
-                        bestIdx = i;
-                    }
+                    if(sim > maxSim && sim > 0.35) { maxSim = sim; bestIdx = i; }
                 }
-                
-                if(bestIdx !== -1) {
-                    let f = remainingFalso.splice(bestIdx, 1)[0];
-                    matchedPairs.push({ v: v, f: f });
-                } else {
-                    unmatchedVero.push(v);
-                }
+                if(bestIdx !== -1) { matchedPairs.push({ v: v, f: remainingFalso.splice(bestIdx, 1)[0] }); } 
+                else { unmatchedVero.push(v); }
             });
 
-            let unmatchedFalso = remainingFalso;
-
-            if(matchedPairs.length === 0 && unmatchedVero.length === 0 && unmatchedFalso.length === 0) return "";
+            if(matchedPairs.length === 0 && unmatchedVero.length === 0 && remainingFalso.length === 0) return "";
             
-            let html = `<div class="comparison-grid">
-                            <div class="grid-header v-head">Vero</div>
-                            <div class="grid-header f-head">Falso</div>`;
+            let html = `<div class="comparison-grid"><div class="grid-header v-head">Vero</div><div class="grid-header f-head">Falso</div>`;
+            matchedPairs.forEach(pair => { html += renderCell(pair.v, 'v', true) + renderCell(pair.f, 'f', true); });
             
-            matchedPairs.forEach(pair => {
-                html += renderCell(pair.v, 'v', true);
-                html += renderCell(pair.f, 'f', true);
-            });
-            
-            const maxLen = Math.max(unmatchedVero.length, unmatchedFalso.length);
+            const maxLen = Math.max(unmatchedVero.length, remainingFalso.length);
             for(let i=0; i<maxLen; i++) {
-                if(i < unmatchedVero.length) html += renderCell(unmatchedVero[i], 'v', false);
-                else html += `<div class="empty-cell"></div>`;
-                
-                if(i < unmatchedFalso.length) html += renderCell(unmatchedFalso[i], 'f', false);
-                else html += `<div class="empty-cell"></div>`;
+                html += (i < unmatchedVero.length) ? renderCell(unmatchedVero[i], 'v', false) : `<div class="empty-cell"></div>`;
+                html += (i < remainingFalso.length) ? renderCell(remainingFalso[i], 'f', false) : `<div class="empty-cell"></div>`;
             }
-            
-            html += `</div>`;
-            return html;
+            return html + `</div>`;
         }
 
         async function loadFlagged() {
             const cat = document.querySelector('.category-select').value;
             if (cat === 'all') { alert("Seleziona prima un Capitolo (1) per vedere le sue domande salvate!"); return; }
-            
             syncSelects('subcategory-select', 'all');
-            document.querySelectorAll('.figure-select').forEach(el => {
-                el.innerHTML = '<option value="all">3. Tutte le Figure</option>';
-                el.disabled = true;
-            });
-            
-            currentMode = 'flagged';
-            fetchAndRender(cat, 'all', 'all', 'true');
+            document.querySelectorAll('.figure-select').forEach(el => { el.innerHTML = '<option value="all">3. Tutte le Figure</option>'; el.disabled = true; });
+            currentMode = 'flagged'; fetchAndRender(cat, 'all', 'all', 'true');
         }
 
         async function loadContent() {
@@ -468,8 +517,7 @@
             const sub = document.querySelector('.subcategory-select').value;
             const fig = document.querySelector('.figure-select').value;
             if (sub === 'all') return;
-            currentMode = 'normal';
-            fetchAndRender(cat, sub, fig, 'false');
+            currentMode = 'normal'; fetchAndRender(cat, sub, fig, 'false');
         }
 
         async function fetchAndRender(cat, sub, fig, isFlagged) {
@@ -477,40 +525,77 @@
             const container = document.getElementById('content-container');
             container.innerHTML = '';
             
+            // Clear the memory store on new content load
+            window.cheatSheetDataStore = {};
+
             msgArea.innerText = "Caricamento in corso...";
             try {
-                const url = `/api/content?category=${encodeURIComponent(cat)}&subcategory=${encodeURIComponent(sub)}&figure=${encodeURIComponent(fig)}&flagged_only=${isFlagged}`;
-                const res = await fetch(url);
+                const res = await fetch(`/api/content?category=${encodeURIComponent(cat)}&subcategory=${encodeURIComponent(sub)}&figure=${encodeURIComponent(fig)}&flagged_only=${isFlagged}`);
                 const result = await res.json();
                 
                 if (result.error) { msgArea.innerHTML = `<div class="error-box">${result.error}</div>`; return; }
                 if (result.message) { msgArea.innerText = result.message; return; }
-                if (result.data.length === 0) { 
-                    msgArea.innerText = isFlagged === 'true' ? "Nessuna domanda salvata in questo Capitolo." : "Nessuna domanda trovata."; return; 
-                }
+                if (result.data.length === 0) { msgArea.innerText = isFlagged === 'true' ? "Nessuna domanda salvata." : "Nessuna domanda trovata."; return; }
                 
                 msgArea.innerText = "";
                 
-                result.data.forEach(item => {
+                result.data.forEach((item, index) => {
                     let html = `<div class="study-card">`;
                     if (item.figura && item.figura !== "no_image") {
                         html += `<div class="image-wrapper"><img src="/${item.figura}" alt="Segnale stradale"></div>`;
                     } else {
-                        html += `<div class="image-wrapper" style="color: #64748b; font-style: italic; font-weight: 400; background: transparent; padding: 5px;">Nessuna figura associata</div>`;
+                        html += `<div class="image-wrapper" style="color: #64748b; font-style: italic; background: transparent; padding: 5px;">Nessuna figura associata</div>`;
                     }
-                    html += `<div class="questions-wrapper">`;
                     
-                    html += buildComparisonGrid(item.vero, item.falso);
-                    
-                    html += `</div></div>`;
+                    let cheatData = null;
+                    if (item.figura && item.figura !== "no_image" && imageCheatsheets[item.figura]) {
+                        cheatData = imageCheatsheets[item.figura];
+                    } else if (textCheatsheets[sub]) {
+                        cheatData = textCheatsheets[sub];
+                    }
+
+                    if (cheatData) {
+                        window.cheatSheetDataStore[index] = { it: cheatData, en: null };
+
+                        html += `
+                        <div class="ai-controls">
+                            <button class="btn-ai-trick" onclick="toggleAIHint(${index})">
+                                💡 Mostra Trucchi AI
+                            </button>
+                            <div class="ai-hint-box" id="ai-hint-${index}">
+                                <div class="ai-header-controls">
+                                    <h4>💡 Analisi AI del Contesto</h4>
+                                    <div class="lang-toggle">
+                                        <button class="lang-btn active" id="btn-it-${index}" onclick="switchLang(${index}, 'it')">IT</button>
+                                        <button class="lang-btn" id="btn-en-${index}" onclick="switchLang(${index}, 'en')">EN</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hint-section">
+                                    <span class="hint-label" id="label-rule-${index}">🎯 Regola Base (Vero)</span>
+                                    <span class="hint-text rule-text" id="text-rule-${index}">${cheatData.regola_base || "N/A"}</span>
+                                </div>
+                                
+                                <div class="hint-section">
+                                    <span class="hint-label" id="label-trap-${index}">🚩 Parole Trappola (Falso)</span>
+                                    <span class="hint-text trap-text" id="text-trap-${index}">${cheatData.parole_trappola || "N/A"}</span>
+                                </div>
+                                
+                                <div class="hint-section">
+                                    <span class="hint-label" id="label-exc-${index}">⚠️ Eccezioni e Limiti</span>
+                                    <span class="hint-text" id="text-exc-${index}">${cheatData.eccezioni_e_contesti || "N/A"}</span>
+                                </div>
+                            </div>
+                        </div>`;
+                    }
+
+                    html += `<div class="questions-wrapper">` + buildComparisonGrid(item.vero, item.falso) + `</div></div>`;
                     container.innerHTML += html;
                 });
-            } catch (error) {
-                msgArea.innerHTML = `<div class="error-box">Errore durante il caricamento dei dati.</div>`;
-            }
+            } catch (error) {}
         }
         
-        loadCategories();
+        fetchAIData().then(() => { loadCategories(); });
     </script>
 </body>
 </html>
