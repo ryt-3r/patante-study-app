@@ -1,24 +1,45 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import List
-import sqlite3
-import os
-import re
-import random
 from collections import defaultdict
 from deep_translator import GoogleTranslator
+import sqlite3
+import json
+import random
+import re
 
 app = FastAPI()
 
-app.mount("/img_sign", StaticFiles(directory="img_sign"), name="img_sign")
+# Mount the static folder so the browser can read the HTML, JSON, and CSS
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# --- Data Models ---
+# Mount the img_sign folder so FastAPI allows images to load everywhere
+app.mount("/img_sign", StaticFiles(directory="img_sign"), name="img_sign")
+
+# Setup the templates folder (pointing to static, since that's where your HTML is)
+templates = Jinja2Templates(directory="static")
+
+DB_PATH = 'patente_quiz.db'
+
+def get_db_connection():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+# ==========================================
+# PYDANTIC DATA MODELS
+# ==========================================
 class FlagUpdate(BaseModel):
     id: int
     flagged: int
+
+class TranslateReq(BaseModel):
+    word: str
+    phrase: str
+    sentence: str
 
 class AnswerUpdate(BaseModel):
     id: int
@@ -32,69 +53,44 @@ class ResetRequest(BaseModel):
 class ExamAnswer(BaseModel):
     id: int
     is_correct: bool
-    is_guessed: bool
+    is_guessed: bool = False
 
 class ExamSubmit(BaseModel):
     answers: List[ExamAnswer]
 
-class TranslateReq(BaseModel):
-    word: str
-    phrase: str
-    sentence: str
 
-# --- Database Initialization with Safety Nets ---
-def init_db():
-    if not os.path.exists('patente_quiz.db'):
-        return
-    conn = sqlite3.connect('patente_quiz.db', timeout=10)
-    
-    def safe_add_column(col_name, col_type):
-        try:
-            conn.execute(f"ALTER TABLE questions ADD COLUMN {col_name} {col_type}")
-            conn.commit()
-        except sqlite3.OperationalError:
-            pass 
-            
-    # Standard Memory
-    safe_add_column("flagged", "INTEGER DEFAULT 0")
-    safe_add_column("status", "TEXT DEFAULT 'unseen'")
-    safe_add_column("ever_wrong", "INTEGER DEFAULT 0")
-    safe_add_column("ever_guessed", "INTEGER DEFAULT 0")
-    
-    # Jaccard Independent Memory
-    safe_add_column("jaccard_status", "TEXT DEFAULT 'unseen'")
-    safe_add_column("jaccard_ever_wrong", "INTEGER DEFAULT 0")
-    safe_add_column("jaccard_ever_guessed", "INTEGER DEFAULT 0")
-    
-    conn.close()
+# ==========================================
+# 1. PAGE ROUTES
+# ==========================================
 
-init_db()
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse(request=request, name="index.html")
 
-def get_db_connection():
-    conn = sqlite3.connect('patente_quiz.db', timeout=10)
-    conn.row_factory = sqlite3.Row
-    return conn
+@app.get("/domande", response_class=HTMLResponse)
+async def domande(request: Request):
+    return templates.TemplateResponse(request=request, name="domande.html")
 
-# --- Web Page Routes ---
-@app.get("/")
-def read_root():
-    return FileResponse("static/index.html", media_type="text/html")
+@app.get("/libreria", response_class=HTMLResponse)
+async def libreria(request: Request):
+    return templates.TemplateResponse(request=request, name="libreria.html")
 
-@app.get("/domande")
-def read_domande():
-    return FileResponse("static/domande.html", media_type="text/html")
+@app.get("/all_quiz", response_class=HTMLResponse)
+async def all_quiz(request: Request):
+    return templates.TemplateResponse(request=request, name="quiz.html")
 
-@app.get("/quiz")
-def read_quiz():
-    return FileResponse("static/quiz.html", media_type="text/html")
+@app.get("/official_quiz", response_class=HTMLResponse)
+async def official_quiz(request: Request):
+    return templates.TemplateResponse(request=request, name="official.html")
 
-@app.get("/official")
-def read_official():
-    return FileResponse("static/official.html", media_type="text/html")
+@app.get("/jaccard_quiz", response_class=HTMLResponse)
+async def jaccard_quiz(request: Request):
+    return templates.TemplateResponse(request=request, name="jaccard.html")
 
-@app.get("/jaccard")
-def read_jaccard():
-    return FileResponse("static/jaccard.html", media_type="text/html")
+
+# ==========================================
+# 2. API ENDPOINTS 
+# ==========================================
 
 # --- Study App APIs ---
 @app.get("/api/categories")
@@ -109,7 +105,6 @@ def get_categories():
         result = []
         for row in categories:
             cat_name = str(row['categoria'])
-            # Tag as important if it matches official keywords
             is_imp = any(kw in cat_name.lower() for kw in important_keywords)
             result.append({
                 "name": cat_name, 
@@ -117,7 +112,6 @@ def get_categories():
                 "is_important": is_imp
             })
             
-        # Sort: Important chapters first, then ordered by size
         result.sort(key=lambda x: (not x['is_important'], -x['count']))
         return result
     except Exception as e: return {"error": str(e)}
@@ -126,7 +120,6 @@ def get_categories():
 def get_subcategories(category: str):
     try:
         conn = get_db_connection()
-        # Subcategories are ordered purely by count size (most questions first)
         subcats = conn.execute('SELECT sottocategoria, COUNT(*) as count FROM questions WHERE categoria = ? AND sottocategoria IS NOT NULL GROUP BY sottocategoria ORDER BY count DESC', (category,)).fetchall()
         conn.close()
         return [{"name": str(row['sottocategoria']), "count": row['count']} for row in subcats]
