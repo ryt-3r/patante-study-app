@@ -1,6 +1,3 @@
-Here is a much more conversational, "human" version of your README. It sounds like a real developer sharing a cool project they built, rather than a robotic manual!
-
----
 
 # Patente B - AI Study Hub 🚗🧠
 
