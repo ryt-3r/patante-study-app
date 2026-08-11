@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esame Ufficiale - Patente B</title>
+    <style>
+        /* Sleek, Native Apple Typography Stack & Theme */
+        body { 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
+            font-weight: 300; letter-spacing: -0.2px; 
+            max-width: 900px; margin: 0 auto; 
+            padding: 15px 15px 150px 15px; /* Big bottom padding for the double-row fixed bar */
+            text-align: center;
+            background-color: #0a0a0f;
+            background-image: radial-gradient(circle at 0% 0%, #161e30 0%, transparent 50%), radial-gradient(circle at 100% 100%, #1b1624 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #d1d5db; line-height: 1.6;
+        }
+
+        .btn-home-small { 
+            background: rgba(30, 41, 59, 0.8); color: #cbd5e1; text-decoration: none; 
+            padding: 8px 14px; border-radius: 8px; font-size: 0.95em; font-weight: 600; 
+            display: inline-flex; align-items: center; border: 1px solid #334155; transition: 0.2s;
+        }
+        .btn-home-small:hover { background: rgba(39, 55, 77, 0.9); color: #f8fafc; }
+
+        /* Dashboard UI */
+        .dashboard { margin-top: 30px; }
+        h1 { color: #f8fafc; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 20px; }
+        
+        .btn-main { 
+            background: rgba(225, 29, 72, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(251, 113, 133, 0.4); 
+            color: #f8fafc; padding: 20px 40px; border-radius: 16px; font-size: 1.3em; cursor: pointer; 
+            font-weight: 600; margin: 20px 0; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+            width: 100%; max-width: 400px;
+        }
+        .btn-main:hover { background: rgba(225, 29, 72, 0.4); transform: translateY(-3px); border-color: #fb7185; }
+        
+        .stats-panel { 
+            display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; 
+            background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(10px); padding: 20px; 
+            border-radius: 20px; border: 1px solid #334155; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); 
+        }
+        .stat-box { flex: 1; min-width: 120px; }
+        .stat-val { font-size: 1.8em; font-weight: 600; }
+        .stat-label { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-top: 5px; font-weight: 500; }
+        
+        /* COMPRESSED Exam UI Header */
+        .exam-header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(30, 41, 59, 0.6); padding: 8px 15px; border-radius: 12px;
+            margin-bottom: 10px; border: 1px solid #334155;
+        }
+        .exam-header h2 { margin: 0; color: #f8fafc; font-weight: 500; font-size: 1.1em; }
+        .timer { font-size: 1.4em; font-family: ui-monospace, monospace; color: #fb7185; font-weight: 700; letter-spacing: -1px; }
+        
+        /* COMPRESSED 30-Question Grid */
+        .nav-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-bottom: 12px; }
+        .nav-btn { 
+            background: rgba(15, 23, 42, 0.6); color: #64748b; border: 1px solid #334155; 
+            padding: 5px 0; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.9em; 
+        }
+        .nav-btn.answered { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
+        .nav-btn.active { border: 2px solid #fcd34d; background: rgba(252, 211, 77, 0.1); color: #fcd34d; transform: scale(1.1); }
+        
+        /* ZERO-JUMP QUESTION AREA (INVISIBLE FRAMES) */
+        .question-wrapper {
+            background: rgba(39, 53, 73, 0.5); backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 20px; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        #image-container {
+            width: 100%; height: 200px; /* Rigid height frame */
+            display: flex; align-items: center; justify-content: center; margin-bottom: 10px;
+        }
+        img { max-width: 100%; max-height: 190px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        
+        .question-text { 
+            width: 100%; height: 130px; /* Rigid height frame */
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4em; font-weight: 400; color: #f8fafc; margin: 0; line-height: 1.4;
+        }
+
+        .guess-box { 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 15px; padding: 12px; background: rgba(15, 23, 42, 0.4); 
+            border-radius: 12px; border: 1px dashed #475569; color: #94a3b8; 
+            font-weight: 500; cursor: pointer; width: 100%; box-sizing: border-box;
+        }
+        .guess-box input { transform: scale(1.3); cursor: pointer; accent-color: #fcd34d; }
+
+        /* FIXED BOTTOM ACTION PANEL (DOUBLE ROW) */
+        .controls-panel { 
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 15px 15px 25px 15px; /* Padding for mobile swipe bar */
+            display: flex; flex-direction: column; gap: 12px;
+            z-index: 1000; box-shadow: 0 -10px 20px rgba(0,0,0,0.4);
+        }
+        .answer-row, .nav-row { display: flex; justify-content: center; gap: 10px; width: 100%; max-width: 600px; margin: 0 auto; }
+        
+        .btn-ans { 
+            flex: 1; padding: 15px 10px; font-size: 1.2em; font-weight: 600; cursor: pointer; 
+            border: 1px solid transparent; border-radius: 12px; color: white; transition: 0.2s; 
+        }
+        #btn-vero { background: linear-gradient(145deg, rgba(5, 150, 105, 0.3), rgba(30, 41, 59, 0.6)); border-color: rgba(52, 211, 153, 0.4); color: #6ee7b7; }
+        #btn-vero.selected { background: rgba(5, 150, 105, 0.6); border-color: #34d399; box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+        
+        #btn-falso { background: linear-gradient(145deg, rgba(225, 29, 72, 0.3), rgba(30, 41, 59, 0.6)); border-color: rgba(251, 113, 133, 0.4); color: #fca5a5; }
+        #btn-falso.selected { background: rgba(225, 29, 72, 0.6); border-color: #fb7185; box-shadow: 0 0 15px rgba(225, 29, 72, 0.3); }
+
+        .nav-btn-bottom { flex: 1; background: rgba(30, 41, 59, 0.8); color: #cbd5e1; border: 1px solid #475569; border-radius: 10px; font-weight: 600; font-size: 1em; cursor: pointer; padding: 12px 5px; }
+        .nav-btn-bottom:active { background: rgba(15, 23, 42, 0.9); transform: scale(0.95); }
+        
+        .btn-sub { flex: 1.2; background: #d97706; color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 1.05em; cursor: pointer; padding: 12px 5px; box-shadow: 0 4px 10px rgba(217, 119, 6, 0.2); }
+        .btn-sub:active { background: #b45309; transform: scale(0.95); }
+
+        #results-container { display: none; text-align: center; }
+        .result-list { text-align: left; background: rgba(30, 41, 59, 0.4); padding: 20px; border-radius: 16px; margin-top: 20px; border: 1px solid #334155; }
+        .result-item { padding: 15px; background: rgba(15, 23, 42, 0.6); border-radius: 12px; margin-bottom: 10px; border-left: 5px solid transparent; }
+        .res-correct { border-left-color: #34d399; }
+        .res-wrong { border-left-color: #fb7185; background: rgba(136, 19, 55, 0.2); }
+
+        /* HEAVY MOBILE COMPRESSION */
+        @media (max-width: 800px) {
+            body { padding: 10px 10px 140px 10px; }
+            
+            .nav-grid { gap: 3px; margin-bottom: 10px; }
+            .nav-btn { font-size: 0.85em; padding: 4px 0; border-radius: 3px; }
+            
+            .exam-header { padding: 8px 10px; margin-bottom: 8px; }
+            .exam-header h2 { font-size: 1em; }
+            .timer { font-size: 1.2em; }
+
+            #image-container { height: 130px; margin-bottom: 5px; }
+            img { max-height: 120px; }
+            .question-text { height: 110px; font-size: 1.15em; }
+            
+            .question-wrapper { padding: 15px; margin-bottom: 10px; }
+            
+            .controls-panel { padding: 10px 10px 20px 10px; gap: 8px; }
+            .btn-ans { padding: 12px 10px; font-size: 1.1em; }
+            .nav-btn-bottom, .btn-sub { padding: 10px 5px; font-size: 0.95em; }
+            
+            .guess-box { padding: 8px; margin-top: 5px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <a href="/" class="btn-home-small" style="margin-bottom: 15px;">← Torna alla Home</a>
+        <h1>Esame Ufficiale</h1>
+        <button class="btn-main" onclick="startExam()">⏱️ Avvia Esame Ufficiale</button>
+        
+        <div class="stats-panel" id="stats-panel">
+            <div style="color: #64748b;">Caricamento statistiche...</div>
+        </div>
+    </div>
+
+    <!-- Active Exam Container -->
+    <div id="exam-container" style="display: none;">
+        <div class="exam-header">
+            <a href="/" class="btn-home-small">← Home</a>
+            <h2 id="q-counter">Domanda 1 di 30</h2>
+            <div class="timer" id="timer">20:00</div>
+        </div>
+        
+        <div class="nav-grid" id="nav-grid"></div>
+        
+        <!-- Rigid Frame Layout -->
+        <div class="question-wrapper">
+            <div id="image-container"></div>
+            <div class="question-text" id="question-text"></div>
+            
+            <label class="guess-box">
+                <input type="checkbox" id="guess-checkbox" onchange="toggleGuess()">
+                ⚠️ Ho tirato a indovinare (Salva negli Errori)
+            </label>
+        </div>
+        
+        <!-- Double Row Fixed Action Panel -->
+        <div class="controls-panel">
+            <div class="answer-row">
+                <button class="btn-ans" id="btn-vero" onclick="selectAnswer('V')">VERO</button>
+                <button class="btn-ans" id="btn-falso" onclick="selectAnswer('F')">FALSO</button>
+            </div>
+            <div class="nav-row">
+                <button class="nav-btn-bottom" onclick="prevQ()">⬅ Prec.</button>
+                <button class="btn-sub" onclick="submitExam()">Consegna Esame</button>
+                <button class="nav-btn-bottom" onclick="nextQ()">Succ. ➡</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Results -->
+    <div id="results-container">
+        <h1 id="result-title" style="font-size: 2.5em; margin-bottom: 10px;"></h1>
+        <h2 id="result-score" style="color: #94a3b8; font-weight: 400; margin-bottom: 30px;"></h2>
+        <a href="/" class="btn-home-small" style="font-size: 1.2em; padding: 12px 25px;">Torna alla Home</a>
+        <div class="result-list" id="result-list"></div>
+    </div>
+
+    <script>
+        let questions = []; let answers = {}; let currentIndex = 0; let timerInterval; let timeLeft = 20 * 60; 
+
+        async function loadStats() {
+            try {
+                const res = await fetch('/api/stats'); const data = await res.json();
+                document.getElementById('stats-panel').innerHTML = `
+                    <div class="stat-box"><div class="stat-val" style="color: #6ee7b7;">${data.unseen || 0}</div><div class="stat-label">Nuove (Mai Viste)</div></div>
+                    <div class="stat-box"><div class="stat-val" style="color: #fca5a5;">${data.ever_wrong || 0}</div><div class="stat-label">Errori Permanenti</div></div>
+                    <div class="stat-box"><div class="stat-val" style="color: #fcd34d;">${data.ever_guessed || 0}</div><div class="stat-label">Indovinate/Salvate</div></div>
+                `;
+            } catch (err) {}
+        }
+        loadStats();
+
+        async function startExam() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('exam-container').style.display = 'block';
+            
+            try {
+                const res = await fetch('/api/generate_exam'); const data = await res.json(); questions = data.questions;
+                buildGrid(); showQuestion(0);
+                
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    let m = Math.floor(timeLeft / 60).toString().padStart(2, '0'); let s = (timeLeft % 60).toString().padStart(2, '0');
+                    document.getElementById('timer').innerText = `${m}:${s}`;
+                    if (timeLeft < 180) { document.getElementById('timer').style.color = '#ef4444'; document.getElementById('timer').style.textShadow = '0 0 10px rgba(239, 68, 68, 0.6)'; }
+                    if (timeLeft <= 0) submitExam();
+                }, 1000);
+            } catch (err) { alert("Errore durante la generazione dell'esame."); location.reload(); }
+        }
+
+        function buildGrid() {
+            const grid = document.getElementById('nav-grid'); grid.innerHTML = '';
+            for(let i=0; i<questions.length; i++) { grid.innerHTML += `<button class="nav-btn" id="grid-${i}" onclick="showQuestion(${i})">${i+1}</button>`; }
+        }
+
+        function showQuestion(index) {
+            currentIndex = index; const q = questions[index];
+            document.getElementById('q-counter').innerText = `Domanda ${index + 1} di ${questions.length}`;
+            
+            const imgContainer = document.getElementById('image-container');
+            if(q.figura && q.figura !== "no_image") imgContainer.innerHTML = `<img src="/${q.figura}">`;
+            else imgContainer.innerHTML = '';
+            
+            document.getElementById('question-text').innerText = q.domanda;
+            
+            document.getElementById('btn-vero').classList.remove('selected'); document.getElementById('btn-falso').classList.remove('selected');
+            document.getElementById('guess-checkbox').checked = false;
+            
+            if(answers[index]) {
+                if(answers[index].ans === 'V') document.getElementById('btn-vero').classList.add('selected');
+                if(answers[index].ans === 'F') document.getElementById('btn-falso').classList.add('selected');
+                document.getElementById('guess-checkbox').checked = answers[index].guessed;
+            }
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`grid-${index}`).classList.add('active');
+        }
+
+        function selectAnswer(ans) {
+            if(!answers[currentIndex]) answers[currentIndex] = { guessed: false };
+            answers[currentIndex].ans = ans;
+            document.getElementById(`grid-${currentIndex}`).classList.add('answered');
+            showQuestion(currentIndex); 
+        }
+
+        function toggleGuess() {
+            if(!answers[currentIndex]) answers[currentIndex] = { ans: null };
+            answers[currentIndex].guessed = document.getElementById('guess-checkbox').checked;
+        }
+
+        function prevQ() { if(currentIndex > 0) showQuestion(currentIndex - 1); }
+        function nextQ() { if(currentIndex < questions.length - 1) showQuestion(currentIndex + 1); }
+
+        async function submitExam() {
+            clearInterval(timerInterval);
+            document.getElementById('exam-container').style.display = 'none'; 
+            document.getElementById('results-container').style.display = 'block'; 
+            
+            let errors = 0; let payload = []; let resultHtml = '';
+            for(let i=0; i<questions.length; i++) {
+                const q = questions[i]; const userRec = answers[i] || { ans: null, guessed: false };
+                const isCorrect = (userRec.ans === 'V' && q.risposta === 1) || (userRec.ans === 'F' && q.risposta === 0);
+                if(!isCorrect) errors++;
+                payload.push({ id: q.id, is_correct: isCorrect, is_guessed: userRec.guessed });
+                
+                const realAnsStr = q.risposta === 1 ? 'VERO' : 'FALSO'; const userAnsStr = userRec.ans === 'V' ? 'VERO' : (userRec.ans === 'F' ? 'FALSO' : 'NON RISPOSTA');
+                const cssClass = isCorrect ? 'res-correct' : 'res-wrong'; const guessTag = userRec.guessed ? '<span style="color:#fcd34d; margin-left: 10px; font-size: 0.9em;">(Tirato a indovinare)</span>' : '';
+                resultHtml += `<div class="result-item ${cssClass}"><p style="font-size: 1.1em; color: #f8fafc; margin-bottom: 8px;"><strong>${i+1}.</strong> ${q.domanda}</p><p style="color: #94a3b8; font-size: 0.9em; margin: 0;">Tua Risposta: <strong style="color: ${isCorrect ? '#34d399' : '#fb7185'}">${userAnsStr}</strong> ${guessTag} <br>Corretta: <strong>${realAnsStr}</strong></p></div>`;
+            }
+            
+            document.getElementById('result-title').innerText = errors <= 3 ? "🟢 PROMOSSO" : "🔴 BOCCIATO"; 
+            document.getElementById('result-title').style.color = errors <= 3 ? "#34d399" : "#fb7185"; 
+            document.getElementById('result-score').innerText = `Errori commessi: ${errors} / 30`; 
+            document.getElementById('result-list').innerHTML = resultHtml;
+            
+            await fetch('/api/submit_exam', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ answers: payload }) });
+        }
+    </script>
+</body>
+</html>

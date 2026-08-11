@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patente B Quiz App</title>
+    <style>
+        /* Sleek, Native Apple Typography Stack & Theme */
+        body { 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
+            font-weight: 300; letter-spacing: -0.2px; 
+            max-width: 900px; margin: 0 auto; 
+            padding: 15px 15px 120px 15px; /* Extra bottom padding prevents text hiding under fixed buttons */
+            text-align: center;
+            background-color: #0a0a0f;
+            background-image: radial-gradient(circle at 0% 0%, #161e30 0%, transparent 50%), radial-gradient(circle at 100% 100%, #1b1624 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #d1d5db; line-height: 1.6;
+        }
+
+        /* Compact Stats Row */
+        .stats { 
+            display: flex; justify-content: space-around; 
+            background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); 
+            padding: 10px; border-radius: 12px; margin-bottom: 15px; 
+            border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            font-size: 1em; font-weight: 500; flex-wrap: wrap; gap: 8px;
+        }
+        
+        /* Compact Menu Row */
+        .menu-bar { 
+            background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); 
+            padding: 15px; border-radius: 16px; margin-bottom: 15px; 
+            display: flex; flex-direction: column; gap: 12px; 
+            border: 1px solid #334155; box-shadow: 0 8px 15px -3px rgba(0,0,0,0.3);
+        }
+        .filters { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .filters select { 
+            flex: 1; min-width: 200px; padding: 10px; font-size: 0.95em; font-family: inherit;
+            border-radius: 10px; cursor: pointer; background-color: #0f172a; color: #f1f5f9; 
+            border: 1px solid #475569; outline: none; transition: border 0.2s;
+        }
+        .filters select:focus { border-color: #38bdf8; }
+
+        /* Integrated Home Button and Modes Row */
+        .modes-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 5px; }
+        .modes-row button, .btn-home-small { 
+            padding: 8px 14px; cursor: pointer; border: 1px solid #475569; border-radius: 8px; 
+            background: rgba(15, 23, 42, 0.6); color: #cbd5e1; transition: 0.2s; font-weight: 500; 
+            font-family: inherit; font-size: 0.95em; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+        }
+        .modes-row button:hover, .btn-home-small:hover { background: rgba(30, 41, 59, 0.9); color: #f8fafc; }
+        .modes-row button.active { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: #38bdf8; }
+        
+        .btn-home-small { font-weight: 600; border-color: #334155; background: rgba(30, 41, 59, 0.8); }
+        .reset-btn { background: rgba(154, 52, 18, 0.3) !important; color: #fdba74 !important; border-color: #9a3412 !important; }
+        .reset-btn:hover { background: rgba(154, 52, 18, 0.6) !important; }
+
+        /* Feedback Frame (Fixed height to stop jumping) */
+        .feedback { font-size: 1.3em; font-weight: 600; margin-bottom: 10px; height: 30px; display: flex; align-items: center; justify-content: center; }
+
+        /* ZERO-JUMP QUESTION AREA */
+        .question-wrapper {
+            background: rgba(39, 53, 73, 0.5); backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 20px; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        
+        /* 1. Permanent Image Slot */
+        #image-container {
+            width: 100%;
+            height: 200px; /* ALWAYS leaves this space, even if empty */
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 10px;
+        }
+        img { max-width: 100%; max-height: 190px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        
+        /* 2. Permanent Text Slot */
+        .question-text { 
+            width: 100%;
+            height: 130px; /* ALWAYS leaves this space, even if text is short */
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4em; font-weight: 400; color: #f8fafc; margin: 0; line-height: 1.4;
+        }
+
+        /* FIXED BOTTOM CONTROLS */
+        .controls { 
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 12px 15px 25px 15px; /* 25px bottom accounts for phone swipe bar */
+            display: flex; justify-content: center; gap: 10px; flex-wrap: nowrap;
+            z-index: 1000; box-shadow: 0 -10px 20px rgba(0,0,0,0.3);
+        }
+        .controls button { 
+            font-size: 1.2em; font-weight: 600; padding: 15px 10px; cursor: pointer; 
+            border: 1px solid transparent; border-radius: 12px; color: white; transition: 0.2s; font-family: inherit;
+            flex: 1; max-width: 250px;
+        }
+        .controls button:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        #btn-vero { background: linear-gradient(145deg, rgba(5, 150, 105, 0.3), rgba(30, 41, 59, 0.6)); border-color: rgba(52, 211, 153, 0.4); color: #6ee7b7; }
+        #btn-vero:active:not(:disabled) { background: rgba(5, 150, 105, 0.5); transform: scale(0.95); }
+        
+        #btn-falso { background: linear-gradient(145deg, rgba(225, 29, 72, 0.3), rgba(30, 41, 59, 0.6)); border-color: rgba(251, 113, 133, 0.4); color: #fca5a5; }
+        #btn-falso:active:not(:disabled) { background: rgba(225, 29, 72, 0.5); transform: scale(0.95); }
+        
+        #btn-salta { background: rgba(30, 41, 59, 0.8); border-color: #475569; color: #cbd5e1; }
+        #btn-salta:active:not(:disabled) { background: rgba(15, 23, 42, 0.9); transform: scale(0.95); }
+
+        /* Responsive Mobile Tuning */
+        @media (max-width: 800px) {
+            #image-container { height: 160px; } /* Shrinks empty space on small screens */
+            img { max-height: 150px; }
+            .question-text { height: 140px; font-size: 1.25em; } /* Expands text slot for wrapping */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Stats -->
+    <div class="stats">
+        <div>Da fare: <span id="stat-unseen">0</span></div>
+        <div style="color: #6ee7b7;">Corrette: <span id="stat-correct">0</span></div>
+        <div style="color: #fca5a5;">Errate: <span id="stat-wrong">0</span></div>
+        <div style="color: #94a3b8;">Saltate: <span id="stat-skipped">0</span></div>
+    </div>
+
+    <!-- 2. Menu / Filters (Torna alla Home integrated) -->
+    <div class="menu-bar">
+        <div class="filters">
+            <select id="category-select" onchange="onCategoryChange()">
+                <option value="all">1. Tutti i Capitoli</option>
+            </select>
+            <select id="subcategory-select" onchange="onSubcategoryChange()" disabled>
+                <option value="all">2. Tutti gli Argomenti</option>
+            </select>
+            <select id="figure-select" onchange="loadQuestion()" disabled>
+                <option value="all">3. Tutte le Figure</option>
+            </select>
+        </div>
+
+        <div class="modes-row">
+            <a href="/" class="btn-home-small">← Home</a>
+            <button id="mode-unseen" class="active" onclick="setMode('unseen')">Nuove</button>
+            <button id="mode-wrong" onclick="setMode('wrong')">Ripassa Errate</button>
+            <button id="mode-skipped" onclick="setMode('skipped')">Ripassa Saltate</button>
+            <button class="reset-btn" onclick="resetProgress()">Azzera</button>
+        </div>
+    </div>
+
+    <!-- 3. Feedback right above the question -->
+    <div class="feedback" id="feedback"></div>
+
+    <!-- 4. Rigid Question Area (Never jumps sizes) -->
+    <div class="question-wrapper">
+        <div id="image-container"></div>
+        <div class="question-text" id="question-text">Caricamento in corso...</div>
+    </div>
+
+    <!-- 5. Fixed Bottom Action Bar -->
+    <div class="controls">
+        <button id="btn-vero" onclick="submitAnswer(true)">Vero</button>
+        <button id="btn-falso" onclick="submitAnswer(false)">Falso</button>
+        <button id="btn-salta" onclick="skipQuestion()">Salta</button>
+    </div>
+
+    <script>
+        // YOUR EXACT ORIGINAL JAVASCRIPT LOGIC
+        let currentQuestion = null;
+        let currentMode = 'unseen';
+
+        function cleanText(text) {
+            return text.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+
+        async function loadCategories() {
+            const res = await fetch('/api/categories');
+            const categories = await res.json();
+            const select = document.getElementById('category-select');
+            
+            const total = categories.reduce((sum, cat) => sum + cat.count, 0);
+            select.innerHTML = `<option value="all">1. Tutti i Capitoli (${total})</option>`;
+            
+            categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = `${cleanText(cat.name)} (${cat.count})`;
+                select.appendChild(option);
+            });
+        }
+
+        async function onCategoryChange() {
+            const catSelect = document.getElementById('category-select');
+            const subSelect = document.getElementById('subcategory-select');
+            const figSelect = document.getElementById('figure-select');
+            
+            subSelect.innerHTML = '<option value="all">2. Tutti gli Argomenti</option>';
+            figSelect.innerHTML = '<option value="all">3. Tutte le Figure</option>';
+            
+            if (catSelect.value === 'all') {
+                subSelect.disabled = true;
+                figSelect.disabled = true;
+            } else {
+                subSelect.disabled = false;
+                const res = await fetch(`/api/subcategories?category=${catSelect.value}`);
+                const subcats = await res.json();
+                
+                const total = subcats.reduce((sum, sub) => sum + sub.count, 0);
+                subSelect.innerHTML = `<option value="all">2. Tutti gli Argomenti (${total})</option>`;
+                
+                subcats.forEach(sub => {
+                    const option = document.createElement('option');
+                    option.value = sub.name;
+                    option.textContent = `${cleanText(sub.name)} (${sub.count})`;
+                    subSelect.appendChild(option);
+                });
+            }
+            loadQuestion();
+        }
+
+        async function onSubcategoryChange() {
+            const catSelect = document.getElementById('category-select');
+            const subSelect = document.getElementById('subcategory-select');
+            const figSelect = document.getElementById('figure-select');
+            
+            figSelect.innerHTML = '<option value="all">3. Tutte le Figure</option>';
+            
+            if (subSelect.value === 'all') {
+                figSelect.disabled = true;
+            } else {
+                figSelect.disabled = false;
+                const res = await fetch(`/api/figures?category=${catSelect.value}&subcategory=${subSelect.value}`);
+                const figures = await res.json();
+                
+                const total = figures.reduce((sum, fig) => sum + fig.count, 0);
+                figSelect.innerHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
+                
+                figures.forEach(fig => {
+                    const option = document.createElement('option');
+                    option.value = fig.name;
+                    option.textContent = `Figura: ${fig.name.split('/').pop()} (${fig.count})`;
+                    figSelect.appendChild(option);
+                });
+            }
+            loadQuestion();
+        }
+
+        async function updateStats() {
+            const cat = document.getElementById('category-select').value;
+            const sub = document.getElementById('subcategory-select').value;
+            const fig = document.getElementById('figure-select').value;
+            
+            const res = await fetch(`/api/stats?category=${cat}&subcategory=${sub}&figure=${fig}`);
+            const stats = await res.json();
+            
+            document.getElementById('stat-unseen').innerText = stats.unseen || 0;
+            document.getElementById('stat-correct').innerText = stats.correct || 0;
+            document.getElementById('stat-wrong').innerText = stats.wrong || 0;
+            document.getElementById('stat-skipped').innerText = stats.skipped || 0;
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.modes-row button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`mode-${mode}`).classList.add('active');
+            loadQuestion();
+        }
+
+        async function loadQuestion() {
+            document.getElementById('feedback').innerText = '';
+            
+            const cat = document.getElementById('category-select').value;
+            const sub = document.getElementById('subcategory-select').value;
+            const fig = document.getElementById('figure-select').value;
+            
+            try {
+                const res = await fetch(`/api/question?mode=${currentMode}&category=${cat}&subcategory=${sub}&figure=${fig}`);
+                if (!res.ok) throw new Error('Nessuna domanda disponibile per questi filtri.');
+                currentQuestion = await res.json();
+                
+                document.getElementById('question-text').innerText = currentQuestion.domanda;
+                
+                const imgContainer = document.getElementById('image-container');
+                if (currentQuestion.figura) {
+                    imgContainer.innerHTML = `<img src="/${currentQuestion.figura}" alt="Segnale stradale">`;
+                } else {
+                    imgContainer.innerHTML = '';
+                }
+            } catch (error) {
+                document.getElementById('question-text').innerText = error.message;
+                document.getElementById('image-container').innerHTML = '';
+                currentQuestion = null;
+            }
+            updateStats();
+        }
+
+        async function submitAnswer(userAnswer) {
+            if (!currentQuestion) return;
+            
+            document.querySelectorAll('.controls button').forEach(b => b.disabled = true);
+            
+            const isCorrect = (userAnswer === Boolean(currentQuestion.risposta));
+            const newStatus = isCorrect ? 'correct' : 'wrong';
+            
+            const feedbackEl = document.getElementById('feedback');
+            feedbackEl.innerText = isCorrect ? 'Esatto!' : `Sbagliato! La risposta era ${currentQuestion.risposta ? 'Vero' : 'Falso'}.`;
+            feedbackEl.style.color = isCorrect ? '#34d399' : '#fb7185';
+
+            await fetch('/api/update_status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: currentQuestion.id, status: newStatus })
+            });
+
+            setTimeout(() => {
+                document.querySelectorAll('.controls button').forEach(b => b.disabled = false);
+                loadQuestion();
+            }, 1200); 
+        }
+
+        async function skipQuestion() {
+            if (!currentQuestion) return;
+            await fetch('/api/update_status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: currentQuestion.id, status: 'skipped' })
+            });
+            loadQuestion();
+        }
+
+        async function resetProgress() {
+            const cat = document.getElementById('category-select').value;
+            const sub = document.getElementById('subcategory-select').value;
+            const fig = document.getElementById('figure-select').value;
+            
+            let message = "Vuoi davvero azzerare i progressi per questa SEZIONE specifica?";
+            if (cat === 'all') {
+                message = "ATTENZIONE: Stai per azzerare TUTTI i 7000+ quiz dell'intero database. Sei sicuro?";
+            }
+
+            if (confirm(message)) {
+                await fetch('/api/reset', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ category: cat, subcategory: sub, figure: fig })
+                });
+                setMode('unseen');
+            }
+        }
+
+        // Initialize App
+        loadCategories().then(() => loadQuestion());
+    </script>
+</body>
+</html>

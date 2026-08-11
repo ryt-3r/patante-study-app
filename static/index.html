@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patente B - Hub</title>
+    <style>
+        /* Sleek, Native Apple Typography Stack */
+        body { 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif; 
+            margin: 0; padding: 20px; 
+            
+            /* Ambient Dark Room Mesh Gradient */
+            background-color: #0a0a0f;
+            background-image: 
+                radial-gradient(circle at 0% 0%, #161e30 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, #1b1624 0%, transparent 50%);
+            background-attachment: fixed;
+            
+            color: #d1d5db; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; box-sizing: border-box;
+            font-weight: 300;
+            letter-spacing: -0.2px;
+        }
+        
+        h1 { 
+            font-size: 3.5em; 
+            margin-bottom: 50px; 
+            text-align: center; 
+            color: #f8fafc; 
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            text-shadow: 0 4px 20px rgba(255,255,255,0.1);
+        }
+        
+        .button-container { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; max-width: 900px; }
+        
+        /* Premium Frosted Glass Buttons */
+        .hub-button {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid #334155;
+            border-radius: 24px;
+            padding: 40px 30px; 
+            font-size: 1.2em; 
+            font-weight: 500; 
+            color: #f8fafc;
+            cursor: pointer; 
+            text-decoration: none; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); 
+            text-align: center; 
+            flex: 1; 
+            min-width: 240px;
+        }
+        
+        .hub-button:hover { 
+            background: rgba(39, 53, 73, 0.9);
+            transform: translateY(-6px) scale(1.02); 
+        }
+        
+        /* Subtle colored accent borders and glows */
+        .btn-study { border-bottom: 3px solid rgba(52, 211, 153, 0.6); }
+        .btn-study:hover { border-color: #34d399; box-shadow: 0 15px 30px rgba(52, 211, 153, 0.15); }
+        
+        .btn-practice { border-bottom: 3px solid rgba(56, 189, 248, 0.6); }
+        .btn-practice:hover { border-color: #38bdf8; box-shadow: 0 15px 30px rgba(56, 189, 248, 0.15); }
+        
+        .btn-exam { border-bottom: 3px solid rgba(251, 113, 133, 0.6); } 
+        .btn-exam:hover { border-color: #fb7185; box-shadow: 0 15px 30px rgba(251, 113, 133, 0.15); }
+        
+        .btn-jaccard { border-bottom: 3px solid rgba(167, 139, 250, 0.6); } 
+        .btn-jaccard:hover { border-color: #a78bfa; box-shadow: 0 15px 30px rgba(167, 139, 250, 0.15); }
+        
+        .icon { font-size: 3.2em; display: block; margin-bottom: 20px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); }
+    </style>
+</head>
+<body>
+
+    <h1>Patente B</h1>
+    
+    <div class="button-container">
+        <a href="/domande" class="hub-button btn-study">
+            <span class="icon">📚</span>
+            STUDIA DOMANDE
+        </a>
+        <a href="/quiz" class="hub-button btn-practice">
+            <span class="icon">🚦</span>
+            PRATICA LIBERA
+        </a>
+        <a href="/official" class="hub-button btn-exam">
+            <span class="icon">⏱️</span>
+            ESAME UFFICIALE
+        </a>
+        <a href="/jaccard" class="hub-button btn-jaccard">
+            <span class="icon">🧬</span>
+            ESAME JACCARD
+        </a>
+    </div>
+
+</body>
+</html>
