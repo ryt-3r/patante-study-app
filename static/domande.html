@@ -290,6 +290,9 @@
                 const res = await fetch('/api/categories');
                 const data = await res.json();
                 
+                // NUMERIC SORT FIX FOR CATEGORIES
+                data.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+                
                 const total = data.reduce((sum, cat) => sum + cat.count, 0);
                 let impGroup = `<optgroup label="15 Argomenti Più Importanti (Alta Priorità)">`;
                 let lessGroup = `<optgroup label="10 Argomenti Meno Importanti">`;
@@ -326,6 +329,9 @@
                 try {
                     const res = await fetch(`/api/subcategories?category=${encodeURIComponent(val)}`);
                     const subcats = await res.json();
+                    
+                    // NUMERIC SORT FIX FOR SUBCATEGORIES
+                    subcats.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
                     
                     const total = subcats.reduce((sum, sub) => sum + sub.count, 0);
                     let subHTML = `<option value="all">2. Scegli l'Argomento (${total})</option>`;
@@ -379,6 +385,9 @@
                 try {
                     const res = await fetch(`/api/figures?category=${encodeURIComponent(catVal)}&subcategory=${encodeURIComponent(subVal)}`);
                     const figures = await res.json();
+                    
+                    // NUMERIC SORT FIX FOR FIGURES
+                    figures.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
                     
                     const total = figures.reduce((sum, fig) => sum + fig.count, 0);
                     let figHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
@@ -477,8 +486,10 @@
         }
 
         function buildComparisonGrid(veroList, falsoList) {
-            veroList.sort((a, b) => a.domanda.localeCompare(b.domanda));
-            falsoList.sort((a, b) => a.domanda.localeCompare(b.domanda));
+            // NUMERIC SORT FIX FOR QUESTION TEXT
+            veroList.sort((a, b) => a.domanda.localeCompare(b.domanda, undefined, { numeric: true, sensitivity: 'base' }));
+            falsoList.sort((a, b) => a.domanda.localeCompare(b.domanda, undefined, { numeric: true, sensitivity: 'base' }));
+            
             let matchedPairs = [], unmatchedVero = [], remainingFalso = [...falsoList];
 
             veroList.forEach(v => {
