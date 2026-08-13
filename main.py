@@ -496,3 +496,16 @@ def analyze_duplicates():
     repeated.sort(key=lambda x: x["count"], reverse=True)
     
     return {"unique": unique, "repeated": repeated, "total_processed": len(rows)}
+    
+    
+@app.get("/api/analysis/variations")
+def get_question_variations():
+    # Fetch unique questions from your DB
+    # (Adapting to your existing database cursor/connection pattern)
+    cursor = db.cursor() # Replace with your actual db connection variable
+    cursor.execute("SELECT domanda, risposta, location FROM questions") # Adjust table name if needed
+    rows = cursor.fetchall()
+    
+    # Simple, fast backend clustering by shared root words
+    # ... grouping logic ...
+    return {"clusters": []}
