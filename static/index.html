@@ -81,7 +81,7 @@
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: #475569; transition: 0.3s;
         }
 
-        /* Hover States for the 5 Sections */
+        /* Hover States for the Sections */
         .feature-card.questions:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); }
         .feature-card.questions:hover::before { background: #38bdf8; }
 
@@ -96,6 +96,9 @@
 
         .feature-card.jaccard-quiz:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(251, 113, 133, 0.15); border-color: rgba(251, 113, 133, 0.4); }
         .feature-card.jaccard-quiz:hover::before { background: #fb7185; }
+
+        .feature-card.analysis:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(244, 114, 182, 0.15); border-color: rgba(244, 114, 182, 0.4); }
+        .feature-card.analysis:hover::before { background: #f472b6; }
 
         .feature-icon { font-size: 3em; margin-bottom: 15px; line-height: 1; }
         .feature-card h2 { font-size: 1.4em; font-weight: 600; color: #f1f5f9; margin: 0 0 10px 0; }
@@ -143,7 +146,6 @@
             </a>
 
             <!-- 3. All Quiz -->
-            <!-- Assicurati che l'href qui sotto corrisponda alla tua route in app.py -->
             <a href="/all_quiz" class="feature-card all-quiz">
                 <div class="feature-icon">📝</div>
                 <div>
@@ -153,7 +155,6 @@
             </a>
 
             <!-- 4. Official Quiz -->
-            <!-- Assicurati che l'href qui sotto corrisponda alla tua route in app.py -->
             <a href="/official_quiz" class="feature-card official-quiz">
                 <div class="feature-icon">🏛️</div>
                 <div>
@@ -163,12 +164,20 @@
             </a>
 
             <!-- 5. Jaccard Quiz -->
-            <!-- Assicurati che l'href qui sotto corrisponda alla tua route in app.py -->
             <a href="/jaccard_quiz" class="feature-card jaccard-quiz">
                 <div class="feature-icon">🎯</div>
                 <div>
                     <h2>Jaccard Quiz</h2>
                     <p>Sfida l'algoritmo di similarità per imparare a distinguere le domande a trabocchetto.</p>
+                </div>
+            </a>
+
+            <!-- 6. Analisi Duplicati -->
+            <a href="/analisi" class="feature-card analysis">
+                <div class="feature-icon">📊</div>
+                <div>
+                    <h2>Analisi Pool</h2>
+                    <p>Filtro anti-ridondanza: esplora le domande uniche e monitora i doppioni nel database da 7000+ quesiti.</p>
                 </div>
             </a>
 
