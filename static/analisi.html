@@ -8,14 +8,11 @@
         body { 
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
             font-weight: 300; letter-spacing: -0.2px; margin: 0; padding: 0; min-height: 100vh;
-            
-            /* Dynasty Ambient Dark Room Mesh Gradient */
             background-color: #0a0a0f;
             background-image: 
                 radial-gradient(circle at 0% 0%, #161e30 0%, transparent 50%),
                 radial-gradient(circle at 100% 100%, #1b1624 0%, transparent 50%);
             background-attachment: fixed;
-            
             color: #d1d5db; 
             line-height: 1.6;
         }
@@ -37,7 +34,7 @@
         }
         .btn-home:hover { background: rgba(39, 55, 77, 0.9); color: #f8fafc; }
 
-        .view-toggles { display: flex; gap: 10px; }
+        .view-toggles { display: flex; gap: 10px; flex-wrap: wrap; }
         .tab-btn {
             background: transparent; border: 1px solid #475569; color: #94a3b8; padding: 8px 16px;
             border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.2s;
@@ -45,7 +42,6 @@
         .tab-btn.active { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
         .tab-btn:not(.active):hover { color: #f1f5f9; border-color: #94a3b8; background: rgba(56, 189, 248, 0.1); }
 
-        /* Global IT/EN Translate Switch */
         .global-lang-toggle { 
             display: flex; background: rgba(15, 23, 42, 0.8); border-radius: 8px; 
             border: 1px solid #475569; overflow: hidden; 
@@ -55,7 +51,6 @@
             font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 0.9em; letter-spacing: 0.5px; 
         }
         .global-lang-toggle button.active { background: #38bdf8; color: #0f172a; }
-        .global-lang-toggle button:not(.active):hover { color: #f1f5f9; background: rgba(56, 189, 248, 0.15); }
 
         .header-title { text-align: center; margin-bottom: 30px; }
         .header-title h1 { font-size: 2.5em; margin: 0; color: #f8fafc; }
@@ -69,7 +64,6 @@
         }
         #search-bar:focus { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.2); }
 
-        /* EXPANDABLE HOT WORDS FULL WRAP GRID */
         .hot-words-wrapper {
             background: rgba(15, 23, 42, 0.7); border: 1px solid #334155; border-radius: 14px;
             margin-bottom: 25px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.2); display: none;
@@ -81,98 +75,94 @@
         .hot-words-title { font-weight: 600; color: #38bdf8; font-size: 0.95em; display: flex; align-items: center; gap: 8px; }
         .hot-words-collapse-btn { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 0.9em; font-weight: 600; }
         
-        .hot-words-bar {
-            display: flex; flex-wrap: wrap; gap: 8px; padding: 15px;
-        }
+        .hot-words-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 15px; }
         .hot-word-tag {
             background: rgba(30, 41, 59, 0.8); border: 1px solid #475569; color: #cbd5e1;
-            padding: 8px 14px; border-radius: 10px; font-size: 0.88em; font-weight: 500; cursor: pointer;
-            transition: all 0.2s;
+            padding: 8px 14px; border-radius: 10px; font-size: 0.88em; font-weight: 500; cursor: pointer; transition: all 0.2s;
         }
         .hot-word-tag:hover { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border-color: #38bdf8; }
         .hot-word-tag.selected { background: #38bdf8; color: #0f172a; border-color: #38bdf8; font-weight: 600; box-shadow: 0 0 10px rgba(56,189,248,0.4); }
 
-        #stats-bar { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
-        .stat-badge { background: rgba(30, 41, 59, 0.8); padding: 10px 20px; border-radius: 12px; border: 1px solid #334155; font-weight: 600; color: #f8fafc; }
-        .stat-highlight { color: #38bdf8; font-size: 1.2em; }
+        #stats-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .stat-badge { background: rgba(30, 41, 59, 0.8); padding: 10px 18px; border-radius: 12px; border: 1px solid #334155; font-weight: 600; color: #f8fafc; font-size: 0.9em; }
+        .stat-highlight { color: #38bdf8; }
 
-        /* LUMINESCENT FILTER BUTTONS */
-        .unique-filters { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; flex-wrap: wrap; }
-        
+        /* DUAL AXIS LUMINESCENT FILTER PANEL */
+        .unique-filters-container { display: none; flex-direction: column; gap: 12px; margin-bottom: 25px; align-items: center; }
+        .filter-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; }
+
         .filter-btn {
-            padding: 12px 25px; border-radius: 14px; font-size: 1.05em; font-weight: 600; cursor: pointer;
+            padding: 10px 22px; border-radius: 12px; font-size: 1em; font-weight: 600; cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent; 
-            background: rgba(30, 41, 59, 0.6); color: #cbd5e1; display: flex; align-items: center; gap: 10px;
+            background: rgba(30, 41, 59, 0.6); color: #cbd5e1; display: flex; align-items: center; gap: 8px;
         }
 
         .filter-btn.vero-btn.active {
             background: rgba(6, 78, 59, 0.6); color: #6ee7b7; border-color: #34d399;
-            box-shadow: 0 0 20px rgba(52, 211, 153, 0.4), inset 0 0 10px rgba(52, 211, 153, 0.2);
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.4);
         }
-        .filter-btn.vero-btn:not(.active) { opacity: 0.5; filter: grayscale(80%); border-color: #334155; }
+        .filter-btn.vero-btn:not(.active) { opacity: 0.4; filter: grayscale(80%); border-color: #334155; }
 
         .filter-btn.falso-btn.active {
             background: rgba(136, 19, 55, 0.6); color: #fca5a5; border-color: #fb7185;
-            box-shadow: 0 0 20px rgba(251, 113, 133, 0.4), inset 0 0 10px rgba(251, 113, 133, 0.2);
+            box-shadow: 0 0 15px rgba(251, 113, 133, 0.4);
         }
-        .filter-btn.falso-btn:not(.active) { opacity: 0.5; filter: grayscale(80%); border-color: #334155; }
+        .filter-btn.falso-btn:not(.active) { opacity: 0.4; filter: grayscale(80%); border-color: #334155; }
 
-        /* GRID SYSTEM */
+        .filter-btn.fig-btn.active {
+            background: rgba(14, 116, 144, 0.6); color: #38bdf8; border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+        .filter-btn.fig-btn:not(.active) { opacity: 0.4; filter: grayscale(80%); border-color: #334155; }
+
+        .filter-btn.text-btn.active {
+            background: rgba(107, 33, 168, 0.6); color: #d8b4fe; border-color: #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+        .filter-btn.text-btn:not(.active) { opacity: 0.4; filter: grayscale(80%); border-color: #334155; }
+
         .grid-layout { display: grid; grid-template-columns: 1fr; gap: 15px; }
         
         .analysis-card {
             background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid #334155; border-radius: 14px; 
-            padding: 22px; transition: all 0.2s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid #334155; border-radius: 14px; padding: 22px; transition: all 0.2s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         .analysis-card:hover { border-color: #475569; background: rgba(30, 41, 59, 0.85); }
 
         .analysis-card.card-always-true {
             background: linear-gradient(145deg, rgba(6, 78, 59, 0.35) 0%, rgba(30, 41, 59, 0.7) 100%);
-            border: 1px solid rgba(52, 211, 153, 0.4);
-            border-left: 6px solid #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.4); border-left: 6px solid #34d399;
         }
-        .analysis-card.card-always-true:hover {
-            background: linear-gradient(145deg, rgba(6, 78, 59, 0.5) 0%, rgba(30, 41, 59, 0.85) 100%);
-            border-color: rgba(52, 211, 153, 0.7);
-        }
-
         .analysis-card.card-always-false {
             background: linear-gradient(145deg, rgba(136, 19, 55, 0.35) 0%, rgba(30, 41, 59, 0.7) 100%);
-            border: 1px solid rgba(251, 113, 133, 0.4);
-            border-left: 6px solid #fb7185;
-        }
-        .analysis-card.card-always-false:hover {
-            background: linear-gradient(145deg, rgba(136, 19, 55, 0.5) 0%, rgba(30, 41, 59, 0.85) 100%);
-            border-color: rgba(251, 113, 133, 0.7);
+            border: 1px solid rgba(251, 113, 133, 0.4); border-left: 6px solid #fb7185;
         }
 
-        .q-text { 
-            font-size: 1.15em; font-weight: 400; color: #f8fafc; 
-            margin-bottom: 18px; display: block; line-height: 1.65; 
-            letter-spacing: -0.1px;
+        .variation-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid #475569; border-top: 4px solid #a855f7; border-radius: 14px; padding: 22px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
+        .var-header { font-size: 1.1em; font-weight: 600; color: #f8fafc; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; }
+        .var-badge { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4); padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: 600; white-space: nowrap; }
+        .var-sublist { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; border-left: 3px solid #a855f7; padding-left: 16px; }
+        .var-item { font-size: 1em; color: #cbd5e1; display: flex; justify-content: space-between; gap: 20px; align-items: center; background: rgba(15, 23, 42, 0.5); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.03); }
+        .var-answer-badge { padding: 4px 12px; border-radius: 6px; font-size: 0.85em; font-weight: 700; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px; }
+        .var-ans-v { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); }
+        .var-ans-f { background: rgba(225, 29, 72, 0.2); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.4); }
+
+        .q-text { font-size: 1.15em; font-weight: 400; color: #f8fafc; margin-bottom: 18px; display: block; line-height: 1.65; letter-spacing: -0.1px; }
         
         .counter-group { display: flex; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; align-items: center; }
         .count-badge { padding: 6px 14px; border-radius: 20px; font-size: 0.9em; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: 0.2s; }
         
         .c-total { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
-        
-        .c-vero { 
-            background: rgba(16, 185, 129, 0.15); color: #34d399; 
-            border: 1px solid rgba(52, 211, 153, 0.4); 
-        }
+        .c-vero { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); }
         .c-vero:hover { background: rgba(16, 185, 129, 0.3); color: #fff; border-color: #34d399; }
-
-        .c-falso { 
-            background: rgba(225, 29, 72, 0.15); color: #fb7185; 
-            border: 1px solid rgba(251, 113, 133, 0.4); 
-        }
+        .c-falso { background: rgba(225, 29, 72, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.4); }
         .c-falso:hover { background: rgba(225, 29, 72, 0.3); color: #fff; border-color: #fb7185; }
 
         .unique-loc { font-size: 0.9em; color: #cbd5e1; background: rgba(15, 23, 42, 0.5); padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.05); }
 
-        /* MODAL WINDOW STYLES */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -213,10 +203,7 @@
         .log-item.f-item { border-left-color: #fb7185; background: rgba(225, 29, 72, 0.05); }
 
         .thumb-container { position: relative; display: inline-block; flex-shrink: 0; }
-        .thumb-img { 
-            width: 36px; height: 36px; object-fit: contain; background: #ffffff; border-radius: 6px; padding: 2px; 
-            vertical-align: middle; border: 1px solid #475569; 
-        }
+        .thumb-img { width: 36px; height: 36px; object-fit: contain; background: #ffffff; border-radius: 6px; padding: 2px; vertical-align: middle; border: 1px solid #475569; }
         .thumb-container .popup-preview {
             visibility: hidden; opacity: 0; position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%) scale(0.9);
             width: 120px; height: 120px; background: #ffffff; border-radius: 10px; padding: 6px; box-sizing: border-box;
@@ -248,6 +235,8 @@
                 <div class="view-toggles">
                     <button class="tab-btn active" onclick="switchView('repeated')" id="btn-repeated">🔁 Ripetute</button>
                     <button class="tab-btn" onclick="switchView('unique')" id="btn-unique">✨ Uniche</button>
+                    <button class="tab-btn" onclick="switchView('variations')" id="btn-variations">🧠 Variazioni</button>
+                    <button class="tab-btn" onclick="switchView('standalone')" id="btn-standalone">📌 Standalone</button>
                 </div>
             </div>
             <!-- Global IT/EN Switch -->
@@ -259,7 +248,7 @@
 
         <div class="header-title">
             <h1>Analisi Incrociata Database</h1>
-            <p>Filtro anti-ridondanza: Esplora le ripetizioni e passa il mouse sulle miniature per visualizzare i segnali.</p>
+            <p>Filtro anti-ridondanza: Gestione completa delle ripetizioni, variazioni logiche e domande standalone.</p>
         </div>
 
         <div id="stats-bar"></div>
@@ -268,8 +257,8 @@
             <input type="text" id="search-bar" placeholder="🔍 Cerca una domanda specifica (es. spazio di frenatura)..." oninput="handleSearch()">
         </div>
 
-        <!-- 🔥 EXPANDABLE HOT WORDS FULL WRAP GRID PANEL -->
-        <div class="hot-words-wrapper" id="hotWordsWrapper">
+        <!-- HOT WORDS MENU -->
+        <div class="hot-words-wrapper" id="hotWordsWrapper" style="display: none;">
             <div class="hot-words-header" onclick="toggleHotWordsMenu()">
                 <div class="hot-words-title">🔥 Parole Chiave Frequenti (Filtri Rapidi Multi-selezione)</div>
                 <button class="hot-words-collapse-btn" id="collapseBtnText">▲ Comprimi</button>
@@ -290,29 +279,36 @@
                 <div class="hot-word-tag" onclick="toggleHotWord('obbligo', this)">obbligo</div>
                 <div class="hot-word-tag" onclick="toggleHotWord('precedenza', this)">precedenza</div>
                 <div class="hot-word-tag" onclick="toggleHotWord('spazio di frenatura', this)">spazio di frenatura</div>
-                <div class="hot-word-tag" onclick="toggleHotWord('sosta', this)">sosta / fermata</div>
-                <div class="hot-word-tag" onclick="toggleHotWord('limite', this)">limite</div>
-                <div class="hot-word-tag" onclick="toggleHotWord('luci', this)">luci / fari</div>
-                <div class="hot-word-tag" onclick="toggleHotWord('neve', this)">neve / catene</div>
+            </div>
+        </div>
+
+        <!-- DUAL AXIS LUMINESCENT FILTER PANEL (For Unique & Standalone Views) -->
+        <div class="unique-filters-container" id="uniqueFiltersBar">
+            <div class="filter-row">
+                <button id="btn-filter-V" class="filter-btn vero-btn active" onclick="toggleFilterAxis('V')">
+                    🟢 Sempre Vero (0)
+                </button>
+                <button id="btn-filter-F" class="filter-btn falso-btn active" onclick="toggleFilterAxis('F')">
+                    🔴 Sempre Falso (0)
+                </button>
+            </div>
+            <div class="filter-row">
+                <button id="btn-filter-fig" class="filter-btn fig-btn active" onclick="toggleFilterAxis('fig')">
+                    📷 Con Figura (0)
+                </button>
+                <button id="btn-filter-text" class="filter-btn text-btn active" onclick="toggleFilterAxis('text')">
+                    📄 Solo Testo (0)
+                </button>
             </div>
         </div>
 
         <div id="loader">Scansione dei 7000+ record in corso... ⏳</div>
         
-        <div id="view-repeated" class="grid-layout" style="display: none;"></div>
-
-        <!-- UNIQUE VIEW CONTAINER -->
-        <div id="view-unique" style="display: none;">
-            <div class="unique-filters">
-                <button id="btn-filter-V" class="filter-btn vero-btn active" onclick="toggleUniqueFilter('V')">
-                    🟢 Sempre Vero (0)
-                </button>
-                <button id="btn-filter-F" class="filter-btn falso-btn active" onclick="toggleUniqueFilter('F')">
-                    🔴 Sempre Falso (0)
-                </button>
-            </div>
-            <div id="unique-grid-container" class="grid-layout"></div>
-        </div>
+        <!-- VIEWS -->
+        <div id="view-repeated" class="grid-layout"></div>
+        <div id="view-unique" class="grid-layout" style="display: none;"></div>
+        <div id="view-variations" class="grid-layout" style="display: none;"></div>
+        <div id="view-standalone" class="grid-layout" style="display: none;"></div>
     </div>
 
     <!-- POPUP MODAL WINDOW -->
@@ -324,19 +320,21 @@
                 </div>
                 <button class="modal-close-btn" onclick="closeModal()">✕ Chiudi</button>
             </div>
-            <div class="modal-body" id="modalBodyContent">
-                <!-- Injected via JS -->
-            </div>
+            <div class="modal-body" id="modalBodyContent"></div>
         </div>
     </div>
 
     <script>
         let dbData = { unique: [], repeated: [], total_processed: 0 };
+        let uniqueVariationsClusters = [];
+        let standaloneUniques = [];
+        let totalVariationsQuestionsCount = 0;
+        let totalRepeatedInstancesCount = 0;
         let currentLang = 'it';
         let translationCache = {};
         let activeModalItem = null;
         
-        let uniqueFilters = { V: true, F: true };
+        let filterState = { V: true, F: true, fig: true, text: true };
         let activeHotWords = new Set();
         let isHotWordsOpen = true;
 
@@ -346,13 +344,60 @@
                 dbData = await res.json();
                 
                 document.getElementById('loader').style.display = 'none';
+                buildUniqueVariationsAndStandalone();
                 renderStats();
                 renderRepeated();
                 renderUnique();
+                renderVariations();
+                renderStandalone();
                 switchView('repeated');
             } catch (e) {
                 document.getElementById('loader').innerHTML = "<span style='color:#fb7185'>Errore di connessione al database.</span>";
             }
+        }
+
+        function buildUniqueVariationsAndStandalone() {
+            const uniques = dbData.unique;
+            const visited = new Set();
+            uniqueVariationsClusters = [];
+            totalVariationsQuestionsCount = 0;
+            totalRepeatedInstancesCount = 0;
+
+            // Calculate total instances for repeated templates (V.length + F.length)
+            dbData.repeated.forEach(item => {
+                totalRepeatedInstancesCount += (item.V.length + item.F.length);
+            });
+
+            const maxCheck = Math.min(uniques.length, 1500);
+
+            for (let i = 0; i < maxCheck; i++) {
+                if (visited.has(i)) continue;
+                const cluster = [uniques[i]];
+                visited.add(i);
+
+                for (let j = i + 1; j < maxCheck; j++) {
+                    if (visited.has(j)) continue;
+                    const sim = calculateJaccard(uniques[i].domanda, uniques[j].domanda);
+                    if (sim >= 0.60 && sim < 0.98) {
+                        cluster.push(uniques[j]);
+                        visited.add(j);
+                    }
+                }
+
+                if (cluster.length > 1) {
+                    uniqueVariationsClusters.push({
+                        core: cluster[0].domanda,
+                        variants: cluster
+                    });
+                    totalVariationsQuestionsCount += cluster.length;
+                }
+            }
+
+            uniqueVariationsClusters.sort((a, b) => b.variants.length - a.variants.length);
+
+            const clusteredIds = new Set();
+            uniqueVariationsClusters.forEach(c => c.variants.forEach(v => clusteredIds.add(v.domanda)));
+            standaloneUniques = uniques.filter(u => !clusteredIds.has(u.domanda));
         }
 
         async function translateTextAPI(text) {
@@ -367,11 +412,11 @@
             document.querySelectorAll('.g-lang-it').forEach(el => el.classList.toggle('active', lang === 'it'));
             document.querySelectorAll('.g-lang-en').forEach(el => el.classList.toggle('active', lang === 'en'));
 
-            if (document.getElementById('btn-repeated').classList.contains('active')) {
-                renderRepeated();
-            } else {
-                renderUnique();
-            }
+            const activeTab = document.querySelector('.tab-btn.active').id;
+            if (activeTab === 'btn-repeated') renderRepeated();
+            else if (activeTab === 'btn-unique') renderUnique();
+            else if (activeTab === 'btn-variations') renderVariations();
+            else renderStandalone();
 
             if (activeModalItem) {
                 const modalTitle = document.getElementById('modalQuestionTitle');
@@ -399,8 +444,10 @@
         function renderStats() {
             document.getElementById('stats-bar').innerHTML = `
                 <div class="stat-badge">Totale Pool: <span class="stat-highlight">${dbData.total_processed}</span></div>
-                <div class="stat-badge">Testi Unici Assoluti: <span class="stat-highlight">${dbData.unique.length}</span></div>
-                <div class="stat-badge">Testi Ripetuti: <span class="stat-highlight">${dbData.repeated.length}</span></div>
+                <div class="stat-badge">Testi Ripetuti: <span class="stat-highlight">${dbData.repeated.length} (${totalRepeatedInstancesCount} occorrenze)</span></div>
+                <div class="stat-badge">Testi Unici: <span class="stat-highlight">${dbData.unique.length}</span></div>
+                <div class="stat-badge">Variazioni: <span class="stat-highlight">${uniqueVariationsClusters.length} (${totalVariationsQuestionsCount} domande)</span></div>
+                <div class="stat-badge">Standalone: <span class="stat-highlight">${standaloneUniques.length} domande</span></div>
             `;
         }
 
@@ -473,6 +520,18 @@
             `;
         }
 
+        function calculateJaccard(str1, str2) {
+            if (!str1 || !str2) return 0;
+            const set1 = new Set(str1.toLowerCase().split(/\s+/));
+            const set2 = new Set(str2.toLowerCase().split(/\s+/));
+            let intersection = 0;
+            for (let w of set1) {
+                if (set2.has(w)) intersection++;
+            }
+            const union = set1.size + set2.size - intersection;
+            return union === 0 ? 0 : intersection / union;
+        }
+
         function renderRepeated() {
             const container = document.getElementById('view-repeated');
             let html = '';
@@ -483,7 +542,7 @@
                 const displayText = item.original;
 
                 html += `
-                <div class="analysis-card repeated-card" data-index="${index}">
+                <div class="analysis-card repeated-card" data-index="${index}" data-raw-text="${item.original.toLowerCase()}">
                     <span class="q-text" id="q-text-rep-${index}">${displayText}</span>
                     <div class="counter-group">
                         <div class="count-badge c-total">Trovata ${item.count} volte</div>
@@ -504,9 +563,114 @@
             }
         }
 
-        function toggleUniqueFilter(type) {
-            uniqueFilters[type] = !uniqueFilters[type];
-            document.getElementById(`btn-filter-${type}`).classList.toggle('active', uniqueFilters[type]);
+        function renderUnique() {
+            const container = document.getElementById('view-unique');
+            let html = '';
+            
+            dbData.unique.forEach((item, index) => {
+                const displayText = item.domanda;
+                const isTrue = item.risposta === 'V';
+                const hasFigure = item.location && item.location.includes('(Fig.');
+                
+                const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
+                const badgeClass = isTrue ? 'c-vero' : 'c-falso';
+                const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
+
+                html += `
+                <div class="analysis-card unique-card ${cardThemeClass}" data-index="${index}" data-raw-text="${item.domanda.toLowerCase()}" data-is-vero="${isTrue}" data-has-fig="${hasFigure}">
+                    <span class="q-text" id="q-text-uni-${index}">${displayText}</span>
+                    <div class="counter-group">
+                        <div class="count-badge ${badgeClass}">${ansLbl}</div>
+                        <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+
+            if (currentLang === 'en') {
+                dbData.unique.forEach(async (item, index) => {
+                    const el = document.getElementById(`q-text-uni-${index}`);
+                    if (el) {
+                        el.innerText = await getCachedTranslation(item.domanda);
+                    }
+                });
+            }
+        }
+
+        function renderVariations() {
+            const container = document.getElementById('view-variations');
+            let html = '';
+
+            uniqueVariationsClusters.forEach((cluster) => {
+                let variantsHTML = '';
+                cluster.variants.forEach(v => {
+                    const ansClass = v.risposta === 'V' ? 'var-ans-v' : 'var-ans-f';
+                    variantsHTML += `
+                        <div class="var-item">
+                            <span>↳ ${v.domanda}</span>
+                            <span class="var-answer-badge ${ansClass}">${v.risposta === 'V' ? 'Vero' : 'Falso'}</span>
+                        </div>
+                    `;
+                });
+
+                html += `
+                <div class="variation-card variation-item" data-raw-text="${cluster.core.toLowerCase()}">
+                    <div class="var-header">
+                        <span>🧩 Base Comune: ${cluster.core}</span>
+                        <span class="var-badge">${cluster.variants.length} Variazioni Simili</span>
+                    </div>
+                    <div class="var-sublist">
+                        ${variantsHTML}
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderStandalone() {
+            const container = document.getElementById('view-standalone');
+            let html = '';
+            
+            standaloneUniques.forEach((item, index) => {
+                const displayText = item.domanda;
+                const isTrue = item.risposta === 'V';
+                const hasFigure = item.location && item.location.includes('(Fig.');
+                
+                const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
+                const badgeClass = isTrue ? 'c-vero' : 'c-falso';
+                const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
+
+                html += `
+                <div class="analysis-card standalone-card ${cardThemeClass}" data-index="${index}" data-raw-text="${item.domanda.toLowerCase()}" data-is-vero="${isTrue}" data-has-fig="${hasFigure}">
+                    <span class="q-text" id="q-text-stand-${index}">${displayText}</span>
+                    <div class="counter-group">
+                        <div class="count-badge ${badgeClass}">${ansLbl}</div>
+                        <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+
+            if (currentLang === 'en') {
+                standaloneUniques.forEach(async (item, index) => {
+                    const el = document.getElementById(`q-text-stand-${index}`);
+                    if (el) {
+                        el.innerText = await getCachedTranslation(item.domanda);
+                    }
+                });
+            }
+        }
+
+        function toggleFilterAxis(axis) {
+            filterState[axis] = !filterState[axis];
+            
+            let btnId = '';
+            if (axis === 'V') btnId = 'btn-filter-V';
+            else if (axis === 'F') btnId = 'btn-filter-F';
+            else if (axis === 'fig') btnId = 'btn-filter-fig';
+            else if (axis === 'text') btnId = 'btn-filter-text';
+
+            document.getElementById(btnId).classList.toggle('active', filterState[axis]);
             handleSearch();
         }
 
@@ -550,50 +714,20 @@
             return qWords.every(qw => tWords.some(tw => tw.includes(qw)));
         }
 
-        function renderUnique() {
-            const container = document.getElementById('unique-grid-container');
-            let html = '';
-            
-            dbData.unique.forEach((item, index) => {
-                const displayText = item.domanda;
-                const isTrue = item.risposta === 'V';
-                
-                const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
-                const badgeClass = isTrue ? 'c-vero' : 'c-falso';
-                const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
-
-                html += `
-                <div class="analysis-card unique-card ${cardThemeClass}" data-index="${index}" data-raw-text="${item.domanda.toLowerCase()}" data-is-vero="${isTrue}">
-                    <span class="q-text" id="q-text-uni-${index}">${displayText}</span>
-                    <div class="counter-group">
-                        <div class="count-badge ${badgeClass}">${ansLbl}</div>
-                        <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-
-            if (currentLang === 'en') {
-                dbData.unique.forEach(async (item, index) => {
-                    const el = document.getElementById(`q-text-uni-${index}`);
-                    if (el) {
-                        el.innerText = await getCachedTranslation(item.domanda);
-                    }
-                });
-            }
-
-            handleSearch();
-        }
-
         function switchView(type) {
             document.getElementById('btn-repeated').classList.remove('active');
             document.getElementById('btn-unique').classList.remove('active');
+            document.getElementById('btn-variations').classList.remove('active');
+            document.getElementById('btn-standalone').classList.remove('active');
             document.getElementById(`btn-${type}`).classList.add('active');
             
             document.getElementById('view-repeated').style.display = type === 'repeated' ? 'grid' : 'none';
             document.getElementById('view-unique').style.display = type === 'unique' ? 'block' : 'none';
+            document.getElementById('view-variations').style.display = type === 'variations' ? 'grid' : 'none';
+            document.getElementById('view-standalone').style.display = type === 'standalone' ? 'grid' : 'none';
             
-            document.getElementById('hotWordsWrapper').style.display = type === 'unique' ? 'block' : 'none';
+            document.getElementById('uniqueFiltersBar').style.display = (type === 'unique' || type === 'standalone') ? 'flex' : 'none';
+            document.getElementById('hotWordsWrapper').style.display = type !== 'repeated' ? 'block' : 'none';
             
             document.getElementById('search-bar').value = '';
             activeHotWords.clear();
@@ -603,42 +737,42 @@
 
         function handleSearch() {
             const query = document.getElementById('search-bar').value.toLowerCase().trim();
-            const isUniqueView = document.getElementById('btn-unique').classList.contains('active');
+            const activeTab = document.querySelector('.tab-btn.active').id;
             
-            if (!isUniqueView) {
+            if (activeTab === 'btn-repeated') {
                 const cards = document.querySelectorAll('.repeated-card');
                 cards.forEach(card => {
-                    const text = card.querySelector('.q-text').innerText.toLowerCase();
+                    const text = card.getAttribute('data-raw-text') || '';
                     card.style.display = smartMatch(text, query) ? 'block' : 'none';
                 });
-            } else {
-                const cards = document.querySelectorAll('.unique-card');
-                let visibleV = 0;
-                let visibleF = 0;
+            } else if (activeTab === 'btn-unique' || activeTab === 'btn-standalone') {
+                const cardClass = activeTab === 'btn-unique' ? '.unique-card' : '.standalone-card';
+                const cards = document.querySelectorAll(cardClass);
+                
+                let countV = 0, countF = 0, countFig = 0, countText = 0;
 
                 cards.forEach(card => {
-                    const isVeroCard = card.classList.contains('card-always-true');
-                    const text = card.getAttribute('data-raw-text') || card.querySelector('.q-text').innerText.toLowerCase();
+                    const isVero = card.getAttribute('data-is-vero') === 'true';
+                    const hasFig = card.getAttribute('data-has-fig') === 'true';
+                    const text = card.getAttribute('data-raw-text') || '';
                     
                     const matchesSearch = smartMatch(text, query);
                     
                     let matchesHotWords = true;
                     if (activeHotWords.size > 0) {
                         for (let hw of activeHotWords) {
-                            if (!smartMatch(text, hw)) {
-                                matchesHotWords = false;
-                                break;
-                            }
+                            if (!smartMatch(text, hw)) { matchesHotWords = false; break; }
                         }
                     }
 
-                    const matchesFilter = (isVeroCard && uniqueFilters.V) || (!isVeroCard && uniqueFilters.F);
-                    
                     if (matchesSearch && matchesHotWords) {
-                        if (isVeroCard) visibleV++;
-                        else visibleF++;
+                        if (isVero) countV++; else countF++;
+                        if (hasFig) countFig++; else countText++;
 
-                        if (matchesFilter) {
+                        const matchesAnswerAxis = (isVero && filterState.V) || (!isVero && filterState.F);
+                        const matchesTypeAxis = (hasFig && filterState.fig) || (!hasFig && filterState.text);
+
+                        if (matchesAnswerAxis && matchesTypeAxis) {
                             card.style.display = 'block';
                         } else {
                             card.style.display = 'none';
@@ -648,12 +782,27 @@
                     }
                 });
 
-                // Update Live Dynamic Filter Counts
-                let veroLbl = currentLang === 'en' ? 'Always True' : 'Sempre Vero';
-                let falsoLbl = currentLang === 'en' ? 'Always False' : 'Sempre Falso';
-                
-                document.getElementById('btn-filter-V').innerHTML = `🟢 ${veroLbl} (${visibleV})`;
-                document.getElementById('btn-filter-F').innerHTML = `🔴 ${falsoLbl} (${visibleF})`;
+                const veroLbl = currentLang === 'en' ? 'Always True' : 'Sempre Vero';
+                const falsoLbl = currentLang === 'en' ? 'Always False' : 'Sempre Falso';
+                const figLbl = currentLang === 'en' ? 'With Figure' : 'Con Figura';
+                const textLbl = currentLang === 'en' ? 'Text Only' : 'Solo Testo';
+
+                document.getElementById('btn-filter-V').innerHTML = `🟢 ${veroLbl} (${countV})`;
+                document.getElementById('btn-filter-F').innerHTML = `🔴 ${falsoLbl} (${countF})`;
+                document.getElementById('btn-filter-fig').innerHTML = `📷 ${figLbl} (${countFig})`;
+                document.getElementById('btn-filter-text').innerHTML = `📄 ${textLbl} (${countText})`;
+            } else {
+                const cards = document.querySelectorAll('.variation-item');
+                cards.forEach(card => {
+                    const text = card.getAttribute('data-raw-text') || '';
+                    let matchesHotWords = true;
+                    if (activeHotWords.size > 0) {
+                        for (let hw of activeHotWords) {
+                            if (!smartMatch(text, hw)) { matchesHotWords = false; break; }
+                        }
+                    }
+                    card.style.display = (smartMatch(text, query) && matchesHotWords) ? 'block' : 'none';
+                });
             }
         }
 
