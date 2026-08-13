@@ -87,6 +87,10 @@ async def official_quiz(request: Request):
 async def jaccard_quiz(request: Request):
     return templates.TemplateResponse(request=request, name="jaccard.html")
 
+@app.get("/analisi", response_class=HTMLResponse)
+def get_analisi_page():
+    with open("static/analisi.html", "r", encoding="utf-8") as f:
+        return f.read()
 
 # ==========================================
 # 2. API ENDPOINTS 
@@ -439,3 +443,56 @@ def generate_jaccard_exam():
         return {"questions": formatted_exam}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+        
+        
+@app.get("/api/analysis/duplicates")
+def analyze_duplicates():
+    import sqlite3
+    conn = sqlite3.connect('patente_quiz.db')
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    
+    c.execute("SELECT id, domanda, risposta, figura, categoria, sottocategoria FROM questions")
+    rows = c.fetchall()
+    conn.close()
+    
+    analysis = {}
+    
+    for r in rows:
+        norm_text = " ".join(r['domanda'].lower().split())
+        
+        if norm_text not in analysis:
+            analysis[norm_text] = {
+                "original": r['domanda'],
+                "count": 0,
+                "V": [],
+                "F": []
+            }
+        
+        analysis[norm_text]["count"] += 1
+        
+        fig_text = f" (Fig. {r['figura']})" if r['figura'] and r['figura'] != 'no_image' else ""
+        location = f"{r['categoria']} > {r['sottocategoria']}{fig_text}"
+        
+        # FIXED: Check if risposta is 1 (True) or 0 (False) based on your SQLite schema
+        if r['risposta'] == 1 or r['risposta'] == 'V':
+            if location not in analysis[norm_text]["V"]:
+                analysis[norm_text]["V"].append(location)
+        else:
+            if location not in analysis[norm_text]["F"]:
+                analysis[norm_text]["F"].append(location)
+                
+    unique = []
+    repeated = []
+    
+    for k, v in analysis.items():
+        if v["count"] == 1:
+            ans = 'V' if len(v['V']) > 0 else 'F'
+            loc = v['V'][0] if ans == 'V' else v['F'][0]
+            unique.append({"domanda": v["original"], "risposta": ans, "location": loc})
+        else:
+            repeated.append(v)
+            
+    repeated.sort(key=lambda x: x["count"], reverse=True)
+    
+    return {"unique": unique, "repeated": repeated, "total_processed": len(rows)}
