@@ -363,7 +363,6 @@
             totalVariationsQuestionsCount = 0;
             totalRepeatedInstancesCount = 0;
 
-            // Calculate total instances for repeated templates (V.length + F.length)
             dbData.repeated.forEach(item => {
                 totalRepeatedInstancesCount += (item.V.length + item.F.length);
             });
@@ -397,7 +396,10 @@
 
             const clusteredIds = new Set();
             uniqueVariationsClusters.forEach(c => c.variants.forEach(v => clusteredIds.add(v.domanda)));
+            
+            // Standalone sorted globally by text length / wording pattern while keeping original map location intact
             standaloneUniques = uniques.filter(u => !clusteredIds.has(u.domanda));
+            standaloneUniques.sort((a, b) => a.domanda.localeCompare(b.domanda));
         }
 
         async function translateTextAPI(text) {
