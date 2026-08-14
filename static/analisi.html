@@ -42,6 +42,15 @@
         .tab-btn.active { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
         .tab-btn:not(.active):hover { color: #f1f5f9; border-color: #94a3b8; background: rgba(56, 189, 248, 0.1); }
 
+        .right-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+        /* EN Dual-View Add-on Toggle Button */
+        .dual-lang-btn {
+            background: rgba(30, 41, 59, 0.8); border: 1px solid #475569; color: #94a3b8;
+            padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.2s; font-size: 0.9em;
+        }
+        .dual-lang-btn.active { background: #a855f7; color: #f8fafc; border-color: #a855f7; box-shadow: 0 0 12px rgba(168,85,247,0.4); }
+
         .global-lang-toggle { 
             display: flex; background: rgba(15, 23, 42, 0.8); border-radius: 8px; 
             border: 1px solid #475569; overflow: hidden; 
@@ -87,7 +96,6 @@
         .stat-badge { background: rgba(30, 41, 59, 0.8); padding: 10px 18px; border-radius: 12px; border: 1px solid #334155; font-weight: 600; color: #f8fafc; font-size: 0.9em; }
         .stat-highlight { color: #38bdf8; }
 
-        /* DUAL AXIS LUMINESCENT FILTER PANEL */
         .unique-filters-container { display: none; flex-direction: column; gap: 12px; margin-bottom: 25px; align-items: center; }
         .filter-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; width: 100%; }
 
@@ -152,6 +160,12 @@
 
         .q-text { font-size: 1.15em; font-weight: 400; color: #f8fafc; margin-bottom: 18px; display: block; line-height: 1.65; letter-spacing: -0.1px; }
         
+        /* Secondary English Subtext Styling for Dual-View Mode */
+        .q-subtext-en {
+            font-size: 0.92em; font-weight: 300; color: #94a3b8; margin-top: 8px; margin-bottom: 18px; 
+            display: none; line-height: 1.5; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px;
+        }
+
         .counter-group { display: flex; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; align-items: center; }
         .count-badge { padding: 6px 14px; border-radius: 20px; font-size: 0.9em; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: 0.2s; }
         
@@ -239,10 +253,16 @@
                     <button class="tab-btn" onclick="switchView('standalone')" id="btn-standalone">📌 Standalone</button>
                 </div>
             </div>
-            <!-- Global IT/EN Switch -->
-            <div class="global-lang-toggle">
-                <button class="g-lang-it active" onclick="setGlobalLang('it')">IT</button>
-                <button class="g-lang-en" onclick="setGlobalLang('en')">EN</button>
+            
+            <div class="right-controls">
+                <!-- EN Dual-View Add-on Toggle Button -->
+                <button class="dual-lang-btn" id="btn-dual-addon" onclick="toggleDualAddon()">🌐 EN Add-on</button>
+                
+                <!-- Global IT/EN Switch -->
+                <div class="global-lang-toggle">
+                    <button class="g-lang-it active" onclick="setGlobalLang('it')">IT</button>
+                    <button class="g-lang-en" onclick="setGlobalLang('en')">EN</button>
+                </div>
             </div>
         </div>
 
@@ -295,520 +315,4 @@
             <div class="filter-row">
                 <button id="btn-filter-fig" class="filter-btn fig-btn active" onclick="toggleFilterAxis('fig')">
                     📷 Con Figura (0)
-                </button>
-                <button id="btn-filter-text" class="filter-btn text-btn active" onclick="toggleFilterAxis('text')">
-                    📄 Solo Testo (0)
-                </button>
-            </div>
-        </div>
-
-        <div id="loader">Scansione dei 7000+ record in corso... ⏳</div>
-        
-        <!-- VIEWS -->
-        <div id="view-repeated" class="grid-layout"></div>
-        <div id="view-unique" class="grid-layout" style="display: none;"></div>
-        <div id="view-variations" class="grid-layout" style="display: none;"></div>
-        <div id="view-standalone" class="grid-layout" style="display: none;"></div>
-    </div>
-
-    <!-- POPUP MODAL WINDOW -->
-    <div class="modal-overlay" id="detailModal" onclick="closeModalOnOutside(event)">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title-area">
-                    <h3 id="modalQuestionTitle">Testo della domanda...</h3>
-                </div>
-                <button class="modal-close-btn" onclick="closeModal()">✕ Chiudi</button>
-            </div>
-            <div class="modal-body" id="modalBodyContent"></div>
-        </div>
-    </div>
-
-    <script>
-        let dbData = { unique: [], repeated: [], total_processed: 0 };
-        let uniqueVariationsClusters = [];
-        let standaloneUniques = [];
-        let totalVariationsQuestionsCount = 0;
-        let totalRepeatedInstancesCount = 0;
-        let currentLang = 'it';
-        let translationCache = {};
-        let activeModalItem = null;
-        
-        let filterState = { V: true, F: true, fig: true, text: true };
-        let activeHotWords = new Set();
-        let isHotWordsOpen = true;
-
-        async function fetchAnalysis() {
-            try {
-                const res = await fetch('/api/analysis/duplicates');
-                dbData = await res.json();
-                
-                document.getElementById('loader').style.display = 'none';
-                buildUniqueVariationsAndStandalone();
-                renderStats();
-                renderRepeated();
-                renderUnique();
-                renderVariations();
-                renderStandalone();
-                switchView('repeated');
-            } catch (e) {
-                document.getElementById('loader').innerHTML = "<span style='color:#fb7185'>Errore di connessione al database.</span>";
-            }
-        }
-
-        function buildUniqueVariationsAndStandalone() {
-            const uniques = dbData.unique;
-            const visited = new Set();
-            uniqueVariationsClusters = [];
-            totalVariationsQuestionsCount = 0;
-            totalRepeatedInstancesCount = 0;
-
-            dbData.repeated.forEach(item => {
-                totalRepeatedInstancesCount += (item.V.length + item.F.length);
-            });
-
-            const maxCheck = Math.min(uniques.length, 1500);
-
-            for (let i = 0; i < maxCheck; i++) {
-                if (visited.has(i)) continue;
-                const cluster = [uniques[i]];
-                visited.add(i);
-
-                for (let j = i + 1; j < maxCheck; j++) {
-                    if (visited.has(j)) continue;
-                    const sim = calculateJaccard(uniques[i].domanda, uniques[j].domanda);
-                    if (sim >= 0.60 && sim < 0.98) {
-                        cluster.push(uniques[j]);
-                        visited.add(j);
-                    }
-                }
-
-                if (cluster.length > 1) {
-                    uniqueVariationsClusters.push({
-                        core: cluster[0].domanda,
-                        variants: cluster
-                    });
-                    totalVariationsQuestionsCount += cluster.length;
-                }
-            }
-
-            uniqueVariationsClusters.sort((a, b) => b.variants.length - a.variants.length);
-
-            const clusteredIds = new Set();
-            uniqueVariationsClusters.forEach(c => c.variants.forEach(v => clusteredIds.add(v.domanda)));
-            
-            // Standalone sorted globally by text length / wording pattern while keeping original map location intact
-            standaloneUniques = uniques.filter(u => !clusteredIds.has(u.domanda));
-            standaloneUniques.sort((a, b) => a.domanda.localeCompare(b.domanda));
-        }
-
-        async function translateTextAPI(text) {
-            if (!text || text === "N/A") return text;
-            const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=it&tl=en&dt=t&q=${encodeURIComponent(text)}`);
-            const data = await res.json();
-            return data[0].map(item => item[0]).join('');
-        }
-
-        async function setGlobalLang(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.g-lang-it').forEach(el => el.classList.toggle('active', lang === 'it'));
-            document.querySelectorAll('.g-lang-en').forEach(el => el.classList.toggle('active', lang === 'en'));
-
-            const activeTab = document.querySelector('.tab-btn.active').id;
-            if (activeTab === 'btn-repeated') renderRepeated();
-            else if (activeTab === 'btn-unique') renderUnique();
-            else if (activeTab === 'btn-variations') renderVariations();
-            else renderStandalone();
-
-            if (activeModalItem) {
-                const modalTitle = document.getElementById('modalQuestionTitle');
-                const rawText = activeModalItem.original || activeModalItem.domanda;
-                if (lang === 'en') {
-                    modalTitle.innerText = "Translating... ⏳";
-                    modalTitle.innerText = await getCachedTranslation(rawText);
-                } else {
-                    modalTitle.innerText = rawText;
-                }
-            }
-        }
-
-        async function getCachedTranslation(text) {
-            if (translationCache[text]) return translationCache[text];
-            try {
-                const translated = await translateTextAPI(text);
-                translationCache[text] = translated;
-                return translated;
-            } catch (e) {
-                return text;
-            }
-        }
-
-        function renderStats() {
-            document.getElementById('stats-bar').innerHTML = `
-                <div class="stat-badge">Totale Pool: <span class="stat-highlight">${dbData.total_processed}</span></div>
-                <div class="stat-badge">Testi Ripetuti: <span class="stat-highlight">${dbData.repeated.length} (${totalRepeatedInstancesCount} occorrenze)</span></div>
-                <div class="stat-badge">Testi Unici: <span class="stat-highlight">${dbData.unique.length}</span></div>
-                <div class="stat-badge">Variazioni: <span class="stat-highlight">${uniqueVariationsClusters.length} (${totalVariationsQuestionsCount} domande)</span></div>
-                <div class="stat-badge">Standalone: <span class="stat-highlight">${standaloneUniques.length} domande</span></div>
-            `;
-        }
-
-        async function openModalByIndex(index, type) {
-            const item = dbData.repeated[index];
-            if (!item) return;
-
-            activeModalItem = item;
-            activeModalItem.modalType = type;
-
-            const modal = document.getElementById('detailModal');
-            const titleEl = document.getElementById('modalQuestionTitle');
-
-            let displayTitle = item.original;
-            if (currentLang === 'en') {
-                titleEl.innerText = "Translating... ⏳";
-                displayTitle = await getCachedTranslation(item.original);
-            }
-
-            titleEl.innerText = displayTitle;
-            renderModalBody();
-            modal.style.display = 'flex';
-        }
-
-        function renderModalBody() {
-            const bodyEl = document.getElementById('modalBodyContent');
-            const item = activeModalItem;
-            const isVero = item.modalType === 'V';
-            const titleClass = isVero ? 'v' : 'f';
-            const titleLabel = isVero ? 'Esiti Vero (V)' : 'Esiti Falso (F)';
-            const targetArray = isVero ? item.V : item.F;
-
-            let itemsHTML = '';
-            targetArray.forEach(loc => {
-                itemsHTML += `<div class="log-item ${isVero ? 'v-item' : 'f-item'}">${formatLocation(loc)}</div>`;
-            });
-
-            bodyEl.innerHTML = `
-                <div class="modal-section-title ${titleClass}">${titleLabel} (${targetArray.length}):</div>
-                ${itemsHTML}
-            `;
-        }
-
-        function closeModal() {
-            document.getElementById('detailModal').style.display = 'none';
-            activeModalItem = null;
-        }
-
-        function closeModalOnOutside(event) {
-            if (event.target.id === 'detailModal') {
-                closeModal();
-            }
-        }
-
-        function formatLocation(locString) {
-            const figMatch = locString.match(/\(Fig\. ([^)]+)\)/);
-            if (!figMatch) return `<span class="loc-text">${locString}</span>`;
-
-            const figPath = figMatch[1];
-            const cleanLocText = locString.replace(/\s*\(Fig\. [^)]+\)/, '');
-
-            return `
-                <span class="loc-text">${cleanLocText}</span>
-                <div class="thumb-container">
-                    <img src="/${figPath}" class="thumb-img" alt="Segnale">
-                    <div class="popup-preview">
-                        <img src="/${figPath}" alt="Anteprima">
-                    </div>
-                </div>
-            `;
-        }
-
-        function calculateJaccard(str1, str2) {
-            if (!str1 || !str2) return 0;
-            const set1 = new Set(str1.toLowerCase().split(/\s+/));
-            const set2 = new Set(str2.toLowerCase().split(/\s+/));
-            let intersection = 0;
-            for (let w of set1) {
-                if (set2.has(w)) intersection++;
-            }
-            const union = set1.size + set2.size - intersection;
-            return union === 0 ? 0 : intersection / union;
-        }
-
-        function renderRepeated() {
-            const container = document.getElementById('view-repeated');
-            let html = '';
-            
-            dbData.repeated.forEach((item, index) => {
-                const vCount = item.V.length;
-                const fCount = item.F.length;
-                const displayText = item.original;
-
-                html += `
-                <div class="analysis-card repeated-card" data-index="${index}" data-raw-text="${item.original.toLowerCase()}">
-                    <span class="q-text" id="q-text-rep-${index}">${displayText}</span>
-                    <div class="counter-group">
-                        <div class="count-badge c-total">Trovata ${item.count} volte</div>
-                        ${vCount > 0 ? `<div class="count-badge c-vero" onclick="openModalByIndex(${index}, 'V')">Vero in ${vCount} casi ↗</div>` : ''}
-                        ${fCount > 0 ? `<div class="count-badge c-falso" onclick="openModalByIndex(${index}, 'F')">Falso in ${fCount} casi ↗</div>` : ''}
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-
-            if (currentLang === 'en') {
-                dbData.repeated.forEach(async (item, index) => {
-                    const el = document.getElementById(`q-text-rep-${index}`);
-                    if (el) {
-                        el.innerText = await getCachedTranslation(item.original);
-                    }
-                });
-            }
-        }
-
-        function renderUnique() {
-            const container = document.getElementById('view-unique');
-            let html = '';
-            
-            dbData.unique.forEach((item, index) => {
-                const displayText = item.domanda;
-                const isTrue = item.risposta === 'V';
-                const hasFigure = item.location && item.location.includes('(Fig.');
-                
-                const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
-                const badgeClass = isTrue ? 'c-vero' : 'c-falso';
-                const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
-
-                html += `
-                <div class="analysis-card unique-card ${cardThemeClass}" data-index="${index}" data-raw-text="${item.domanda.toLowerCase()}" data-is-vero="${isTrue}" data-has-fig="${hasFigure}">
-                    <span class="q-text" id="q-text-uni-${index}">${displayText}</span>
-                    <div class="counter-group">
-                        <div class="count-badge ${badgeClass}">${ansLbl}</div>
-                        <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-
-            if (currentLang === 'en') {
-                dbData.unique.forEach(async (item, index) => {
-                    const el = document.getElementById(`q-text-uni-${index}`);
-                    if (el) {
-                        el.innerText = await getCachedTranslation(item.domanda);
-                    }
-                });
-            }
-        }
-
-        function renderVariations() {
-            const container = document.getElementById('view-variations');
-            let html = '';
-
-            uniqueVariationsClusters.forEach((cluster) => {
-                let variantsHTML = '';
-                cluster.variants.forEach(v => {
-                    const ansClass = v.risposta === 'V' ? 'var-ans-v' : 'var-ans-f';
-                    variantsHTML += `
-                        <div class="var-item">
-                            <span>↳ ${v.domanda}</span>
-                            <span class="var-answer-badge ${ansClass}">${v.risposta === 'V' ? 'Vero' : 'Falso'}</span>
-                        </div>
-                    `;
-                });
-
-                html += `
-                <div class="variation-card variation-item" data-raw-text="${cluster.core.toLowerCase()}">
-                    <div class="var-header">
-                        <span>🧩 Base Comune: ${cluster.core}</span>
-                        <span class="var-badge">${cluster.variants.length} Variazioni Simili</span>
-                    </div>
-                    <div class="var-sublist">
-                        ${variantsHTML}
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-        }
-
-        function renderStandalone() {
-            const container = document.getElementById('view-standalone');
-            let html = '';
-            
-            standaloneUniques.forEach((item, index) => {
-                const displayText = item.domanda;
-                const isTrue = item.risposta === 'V';
-                const hasFigure = item.location && item.location.includes('(Fig.');
-                
-                const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
-                const badgeClass = isTrue ? 'c-vero' : 'c-falso';
-                const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
-
-                html += `
-                <div class="analysis-card standalone-card ${cardThemeClass}" data-index="${index}" data-raw-text="${item.domanda.toLowerCase()}" data-is-vero="${isTrue}" data-has-fig="${hasFigure}">
-                    <span class="q-text" id="q-text-stand-${index}">${displayText}</span>
-                    <div class="counter-group">
-                        <div class="count-badge ${badgeClass}">${ansLbl}</div>
-                        <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
-
-            if (currentLang === 'en') {
-                standaloneUniques.forEach(async (item, index) => {
-                    const el = document.getElementById(`q-text-stand-${index}`);
-                    if (el) {
-                        el.innerText = await getCachedTranslation(item.domanda);
-                    }
-                });
-            }
-        }
-
-        function toggleFilterAxis(axis) {
-            filterState[axis] = !filterState[axis];
-            
-            let btnId = '';
-            if (axis === 'V') btnId = 'btn-filter-V';
-            else if (axis === 'F') btnId = 'btn-filter-F';
-            else if (axis === 'fig') btnId = 'btn-filter-fig';
-            else if (axis === 'text') btnId = 'btn-filter-text';
-
-            document.getElementById(btnId).classList.toggle('active', filterState[axis]);
-            handleSearch();
-        }
-
-        function toggleHotWordsMenu() {
-            isHotWordsOpen = !isHotWordsOpen;
-            const bar = document.getElementById('hotWordsBar');
-            const btnText = document.getElementById('collapseBtnText');
-            bar.style.display = isHotWordsOpen ? 'flex' : 'none';
-            btnText.innerText = isHotWordsOpen ? '▲ Comprimi' : '▼ Espandi';
-        }
-
-        function toggleHotWord(word, el) {
-            if (activeHotWords.has(word)) {
-                activeHotWords.delete(word);
-                el.classList.remove('selected');
-            } else {
-                activeHotWords.add(word);
-                el.classList.add('selected');
-            }
-            handleSearch();
-        }
-
-        function stemWord(w) {
-            w = w.toLowerCase().trim();
-            if (w.endsWith('i') || w.endsWith('e') || w.endsWith('a') || w.endsWith('o')) {
-                return w.slice(0, -1);
-            }
-            return w;
-        }
-
-        function smartMatch(text, query) {
-            if (!query) return true;
-            text = text.toLowerCase();
-            query = query.toLowerCase().trim();
-
-            if (text.includes(query)) return true;
-
-            const qWords = query.split(/\s+/).map(stemWord);
-            const tWords = text.split(/\s+/).map(stemWord);
-
-            return qWords.every(qw => tWords.some(tw => tw.includes(qw)));
-        }
-
-        function switchView(type) {
-            document.getElementById('btn-repeated').classList.remove('active');
-            document.getElementById('btn-unique').classList.remove('active');
-            document.getElementById('btn-variations').classList.remove('active');
-            document.getElementById('btn-standalone').classList.remove('active');
-            document.getElementById(`btn-${type}`).classList.add('active');
-            
-            document.getElementById('view-repeated').style.display = type === 'repeated' ? 'grid' : 'none';
-            document.getElementById('view-unique').style.display = type === 'unique' ? 'block' : 'none';
-            document.getElementById('view-variations').style.display = type === 'variations' ? 'grid' : 'none';
-            document.getElementById('view-standalone').style.display = type === 'standalone' ? 'grid' : 'none';
-            
-            document.getElementById('uniqueFiltersBar').style.display = (type === 'unique' || type === 'standalone') ? 'flex' : 'none';
-            document.getElementById('hotWordsWrapper').style.display = type !== 'repeated' ? 'block' : 'none';
-            
-            document.getElementById('search-bar').value = '';
-            activeHotWords.clear();
-            document.querySelectorAll('.hot-word-tag').forEach(t => t.classList.remove('selected'));
-            handleSearch();
-        }
-
-        function handleSearch() {
-            const query = document.getElementById('search-bar').value.toLowerCase().trim();
-            const activeTab = document.querySelector('.tab-btn.active').id;
-            
-            if (activeTab === 'btn-repeated') {
-                const cards = document.querySelectorAll('.repeated-card');
-                cards.forEach(card => {
-                    const text = card.getAttribute('data-raw-text') || '';
-                    card.style.display = smartMatch(text, query) ? 'block' : 'none';
-                });
-            } else if (activeTab === 'btn-unique' || activeTab === 'btn-standalone') {
-                const cardClass = activeTab === 'btn-unique' ? '.unique-card' : '.standalone-card';
-                const cards = document.querySelectorAll(cardClass);
-                
-                let countV = 0, countF = 0, countFig = 0, countText = 0;
-
-                cards.forEach(card => {
-                    const isVero = card.getAttribute('data-is-vero') === 'true';
-                    const hasFig = card.getAttribute('data-has-fig') === 'true';
-                    const text = card.getAttribute('data-raw-text') || '';
-                    
-                    const matchesSearch = smartMatch(text, query);
-                    
-                    let matchesHotWords = true;
-                    if (activeHotWords.size > 0) {
-                        for (let hw of activeHotWords) {
-                            if (!smartMatch(text, hw)) { matchesHotWords = false; break; }
-                        }
-                    }
-
-                    if (matchesSearch && matchesHotWords) {
-                        if (isVero) countV++; else countF++;
-                        if (hasFig) countFig++; else countText++;
-
-                        const matchesAnswerAxis = (isVero && filterState.V) || (!isVero && filterState.F);
-                        const matchesTypeAxis = (hasFig && filterState.fig) || (!hasFig && filterState.text);
-
-                        if (matchesAnswerAxis && matchesTypeAxis) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                const veroLbl = currentLang === 'en' ? 'Always True' : 'Sempre Vero';
-                const falsoLbl = currentLang === 'en' ? 'Always False' : 'Sempre Falso';
-                const figLbl = currentLang === 'en' ? 'With Figure' : 'Con Figura';
-                const textLbl = currentLang === 'en' ? 'Text Only' : 'Solo Testo';
-
-                document.getElementById('btn-filter-V').innerHTML = `🟢 ${veroLbl} (${countV})`;
-                document.getElementById('btn-filter-F').innerHTML = `🔴 ${falsoLbl} (${countF})`;
-                document.getElementById('btn-filter-fig').innerHTML = `📷 ${figLbl} (${countFig})`;
-                document.getElementById('btn-filter-text').innerHTML = `📄 ${textLbl} (${countText})`;
-            } else {
-                const cards = document.querySelectorAll('.variation-item');
-                cards.forEach(card => {
-                    const text = card.getAttribute('data-raw-text') || '';
-                    let matchesHotWords = true;
-                    if (activeHotWords.size > 0) {
-                        for (let hw of activeHotWords) {
-                            if (!smartMatch(text, hw)) { matchesHotWords = false; break; }
-                        }
-                    }
-                    card.style.display = (smartMatch(text, query) && matchesHotWords) ? 'block' : 'none';
-                });
-            }
-        }
-
-        fetchAnalysis();
-    </script>
-</body>
-</html>
+                <
