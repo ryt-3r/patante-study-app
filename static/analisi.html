@@ -44,7 +44,6 @@
 
         .right-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 
-        /* EN Dual-View Add-on Toggle Button */
         .dual-lang-btn {
             background: rgba(30, 41, 59, 0.8); border: 1px solid #475569; color: #94a3b8;
             padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.2s; font-size: 0.9em;
@@ -134,6 +133,7 @@
         .analysis-card {
             background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border: 1px solid #334155; border-radius: 14px; padding: 22px; transition: all 0.2s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            position: relative;
         }
         .analysis-card:hover { border-color: #475569; background: rgba(30, 41, 59, 0.85); }
 
@@ -146,9 +146,16 @@
             border: 1px solid rgba(251, 113, 133, 0.4); border-left: 6px solid #fb7185;
         }
 
+        /* Slab Badge Index Numbering */
+        .slab-index-badge {
+            position: absolute; top: 18px; right: 22px; background: rgba(56, 189, 248, 0.15); color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 10px; border-radius: 8px; font-size: 0.85em; font-weight: 700;
+        }
+
         .variation-card {
             background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
             border: 1px solid #475569; border-top: 4px solid #a855f7; border-radius: 14px; padding: 22px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            position: relative;
         }
         .var-header { font-size: 1.1em; font-weight: 600; color: #f8fafc; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; }
         .var-badge { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4); padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: 600; white-space: nowrap; }
@@ -158,9 +165,8 @@
         .var-ans-v { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); }
         .var-ans-f { background: rgba(225, 29, 72, 0.2); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.4); }
 
-        .q-text { font-size: 1.15em; font-weight: 400; color: #f8fafc; margin-bottom: 18px; display: block; line-height: 1.65; letter-spacing: -0.1px; }
+        .q-text { font-size: 1.15em; font-weight: 400; color: #f8fafc; margin-bottom: 18px; display: block; line-height: 1.65; letter-spacing: -0.1px; padding-right: 50px; }
         
-        /* Secondary English Subtext Styling for Dual-View Mode */
         .q-subtext-en {
             font-size: 0.92em; font-weight: 300; color: #94a3b8; margin-top: 8px; margin-bottom: 18px; 
             display: none; line-height: 1.5; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px;
@@ -255,10 +261,8 @@
             </div>
             
             <div class="right-controls">
-                <!-- EN Dual-View Add-on Toggle Button -->
                 <button class="dual-lang-btn" id="btn-dual-addon" onclick="toggleDualAddon()">🌐 EN Add-on</button>
                 
-                <!-- Global IT/EN Switch -->
                 <div class="global-lang-toggle">
                     <button class="g-lang-it active" onclick="setGlobalLang('it')">IT</button>
                     <button class="g-lang-en" onclick="setGlobalLang('en')">EN</button>
@@ -302,7 +306,7 @@
             </div>
         </div>
 
-        <!-- DUAL AXIS LUMINESCENT FILTER PANEL (For Unique & Standalone Views) -->
+        <!-- DUAL AXIS LUMINESCENT FILTER PANEL -->
         <div class="unique-filters-container" id="uniqueFiltersBar">
             <div class="filter-row">
                 <button id="btn-filter-V" class="filter-btn vero-btn active" onclick="toggleFilterAxis('V')">
@@ -417,6 +421,8 @@
 
             const clusteredIds = new Set();
             uniqueVariationsClusters.forEach(c => c.variants.forEach(v => clusteredIds.add(v.domanda)));
+            
+            // Standalone sorted globally by text length / wording pattern while ignoring default topic hierarchies
             standaloneUniques = uniques.filter(u => !clusteredIds.has(u.domanda));
             standaloneUniques.sort((a, b) => a.domanda.localeCompare(b.domanda));
         }
@@ -433,7 +439,6 @@
             const btn = document.getElementById('btn-dual-addon');
             btn.classList.toggle('active', isDualAddonActive);
 
-            // Re-render active view to apply or remove subtext
             const activeTab = document.querySelector('.tab-btn.active').id;
             if (activeTab === 'btn-repeated') renderRepeated();
             else if (activeTab === 'btn-unique') renderUnique();
@@ -573,7 +578,7 @@
             dbData.repeated.forEach((item, index) => {
                 const vCount = item.V.length;
                 const fCount = item.F.length;
-                let displayText = item.original;
+                const displayText = item.original;
 
                 html += `
                 <div class="analysis-card repeated-card" data-index="${index}" data-raw-text="${item.original.toLowerCase()}">
@@ -588,7 +593,6 @@
             });
             container.innerHTML = html;
 
-            // Handle translations
             dbData.repeated.forEach(async (item, index) => {
                 const el = document.getElementById(`q-text-rep-${index}`);
                 const subEl = document.getElementById(`q-sub-rep-${index}`);
@@ -680,7 +684,6 @@
             });
             container.innerHTML = html;
 
-            // Translate variations if needed
             uniqueVariationsClusters.forEach((cluster, cIndex) => {
                 cluster.variants.forEach(async (v, vIndex) => {
                     const el = document.getElementById(`var-text-${cIndex}-${vIndex}`);
@@ -715,6 +718,7 @@
 
                 html += `
                 <div class="analysis-card standalone-card ${cardThemeClass}" data-index="${index}" data-raw-text="${item.domanda.toLowerCase()}" data-is-vero="${isTrue}" data-has-fig="${hasFigure}">
+                    <div class="slab-index-badge" id="slab-num-${index}">#0</div>
                     <span class="q-text" id="q-text-stand-${index}">${displayText}</span>
                     <div class="q-subtext-en" id="q-sub-stand-${index}" style="display: ${isDualAddonActive ? 'block' : 'none'};">Loading EN...</div>
                     <div class="counter-group">
@@ -740,6 +744,7 @@
                     }
                 }
             });
+            updateStandaloneSlabNumbers();
         }
 
         function toggleFilterAxis(axis) {
@@ -753,6 +758,20 @@
 
             document.getElementById(btnId).classList.toggle('active', filterState[axis]);
             handleSearch();
+        }
+
+        function updateStandaloneSlabNumbers() {
+            const activeTab = document.querySelector('.tab-btn.active').id;
+            if (activeTab === 'btn-standalone') {
+                const visibleCards = document.querySelectorAll('.standalone-card');
+                let visibleCounter = 1;
+                visibleCards.forEach(card => {
+                    const badge = card.querySelector('.slab-index-badge');
+                    if (card.style.display !== 'none') {
+                        if (badge) badge.innerText = `#${visibleCounter++}`;
+                    }
+                });
+            }
         }
 
         function toggleHotWordsMenu() {
@@ -872,6 +891,10 @@
                 document.getElementById('btn-filter-F').innerHTML = `🔴 ${falsoLbl} (${countF})`;
                 document.getElementById('btn-filter-fig').innerHTML = `📷 ${figLbl} (${countFig})`;
                 document.getElementById('btn-filter-text').innerHTML = `📄 ${textLbl} (${countText})`;
+
+                if (activeTab === 'btn-standalone') {
+                    updateStandaloneSlabNumbers();
+                }
             } else {
                 const cards = document.querySelectorAll('.variation-item');
                 cards.forEach(card => {
