@@ -3,13 +3,14 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-from typing import List
+from typing import List, Dict, Any, Optional
 from collections import defaultdict
 from deep_translator import GoogleTranslator
 import sqlite3
 import json
 import random
 import re
+import os
 
 app = FastAPI()
 
@@ -23,6 +24,7 @@ app.mount("/img_sign", StaticFiles(directory="img_sign"), name="img_sign")
 templates = Jinja2Templates(directory="static")
 
 DB_PATH = 'patente_quiz.db'
+STATE_FILE = "flashcard_progress.json"
 
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
@@ -57,6 +59,10 @@ class ExamAnswer(BaseModel):
 
 class ExamSubmit(BaseModel):
     answers: List[ExamAnswer]
+
+class FlashcardState(BaseModel):
+    decks: List[Dict[str, Any]]
+    currentIndex: int
 
 
 # ==========================================
@@ -95,6 +101,26 @@ def get_analisi_page():
 # ==========================================
 # 2. API ENDPOINTS 
 # ==========================================
+
+# --- Flashcard Deck State Persistence APIs ---
+@app.get('/api/flashcard/state')
+def get_flashcard_state():
+    if os.path.exists(STATE_FILE):
+        try:
+            with open(STATE_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"decks": [], "currentIndex": 0}
+
+@app.post('/api/flashcard/state')
+def save_flashcard_state(state: FlashcardState):
+    try:
+        with open(STATE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(state.dict(), f, ensure_ascii=False)
+        return {"status": "success"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # --- Study App APIs ---
 @app.get("/api/categories")
@@ -444,7 +470,6 @@ def generate_jaccard_exam():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
         
-        
 @app.get("/api/analysis/duplicates")
 def analyze_duplicates():
     import sqlite3
@@ -474,7 +499,6 @@ def analyze_duplicates():
         fig_text = f" (Fig. {r['figura']})" if r['figura'] and r['figura'] != 'no_image' else ""
         location = f"{r['categoria']} > {r['sottocategoria']}{fig_text}"
         
-        # FIXED: Check if risposta is 1 (True) or 0 (False) based on your SQLite schema
         if r['risposta'] == 1 or r['risposta'] == 'V':
             if location not in analysis[norm_text]["V"]:
                 analysis[norm_text]["V"].append(location)
@@ -497,15 +521,23 @@ def analyze_duplicates():
     
     return {"unique": unique, "repeated": repeated, "total_processed": len(rows)}
     
-    
-@app.get("/api/analysis/variations")
-def get_question_variations():
-    # Fetch unique questions from your DB
-    # (Adapting to your existing database cursor/connection pattern)
-    cursor = db.cursor() # Replace with your actual db connection variable
-    cursor.execute("SELECT domanda, risposta, location FROM questions") # Adjust table name if needed
-    rows = cursor.fetchall()
-    
-    # Simple, fast backend clustering by shared root words
-    # ... grouping logic ...
-    return {"clusters": []}
+REVIEW_QUEUE_FILE = "flashcard_review_queue.json"
+
+@app.get('/api/flashcard/review_queue')
+def get_review_queue():
+    if os.path.exists(REVIEW_QUEUE_FILE):
+        try:
+            with open(REVIEW_QUEUE_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"custom_decks": [], "current_queue": []}
+
+@app.post('/api/flashcard/review_queue')
+def save_review_queue(state: Dict[str, Any]):
+    try:
+        with open(REVIEW_QUEUE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(state, f, ensure_ascii=False)
+        return {"status": "success"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
