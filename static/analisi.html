@@ -151,8 +151,16 @@
         .btn-reset-deck { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
         .btn-reset-deck:hover { background: rgba(239, 68, 68, 0.35); color: #fff; }
 
-        .flashcard-deck-wrapper { display: flex; flex-direction: column; gap: 20px; }
+        /* Extract & Undo Toggle Button */
+        .btn-extract-single {
+            background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4);
+            padding: 6px 14px; border-radius: 8px; font-size: 0.85em; font-weight: 600; cursor: pointer; transition: 0.2s; margin-left: auto; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-extract-single:hover { background: rgba(168, 85, 247, 0.4); color: #fff; }
+        .btn-extracted-done { background: rgba(239, 68, 68, 0.2) !important; color: #f87171 !important; border-color: rgba(239, 68, 68, 0.4) !important; }
+        .btn-extracted-done:hover { background: rgba(239, 68, 68, 0.4) !important; color: #fff !important; }
 
+        .flashcard-deck-wrapper { display: flex; flex-direction: column; gap: 20px; }
         .grid-layout { display: grid; grid-template-columns: 1fr; gap: 15px; }
         
         .analysis-card {
@@ -408,6 +416,9 @@
         let allUniquesMetadata = [];
         let flashcardDecks = [];
         let currentDeckIndex = 0;
+        let reviewQueue = []; 
+        let customDecks = []; 
+        let activeViewMode = 'standard'; 
         let totalVariationsQuestionsCount = 0;
         let totalRepeatedInstancesCount = 0;
         let currentLang = 'it';
@@ -428,7 +439,7 @@
                 document.getElementById('loader').style.display = 'none';
                 buildUniqueVariationsAndStandalone();
                 prepareLengthMetadata();
-                buildFlashcardDecks();
+                await loadFlashcardDecksStateFromServer();
                 renderStats();
                 renderRepeated();
                 renderUnique();
@@ -511,9 +522,7 @@
             allUniquesMetadata.sort((a, b) => a.words - b.words);
         }
 
-        // Build Flashcard Decks of 7 questions sampled 1 from each length category, filling gaps from highest length category
         function buildFlashcardDecks() {
-            // Group standalone or all uniques into buckets
             let buckets = {
                 len10: standaloneUniques.filter(u => u.domanda.trim().split(/\s+/).length <= 10),
                 len13: standaloneUniques.filter(u => { const w = u.domanda.trim().split(/\s+/).length; return w >= 11 && w <= 13; }),
@@ -529,18 +538,13 @@
 
             while (true) {
                 let currentCard = [];
-                
-                // 1. Try to pick 1 question from each of the 7 categories
                 for (let key of bucketKeys) {
                     if (buckets[key].length > 0) {
                         currentCard.push(buckets[key].shift());
                     }
                 }
-
-                // If no questions left across any bucket, break
                 if (currentCard.length === 0) break;
 
-                // 2. If current card has fewer than 7 questions, fill from highest available categories (e.g. lenmax down to len10)
                 while (currentCard.length < 7) {
                     let filled = false;
                     for (let i = bucketKeys.length - 1; i >= 0; i--) {
@@ -551,17 +555,56 @@
                             if (currentCard.length === 7) break;
                         }
                     }
-                    if (!filled) break; // absolute exhaustion of pool
+                    if (!filled) break;
                 }
 
                 flashcardDecks.push({
                     id: flashcardDecks.length + 1,
                     questions: currentCard,
-                    status: 'active' // 'active' or 'studied'
+                    status: 'active'
                 });
             }
 
             currentDeckIndex = 0;
+            reviewQueue = [];
+            customDecks = [];
+            saveFlashcardDecksStateToServer();
+        }
+
+        async function saveFlashcardDecksStateToServer() {
+            try {
+                await fetch('/api/flashcard/state', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        decks: flashcardDecks, 
+                        currentIndex: currentDeckIndex,
+                        reviewQueue: reviewQueue,
+                        customDecks: customDecks,
+                        activeViewMode: activeViewMode
+                    })
+                });
+            } catch (e) {
+                console.error("Could not save state to server", e);
+            }
+        }
+
+        async function loadFlashcardDecksStateFromServer() {
+            try {
+                const res = await fetch('/api/flashcard/state');
+                const state = await res.json();
+                if (state && state.decks && state.decks.length > 0) {
+                    flashcardDecks = state.decks;
+                    currentDeckIndex = state.currentIndex || 0;
+                    reviewQueue = state.reviewQueue || [];
+                    customDecks = state.customDecks || [];
+                    activeViewMode = state.activeViewMode || 'standard';
+                } else {
+                    buildFlashcardDecks();
+                }
+            } catch (e) {
+                buildFlashcardDecks();
+            }
         }
 
         async function translateTextAPI(text) {
@@ -624,7 +667,8 @@
             document.getElementById('stats-bar').innerHTML = `
                 <div class="stat-badge">Totale Pool: <span class="stat-highlight">${dbData.total_processed}</span></div>
                 <div class="stat-badge">Testi Unici: <span class="stat-highlight">${dbData.unique.length}</span></div>
-                <div class="stat-badge" style="border-color: #38bdf8;">Flashcard Decks: <span class="stat-highlight" style="color: #38bdf8;">${flashcardDecks.length} deck creati</span></div>
+                <div class="stat-badge" style="border-color: #38bdf8;">Standard Decks: <span class="stat-highlight" style="color: #38bdf8;">${flashcardDecks.length} deck</span></div>
+                <div class="stat-badge" style="border-color: #a855f7;">Review Queue: <span class="stat-highlight" style="color: #d8b4fe;">${reviewQueue.length} da smistare</span></div>
             `;
         }
 
@@ -842,121 +886,269 @@
             });
         }
 
-        // RENDER STANDALONE FLASHCARD DECK VIEW
+        // RENDER STANDALONE FLASHCARD DECK VIEW WITH TOGGLEABLE EXTRACTION
         function renderStandalone() {
             const container = document.getElementById('view-standalone');
-            if (flashcardDecks.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding: 40px; color: #94a3b8;">Nessuna flashcard disponibile nel deck.</div>`;
-                return;
-            }
-
-            // Find current active deck, or fallback to first active deck
-            let activeDeck = flashcardDecks.find(d => d.id === flashcardDecks[currentDeckIndex].id);
-            if (!activeDeck || activeDeck.status === 'studied') {
-                const firstActive = flashcardDecks.find(d => d.status === 'active');
-                if (firstActive) {
-                    currentDeckIndex = flashcardDecks.indexOf(firstActive);
-                    activeDeck = firstActive;
-                } else {
-                    container.innerHTML = `
-                        <div style="text-align:center; padding: 50px; background: rgba(30,41,59,0.5); border-radius: 16px; border: 1px solid #334155;">
-                            <h2 style="color: #34d399; margin-bottom: 10px;">🎉 Complimenti! Hai completato l'intero Deck di Flashcard!</h2>
-                            <p style="color: #94a3b8; margin-bottom: 20px;">Tutti i deck sono stati marcati come studiati.</p>
-                            <button class="btn-deck-action btn-reset-deck" onclick="resetDeck()">🔄 Reset Totale Deck</button>
-                        </div>`;
-                    return;
-                }
-            }
-
-            let html = `
-                <div class="deck-controls-bar">
-                    <div class="deck-status-text">
-                        📦 Flashcard Deck <span style="color: #38bdf8;">#${activeDeck.id}</span> di ${flashcardDecks.length} 
-                        (${activeDeck.questions.length} domande in questo deck)
-                    </div>
-                    <div class="deck-action-buttons">
-                        <button class="btn-deck-action btn-studied" onclick="markDeckStudied(${activeDeck.id})">✅ Studied (Sposta in fondo)</button>
-                        <button class="btn-deck-action btn-recirculate" onclick="recirculateDeck(${activeDeck.id})">🔄 Rimetti in circolo (Ricomponi)</button>
-                        <button class="btn-deck-action btn-reset-deck" onclick="resetDeck()">♻️ Reset Deck</button>
-                    </div>
+            
+            let modeSelectorHTML = `
+                <div style="display: flex; gap: 12px; margin-bottom: 20px; align-items: center; justify-content: center; width: 100%;">
+                    <button class="filter-btn ${activeViewMode === 'standard' ? 'fig-btn active' : ''}" onclick="switchDeckMode('standard')">
+                        📦 Standard Decks (${flashcardDecks.length})
+                    </button>
+                    <button class="filter-btn ${activeViewMode === 'review' ? 'fig-btn active' : ''}" onclick="switchDeckMode('review')">
+                        🎯 Review Stacks (${customDecks.length} pronti | ${reviewQueue.length}/7 in coda)
+                    </button>
                 </div>
             `;
 
-            activeDeck.questions.forEach((item, index) => {
-                const displayText = item.domanda;
-                const isTrue = item.risposta === 'V';
-                const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
-                const badgeClass = isTrue ? 'c-vero' : 'c-falso';
-                const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
-                const wordCount = displayText.trim().split(/\s+/).length;
+            if (activeViewMode === 'standard') {
+                if (flashcardDecks.length === 0) {
+                    container.innerHTML = modeSelectorHTML + `<div style="text-align:center; padding: 40px; color: #94a3b8;">Nessuna flashcard disponibile nel deck.</div>`;
+                    return;
+                }
 
-                html += `
-                <div class="analysis-card standalone-card ${cardThemeClass}" data-raw-text="${item.domanda.toLowerCase()}">
-                    <div class="slab-index-badge">#${index + 1} / ${activeDeck.questions.length}</div>
-                    <span class="length-badge">📏 ${wordCount} parole</span>
-                    <span class="q-text" id="q-text-stand-${activeDeck.id}-${index}">${displayText}</span>
-                    <div class="q-subtext-en" id="q-sub-stand-${activeDeck.id}-${index}" style="display: ${isDualAddonActive ? 'block' : 'none'};">Loading EN...</div>
-                    <div class="counter-group">
-                        <div class="count-badge ${badgeClass}">${ansLbl}</div>
-                        <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
-                    </div>
-                </div>`;
-            });
-
-            container.innerHTML = html;
-
-            // Translate subtexts if needed
-            activeDeck.questions.forEach(async (item, index) => {
-                const el = document.getElementById(`q-text-stand-${activeDeck.id}-${index}`);
-                const subEl = document.getElementById(`q-sub-stand-${activeDeck.id}-${index}`);
-                if (el && subEl) {
-                    const translated = await getCachedTranslation(item.domanda);
-                    if (currentLang === 'en') {
-                        el.innerText = translated;
-                        subEl.style.display = 'none';
+                let activeDeck = flashcardDecks.find(d => d.id === flashcardDecks[currentDeckIndex].id);
+                if (!activeDeck || activeDeck.status === 'studied') {
+                    const firstActive = flashcardDecks.find(d => d.status === 'active');
+                    if (firstActive) {
+                        currentDeckIndex = flashcardDecks.indexOf(firstActive);
+                        activeDeck = firstActive;
                     } else {
-                        el.innerText = item.domanda;
-                        subEl.innerText = translated;
-                        subEl.style.display = isDualAddonActive ? 'block' : 'none';
+                        container.innerHTML = modeSelectorHTML + `
+                            <div style="text-align:center; padding: 50px; background: rgba(30,41,59,0.5); border-radius: 16px; border: 1px solid #334155;">
+                                <h2 style="color: #34d399; margin-bottom: 10px;">🎉 Complimenti! Hai completato l'intero Deck Standard!</h2>
+                                <p style="color: #94a3b8; margin-bottom: 20px;">Tutti i deck sono stati completati.</p>
+                                <button class="btn-deck-action btn-reset-deck" onclick="resetDeck()">🔄 Reset Totale Deck</button>
+                            </div>`;
+                        saveFlashcardDecksStateToServer();
+                        return;
                     }
                 }
-            });
+
+                let html = modeSelectorHTML + `
+                    <div class="deck-controls-bar">
+                        <div class="deck-status-text">
+                            📦 Standard Deck <span style="color: #38bdf8;">#${activeDeck.id}</span> di ${flashcardDecks.length} 
+                            (${activeDeck.questions.length} domande)
+                        </div>
+                        <div class="deck-action-buttons">
+                            <button class="btn-deck-action btn-studied" onclick="markStandardDeckStudied(${activeDeck.id})">✅ Studied (Completa Deck)</button>
+                            <button class="btn-deck-action btn-recirculate" onclick="recirculateStandardDeck(${activeDeck.id})">🔄 Rimetti in circolo</button>
+                            <button class="btn-deck-action btn-reset-deck" onclick="resetDeck()">♻️ Reset</button>
+                        </div>
+                    </div>
+                `;
+
+                activeDeck.questions.forEach((item, index) => {
+                    const displayText = item.domanda;
+                    const isTrue = item.risposta === 'V';
+                    const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
+                    const badgeClass = isTrue ? 'c-vero' : 'c-falso';
+                    const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
+                    const wordCount = displayText.trim().split(/\s+/).length;
+                    
+                    // Check if question is currently extracted in review queue
+                    const isExtracted = reviewQueue.some(q => q.domanda.trim().toLowerCase() === item.domanda.trim().toLowerCase());
+                    const btnText = isExtracted ? "↩ Annulla estrazione" : "🎯 Non la so / Estrai in Review Stack";
+                    const btnClass = isExtracted ? "btn-extract-single btn-extracted-done" : "btn-extract-single";
+
+                    html += `
+                    <div class="analysis-card standalone-card ${cardThemeClass}" data-raw-text="${item.domanda.toLowerCase()}" id="card-item-${activeDeck.id}-${index}">
+                        <div class="slab-index-badge">#${index + 1} / ${activeDeck.questions.length}</div>
+                        <span class="length-badge">📏 ${wordCount} parole</span>
+                        <button class="${btnClass}" id="btn-ext-${activeDeck.id}-${index}" onclick="toggleExtractQuestion(${activeDeck.id}, '${escapeHtml(item.domanda)}', ${index})">
+                            ${btnText}
+                        </button>
+                        <span class="q-text" id="q-text-stand-${activeDeck.id}-${index}">${displayText}</span>
+                        <div class="q-subtext-en" id="q-sub-stand-${activeDeck.id}-${index}" style="display: ${isDualAddonActive ? 'block' : 'none'};">Loading EN...</div>
+                        <div class="counter-group">
+                            <div class="count-badge ${badgeClass}">${ansLbl}</div>
+                            <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+                saveFlashcardDecksStateToServer();
+
+                activeDeck.questions.forEach(async (item, index) => {
+                    const el = document.getElementById(`q-text-stand-${activeDeck.id}-${index}`);
+                    const subEl = document.getElementById(`q-sub-stand-${activeDeck.id}-${index}`);
+                    if (el && subEl) {
+                        const translated = await getCachedTranslation(item.domanda);
+                        if (currentLang === 'en') {
+                            el.innerText = translated;
+                            subEl.style.display = 'none';
+                        } else {
+                            el.innerText = item.domanda;
+                            subEl.innerText = translated;
+                            subEl.style.display = isDualAddonActive ? 'block' : 'none';
+                        }
+                    }
+                });
+
+            } else {
+                // REVIEW MODE RENDER
+                if (customDecks.length === 0) {
+                    container.innerHTML = modeSelectorHTML + `
+                        <div style="text-align:center; padding: 50px; background: rgba(30,41,59,0.5); border-radius: 16px; border: 1px solid #334155;">
+                            <h3 style="color: #a855f7; margin-bottom: 10px;">🎯 Nessun Review Stack pronto</h3>
+                            <p style="color: #94a3b8;">Clicca su "Estrai in Review Stack" sopra qualsiasi domanda che non conosci nei deck standard. Ogni 7 domande estratte formeranno automaticamente un nuovo Review Stack!</p>
+                            <p style="color: #38bdf8; margin-top: 10px;">Domande attualmente in coda in attesa di completare 7: ${reviewQueue.length} / 7</p>
+                        </div>`;
+                    return;
+                }
+
+                let activeReviewDeck = customDecks[currentDeckIndex] || customDecks[0];
+                let html = modeSelectorHTML + `
+                    <div class="deck-controls-bar" style="border-color: #a855f7;">
+                        <div class="deck-status-text">
+                            🎯 Review Stack <span style="color: #a855f7;">#${activeReviewDeck.id}</span> di ${customDecks.length} 
+                            (${activeReviewDeck.questions.length} domande)
+                        </div>
+                        <div class="deck-action-buttons">
+                            <button class="btn-deck-action btn-studied" onclick="markReviewDeckStudied(${activeReviewDeck.id})">✅ Studied (Completa Stack)</button>
+                        </div>
+                    </div>
+                `;
+
+                activeReviewDeck.questions.forEach((item, index) => {
+                    const displayText = item.domanda;
+                    const isTrue = item.risposta === 'V';
+                    const cardThemeClass = isTrue ? 'card-always-true' : 'card-always-false';
+                    const badgeClass = isTrue ? 'c-vero' : 'c-falso';
+                    const ansLbl = isTrue ? 'Sempre Vero' : 'Sempre Falso';
+                    const wordCount = displayText.trim().split(/\s+/).length;
+
+                    html += `
+                    <div class="analysis-card standalone-card ${cardThemeClass}" data-raw-text="${item.domanda.toLowerCase()}">
+                        <div class="slab-index-badge">#${index + 1} / ${activeReviewDeck.questions.length}</div>
+                        <span class="length-badge">📏 ${wordCount} parole</span>
+                        <span class="q-text" id="q-text-rev-${activeReviewDeck.id}-${index}">${displayText}</span>
+                        <div class="q-subtext-en" id="q-sub-rev-${activeReviewDeck.id}-${index}" style="display: ${isDualAddonActive ? 'block' : 'none'};">Loading EN...</div>
+                        <div class="counter-group">
+                            <div class="count-badge ${badgeClass}">${ansLbl}</div>
+                            <div class="unique-loc">📍 ${formatLocation(item.location)}</div>
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+
+                activeReviewDeck.questions.forEach(async (item, index) => {
+                    const el = document.getElementById(`q-text-rev-${activeReviewDeck.id}-${index}`);
+                    const subEl = document.getElementById(`q-sub-rev-${activeReviewDeck.id}-${index}`);
+                    if (el && subEl) {
+                        const translated = await getCachedTranslation(item.domanda);
+                        if (currentLang === 'en') {
+                            el.innerText = translated;
+                            subEl.style.display = 'none';
+                        } else {
+                            el.innerText = item.domanda;
+                            subEl.innerText = translated;
+                            subEl.style.display = isDualAddonActive ? 'block' : 'none';
+                        }
+                    }
+                });
+            }
         }
 
-        // DECK ACTIONS
-        function markDeckStudied(deckId) {
+        // TOGGLE EXTRACTION: Extract or Undo Extraction without destroying view
+        function toggleExtractQuestion(deckId, questionText, cardIndex) {
+            const deck = flashcardDecks.find(d => d.id === deckId);
+            if (!deck) return;
+
+            const qIndex = deck.questions.findIndex(q => q.domanda.trim().toLowerCase() === questionText.trim().toLowerCase());
+            if (qIndex === -1) return;
+
+            const questionObj = deck.questions[qIndex];
+            const btn = document.getElementById(`btn-ext-${deckId}-${cardIndex}`);
+            
+            // Check if already in queue (meaning user wants to UNDO)
+            const queueIndex = reviewQueue.findIndex(q => q.domanda.trim().toLowerCase() === questionText.trim().toLowerCase());
+
+            if (queueIndex !== -1) {
+                // UNDO EXTRACTION: Remove from review queue and restore button
+                reviewQueue.splice(queueIndex, 1);
+                if (btn) {
+                    btn.innerText = "🎯 Non la so / Estrai in Review Stack";
+                    btn.classList.remove('btn-extracted-done');
+                }
+            } else {
+                // EXTRACT: Push to queue, check for batching 7 questions
+                reviewQueue.push(questionObj);
+
+                if (reviewQueue.length >= 7) {
+                    const batch = reviewQueue.splice(0, 7);
+                    customDecks.push({
+                        id: customDecks.length + 1,
+                        questions: batch,
+                        status: 'active'
+                    });
+                }
+
+                if (btn) {
+                    btn.innerText = "↩ Annulla estrazione";
+                    btn.classList.add('btn-extracted-done');
+                }
+            }
+
+            saveFlashcardDecksStateToServer();
+        }
+
+        function switchDeckMode(mode) {
+            activeViewMode = mode;
+            currentDeckIndex = 0;
+            renderStandalone();
+        }
+
+        function markStandardDeckStudied(deckId) {
             const deck = flashcardDecks.find(d => d.id === deckId);
             if (deck) {
                 deck.status = 'studied';
-                // Move deck to the very end of the array
                 flashcardDecks = flashcardDecks.filter(d => d.id !== deckId);
                 flashcardDecks.push(deck);
                 
-                // Find next active deck
                 const nextActiveIndex = flashcardDecks.findIndex(d => d.status === 'active');
                 currentDeckIndex = nextActiveIndex !== -1 ? nextActiveIndex : 0;
+                saveFlashcardDecksStateToServer();
                 renderStandalone();
             }
         }
 
-        function recirculateDeck(deckId) {
-            // Recirculate: re-shuffle or place back into active queue for recirculation
+        function recirculateStandardDeck(deckId) {
             const deck = flashcardDecks.find(d => d.id === deckId);
             if (deck) {
                 deck.status = 'active';
-                // Move deck to the end so it comes up again later for reinforcement
                 flashcardDecks = flashcardDecks.filter(d => d.id !== deckId);
                 flashcardDecks.push(deck);
                 
                 const nextActiveIndex = flashcardDecks.findIndex(d => d.status === 'active');
                 currentDeckIndex = nextActiveIndex !== -1 ? nextActiveIndex : 0;
+                saveFlashcardDecksStateToServer();
                 renderStandalone();
             }
         }
 
-        function resetDeck() {
+        function markReviewDeckStudied(reviewDeckId) {
+            customDecks = customDecks.filter(d => d.id !== reviewDeckId);
+            currentDeckIndex = 0;
+            saveFlashcardDecksStateToServer();
+            renderStandalone();
+        }
+
+        async function resetDeck() {
+            await fetch('/api/flashcard/state', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ decks: [], currentIndex: 0, reviewQueue: [], customDecks: [], activeViewMode: 'standard' })
+            });
             buildFlashcardDecks();
             renderStandalone();
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
         }
 
         function renderLengths() {
@@ -1178,6 +1370,7 @@
 
             } else if (activeTab === 'btn-lengths') {
                 const cards = document.querySelectorAll('.length-card');
+                
                 let count10 = 0, count13 = 0, count16 = 0, count20 = 0, count30 = 0, count40 = 0, countMax = 0;
                 let countV = 0, countF = 0, countFig = 0, countText = 0;
 
@@ -1188,7 +1381,14 @@
                     const text = card.getAttribute('data-raw-text') || '';
                     const matchesSearch = smartMatch(text, query);
 
-                    if (matchesSearch) {
+                    let matchesHotWords = true;
+                    if (activeHotWords.size > 0) {
+                        for (let hw of activeHotWords) {
+                            if (!smartMatch(text, hw)) { matchesHotWords = false; break; }
+                        }
+                    }
+
+                    if (matchesSearch && matchesHotWords) {
                         if (bucket === 'len10') count10++;
                         else if (bucket === 'len13') count13++;
                         else if (bucket === 'len16') count16++;
