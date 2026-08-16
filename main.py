@@ -25,6 +25,7 @@ templates = Jinja2Templates(directory="static")
 
 DB_PATH = 'patente_quiz.db'
 STATE_FILE = "flashcard_progress.json"
+REVIEW_QUEUE_FILE = "flashcard_review_queue.json"
 
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
@@ -122,6 +123,26 @@ def save_flashcard_state(state: FlashcardState):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# --- Review Queue Persistence APIs ---
+@app.get('/api/flashcard/review_queue')
+def get_review_queue():
+    if os.path.exists(REVIEW_QUEUE_FILE):
+        try:
+            with open(REVIEW_QUEUE_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"custom_decks": [], "current_queue": []}
+
+@app.post('/api/flashcard/review_queue')
+def save_review_queue(state: Dict[str, Any]):
+    try:
+        with open(REVIEW_QUEUE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(state, f, ensure_ascii=False)
+        return {"status": "success"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 # --- Study App APIs ---
 @app.get("/api/categories")
 def get_categories():
@@ -130,28 +151,63 @@ def get_categories():
         categories = conn.execute('SELECT categoria, COUNT(*) as count FROM questions WHERE categoria IS NOT NULL GROUP BY categoria').fetchall()
         conn.close()
         
-        important_keywords = ['pericolo', 'divieto', 'obbligo', 'precedenza', 'orizzontale', 'semafor', 'velocit', 'distanza', 'incroc', 'norme', 'sorpasso', 'ingombro', 'sicurezza', 'incident', 'psico']
+        # Official learning sequence order mapping
+        official_chapter_order = [
+            'definizioni-generali-doveri-strada',
+            'segnali-pericolo',
+            'segnali-divieto',
+            'segnali-obbligo',
+            'precedenza-incroci',
+            'norme-di-circolazione',
+            'limiti-di-velocita',
+            'distanza-di-sicurezza',
+            'sorpasso',
+            'arresto-fermata-sosta',
+            'segnaletica-orizzontale-ostacoli',
+            'semafori-vigili',
+            'segnali-precedenza',
+            'pannelli-integrativi',
+            'segnali-indicazione',
+            'elementi-veicolo-manutenzione-comportamenti',
+            'consumi-ambiente-inquinamento',
+            'cinture-casco-sicurezza',
+            'incidenti-stradali-comportamenti',
+            'alcool-droga-primo-soccorso',
+            'patente-punti-documenti',
+            'responsabilita-civile-penale-assicurazione',
+            'norme-varie-autostrade-pannelli',
+            'luci-dispositivi-acustici',
+            'trasporto-merci-traino-rimorchi'
+        ]
         
+        def get_order_index(cat_name):
+            slug = str(cat_name).lower().strip()
+            if slug in official_chapter_order:
+                return official_chapter_order.index(slug)
+            return 999
+
         result = []
         for row in categories:
             cat_name = str(row['categoria'])
-            is_imp = any(kw in cat_name.lower() for kw in important_keywords)
             result.append({
                 "name": cat_name, 
                 "count": row['count'],
-                "is_important": is_imp
+                "is_important": True
             })
             
-        # FIXED: Sort by importance group first, then strictly by highest question count descending (-x['count'])
-        result.sort(key=lambda x: (not x['is_important'], -x['count']))
+        # Sort strictly by official textbook chapter flow order
+        result.sort(key=lambda x: get_order_index(x['name']))
         return result
     except Exception as e: return {"error": str(e)}
+
 @app.get("/api/subcategories")
 def get_subcategories(category: str):
     try:
         conn = get_db_connection()
-        subcats = conn.execute('SELECT sottocategoria, COUNT(*) as count FROM questions WHERE categoria = ? AND sottocategoria IS NOT NULL GROUP BY sottocategoria ORDER BY count DESC', (category,)).fetchall()
+        subcats = conn.execute('SELECT sottocategoria, COUNT(*) as count FROM questions WHERE categoria = ? AND sottocategoria IS NOT NULL GROUP BY sottocategoria', (category,)).fetchall()
         conn.close()
+        
+        # Return subcategories in natural database occurrence order (no alphabetical or count sorting)
         return [{"name": str(row['sottocategoria']), "count": row['count']} for row in subcats]
     except Exception as e: return {"error": str(e)}
 
@@ -159,7 +215,7 @@ def get_subcategories(category: str):
 def get_figures(category: str, subcategory: str):
     try:
         conn = get_db_connection()
-        figures = conn.execute('SELECT figura, COUNT(*) as count FROM questions WHERE categoria = ? AND sottocategoria = ? AND figura IS NOT NULL GROUP BY figura ORDER BY count DESC', (category, subcategory)).fetchall()
+        figures = conn.execute('SELECT figura, COUNT(*) as count FROM questions WHERE categoria = ? AND sottocategoria = ? AND figura IS NOT NULL GROUP BY figura', (category, subcategory)).fetchall()
         conn.close()
         return [{"name": str(row['figura']), "count": row['count']} for row in figures]
     except Exception as e: return {"error": str(e)}
@@ -520,24 +576,3 @@ def analyze_duplicates():
     repeated.sort(key=lambda x: x["count"], reverse=True)
     
     return {"unique": unique, "repeated": repeated, "total_processed": len(rows)}
-    
-REVIEW_QUEUE_FILE = "flashcard_review_queue.json"
-
-@app.get('/api/flashcard/review_queue')
-def get_review_queue():
-    if os.path.exists(REVIEW_QUEUE_FILE):
-        try:
-            with open(REVIEW_QUEUE_FILE, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return {"custom_decks": [], "current_queue": []}
-
-@app.post('/api/flashcard/review_queue')
-def save_review_queue(state: Dict[str, Any]):
-    try:
-        with open(REVIEW_QUEUE_FILE, 'w', encoding='utf-8') as f:
-            json.dump(state, f, ensure_ascii=False)
-        return {"status": "success"}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))

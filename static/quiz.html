@@ -10,7 +10,7 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
             font-weight: 300; letter-spacing: -0.2px; 
             max-width: 900px; margin: 0 auto; 
-            padding: 15px 15px 120px 15px; /* Extra bottom padding prevents text hiding under fixed buttons */
+            padding: 15px 15px 120px 15px; 
             text-align: center;
             background-color: #0a0a0f;
             background-image: radial-gradient(circle at 0% 0%, #161e30 0%, transparent 50%), radial-gradient(circle at 100% 100%, #1b1624 0%, transparent 50%);
@@ -56,7 +56,7 @@
         .reset-btn { background: rgba(154, 52, 18, 0.3) !important; color: #fdba74 !important; border-color: #9a3412 !important; }
         .reset-btn:hover { background: rgba(154, 52, 18, 0.6) !important; }
 
-        /* Feedback Frame (Fixed height to stop jumping) */
+        /* Feedback Frame */
         .feedback { font-size: 1.3em; font-weight: 600; margin-bottom: 10px; height: 30px; display: flex; align-items: center; justify-content: center; }
 
         /* ZERO-JUMP QUESTION AREA */
@@ -67,31 +67,26 @@
             display: flex; flex-direction: column; align-items: center;
         }
         
-        /* 1. Permanent Image Slot */
         #image-container {
-            width: 100%;
-            height: 200px; /* ALWAYS leaves this space, even if empty */
+            width: 100%; height: 200px;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 10px;
         }
         img { max-width: 100%; max-height: 190px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
         
-        /* 2. Permanent Text Slot */
         .question-text { 
-            width: 100%;
-            height: 130px; /* ALWAYS leaves this space, even if text is short */
+            width: 100%; height: 130px;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.4em; font-weight: 400; color: #f8fafc; margin: 0; line-height: 1.4;
         }
 
         /* FIXED BOTTOM CONTROLS */
         .controls { 
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
+            position: fixed; bottom: 0; left: 0; right: 0;
             background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 12px 15px 25px 15px; /* 25px bottom accounts for phone swipe bar */
+            padding: 12px 15px 25px 15px;
             display: flex; justify-content: center; gap: 10px; flex-wrap: nowrap;
             z-index: 1000; box-shadow: 0 -10px 20px rgba(0,0,0,0.3);
         }
@@ -103,25 +98,18 @@
         .controls button:disabled { opacity: 0.5; cursor: not-allowed; }
         
         #btn-vero { background: linear-gradient(145deg, rgba(5, 150, 105, 0.3), rgba(30, 41, 59, 0.6)); border-color: rgba(52, 211, 153, 0.4); color: #6ee7b7; }
-        #btn-vero:active:not(:disabled) { background: rgba(5, 150, 105, 0.5); transform: scale(0.95); }
-        
         #btn-falso { background: linear-gradient(145deg, rgba(225, 29, 72, 0.3), rgba(30, 41, 59, 0.6)); border-color: rgba(251, 113, 133, 0.4); color: #fca5a5; }
-        #btn-falso:active:not(:disabled) { background: rgba(225, 29, 72, 0.5); transform: scale(0.95); }
-        
         #btn-salta { background: rgba(30, 41, 59, 0.8); border-color: #475569; color: #cbd5e1; }
-        #btn-salta:active:not(:disabled) { background: rgba(15, 23, 42, 0.9); transform: scale(0.95); }
 
-        /* Responsive Mobile Tuning */
         @media (max-width: 800px) {
-            #image-container { height: 160px; } /* Shrinks empty space on small screens */
+            #image-container { height: 160px; }
             img { max-height: 150px; }
-            .question-text { height: 140px; font-size: 1.25em; } /* Expands text slot for wrapping */
+            .question-text { height: 140px; font-size: 1.25em; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Stats -->
     <div class="stats">
         <div>Da fare: <span id="stat-unseen">0</span></div>
         <div style="color: #6ee7b7;">Corrette: <span id="stat-correct">0</span></div>
@@ -129,7 +117,6 @@
         <div style="color: #94a3b8;">Saltate: <span id="stat-skipped">0</span></div>
     </div>
 
-    <!-- 2. Menu / Filters (Torna alla Home integrated) -->
     <div class="menu-bar">
         <div class="filters">
             <select id="category-select" onchange="onCategoryChange()">
@@ -152,16 +139,13 @@
         </div>
     </div>
 
-    <!-- 3. Feedback right above the question -->
     <div class="feedback" id="feedback"></div>
 
-    <!-- 4. Rigid Question Area (Never jumps sizes) -->
     <div class="question-wrapper">
         <div id="image-container"></div>
         <div class="question-text" id="question-text">Caricamento in corso...</div>
     </div>
 
-    <!-- 5. Fixed Bottom Action Bar -->
     <div class="controls">
         <button id="btn-vero" onclick="submitAnswer(true)">Vero</button>
         <button id="btn-falso" onclick="submitAnswer(false)">Falso</button>
@@ -169,7 +153,6 @@
     </div>
 
     <script>
-        // YOUR EXACT ORIGINAL JAVASCRIPT LOGIC
         let currentQuestion = null;
         let currentMode = 'unseen';
 
@@ -300,7 +283,6 @@
 
         async function submitAnswer(userAnswer) {
             if (!currentQuestion) return;
-            
             document.querySelectorAll('.controls button').forEach(b => b.disabled = true);
             
             const isCorrect = (userAnswer === Boolean(currentQuestion.risposta));
@@ -339,7 +321,7 @@
             
             let message = "Vuoi davvero azzerare i progressi per questa SEZIONE specifica?";
             if (cat === 'all') {
-                message = "ATTENZIONE: Stai per azzerare TUTTI i 7000+ quiz dell'intero database. Sei sicuro?";
+                message = "ATTENZIONE: Stai per azzerare TUTTI i quiz dell'intero database. Sei sicuro?";
             }
 
             if (confirm(message)) {
@@ -352,7 +334,6 @@
             }
         }
 
-        // Initialize App
         loadCategories().then(() => loadQuestion());
     </script>
 </body>

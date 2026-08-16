@@ -1,6 +1,7 @@
 {
     "attraversamento-pedonale": {
         "regola_base": "L'attraversamento pedonale è una parte della carreggiata segnalata con strisce bianche parallele, dove i veicoli devono dare precedenza ai pedoni e dove è vietata sia la sosta che la fermata dei veicoli. È destinato esclusivamente al transito dei pedoni che attraversano.",
+        "storia": "Nel regno dell'asfalto, l'attraversamento pedonale è un terreno sacro. È dove il conducente deve chinare il capo e cedere il passo. Qui non è consentito sostare né fermarsi: il tempo è sacro per chi attraversa, e la zona deve rimanere libera per garantire che il pedone giunga incolume all'altra sponda.",
         "parole_trappola": [
             "striscia gialla",
             "vietato al transito dei veicoli",
@@ -12,11 +13,13 @@
     },
     "strade-extraurbane-principali": {
         "regola_base": "Le strade extraurbane principali sono strade a più corsie, con carreggiate separate, segnalate da cartelli di inizio e fine, e possono includere intersezioni a livello sfalsato. Sono progettate per veicoli a motore, ma non sono accessibili a tutti i tipi di veicoli (es. ciclomotori, quadricicli leggeri). Non sono adatte a velocità superiori a 130 km/h in ogni tratto, e non sono contraddistinte da segnaletica verde. Non hanno una sola corsia per senso di marcia, né sono prive di curve o dossi. Non richiedono pannelli a messaggio variabile.",
+        "storia": "Sono le grandi arterie del viaggio, progettate con carreggiate separate per evitare scontri frontali. Non sono autostrade, ma ne ereditano la disciplina. Qui il ritmo è veloce, ma il rispetto dei limiti e l'esclusione dei veicoli più fragili come i ciclomotori rendono il viaggio sicuro.",
         "parole_trappola": "velocità massima di 130 km/h, segnaletica verde, unica carreggiata, stessa velocità delle autostrade, quadricicli leggeri, ciclomotori, curve né dossi, pannelli a messaggio variabile",
         "eccezioni_e_contesti": "Le strade extraurbane principali possono avere velocità massime inferiori a 130 km/h a seconda delle condizioni (es. presenza di curve, segnaletica). Non sono sempre dotate di corsie di accelerazione. I ciclomotori e i quadricicli leggeri non possono transitare, salvo specifiche eccezioni non previste dalla normativa. Le intersezioni a livello sfalsato sono consentite, ma non sono obbligatorie. La segnaletica non è verde, ma è di tipo standard (es. bianco su rosso o giallo)."
     },
     "isola-traffico": {
         "regola_base": "L'isola di traffico è un elemento stradale che serve a guidare e incanalare il traffico verso diverse direzioni, è delimitata da strisce bianche continue, può essere a raso o rialzata, e viene evidenziata con zebrature bianche. È una zona dove è vietato il transito dei veicoli, inclusi i motocicli e i ciclomotori, e non è destinata al transito pedonale, alla sosta, al parcheggio o all'inversione di marcia.",
+        "storia": "Immagina l'isola di traffico come un guardiano immobile in mezzo alla corrente. Le sue strisce zebrate gridano un divieto assoluto: 'non entrare'. Il suo unico scopo è tenere i fiumi di auto lontani dal conflitto, guidando i conducenti lontano dai pericoli invisibili che si celano nel caos degli incroci.",
         "parole_trappola": [
             "separare la carreggiata dalla banchina",
             "transito dei pedoni",
@@ -35,6 +38,7 @@
     },
     "intersezione-livelli-sfalsati": {
         "regola_base": "L'intersezione a livelli sfalsati è un incrocio tra strade situate a diverse altezze, realizzato tramite rampe, sovrappassi o sottopassi per consentire il passaggio senza conflitti diretti tra i veicoli, migliorando la sicurezza e la fluidità del traffico.",
+        "storia": "È l'architettura della fluidità perfetta. Qui, il destino dei conducenti non si incrocia mai faccia a faccia; le strade danzano sopra e sotto, permettendo un flusso costante e sicuro, liberando la città dal peso del conflitto diretto.",
         "parole_trappola": [
             "binari del treno",
             "limiti massimi generali di velocità",
@@ -44,6 +48,7 @@
     },
     "intersezione-raso": {
         "regola_base": "L'intersezione a raso è un incrocio tra due o più strade al livello dello stesso piano, senza passaggi sotterranei o sopraelevati. Richiede prudenza e attenzione ai veicoli provenienti da tutte le direzioni, e può essere regolata da semafori o segnali stradali.",
+        "storia": "Il luogo dove la prudenza è l'unica moneta di scambio. Tutte le direzioni si incontrano su un unico piano. È qui che il guidatore deve essere vigile, pronto a leggere i segnali che indicano chi ha il diritto di precedenza.",
         "parole_trappola": [
             "binari del tram",
             "passaggio a livello",
@@ -55,6 +60,7 @@
     },
     "zona-traffico-limitato": {
         "regola_base": "Una zona a traffico limitato è un'area delimitata da segnali stradali specifici, dove la circolazione è limitata in base a orari, tipi di veicoli o categorie di utenti, e solo i veicoli autorizzati possono circolare.",
+        "storia": "Una zona di quiete protetta dal caos. Come un filtro che separa l'ordinario dall'autorizzato. Solo chi possiede la chiave o appartiene alla categoria permessa può violare il suo confine, preservando il cuore di un quartiere o una città dalla pressione del traffico senza sosta.",
         "parole_trappola": [
             "numero massimo di veicoli",
             "solo ciclomotori e biciclette",
@@ -65,6 +71,7 @@
     },
     "passaggio-livello": {
         "regola_base": "Un passaggio a livello è un'intersezione tra una strada e una linea ferroviaria, dotata di barriere, semibarriere, luci rosse, pannelli distanziometrici, croce di San Andrea e dispositivi acustici per garantire la sicurezza dei veicoli e dei pedoni.",
+        "storia": "Qui il re della strada incontra il padrone dei binari. È un incontro che esige il massimo rispetto. Quando le luci rosse iniziano la loro danza e la campana suona, il tempo del guidatore si ferma, ed è l'unica scelta intelligente per evitare la collisione fatale.",
         "parole_trappola": [
             "cavalcavia",
             "luci gialle lampeggianti",
@@ -77,6 +84,7 @@
     },
     "aree-pedonali": {
         "regola_base": "Le aree pedonali sono zone esclusivamente destinate ai pedoni, ma possono essere attraversate da veicoli specifici previsti dalla legge, come quelli elettrici (se consentiti), veicoli di servizio (per disabili, polizia, vigili del fuoco in emergenza), e biciclette. I pedoni hanno sempre precedenza, e i veicoli devono circolare con prudenza e rispetto per la sicurezza.",
+        "storia": "Un regno dove il passo dell'uomo è legge. Il rumore dei motori svanisce. Qui il pedone cammina senza timore, sapendo che il suo spazio è inviolabile, tranne per chi porta soccorso o ha un permesso speciale.",
         "parole_trappola": [
             "tutti i motocicli",
             "trattori stradali",
@@ -88,6 +96,7 @@
     },
     "strada-definizione": {
         "regola_base": "La strada è un'area pubblica destinata alla circolazione di pedoni, animali e veicoli, e può essere suddivisa in carreggiate, piste ciclabili, marciapiedi e banchine. Può essere a senso unico o doppio senso di circolazione, e non è riservata a un solo tipo di utente.",
+        "storia": "La strada è la sinfonia della vita in movimento. Non appartiene a nessuno, ma accoglie tutti. È un mosaico di marciapiedi per chi cammina e carreggiate per chi corre, un tessuto che connette i luoghi e i destini.",
         "parole_trappola": [
             "riservata",
             "qualsiasi area asfaltata",
@@ -98,6 +107,7 @@
     },
     "autostrada": {
         "regola_base": "Autostrada: corsie separate, ingresso/uscita controllate, veicoli limitati, recintata laterale.",
+        "storia": "La pista di lancio del trasporto moderno. Niente incroci a raso, niente pedoni smarriti. Solo velocità regolata, recinzioni protettive e un flusso ininterrotto di macchine che sfrecciano verso l'orizzonte.",
         "parole_trappola": [
             "tutti i tipi",
             "ciclomotori",
@@ -109,6 +119,7 @@
     },
     "carreggiata": {
         "regola_base": "Carreggiata: area per veicoli in movimento, senza piste o marciapiedi.",
+        "storia": "Il cuore pulsante del transito veicolare. È il nastro d'asfalto riservato esclusivamente alle ruote che girano, separato da ogni distrazione pedonale o ciclistica.",
         "parole_trappola": [
             "carri a trazione animale",
             "sosta di emergenza",
@@ -120,6 +131,7 @@
     },
     "parti-carreggiata": {
         "regola_base": "Tutte le aree per veicoli sono carreggiata.",
+        "storia": "Ogni centimetro di asfalto destinato al rotolamento dei veicoli fa parte di questo grande palcoscenico dinamico.",
         "parole_trappola": [
             "emergenza",
             "banchine",
@@ -129,6 +141,7 @@
     },
     "corsia": {
         "regola_base": "Corsia: spazio per una fila di veicoli, con regole specifiche.",
+        "storia": "Il corridoio invisibile che porta ordine nel caos del traffico. Ogni veicolo ha il suo spazio designato per scorrere senza intralciare gli altri.",
         "parole_trappola": [
             "pedoni",
             "doppio senso",
@@ -140,6 +153,7 @@
     },
     "corsia-accelerazione": {
         "regola_base": "Per entrare in autostrada o strade extraurbane principali.",
+        "storia": "La rampa del coraggio. Una corsia di rincorsa dove il motore si spinge al limite per eguagliare la velocità del fiume autostradale prima di tuffarsi nel flusso.",
         "parole_trappola": [
             "sorpasso",
             "uscire",
@@ -150,6 +164,7 @@
     },
     "corsia-decelerazione": {
         "regola_base": "Per uscire dall'autostrada o strada principale, decelera in corsia dedicata.",
+        "storia": "Il porto sicuro del rallentamento. Ti permette di staccarti dalla folle corsa dell'autostrada e recuperare la calma prima di affrontare la strada ordinaria.",
         "parole_trappola": [
             "sosta",
             "piazzola",
@@ -159,6 +174,7 @@
     },
     "banchina": {
         "regola_base": "Banchina: area esterna carreggiata, vietato transito veicoli.",
+        "storia": "Il ciglio della strada, la spalla silenziosa che delimita l'asfalto. Non è fatta per viaggiare, ma offre un rifugio estremo in caso di necessità.",
         "parole_trappola": [
             "veicoli lenti",
             "sosta consentita",
@@ -169,6 +185,7 @@
     },
     "marciapiede": {
         "regola_base": "Marciapiede: area rialzata o delimitata, esclusiva pedoni, fuori carreggiata.",
+        "storia": "Il regno protetto dei passi umani. Rialzato e sicuro, tiene i pedoni lontani dal pericolo delle ruote rombanti.",
         "parole_trappola": [
             "carreggiata",
             "biciclette",
@@ -180,6 +197,7 @@
     },
     "salvagente": {
         "regola_base": "Salvagente: aiuto pedonale e accesso mezzi pubblici.",
+        "storia": "Un'isola di salvezza in mezzo alla strada, pensata per proteggere chi sale sui mezzi pubblici o attraversa la tempesta del traffico urbano.",
         "parole_trappola": [
             "dividere sensi marcia",
             "incanalare veicoli",
@@ -190,6 +208,7 @@
     },
     "passo-carrabile": {
         "regola_base": "Accesso veicoli a proprietà laterali, con segnale e autorizzazione.",
+        "storia": "Il varco privato che collega la proprietà protetta al grande flusso della strada pubblica, rigorosamente protetto dal divieto di sosta altrui.",
         "parole_trappola": [
             "parcheggio scambiatore",
             "carri animali",
@@ -201,6 +220,7 @@
     },
     "tricicli-motore": {
         "regola_base": "Tricicli a motore: 3 ruote, cilindrata >50cc, vel. >45km/h, revisione ogni 2 anni dopo 4.",
+        "storia": "La stabilità di tre ruote e la potenza di un vero motore. Una categoria unica che unisce il mondo delle due e delle quattro ruote.",
         "parole_trappola": [
             "senza patente",
             "sidecar",
@@ -211,6 +231,7 @@
     },
     "macchine-agricole": {
         "regola_base": "Macchine agricole immatricolate possono circolare per trasporto e operazioni.",
+        "storia": "I giganti della terra che lavorano i campi e solcano l'asfalto per portare i frutti della natura verso la civiltà.",
         "parole_trappola": [
             "velocità superiore",
             "passeggeri",
@@ -222,6 +243,7 @@
     },
     "caravan": {
         "regola_base": "Caravan: alloggio mobile, solo fermo, con targa.",
+        "storia": "La casa viaggiante trainata da un veicolo motore. Pronta a offrire riposo ovunque ci sia una piazzola autorizzata.",
         "parole_trappola": [
             "circolazione",
             "agricoli",
@@ -231,6 +253,7 @@
     },
     "autocaravan-camper": {
         "regola_base": "Autocaravan sono veicoli autonomi, con alloggio, soggetti a revisione.",
+        "storia": "Il camper, l'incarnazione della libertà su quattro ruote. Unisce il motore e la casa in un'unica entità pronta all'avventura.",
         "parole_trappola": [
             "rimorchi",
             "lavori agricoli",
@@ -242,6 +265,7 @@
     },
     "ciclomotori": {
         "regola_base": "Ciclomotori: 2-3 ruote, motore ≤50 cm³, max 45 km/h, revisione ogni 2 anni dopo 4.",
+        "storia": "I primi passi motorizzati di ogni giovane viaggiatore. Leggeri, agili e limitati nella velocità per garantire la massima sicurezza.",
         "parole_trappola": [
             "non più di due ruote",
             "pedalata assistita",
@@ -254,6 +278,7 @@
     },
     "quadricicli": {
         "regola_base": "Quadricicli leggeri: cilindrata ≤50 cm³, potenza ≤15 kW, assimilati a ciclomotori, revisione obbligatoria.",
+        "storia": "Veicoli compatti a quattro ruote che offrono protezione e agilità cittadina, richiedendo attenzione e regole precise.",
         "parole_trappola": [
             "senza patente",
             "sostituire scarico",
@@ -265,6 +290,7 @@
     },
     "strisce-pannelli-retroriflettenti": {
         "regola_base": "Autocarri >3,5t: strisce laterali e posteriori retroriflettenti bianche o gialle.",
+        "storia": "I segnali luminosi che squarciano l'oscurità della notte, rendendo visibili i giganti della strada ai loro compagni di viaggio.",
         "parole_trappola": [
             "inferiore a 3,5t",
             "pannelli gialli e rossi",
@@ -276,6 +302,7 @@
     },
     "motocicli": {
         "regola_base": "Motocicli: due ruote, cilindrata >50 cm³, revisione ogni 2 anni dopo i primi 4.",
+        "storia": "La pura essenza della velocità e dell'equilibrio. Due ruote che tagliano l'aria con agilità e potenza superiore.",
         "parole_trappola": [
             "tre ruote",
             "più di due ruote",
@@ -287,6 +314,7 @@
     },
     "autoveicoli": {
         "regola_base": "Autoveicoli: veicoli a motore con 4+ ruote, esclusi quadricicli.",
+        "storia": "La grande famiglia dei veicoli a motore a quattro o più ruote, che formano la spina dorsale del traffico stradale.",
         "parole_trappola": [
             "tutti",
             "compresi",
@@ -299,6 +327,7 @@
     },
     "autovetture": {
         "regola_base": "Autovettura: 4 ruote, max 9 posti, motore o elettrico, soggetta a revisione.",
+        "storia": "Il veicolo per eccellenza della famiglia e del viaggio quotidiano, progettato per trasportare persone nel comfort.",
         "parole_trappola": [
             "trazione posteriore",
             "non possono trainare",
@@ -313,6 +342,7 @@
     },
     "rimorchi": {
         "regola_base": "Rimorchi privi di motore, trainati. Leggeri fino a 750 kg. Autosnodato e caravan non sono rimorchi.",
+        "storia": "I fedeli compagni di carico privi di un proprio motore, che seguono docilmente la motrice ovunque vada.",
         "parole_trappola": [
             "caravan",
             "500 kg",
@@ -323,6 +353,7 @@
     },
     "traffico-intenso": {
         "regola_base": "Lascia liberi tutti gli incroci, passaggi e immissioni anche in traffico intenso.",
+        "storia": "Quando il mare di auto si blocca, la regola d'oro è non bloccare mai le intersezioni, lasciando respirare il flusso trasversale.",
         "parole_trappola": [
             "solo semaforo",
             "cavalcavia",
@@ -334,6 +365,7 @@
     },
     "file-veicoli": {
         "regola_base": "Mantieni distanza, osserva lontano, lascia sbocchi, non avvicinarti troppo al veicolo che precede.",
+        "storia": "Nel fiume denso della coda, la pazienza e lo sguardo lungo salvano da tamponamenti a catena.",
         "parole_trappola": [
             "luci di emergenza",
             "distrarsi a bassa velocità",
@@ -345,6 +377,7 @@
     },
     "centro-abitato": {
         "regola_base": "Attenzione, prudenza e concentrazione obbligatorie in centro abitato.",
+        "storia": "Il cuore vivo della città, dove la strada appartiene a tutti: pedoni, negozi, bambini e veicoli in armonia.",
         "parole_trappola": [
             "sostare in incroci",
             "file parallele",
@@ -354,6 +387,7 @@
     },
     "segnaletica-stradale": {
         "regola_base": "Spostare o rimuovere segnaletica è vietato sempre.",
+        "storia": "I cartelli e i segnali sono la voce della legge e della sicurezza stradale; toccarli significa accecare i viaggiatori.",
         "parole_trappola": [
             "consentito",
             "avvisato",
@@ -364,6 +398,7 @@
     },
     "gare-velocita": {
         "regola_base": "Gare di velocità non autorizzate su strade pubbliche sono vietate e puniti severamente.",
+        "storia": "La strada pubblica non è una pista da corsa clandestina; la velocità senza regole porta solo alla tragedia.",
         "parole_trappola": [
             "consentite",
             "ore 23.00-6.00",
@@ -374,6 +409,7 @@
     },
     "inquinamento-strade": {
         "regola_base": "Vietato gettare mozziconi accesi o sporcare strade con veicoli.",
+        "storia": "Rispettare l'asfalto significa non trasformare la strada in una discarica a cielo aperto.",
         "parole_trappola": [
             "lanciare",
             "parcheggiare",
@@ -384,6 +420,7 @@
     },
     "comportamento-conducente": {
         "regola_base": "Conducente deve essere prudente, paziente e rispettoso verso tutti.",
+        "storia": "Il vero automobilista non è quello che corre di più, ma quello che rispetta la vita altrui con pazienza.",
         "parole_trappola": [
             "precedenza",
             "potenza",
@@ -395,6 +432,7 @@
     },
     "attenzion-conducente": {
         "regola_base": "Attenzione: bassa velocità = rischio grave per ciclisti/motociclisti.",
+        "storia": "Anche a passo d'uomo, la distrazione può abbattere i più vulnerabili della strada.",
         "parole_trappola": [
             "non crea problemi",
             "solo autocarri",
@@ -406,6 +444,7 @@
     },
     "prudenza-conducente": {
         "regola_base": "Prudenza con persone fragili e guidatori incerti.",
+        "storia": "La strada è percorsa anche da chi ha meno riflessi o esperienza; proteggerli è dovere di ogni buon conducente.",
         "parole_trappola": [
             "patente estera",
             "autoveicoli elettrici",
@@ -417,6 +456,7 @@
     },
     "persone-anziane": {
         "regola_base": "Anziani: attenzione, slowness, non reagiscono prontamente, non guardano bene, non avvicinare.",
+        "storia": "I saggi camminano con passo lento e incerto; la nostra guida deve farsi ancora più attenta.",
         "parole_trappola": [
             "riflessi rapidi",
             "attraversano rapidamente",
@@ -428,6 +468,7 @@
     },
     "conducente-precedenze": {
         "regola_base": "Fermati e lascia passare pedoni non vedenti con bastone bianco o bianco-rosso, anche fuori strisce.",
+        "storia": "Il bastone bianco taglia il buio del mondo; fermarsi è un obbligo morale e giuridico inderogabile.",
         "parole_trappola": [
             "accelerare",
             "passare per primo",
@@ -440,6 +481,7 @@
     },
     "vicinanza-pedonale": {
         "regola_base": "Sempre pronto a fermarsi. Pedoni imprevedibili, specialmente bambini e anziani.",
+        "storia": "Nei pressi dei pedoni il piede deve fluttuare leggero sul freno, pronto a bloccare ogni pericolo.",
         "parole_trappola": [
             "reazione rapida",
             "cenno con la mano",
@@ -452,6 +494,7 @@
     },
     "bambini-semaforo": {
         "regola_base": "Prudenza con bambini al semaforo, anche con luce verde o gialla.",
+        "storia": "I bambini vedono il mondo con meraviglia e leggerezza; la luce verde non ci autorizza a ignorare la loro imprevedibilità.",
         "parole_trappola": [
             "accompagnati da adulto",
             "gesto di consenso",
@@ -462,6 +505,7 @@
     },
     "piazzole": {
         "regola_base": "Rallenta sempre. Attento ai bambini. Prepara freno. Scuolabus ha precedenza.",
+        "storia": "Dove lo scuolabus apre le porte, il tempo rallenta e la massima allerta protegge i più piccoli.",
         "parole_trappola": [
             "non rallentare",
             "precedenza",
@@ -474,6 +518,7 @@
     },
     "taxi-conducente": {
         "regola_base": "Fermati per pedoni. Taxi non possono fermarsi. Attenzione a pedoni improvvisi.",
+        "storia": "Il taxi cerca clienti mentre i pedoni attraversano; la prudenza evita la sorpresa dietro l'angolo.",
         "parole_trappola": [
             "precedenza ai taxi",
             "sostare dalle 20.00 alle 8.00",
@@ -483,16 +528,18 @@
     },
     "ciclisti-pedoni": {
         "regola_base": "Sorpassa con prudenza e distanza sicura. Non è vietato, ma richiede attenzione.",
+        "storia": "Due ruote silenziose che tagliano la strada; sorpassarle richiede spazio e rispetto assoluto.",
         "parole_trappola": [
             "2 metri",
             "vietato",
-            "non deve dare precedenza",
+            "notte",
             "velocità 30 km/h"
         ],
         "eccezioni_e_contesti": "Strade extraurbane: clacson consigliato. Notte: attenzione a pedoni."
     },
     "gravidanza-carrozzine": {
         "regola_base": "Prudenza con donne incinte e carrozzine. Non ostacolare scivoli. Non avvicinare troppo.",
+        "storia": "Proteggere chi porta la vita futura è il segno di una civiltà stradale evoluta.",
         "parole_trappola": [
             "passo più rapido",
             "rapidamente",
@@ -504,6 +551,7 @@
     },
     "strisce-strada": {
         "regola_base": "Strisce continue: vietato superare. Discontinue: permesso.",
+        "storia": "Linee bianche sul terreno che decidono i confini del possibile e del vietato.",
         "parole_trappola": [
             "bianche",
             "azzurre"
@@ -512,6 +560,7 @@
     },
     "regolamenti-segnaletica": {
         "regola_base": "Scritte gialle per bus, taxi, stop, passaggi a livello e località.",
+        "storia": "Il giallo brillante sull'asfalto avverte di servizi speciali e comandi urgenti.",
         "parole_trappola": [
             "DARE PRECEDENZA",
             "stazione di servizio",
@@ -524,6 +573,7 @@
     },
     "carreggiata-doppio-senso-circolazione": {
         "regola_base": "Striscia mezza continua o tratteggiata. Superamento consentito solo in sorpasso.",
+        "storia": "Il confine tra i due sensi di marcia traccia la danza della prudenza e del sorpasso sicuro.",
         "parole_trappola": [
             "sempre",
             "mai",
@@ -535,6 +585,7 @@
     },
     "striscia-bianca-laterale": {
         "regola_base": "Striscia bianca laterale: segna confine carreggiata e banchina.",
+        "storia": "Il limite estremo dell'asfalto che separa la pista di scorrimento dalla terra di nessuno.",
         "parole_trappola": [
             "discontinua",
             "corsia di emergenza",
@@ -544,6 +595,7 @@
     },
     "agenti-traffico": {
         "regola_base": "Esibire patente, assicurazione, carta di circolazione e triangolo di pericolo.",
+        "storia": "Quando l'autorità alza la mano, ogni veicolo si ferma per mostrare le carte della sua legalità.",
         "parole_trappola": [
             "valigetta pronto soccorso",
             "certificato proprietà",
@@ -554,6 +606,7 @@
     },
     "addetti-polizia-postale": {
         "regola_base": "Poliziotti stradali riconoscibili da divisa, paletta bianco-rossa e segnale distintivo.",
+        "storia": "I guardiani in divisa che vegliano sulla sicurezza di ogni viaggiatore lungo le grandi vie.",
         "parole_trappola": [
             "paletta bianca e nera",
             "guantoni",
@@ -561,8 +614,9 @@
         ],
         "eccezioni_e_contesti": "Nessuna eccezione. Regola universale per tutti i servizi stradali."
     },
-    "fischeitto": {
+    "fischettino": {
         "regola_base": "Fischio prolungato: arresto immediato, liberare incrocio, lasciare passare soccorso.",
+        "storia": "Il trillo acuto del fischietto fende l'aria come un comando supremo: fermarsi e fare spazio.",
         "parole_trappola": [
             "tornare indietro",
             "solo destra",
@@ -573,6 +627,7 @@
     },
     "vicinanze-passaggio-livello": {
         "regola_base": "Fermarsi sulla linea d'arresto quando luci rosse e semibarriera alzata.",
+        "storia": "Davanti ai binari non si scherza: la luce rossa comanda l'arresto totale.",
         "parole_trappola": [
             "accelerare",
             "passare velocemente",
@@ -585,6 +640,7 @@
     },
     "regolazione-conducente-velocita": {
         "regola_base": "Velocità in base a veicolo, strada, traffico, condizioni e limiti.",
+        "storia": "La velocità perfetta non è un numero fisso, ma l'armonia tra le condizioni della strada e il controllo del mezzo.",
         "parole_trappola": [
             "esclusivamente",
             "abilità",
@@ -595,6 +651,7 @@
     },
     "obbligo-regolazione": {
         "regola_base": "Mantieni controllo e riduci velocità in ogni situazione pericolosa.",
+        "storia": "Davanti al pericolo, il vero pilota modera la corsa prima che la fisica prenda il sopravvento.",
         "parole_trappola": [
             "senso unico",
             "fuori dai centri",
@@ -612,6 +669,7 @@
     },
     "riduzione-velocita": {
         "regola_base": "Riduci velocità e ferma quando pedoni, animali o pericoli imminenti sono sulla strada.",
+        "storia": "Quando la vita attraversa inaspettata, il piede si sposta prontamente sul freno.",
         "parole_trappola": [
             "passi carrabili",
             "fermate autobus",
@@ -624,6 +682,7 @@
     },
     "limite-velocita-generali": {
         "regola_base": "Limiti velocità dipendono strada, veicolo e condizioni.",
+        "storia": "I cartelli segnano i confini della velocità legale, ma la prudenza detta la regola finale.",
         "parole_trappola": [
             "sempre",
             "qualsiasi",
@@ -637,6 +696,7 @@
     },
     "limiti-velocita-eta": {
         "regola_base": "Limiti più bassi per guidatori con patente poco tempo.",
+        "storia": "I neopatentati portano rispetto alla strada con limiti prudenti per costruire la propria esperienza.",
         "parole_trappola": [
             "frizione abbassata",
             "110 km/h",
@@ -646,6 +706,7 @@
     },
     "limiti-strade-extraurbane-velocita": {
         "regola_base": "Autostrade: 130 km/h auto, 80 km/h con rimorchio. Motocicli: 130 km/h. Autocaravan: 130 km/h fino a 3,5t.",
+        "storia": "Sulla grande autostrada la velocità massima è regolata per unire rapidità e sicurezza.",
         "parole_trappola": [
             "rimorchio",
             "pioggia",
@@ -658,6 +719,7 @@
     },
     "regolazione-velocita": {
         "regola_base": "Regola velocità per non intralciare e per dare precedenza.",
+        "storia": "Guidare fluidamente significa non ostacolare il flusso altrui e rispettare le precedenze.",
         "parole_trappola": [
             "mezz'ora",
             "alimentazione",
@@ -668,6 +730,7 @@
     },
     "doveri-velocita": {
         "regola_base": "Velocità adeguata a sicurezza, visibilità, condizioni e carico.",
+        "storia": "Il carico pesante e la scarsa visibilità pretendono una marcia moderata e saggia.",
         "parole_trappola": [
             "tempo a disposizione",
             "fuori dai centri abitati"
@@ -676,6 +739,7 @@
     },
     "norme-velocita": {
         "regola_base": "Limiti veloci dipendono strada, veicolo e segnali.",
+        "storia": "La legge della strada adatta la velocità al contesto per proteggere ogni viaggiatore.",
         "parole_trappola": [
             "150 km/h sempre",
             "80 km/h in città",
@@ -685,6 +749,7 @@
     },
     "strade-extraurbane-secondarie": {
         "regola_base": "90 km/h per auto, moto, autocaravan fino a 3,5t. 70 km/h per autotreni e rimorchi per imbarcazioni.",
+        "storia": "Sulle strade extraurbane a doppio senso, i 90 all'ora rappresentano il limite della saggezza.",
         "parole_trappola": [
             "ciclomotori",
             "quadricicli non leggeri",
@@ -696,6 +761,7 @@
     },
     "contrassegni-velocita": {
         "regola_base": "Adatta velocità a traffico, condizioni stradali e presenza di pedoni o animali.",
+        "storia": "La prudenza comanda di rallentare dove la vita brulica attorno alla carreggiata.",
         "parole_trappola": [
             "velocità massima",
             "segnalazioni stradali",
@@ -706,6 +772,7 @@
     },
     "moderazione-velocita": {
         "regola_base": "Moderare velocità in zone pericolose o visibilità ridotta.",
+        "storia": "Quando la vista si oscura o il pericolo aumenta, il freno diventa il migliore alleato.",
         "parole_trappola": [
             "tramonto",
             "dopo incrocio",
@@ -718,6 +785,7 @@
     },
     "diminuzione-velocita": {
         "regola_base": "Diminuisci velocità in caso di condizioni atmosferiche o stradali critiche.",
+        "storia": "La pioggia e il ghiaccio pretendono rispetto: rallentare previene ogni slittamento fatale.",
         "parole_trappola": [
             "limite massimo",
             "segnale di indicazione",
@@ -727,6 +795,7 @@
     },
     "limiti-particolari": {
         "regola_base": "Limiti specifici per veicoli con rimorchi e contesti particolari.",
+        "storia": "I rimorchi e i contesti critici impongono restrizioni di velocità studiate per la stabilità.",
         "parole_trappola": [
             "170 km/h",
             "150 km/h",
@@ -741,6 +810,7 @@
     },
     "velocita-incroci": {
         "regola_base": "Diritto di precedenza non esonera da colpa se si va troppo veloci.",
+        "storia": "Avere ragione non giustifica il volo sconsiderato: agli incroci la prudenza vince sempre.",
         "parole_trappola": [
             "completamente privi di responsabilità",
             "solo del conducente",
@@ -751,6 +821,7 @@
     },
     "pericolo-velocita": {
         "regola_base": "Spostare veicolo fuori binari o far scendere persone. Frenare con motore acceso in discesa.",
+        "storia": "Nelle lunghe discese il motore fa da freno naturale, proteggendo l'impianto dal surriscaldamento.",
         "parole_trappola": [
             "sovraccarico di corrente",
             "anomalia al differenziale",
@@ -762,6 +833,7 @@
     },
     "pallone-carreggiata": {
         "regola_base": "Rallentare, prevedere bambini, non sterzare bruscamente.",
+        "storia": "Se un pallone rotola in strada, un bambino sta per inseguirlo: il freno è la sola risposta.",
         "parole_trappola": [
             "sterzare bruscamente",
             "scansarlo",
@@ -772,6 +844,7 @@
     },
     "macchine-parcheggiate": {
         "regola_base": "Evita di passare vicino a auto con persone a bordo.",
+        "storia": "Una portiera che si spalanca all'improvviso può diventare una trappola per chi transita troppo vicino.",
         "parole_trappola": [
             "bassa velocità",
             "portiere aperte",
@@ -782,6 +855,7 @@
     },
     "Comportamenti-passaggio-livello": {
         "regola_base": "Sgomberare immediatamente. Non abbandonare veicolo. Non accelerare. Segnalare pericolo.",
+        "storia": "Se il veicolo si ferma sui binari, ogni secondo conta: spingere e liberare la via è imperativo.",
         "parole_trappola": [
             "scendere e abbandonare",
             "sganciare rimorchio",
@@ -798,6 +872,7 @@
     },
     "condizioni-sicurezza": {
         "regola_base": "Distanza di sicurezza varia per velocità, condizioni, veicolo e carico.",
+        "storia": "La distanza non è un numero rigido, ma un cuscino d'aria che si allunga con la velocità.",
         "parole_trappola": [
             "cilindrata",
             "potenza",
@@ -811,6 +886,7 @@
     },
     "distanza-sicurezza": {
         "regola_base": "Distanza di sicurezza dipende dalla velocità e dalle condizioni del conducente.",
+        "storia": "I riflessi umani e la velocità dettano lo spazio vitale necessario per evitare il tamponamento.",
         "parole_trappola": [
             "larghezza",
             "corsie",
@@ -824,6 +900,7 @@
     },
     "distanza-situazioni": {
         "regola_base": "Distanza dipende da aderenza e tempo di reazione.",
+        "storia": "Asfalto bagnato o riflessi lenti pretendono metri extra di sicurezza.",
         "parole_trappola": [
             "100 metri",
             "freno di stazionamento",
@@ -834,6 +911,7 @@
     },
     "distanza-reazione": {
         "regola_base": "Distanza di sicurezza evita tamponamenti, non scontri laterali o frontali.",
+        "storia": "Il cuscino anteriore protegge dai tamponamenti a catena quando chi precede frena di colpo.",
         "parole_trappola": [
             "scontro frontale",
             "scontro laterale",
@@ -843,6 +921,7 @@
     },
     "distanza-minima": {
         "regola_base": "Distanza minima = velocità / 10 + 1 metri, ma mai meno di 2 metri.",
+        "storia": "La formula della prudenza traduce la velocità in metri di respiro necessari tra un veicolo e l'altro.",
         "parole_trappola": [
             "2 metri",
             "5 metri",
@@ -854,6 +933,7 @@
     },
     "distrazione-conducente": {
         "regola_base": "Distrazione causa incidenti. Cellulare, sigaretta, radio: tutti rischiano.",
+        "storia": "Un solo secondo di distrazione basta a percorrere decine di metri alla cieca verso il pericolo.",
         "parole_trappola": [
             "non è determinata",
             "non rappresenta un pericolo",
@@ -863,6 +943,7 @@
     },
     "spazio-secondo": {
         "regola_base": "Velocità in km/h divisa per 3,6 dà metri al secondo.",
+        "storia": "La matematica della strada calcola esattamente quanti metri si divorano in un solo secondo.",
         "parole_trappola": [
             "20",
             "4",
@@ -873,6 +954,7 @@
     },
     "spazio-frenatura": {
         "regola_base": "Spazio frenatura = distanza per fermarsi, dipende dalla velocità.",
+        "storia": "Dal momento in cui le pastiglie stringono i dischi fino all'arresto completo, la fisica detta legge.",
         "parole_trappola": [
             "indipendente",
             "raddoppia",
@@ -882,6 +964,7 @@
     },
     "diminuzione-aumento-frenatura": {
         "regola_base": "Frenatura aumenta con bassa aderenza, bagnato, neve, discesa. Diminuisce in salita.",
+        "storia": "La salita aiuta a fermarsi prima, mentre la discesa e il ghiaccio allungano inesorabilmente la frenata.",
         "parole_trappola": [
             "riflessi pronti",
             "ruote bloccate",
@@ -893,6 +976,7 @@
     },
     "spazio-arresto": {
         "regola_base": "Spazio arresto = reazione + frenata. Dipende da velocità, pneumatici, asfalto.",
+        "storia": "La somma del tempo in cui pensi e del tempo in cui freni definisce lo spazio totale di arresto.",
         "parole_trappola": [
             "indipendente",
             "pari",
@@ -904,6 +988,7 @@
     },
     "aumento-spazio-arresto": {
         "regola_base": "Velocità, superficie e usura pneumatici aumentano spazio arresto.",
+        "storia": "Pneumatici lisci e asfalto viscido trasformano una frenata d'emergenza in una lunga scivolata.",
         "parole_trappola": [
             "non usurati",
             "diminuisce velocità",
@@ -913,6 +998,7 @@
     },
     "condizioni-influenza-sicurezza": {
         "regola_base": "Distanza di sicurezza dipende da velocità, attenzione, carico, aderenza e freni.",
+        "storia": "Un veicolo pesante e carico richiede molta più strada per fermarsi rispetto a uno leggero.",
         "parole_trappola": [
             "corsie",
             "dimensione veicolo precedente",
@@ -924,6 +1010,7 @@
     },
     "sicurezza-dipendenza": {
         "regola_base": "Distanza di sicurezza dipende da attenzione, salute e contesto stradale.",
+        "storia": "La stanchezza e la mente distratta allungano i tempi di reazione, imponendo un cuscino di sicurezza maggiore.",
         "parole_trappola": [
             "potenza",
             "freno a mano",
@@ -934,6 +1021,7 @@
     },
     "metri-distanza-sicurezza": {
         "regola_base": "Distanza di sicurezza: tempo di reazione + frenata. Sempre, anche per sorpasso.",
+        "storia": "La distanza protettiva non si azzera mai, nemmeno quando prepariamo un sorpasso sicuro.",
         "parole_trappola": [
             "spazio di frenatura",
             "uguale",
@@ -943,6 +1031,7 @@
     },
     "distanza-sicurezza-veicoli": {
         "regola_base": "Aumenta distanza con carichi sporgenti o instabili.",
+        "storia": "Un carico che oscilla o sporge chiede rispetto: raddoppia la distanza per evitare disastri.",
         "parole_trappola": [
             "100 metri",
             "gallerie",
@@ -954,6 +1043,7 @@
     },
     "pericolo-intralcio": {
         "regola_base": "Pericolo o intralcio? Sì, se ostacola la circolazione.",
+        "storia": "Tutto ciò che blocca o rallenta improvvisamente il flusso senza ragione diventa un pericolo per la collettività.",
         "parole_trappola": [
             "immettersi",
             "regolare velocità",
@@ -963,6 +1053,7 @@
     },
     "guida-veicolo": {
         "regola_base": "Guida con prudenza, rispetto e regole stradali.",
+        "storia": "Il codice della strada è la mappa condivisa che permette a migliaia di estranei di viaggiare insieme in sicurezza.",
         "parole_trappola": [
             "sempre",
             "centro strada",
@@ -974,6 +1065,7 @@
     },
     "carico-veicoli": {
         "regola_base": "Carico sicuro, visibile, non ostacola guida o caduta.",
+        "storia": "Ogni oggetto caricato a bordo deve essere legato così saldamente da diventare parte del veicolo stesso.",
         "parole_trappola": [
             "tre decimi laterale",
             "10% altezza",
@@ -986,6 +1078,7 @@
     },
     "uso-corretto-strada": {
         "regola_base": "Velocità adeguata, prudenza, precedenza pedoni, luci corrette, specchi prima di direzione.",
+        "storia": "La sequenza perfetta di ogni manovra: guardare gli specchi, segnalare l'intenzione e agire con prudenza.",
         "parole_trappola": [
             "impegnare rapidamente",
             "arrestarsi sempre",
@@ -996,6 +1089,7 @@
     },
     "prossimita-incrocio": {
         "regola_base": "Segui segnaletica. Non cambi corsia. Non fermati. Non chiedi consigli. Procedi con prudenza.",
+        "storia": "All'approssimarsi di un incrocio la corsia è decisa: niente cambi improvvisi o ripensamenti dell'ultimo secondo.",
         "parole_trappola": [
             "cambiare corsia",
             "fermarsi",
@@ -1008,6 +1102,7 @@
     },
     "centro-abitato-pedone": {
         "regola_base": "Riduci velocità, ferma se necessario, non aspetta che il pedone ti dica di andare.",
+        "storia": "In città il pedone è il re indiscusso della strada; fermarsi con cortesia è segno di civiltà.",
         "parole_trappola": [
             "abbaglianti",
             "richiamare",
@@ -1019,6 +1114,7 @@
     },
     "corteo-centro-abitato": {
         "regola_base": "Fermati a destra, non suonare, non retrocedere, non invertire, attendi che il corteo passi.",
+        "storia": "Davanti a una manifestazione o un corteo, il traffico si ferma con rispetto in silenzio.",
         "parole_trappola": [
             "suonare clacson",
             "farsi strada",
@@ -1031,6 +1127,7 @@
     },
     "incrocio-urbano": {
         "regola_base": "Attendere pazientemente, non suonare, non agire pericolosamente.",
+        "storia": "Nel traffico cittadino la pazienza è la virtù che evita scintille e incidenti inutili.",
         "parole_trappola": [
             "suonare insistentemente",
             "richiamare con clacson",
@@ -1041,6 +1138,7 @@
     },
     "strada-extraurbana-notte": {
         "regola_base": "Usa anabbaglianti, rallenta, guarda altrove, non brusche manovre.",
+        "storia": "Se i fari abbaglianti di un veicolo opposto ti accecano, sposta lo sguardo sul margine destro della strada.",
         "parole_trappola": [
             "retrovisore interno",
             "fari abbaglianti",
@@ -1052,6 +1150,7 @@
     },
     "evitare-pericolo": {
         "regola_base": "Guida con attenzione, buonsenso e senso civico.",
+        "storia": "Il miglior modo per uscire da una situazione critica è non cacciarsi nei guai grazie al buon senso.",
         "parole_trappola": [
             "limiti massimi",
             "velocità costante",
@@ -1062,6 +1161,7 @@
     },
     "condizioni-traffico-intenso": {
         "regola_base": "Adatta velocità, mantieni distanza, non suona clacson.",
+        "storia": "Nel caos del traffico intenso, mantenere la calma e la distanza evita lo stress e i tamponamenti.",
         "parole_trappola": [
             "cambiare corsia",
             "corsie riservate",
@@ -1071,6 +1171,7 @@
     },
     "svolta-destra": {
         "regola_base": "Tenersi al margine destro, segnalare, moderare velocità, non creare pericoli.",
+        "storia": "Per svoltare a destra ci si accosta dolcemente al margine, guardando negli specchi prima di girare.",
         "parole_trappola": [
             "margine sinistro",
             "corsia di sinistra",
@@ -1082,6 +1183,7 @@
     },
     "impegno-delle-corsie": {
         "regola_base": "Sosta solo in aree segnalate su strade extraurbane principali.",
+        "storia": "Sulle grandi arterie extraurbane non è concesso fermarsi dove capita: solo le aree di sosta offrono riparo.",
         "parole_trappola": [
             "quattro carreggiate",
             "sorpasso",
@@ -1091,6 +1193,7 @@
     },
     "cambio-corsia": {
         "regola_base": "Controlla corsia libera davanti/dietro, segnala con indicatore, non creare pericolo.",
+        "storia": "Saltare da una corsia all'altra senza freccia né controllo è un invito al disastro.",
         "parole_trappola": [
             "non deve azionare indicatore",
             "avvisatore acustico",
@@ -1100,6 +1203,7 @@
     },
     "svolta-carreggiata-doppio-senso": {
         "regola_base": "Avvicinati al centro, precedi da destra, salvo segnalazioni.",
+        "storia": "Prima di una svolta a sinistra in una strada a doppio senso, ci si porta verso l'asse centrale.",
         "parole_trappola": [
             "margine sinistro",
             "velocemente",
@@ -1110,6 +1214,7 @@
     },
     "utilizzo-corsie-file-parallele": {
         "regola_base": "Veicoli a destra, animali e ciclismo vicino margine destro.",
+        "storia": "Ogni utente della strada ha il suo spazio naturale: i veicoli veloci al centro-destra, i lenti sul margine.",
         "parole_trappola": [
             "margine sinistro",
             "corsie riservate",
@@ -1121,6 +1226,7 @@
     },
     "attenzione-cambio-corsia": {
         "regola_base": "Segnala, controlla, cambia solo se sicuro e senza intralcio.",
+        "storia": "La freccia accesa comunica le tue intenzioni agli altri piloti prima ancora di spostare il volante.",
         "parole_trappola": [
             "facoltativo",
             "non occorre",
@@ -1131,6 +1237,7 @@
     },
     "svolte-cambi-direzioni": {
         "regola_base": "Segnala in anticipo, teniti al margine, indicatore acceso in inversione.",
+        "storia": "Preavvisare le proprie manovre con largo anticipo garantisce la fluidità e previene tamponamenti.",
         "parole_trappola": [
             "clacson",
             "trombe",
@@ -1140,6 +1247,7 @@
     },
     "strada-doppio-senso-marcia": {
         "regola_base": "Svoltare a sinistra: usare corsie destinate, non contromano.",
+        "storia": "Tagliare la curva finendo contromano è un errore fatale che azzera la visibilità degli in arrivo.",
         "parole_trappola": [
             "contromano",
             "margine destro",
@@ -1150,6 +1258,7 @@
     },
     "durante-marcia": {
         "regola_base": "Svolta a sinistra: segnala in anticipo. File parallele solo con autorizzazione.",
+        "storia": "La manovra di svolta a sinistra richiede precisione chirurgica e rispetto rigoroso delle corsie.",
         "parole_trappola": [
             "qualsiasi corsia",
             "non regolato",
@@ -1161,6 +1270,7 @@
     },
     "obbligo-precedenza": {
         "regola_base": "Dare precedenza a tram, treni, veicoli in movimento, retromarcia e inversione.",
+        "storia": "I binari e i veicoli su ferro hanno una forza inarrestabile; a loro va sempre data la precedenza assoluta.",
         "parole_trappola": [
             "rotatoria",
             "semaforo giallo lampeggiante",
@@ -1170,6 +1280,7 @@
     },
     "vicinanza-incrocio": {
         "regola_base": "Osserva, segnala, sposta, procedi solo se sicuro, usa prudenza.",
+        "storia": "Avvicinarsi a un incrocio significa aprire gli occhi a 360 gradi e verificare ogni traiettoria.",
         "parole_trappola": [
             "passare sempre prima",
             "sorpassare velocemente",
@@ -1179,6 +1290,7 @@
     },
     "corrispondenza-incroci": {
         "regola_base": "Nessun zig zag, inversione, sosta, fermata, sorpasso bicicletta in prossimità degli incroci.",
+        "storia": "Negli incroci regna la linea retta e la massima pulizia di manovra: niente manovre azzardate.",
         "parole_trappola": [
             "fari anabbaglianti",
             "velocità 60 km/h",
@@ -1191,6 +1303,7 @@
     },
     "proprieta-privata": {
         "regola_base": "Chi arriva da sinistra ha precedenza. Prudenza e tolleranza sono fondamentali.",
+        "storia": "Negli incroci senza segnaletica vale la regola aurea: la precedenza spetta a chi spunta da destra.",
         "parole_trappola": [
             "strada più stretta",
             "suonare il clacson",
@@ -1200,6 +1313,7 @@
     },
     "svolta-destra-autotreno": {
         "regola_base": "Autotreno a destra: rallenta, si allarga, non sorpassare, tenere distanza.",
+        "storia": "Un autotreno che gira a destra ha bisogno di spazio vitale; mai infilarsi nel suo angolo cieco.",
         "parole_trappola": [
             "sorpassarlo subito",
             "appena aziona",
@@ -1209,6 +1323,7 @@
     },
     "inversione-marcia-conducente": {
         "regola_base": "Dare precedenza, segnalare, evitare pericolo, rinunciare in traffico o scarsa visibilità.",
+        "storia": "Fare inversione di marcia è una manovra delicata che richiede strada libera e visibilità totale.",
         "parole_trappola": [
             "segna luminosa pericolo",
             "curva",
@@ -1220,6 +1335,7 @@
     },
     "manovre-consentite": {
         "regola_base": "Inversione vietata in curve, incroci, scarsa visibilità, dossi su strade a doppio senso.",
+        "storia": "Nei dossi e nelle curve cieche invertire la marcia è un azzardo che sfida la sorte.",
         "parole_trappola": [
             "manca segnaletica",
             "linea continua",
@@ -1230,6 +1346,7 @@
     },
     "incroci-circolazione-rotatoria": {
         "regola_base": "Dare precedenza a destra, salvo segnale 'Dare precedenza' o regole specifiche.",
+        "storia": "La rotatoria è il vortice fluido del traffico moderno, dove chi è già dentro gode del diritto di transito.",
         "parole_trappola": [
             "obbligatorio",
             "sempre",
@@ -1240,6 +1357,7 @@
     },
     "arresto-veicolo": {
         "regola_base": "Chi scende deve arrestarsi. Chi sale deve aspettare. Semaforo: fermarsi solo se necessario.",
+        "storia": "Nei passaggi stretti in pendenza, chi scende si fa da parte per agevolare chi fatica a salire.",
         "parole_trappola": [
             "STOP senza linea",
             "salita deve fermarsi",
@@ -1249,6 +1367,7 @@
     },
     "auto-della-polizia": {
         "regola_base": "Segui segnalazioni luminose sulla polizia. Accostare o rallentare come indicato.",
+        "storia": "Quando il pannello luminoso della polizia ordina l'alt o di rallentare, il conducente obbedisce immediatamente.",
         "parole_trappola": [
             "alto rischio",
             "svoltare",
@@ -1259,6 +1378,7 @@
     },
     "immissione-flusso-della-circolazione": {
         "regola_base": "Assicurati di non creare pericolo, segnala con anticipo, rispetta la precedenza.",
+        "storia": "Immettersi in un flusso di traffico è come entrare in un fiume in piena: bisogna farlo senza spintoni.",
         "parole_trappola": [
             "evitare di azionare",
             "solo in presenza",
@@ -1268,6 +1388,7 @@
     },
     "partenza-margine-della-carreggiata": {
         "regola_base": "Allacciare cintura e casco prima di immettersi nel flusso.",
+        "storia": "La sicurezza si indossa prima di muovere la prima ruota: cintura e casco ben allacciati.",
         "parole_trappola": [
             "dopo aver concluso",
             "può indossare",
@@ -1277,6 +1398,7 @@
     },
     "arresto-margine-destro-della-carreggiata": {
         "regola_base": "Fermarsi senza pericolo, segnalare, evitare brusche frenate.",
+        "storia": "Accostare a destra richiede dolcezza e preavviso per non sorprendere chi segue.",
         "parole_trappola": [
             "lampeggiando ripetutamente",
             "quattro frecce",
@@ -1286,6 +1408,7 @@
     },
     "mancato-rispetto-delle-norme": {
         "regola_base": "Mancato rispetto norme = perdita punti patente.",
+        "storia": "Ogni infrazione al codice erode il tesoro dei punti accumulati sulla patente di guida.",
         "parole_trappola": [
             "sanzione pecuniaria",
             "4 punti",
@@ -1296,6 +1419,7 @@
     },
     "utilizzo-specchi-retrovisori": {
         "regola_base": "Specchi retrovisori per visione posteriore e sicurezza nelle manovre.",
+        "storia": "Gli specchi sono gli occhi supplementari del conducente, essenziali per scrutare i punti ciechi.",
         "parole_trappola": [
             "non deve essere utilizzata",
             "proporzionali alla cilindrata",
@@ -1306,6 +1430,7 @@
     },
     "Posizione-degli-specchi-retrovisori": {
         "regola_base": "Specchio sinistro: vedi strada laterale, non il veicolo stesso.",
+        "storia": "Regolare gli specchietti significa eliminare i coni d'ombra e dominare visivamente la strada.",
         "parole_trappola": [
             "bambini",
             "chiuso",
@@ -1320,6 +1445,7 @@
     },
     "conducente-intende-sorpassare": {
         "regola_base": "Sorpasso solo se sicuro, visibile, libero e senza ostacoli.",
+        "storia": "Superare un veicolo richiede spazio, visibilità e la certezza matematica che la strada sia libera.",
         "parole_trappola": [
             "unico obbligo",
             "frecce",
@@ -1331,6 +1457,7 @@
     },
     "manovra-sorpasso": {
         "regola_base": "Sorpasso a sinistra, segnale, distanza, rientro a destra, non accelerare, non sorpassare se pericoloso.",
+        "storia": "La manovra regina della strada: si scatta a sinistra, si supera in sicurezza e si rientra dolcemente a destra.",
         "parole_trappola": [
             "segna acustico",
             "non obbligo indicatore",
@@ -1342,6 +1469,7 @@
     },
     "tram-sorpassi": {
         "regola_base": "Sorpasso a destra solo se sicuro e consentito dal contesto.",
+        "storia": "I tram viaggiano al centro; per superarli si passa di norma a destra, dove lo spazio lo consente.",
         "parole_trappola": [
             "sempre",
             "autostrade",
@@ -1353,6 +1481,7 @@
     },
     "spazio-necessario-sorpasso": {
         "regola_base": "Sorpasso vietato in curve, dossi, scarsa visibilità, se impedisce il passaggio.",
+        "storia": "Se non vedi la fine del rettilineo, lo spazio per il sorpasso semplicemente non esiste.",
         "parole_trappola": [
             "consentito in curva",
             "rallenta",
@@ -1364,6 +1493,7 @@
     },
     "sorpasso-vietato": {
         "regola_base": "Sorpasso vietato dove segnale o pericolo. Solo a sinistra, se sicuro e consentito.",
+        "storia": "I cartelli di divieto e le strisce continue tracciano il confine invalicabile del sorpasso proibito.",
         "parole_trappola": [
             "centri urbani",
             "mantenere destra",
@@ -1380,6 +1510,7 @@
     },
     "sorpasso-prossimita-dosso": {
         "regola_base": "Sorpasso consentito in prossimità di dosso su strade a senso unico o a due corsie per senso.",
+        "storia": "Sulle strade a senso unico protette, il dosso non ferma il sorpasso grazie alla separazione dei flussi.",
         "parole_trappola": [
             "veicoli a trazione animale",
             "scia del veicolo",
@@ -1391,6 +1522,7 @@
     },
     "pericolosita-sorpasso": {
         "regola_base": "Evita di tagliare strada, rischi di collisione, urti frontali, larghezza ridotta.",
+        "storia": "Rientrare troppo presto dopo un sorpasso rischia di falciare il veicolo appena superato.",
         "parole_trappola": [
             "mantenersi a lungo",
             "avvisatore acustico continuo",
@@ -1409,6 +1541,7 @@
     },
     "conducente-veicolo-sorpassare": {
         "regola_base": "Non gareggiare, non accelerare, tenersi a destra, fermarsi se necessario.",
+        "storia": "Quando vieni superato, il tuo dovere è agevolare la manovra senza accelerare per orgoglio.",
         "parole_trappola": [
             "portarsi al centro",
             "lampeggio simultaneo",
@@ -1420,6 +1553,7 @@
     },
     "sorpasso-autostrada": {
         "regola_base": "Sorpasso solo se sicuro, con distanza e attenzione costante.",
+        "storia": "Anche sulle ampie corsie autostradali, il sorpasso richiede il controllo millimetrico degli specchi.",
         "parole_trappola": [
             "piazzola di sosta",
             "luci anabbaglianti sempre accese"
@@ -1428,6 +1562,7 @@
     },
     "disco-orario-parchimetro": {
         "regola_base": "Esposizione visibile del tagliando o orario di arrivo obbligatoria.",
+        "storia": "Il disco orario segna il tempo concesso alla sosta: esporlo chiaramente evita la sanzione.",
         "parole_trappola": [
             "orario di fine",
             "aggiornare senza spostare",
@@ -1438,6 +1573,7 @@
     },
     "conducente-autoveicolo-sosta": {
         "regola_base": "Sempre controlla veicoli e pedoni prima di aprire portiera.",
+        "storia": "Prima di spingere la portiera per scendere, un rapido sguardo allo specchio salva ciclisti e passanti.",
         "parole_trappola": [
             "motore acceso",
             "veicoli di fronte",
@@ -1447,6 +1583,7 @@
     },
     "prima-iniziare-guidare": {
         "regola_base": "Controlla sedile, specchi, documenti, patente, stato veicolo, carico, visibilità, comandi, cinture.",
+        "storia": "Il rituale prima della partenza: regolare sedile e specchi, allacciare la cintura e verificare ogni comando.",
         "parole_trappola": [
             "contachilometri",
             "airbag",
@@ -1457,6 +1594,7 @@
     },
     "fermata-veicolo": {
         "regola_base": "Fermata: breve sospensione per persone/informazioni. Arresto: per circolazione.",
+        "storia": "La fermata è un battito d'ali temporaneo per far salire qualcuno; l'arresto è imposto dalle regole del traffico.",
         "parole_trappola": [
             "conducente",
             "dieci minuti",
@@ -1467,6 +1605,7 @@
     },
     "durante-fermata": {
         "regola_base": "Fermata senza intralcio, conducente presente e pronto a ripartire.",
+        "storia": "Durante la fermata il conducente resta al posto di comando, pronto a riprendere la marcia all'istante.",
         "parole_trappola": [
             "allontanarsi",
             "motore acceso",
@@ -1476,6 +1615,7 @@
     },
     "fermata-fuori-centri-abitati": {
         "regola_base": "Fuori centri, fermata fuori carreggiata, mai su ciclabili, almeno 1 metro per pedoni.",
+        "storia": "Fuori città ci si ferma fuori dall'asfalto di scorrimento, lasciando sempre spazio ai pedoni.",
         "parole_trappola": [
             "marciapiede rialzato",
             "pista ciclabile",
@@ -1485,6 +1625,7 @@
     },
     "fermata-vietata": {
         "regola_base": "Fermata vietata vicino binari, gallerie, sottovia, curve e dossi.",
+        "storia": "Nelle curve e nelle gallerie ogni fermata è un pericolo mortale per la visibilità altrui.",
         "parole_trappola": [
             "margine destro",
             "margine sinistro",
@@ -1496,6 +1637,7 @@
     },
     "fermate-cartelli-intersezione": {
         "regola_base": "Fermata vietata vicino segnali, semafori, intersezioni e corsie di canalizzazione.",
+        "storia": "Occultare un segnale stradale o un semaforo con una fermata sconsiderata è severamente proibito.",
         "parole_trappola": [
             "ore di esercizio",
             "non occulta vista",
@@ -1507,6 +1649,7 @@
     },
     "divieto-sosta-fermata": {
         "regola_base": "Sosta e fermata vietate su attraversamenti, piste ciclabili, marciapiedi.",
+        "storia": "I marciapiedi e le strisce pedonali sono sacri: fermarsi lì significa rubare lo spazio ai più deboli.",
         "parole_trappola": [
             "per far scendere",
             "brevissima durata",
@@ -1517,6 +1660,7 @@
     },
     "cautele-durante-sosta": {
         "regola_base": "Sosta: conducente può allontanarsi, ma deve garantire sicurezza e immobilizzare veicolo.",
+        "storia": "Prima di abbandonare l'auto in sosta, si tira il freno a mano e si innesta la marcia per bloccarla.",
         "parole_trappola": [
             "ore notturne",
             "tre ore",
@@ -1527,6 +1671,7 @@
     },
     "sosta-fuori-centri-abitati": {
         "regola_base": "Fuori centri, sosta fuori carreggiata. Se impossibile, al margine destro.",
+        "storia": "Fuori dai centri abitati la sosta cerca rifugio fuori dalla carreggiata di scorrimento.",
         "parole_trappola": [
             "marciapiede rialzato",
             "piste ciclabili",
@@ -1536,6 +1681,7 @@
     },
     "zone-spazi-sosta": {
         "regola_base": "Sosta solo in aree segnalate, con spazio minimo 3 metri.",
+        "storia": "Negli spazi appositi la sosta è ordinata e lascia sempre lo spazio vitale per il passaggio.",
         "parole_trappola": [
             "sempre consentita",
             "brevissima durata",
@@ -1546,6 +1692,7 @@
     },
     "zone-vietata-sosta": {
         "regola_base": "Sosta vietata in prossimità passaggi a livello, binari, gallerie, sottovia, dossi.",
+        "storia": "Nelle gallerie e sui dossi la sosta è un agguato invisibile per chi sopraggiunge.",
         "parole_trappola": [
             "prossimità",
             "tranviarie",
@@ -1557,6 +1704,7 @@
     },
     "zone-divieto-fermata": {
         "regola_base": "Sosta e fermata vietate in curve, vicino segnali, semafori, preselezione, intersezioni e sbocchi passi carrabili.",
+        "storia": "Nei punti critici e negli incroci non è ammessa alcuna sosta né fermata di cortesia.",
         "parole_trappola": [
             "non è vietata in prossimità",
             "solo la sosta",
@@ -1568,6 +1716,7 @@
     },
     "zone-sosta-fermata-autobus": {
         "regola_base": "Sosta vietata dove impedisce accesso o movimento veicoli in sosta.",
+        "storia": "Bloccare le aree di manovra o fermarsi in seconda fila paralizza il respiro della strada.",
         "parole_trappola": [
             "doppia fila",
             "breve durata",
@@ -1578,6 +1727,7 @@
     },
     "soste-veicoli-persone-invalide": {
         "regola_base": "Sosta vietata in aree riservate a persone invalide e mercato.",
+        "storia": "Gli stalli gialli riservati ai disabili sono spazi di civiltà intoccabili per chiunque altro.",
         "parole_trappola": [
             "consentita",
             "breve durata",
@@ -1588,6 +1738,7 @@
     },
     "sosta-cassonetti-rifiuti-urbani": {
         "regola_base": "Sosta vietata davanti a cassonetti rifiuti urbani.",
+        "storia": "Impedire lo svuotamento dei cassonetti con una sosta errata crea degrado e blocca i mezzi di servizio.",
         "parole_trappola": [
             "brevi soste",
             "fermata",
@@ -1597,6 +1748,7 @@
     },
     "sosta-codice-strada-distributori": {
         "regola_base": "Sosta vietata solo durante orari di apertura, 5m prima/dopo.",
+        "storia": "Intorno ai distributori di carburante la sosta è regolata per permettere il rifornimento in sicurezza.",
         "parole_trappola": [
             "anche quando chiusi",
             "condizionata dalla presenza di cartelli"
@@ -1605,6 +1757,7 @@
     },
     "sosta-sottrazione-punti": {
         "regola_base": "Sosta vietata in aree riservate: sottrazione punti.",
+        "storia": "Parcheggiare dove non si deve costa non solo una multa, ma anche preziosi punti della patente.",
         "parole_trappola": [
             "disco orario",
             "segnaletica luminosa",
@@ -1616,6 +1769,7 @@
     },
     "sosta-emergenza": {
         "regola_base": "Sosta per avaria o malessere, non per circolazione o discesa/salita invalidi.",
+        "storia": "La corsia d'emergenza si abita solo quando il veicolo si guasta o la salute cede improvvisamente.",
         "parole_trappola": [
             "esigenze della circolazione",
             "invalida",
@@ -1626,6 +1780,7 @@
     },
     "discesa-veicolo": {
         "regola_base": "Apri porte e scendi solo se sicuro. Controlla intorno e specchi.",
+        "storia": "Scendere dall'auto richiede attenzione costante per non intralciare chi passa di fianco.",
         "parole_trappola": [
             "indicatore di direzione",
             "vietato",
@@ -1636,6 +1791,7 @@
     },
     "ingombro-carreggiata-caduta-carico": {
         "regola_base": "Conducente deve rimuovere carico, segnalare e liberare transito.",
+        "storia": "Se un carico cade sulla strada, il conducente ha il dovere immediato di rimuoverlo e presegnalare il pericolo.",
         "parole_trappola": [
             "STOP",
             "restare a bordo",
@@ -1645,6 +1801,7 @@
     },
     "ingombro-avaria": {
         "regola_base": "Spostare veicolo o segnalare pericolo. Non ignorare traffico o rimanere inerte.",
+        "storia": "Un'auto in avaria ferma sulla corsia è una mina vagante: presegnalare con il triangolo salva la vita.",
         "parole_trappola": [
             "traffico scarso",
             "ricostruzione corretta",
@@ -1655,6 +1812,7 @@
     },
     "caduta-spargimento-materie-pericolose": {
         "regola_base": "Segnala con triangolo, segnali manuali e materiali antiscivolo.",
+        "storia": "Olio o materiali sdrucciolevoli dispersi sull'asfalto richiedono presegnalazione urgente per avvisare i piloti.",
         "parole_trappola": [
             "evitare di presegnalare",
             "deviare il traffico",
@@ -1664,6 +1822,7 @@
     },
     "segnale-mobile-triangolare": {
         "regola_base": "Obbligo di segnalare veicoli e carichi fermi con triangolo mobile fuori centri abitati, notte o visibilità insufficiente.",
+        "storia": "Il triangolo rosso riflettente è lo scudo protettivo che avvista da lontano chi viaggia verso l'ostacolo fermo.",
         "parole_trappola": [
             "consigliabile",
             "facoltativo",
@@ -1676,6 +1835,7 @@
     },
     "posizione-triangolo": {
         "regola_base": "Triangolo su corsia occupata, almeno 1 metro dal bordo esterno.",
+        "storia": "Piazzare il triangolo alla giusta distanza e a bordo corsia garantisce il tempo di reazione a chi sopraggiunge.",
         "parole_trappola": [
             "corsia immediatamente a sinistra",
             "striscia di separazione"
@@ -1684,6 +1844,7 @@
     },
     "giubbotto-alta-visibilita": {
         "regola_base": "Obbligo indossare giubbotto visibilità durante presegnalazione con segnale mobile di pericolo.",
+        "storia": "Il gipetto ad alta visibilità trasforma il conducente in un faro luminoso visibile anche nel buio pesto.",
         "parole_trappola": [
             "facoltativo",
             "non deve",
@@ -1695,6 +1856,7 @@
     },
     "divieto-circolazione": {
         "regola_base": "Vietato circolare su autostrade e strade extraurbane principali con veicoli non idonei.",
+        "storia": "I veicoli lenti o non idonei non possono accedere alle grandi arterie veloci, pena il blocco del traffico.",
         "parole_trappola": [
             "consigliabile",
             "ammissibili",
@@ -1706,6 +1868,7 @@
     },
     "traino-veicoli-avaria": {
         "regola_base": "Traino solo veicoli di soccorso autorizzati in autostrada.",
+        "storia": "In autostrada non ci si traina tra amici: solo i carri soccorso professionali possono liberare la carreggiata.",
         "parole_trappola": [
             "pedoni",
             "animali",
@@ -1716,6 +1879,7 @@
     },
     "aree-servizio": {
         "regola_base": "Vietato chiedere/concedere passaggi. Campeggio solo in aree destinate. Sosta max 24 ore.",
+        "storia": "Le aree di servizio offrono ristoro temporaneo, ma non sono campeggi liberi né luoghi per autostop.",
         "parole_trappola": [
             "concedere passaggi",
             "campeggiare su strade extraurbane",
@@ -1725,6 +1889,7 @@
     },
     "proiettori-anabbaglianti": {
         "regola_base": "Obbligatorio giorno su autostrade e strade extraurbane principali.",
+        "storia": "Anche in pieno giorno, le luci anabbaglianti accese rendono visibile l'auto a chiunque proceda in senso contrario.",
         "parole_trappola": [
             "facoltativo",
             "perfetta visibilità"
@@ -1733,6 +1898,7 @@
     },
     "retromarcia-inversione-marcia": {
         "regola_base": "Vietato invertire senso marcia su autostrade e strade extraurbane principali.",
+        "storia": "Fare retromarcia o inversione in autostrada è un atto di follia pura che porta dritto alla catastrofe.",
         "parole_trappola": [
             "invertire senso marcia",
             "casi di emergenza",
@@ -1743,6 +1909,7 @@
     },
     "ingorgo-uscita-immissione": {
         "regola_base": "Precedenza, segnalazione, corsia destra, decelerazione, emergenza solo per uscita.",
+        "storia": "Negli svincoli autostradali la disciplina della corsia e la prudenza evitano tamponamenti a catena.",
         "parole_trappola": [
             "tratto successivo",
             "non intenso",
@@ -1752,6 +1919,7 @@
     },
     "rampe-svincoli-autostradali": {
         "regola_base": "Sosta solo in emergenza, massimo 3 ore, per malessere passeggeri.",
+        "storia": "Sulle rampe e svincoli la sosta è consentita solo per gravi emergenze e per il tempo strettamente necessario.",
         "parole_trappola": [
             "vietato",
             "fino a 24 ore",
@@ -1761,6 +1929,7 @@
     },
     "automobilista-fermo-autostrada": {
         "regola_base": "Non fermarti per aiutare un veicolo fermo in autostrada.",
+        "storia": "Fermarsi in autostrada per fare gli eroi mette a rischio la propria vita e quella degli altri.",
         "parole_trappola": [
             "accompagnare",
             "soccorso",
@@ -1772,6 +1941,7 @@
     },
     "trasporto-animali-persone": {
         "regola_base": "Conducente deve vedere bene. Posti massimi sulla carta. Animali in gabbia o vano posteriore.",
+        "storia": "Il carico di passeggeri e animali non deve mai ostacolare la visuale o i movimenti del conducente.",
         "parole_trappola": [
             "non comprende il conducente",
             "massimo dieci",
@@ -1781,6 +1951,7 @@
     },
     "trasporto-traino-motocicli": {
         "regola_base": "Vietato trasporto minori, traino, oggetti non assicurati o che limitano visibilità.",
+        "storia": "In moto la stabilità è tutto: niente traini e nessun oggetto ingombrante a compromettere l'equilibrio.",
         "parole_trappola": [
             "maggiorenne",
             "autovetture",
@@ -1790,6 +1961,7 @@
     },
     "sistemazione-carico-veicoli": {
         "regola_base": "Carico deve essere sicuro, visibile, stabile e non ostacolare guida o segnali.",
+        "storia": "Il carico ben sistemato non si sposta in curva e non copre mai le luci o la targa del veicolo.",
         "parole_trappola": [
             "solo se",
             "soltanto durante",
@@ -1800,6 +1972,7 @@
     },
     "sporgenza-carico": {
         "regola_base": "Carico non deve sporgere oltre sagoma stabilita. Eccezioni limitate e sicurezza obbligatoria.",
+        "storia": "La sporgenza posteriore o laterale del carico richiede cartelli specifici per avvisare chi segue.",
         "parole_trappola": [
             "cose indivisibili",
             "strisciano sul terreno",
@@ -1809,6 +1982,7 @@
     },
     "regole-traino-veicoli": {
         "regola_base": "Un veicolo può trainare solo uno, con collegamento solido e segnalazione.",
+        "storia": "Trainare un altro mezzo richiede barre rigide e collegamenti sicuri, mai corde improvvisate.",
         "parole_trappola": [
             "autostrada",
             "anche se non è possibile segnalarlo",
@@ -1819,6 +1993,7 @@
     },
     "ciclisti-velocipedi": {
         "regola_base": "Conducenti devono essere prudenti con ciclisti per rischio imprevisto e difficoltà di valutazione.",
+        "storia": "I ciclisti sono leggeri e vulnerabili; un sorpasso azzardato può farli sbandare.",
         "parole_trappola": [
             "bambini",
             "sicurezza",
@@ -1830,6 +2005,7 @@
     },
     "conducente-autovettura-autoveicolo": {
         "regola_base": "Conducente deve sempre prevedere e rispettare ciclomotoristi.",
+        "storia": "Nei confronti dei motorini e delle biciclette, l'automobilista usa la massima cortesia protettiva.",
         "parole_trappola": [
             "facile",
             "superare",
@@ -1841,6 +2017,7 @@
     },
     "rischi-strade-extraurbane": {
         "regola_base": "Veicoli lenti su strade extraurbane sono rischi per autovetture veloci.",
+        "storia": "Incontrare un trattore dietro una curva extraurbana richiede riflessi pronti per frenare in tempo.",
         "parole_trappola": [
             "fattore di sicurezza",
             "risulta facile",
@@ -1850,6 +2027,7 @@
     },
     "massa-veicoli": {
         "regola_base": "Massa diversa aumenta rischio collisione. Piccoli veicoli più vulnerabili.",
+        "storia": "Il confronto tra un fuoristrada pesante e una piccola utilitaria evidenzia la vulnerabilità dei più leggeri.",
         "parole_trappola": [
             "garanzia di sicurezza",
             "massa differenziata",
@@ -1859,6 +2037,7 @@
     },
     "conducente-fuoristrada": {
         "regola_base": "Fuoristrada più alto e pesante: più pericolo per altri. Guida con estrema prudenza.",
+        "storia": "La stazza imponente dei fuoristrada richiede una guida responsabile per non sovrastare gli altri utenti.",
         "parole_trappola": [
             "massima sicurezza",
             "bull bars",
@@ -1868,6 +2047,7 @@
     },
     "valutazioni-pericolo": {
         "regola_base": "Valuta sempre rischi da veicoli pesanti e veloci.",
+        "storia": "Anticipare i movimenti dei veicoli pesanti previene situazioni critiche sulla carreggiata.",
         "parole_trappola": [
             "non costituiscono",
             "rischi maggiori",
@@ -1877,6 +2057,7 @@
     },
     "campo-visibilita": {
         "regola_base": "Conducente deve sempre controllare attentamente l'area visibile, anche se il veicolo è costruito per essere visibile.",
+        "storia": "I montanti dell'auto e i punti ciechi richiedono che il conducente muova la testa per controllare ogni angolo.",
         "parole_trappola": [
             "affrettato",
             "consentito",
@@ -1888,6 +2069,7 @@
     },
     "circolazione-autocarri": {
         "regola_base": "Autocarri devono vigilare pedoni/ciclisti anche se non visibili.",
+        "storia": "Dall'alto della cabina di un autocarro, gli angoli morti sotto il finestrone nascondono i ciclisti vicini.",
         "parole_trappola": [
             "controllo sicuro",
             "sicuramente avvistabile",
@@ -1897,6 +2079,7 @@
     },
     "giubbotto-retroriflettente": {
         "regola_base": "Giubbotto retroriflettente obbligatorio solo in caso di sosta fuori centri abitati.",
+        "storia": "Indossare il giubbotto riflettente fuori città di notte evita di essere investiti nell'oscurità.",
         "parole_trappola": [
             "sostituire",
             "giallo",
@@ -1909,6 +2092,7 @@
     },
     "circolazione-dietro-veicolo": {
         "regola_base": "Aumenta distanza, non sorpassare, attento a cadute, non stringerti al margine.",
+        "storia": "Guidare dietro a un camion carico o a una moto richiede rispetto della distanza e attenzione ai sobbalzi.",
         "parole_trappola": [
             "stringersi al margine",
             "sorpassare subito",
@@ -1919,6 +2103,7 @@
     },
     "traino-rimorchio": {
         "regola_base": "Trainare rimorchio richiede attenzione, controllo, sicurezza e regolamenti obbligatori.",
+        "storia": "Il rimorchio allunga gli spazi di frenata e richiede traiettorie più larghe nelle curve strette.",
         "parole_trappola": [
             "carico massimo al gancio",
             "non occorre collegamento elettrico",
@@ -1930,6 +2115,7 @@
     },
     "numero-persone-trasportabili": {
         "regola_base": "Posti massimi indicati sulla carta di circolazione, compreso il conducente.",
+        "storia": "La carta di circolazione stabilisce il limite esatto dei passeggeri ammessi a bordo per viaggiare sicuri.",
         "parole_trappola": [
             "motocicli",
             "quattro",
@@ -1940,6 +2126,7 @@
     },
     "Comportamenti-guida-caravan": {
         "regola_base": "Carico basso e bilanciato riduce rischio ribaltamento in curva.",
+        "storia": "Distribuire il peso in basso nella caravan garantisce stabilità e previene sbandamenti pericolosi.",
         "parole_trappola": [
             "alloggio",
             "circolazione",
@@ -1949,6 +2136,7 @@
     },
     "Dotazione-rimorchio": {
         "regola_base": "Freno a inerzia frena dopo spinta sulla motrice. Freno di stazionamento + cunei in pendenza.",
+        "storia": "Nelle soste in pendenza i cunei fermaruota e il freno di stazionamento bloccano la caravan in sicurezza.",
         "parole_trappola": [
             "simultaneamente",
             "privo di impianto frenante",
@@ -1959,6 +2147,7 @@
     },
     "Conduzione-veicoli-rimorchio": {
         "regola_base": "Rimorchi devono essere assicurati, segnalati, e rispettare limiti di massa e larghezza.",
+        "storia": "Ogni rimorchio viaggia protetto da assicurazione dedicata, targa ripetitrice e controlli regolari.",
         "parole_trappola": [
             "strisce retroriflettenti",
             "rimorchi non immatricolati",
@@ -1970,6 +2159,7 @@
     },
     "Guida-veicoli-rimorchio": {
         "regola_base": "Attenzione a pedoni, curve, discese, carico e stabilità del veicolo.",
+        "storia": "La guida con rimorchio richiede traiettorie più larghe e una frenata anticipata per gestire l'inerzia.",
         "parole_trappola": [
             "stesso percorso",
             "ruotino abbassato",
@@ -1980,6 +2170,7 @@
     },
     "Carichi-organi-traino": {
         "regola_base": "Organi di traino puliti, lubrificati, integri, con oscillazioni e carichi entro limiti.",
+        "storia": "Il gancio di traino e la sfera d'attacco vanno mantenuti puliti e ingrassati per garantire un aggancio perfetto.",
         "parole_trappola": [
             "sgrassati con benzina",
             "non omologato",
@@ -1991,6 +2182,7 @@
     },
     "utilizzo-rimorchio": {
         "regola_base": "Merce stabile, pneumatici controllati, rimorchio inattivo con sostegni.",
+        "storia": "Quando la caravan o il rimorchio riposa sganciato, i sostegni e i cunei impediscono movimenti indesiderati.",
         "parole_trappola": [
             "pressione uguale",
             "gonfiaggio identico",
@@ -2000,6 +2192,7 @@
     },
     "luci-anabbaglianti": {
         "regola_base": "Anabbaglianti obbligatori giorno su strade extraurbane. Non abbagliare mai.",
+        "storia": "Illuminare la strada senza accecarsi a vicenda è la regola d'oro dei proiettori anabbaglianti.",
         "parole_trappola": [
             "proiettori abbaglianti",
             "luci di posizione sufficienti",
@@ -2009,6 +2202,7 @@
     },
     "dispositivi-utilizzare-durante-marcia": {
         "regola_base": "Luci anabbaglianti obbligatorie in città al buio e in visibilità ridotta.",
+        "storia": "All'imbrunire o nelle gallerie, accendere gli anabbaglianti è il primo atto per vedere ed essere visti.",
         "parole_trappola": [
             "luci abbaglianti",
             "luci anabbaglianti in sosta fuori carreggiata",
@@ -2018,6 +2212,7 @@
     },
     "obbligo-anabbaglianti": {
         "regola_base": "Anabbaglianti obbligatori in gallerie e scarsa visibilità.",
+        "storia": "Le gallerie buie pretendono l'accensione immediata dei fari anabbaglianti.",
         "parole_trappola": [
             "solo se",
             "scarsamente illuminate"
@@ -2026,6 +2221,7 @@
     },
     "uso-luci-anabbaglianti": {
         "regola_base": "Anabbaglianti obbligatori giorno e notte, fuori centri, nebbia o neve, con luce posteriore per nebbia se necessario.",
+        "storia": "Nei giorni di nebbia fitta o pioggia battente, gli anabbaglianti uniti al fendinebbia tagliano la foschia.",
         "parole_trappola": [
             "gallerie illuminate",
             "luci di posizione",
@@ -2035,6 +2231,7 @@
     },
     "catadiottri": {
         "regola_base": "Catadiottri riflettono luce, rossi posteriori, bianchi anteriori, sui rimorchi e carrelli-appendice.",
+        "storia": "I catadiottri non emettono luce propria, ma riflettono i fari altrui brillando nel buio della notte.",
         "parole_trappola": [
             "accendere",
             "luci di posizione",
@@ -2045,6 +2242,7 @@
     },
     "funzione-catadiottri": {
         "regola_base": "Indicano presenza e ingombro, visibilità notturna e guasto veicoli.",
+        "storia": "Sagome e ingombri fermi nel buio vengono svelati dai riflessi rossi dei catadiottri posteriori.",
         "parole_trappola": [
             "indicatori di direzione",
             "materiale infiammabile",
@@ -2054,6 +2252,7 @@
     },
     "targa-posteriore-veicolo": {
         "regola_base": "Targa posteriore deve essere illuminata con luce bianca per visibilità.",
+        "storia": "La targa sul retro brilla sotto una piccola luce bianca per essere sempre leggibile anche di notte.",
         "parole_trappola": [
             "solo di notte",
             "sosta fuori strada"
@@ -2062,6 +2261,7 @@
     },
     "spie-auto": {
         "regola_base": "Spie critiche rosse: olio, acqua, freno, cinture, pericolo.",
+        "storia": "Quando una spia rossa si accende sul cruscotto, sta urlando un pericolo imminente che richiede lo stop immediato.",
         "parole_trappola": [
             "indicatori",
             "anabbaglianti",
@@ -2073,6 +2273,7 @@
     },
     "utilizzo-degli-indicatori-direzione": {
         "regola_base": "Usa indicatori per ogni cambio corsia, svolta, fermata, immissione o uscita.",
+        "storia": "La freccia luminosa è il linguaggio educato del guidatore per dire agli altri dove intende andare.",
         "parole_trappola": [
             "senso unico",
             "doppio senso",
@@ -2083,6 +2284,7 @@
     },
     "necessita-utilizzo-indicatori-direzione": {
         "regola_base": "Indicatore obbligatorio per ogni manovra: cambio corsia, sorpasso, parcheggio, svolta, retromarcia.",
+        "storia": "Ogni volta che le ruote cambiano direzione, l'indicatore luminoso avvisa tempestivamente chi sta intorno.",
         "parole_trappola": [
             "file parallele",
             "500 metri",
@@ -2095,6 +2297,7 @@
     },
     "uso-abbaglianti": {
         "regola_base": "Abbaglianti vietati in città. Solo fuori, se nessun altro veicolo e scarsa illuminazione.",
+        "storia": "I fari profondi illuminano a giorno le strade buie fuori città, ma vanno spenti quando incroci qualcuno.",
         "parole_trappola": [
             "nebbia fitta",
             "gallerie urbane",
@@ -2105,6 +2308,7 @@
     },
     "uso-intermittente-proiettori-profondita": {
         "regola_base": "Per avvertire e sorpassare, anche in città, giorno e notte.",
+        "storia": "Un rapido lampo di fari serve ad avvertire un pericolo o segnalare l'intenzione di sorpassare.",
         "parole_trappola": [
             "soltanto extraurbane",
             "unicamente di giorno",
@@ -2116,6 +2320,7 @@
     },
     "uso-proiettori-fuori-centri-abitati": {
         "regola_base": "Spegni proiettori, usa anabbaglianti se rischi di abbagliare altri utenti strada.",
+        "storia": "Rispettare chi guida in senso opposto spegnendo gli abbaglianti evita di accecarlo nel buio.",
         "parole_trappola": [
             "prolungato",
             "batteria",
@@ -2125,6 +2330,7 @@
     },
     "cintura-sicurezza": {
         "regola_base": "Cintura obbligatoria. Non si può alterarne funzionamento. Airbag non sostituiscono cintura.",
+        "storia": "La cintura trattiene il corpo con forza in caso d'urto, salvando la vita insieme all'airbag.",
         "parole_trappola": [
             "airbag",
             "velocità",
@@ -2136,6 +2342,7 @@
     },
     "veicoli-airbag": {
         "regola_base": "Airbag disattivato per seggiolino anteriore. Non usare airbag se non c'è comando.",
+        "storia": "Se monti un seggiolino per bambini rivolto all'indietro davanti, l'airbag passeggero va tassativamente disattivato.",
         "parole_trappola": [
             "obbligo cinture",
             "non c'è comando",
@@ -2145,6 +2352,7 @@
     },
     "poggiatesta": {
         "regola_base": "Poggiatesta previene colpo di frusta se regolato bene.",
+        "storia": "Regolato all'altezza giusta dietro la nuca, il poggiatesta protegge le vertebre dal violento colpo di frusta.",
         "parole_trappola": [
             "rilassare muscolatura",
             "funzione estetica"
@@ -2153,6 +2361,7 @@
     },
     "situazioni-particolari-sicurezza": {
         "regola_base": "Cintura obbligatoria per tutti, salvo casi specifici certificati.",
+        "storia": "L'obbligo della cintura non fa sconti a nessuno, tranne che per rare e certificate eccezioni mediche.",
         "parole_trappola": [
             "postino",
             "oltre 65 anni",
@@ -2162,6 +2371,7 @@
     },
     "casco-obbligatorio": {
         "regola_base": "Casco obbligatorio per tutti i ciclomotori e motocicli, anche per maggiorenni.",
+        "storia": "Il casco protettivo è l'elmo indispensabile che custodisce la mente di chi viaggia su due ruote.",
         "parole_trappola": [
             "solo se minorenni",
             "titolare patente B",
@@ -2171,6 +2381,7 @@
     },
     "Scopo-utilizzo-cinture-sicurezza": {
         "regola_base": "Cinture di sicurezza obbligatorie, omologate, efficienti, in ogni situazione di marcia.",
+        "storia": "Allacciarsi la cintura è il primo e più potente scudo contro gli imprevisti di ogni viaggio.",
         "parole_trappola": [
             "velocità inferiore",
             "consigliato",
@@ -2186,6 +2397,7 @@
     },
     "sistemi-trasporto-bambini": {
         "regola_base": "Bambini sotto 1,50 m devono usare sistemi omologati adeguati.",
+        "storia": "I più piccoli viaggiano protetti da seggiolini omologati su misura per la loro altezza e peso.",
         "parole_trappola": [
             "unico tipo",
             "urbani",
@@ -2198,6 +2410,7 @@
     },
     "caratteristiche-airbag": {
         "regola_base": "Airbag gonfia automaticamente in millisecondi, protegge, funziona solo con cinture.",
+        "storia": "Un cuscino d'aria che si gonfia in una frazione di secondo per attutire l'impatto del corpo.",
         "parole_trappola": [
             "pulsante",
             "gonfiare periodicamente",
@@ -2209,6 +2422,7 @@
     },
     "utilizzo-casco": {
         "regola_base": "Casco obbligatorio, sempre indossato e correttamente allacciato. Visiera integra e pulita. Sostituire dopo urti o danni.",
+        "storia": "Un casco danneggiato da un urto va sostituito: ha già fatto il suo dovere di protezione una volta.",
         "parole_trappola": [
             "benzina",
             "adesivi",
@@ -2222,6 +2436,7 @@
     },
     "stivali-uso-motociclistico": {
         "regola_base": "Stivali motociclistici proteggono piedi e caviglie, sono omologati e privi di nastri liberi.",
+        "storia": "Scarpe robuste e stivali protettivi difendono caviglie e piedi dall'asfalto e dagli urti in moto.",
         "parole_trappola": [
             "scarpe da trekking",
             "doppie stringhe",
@@ -2234,6 +2449,7 @@
     },
     "guanti-uso-motociclistico": {
         "regola_base": "Guanti protettivi obbligatori per sicurezza e presa sicura.",
+        "storia": "I guanti proteggono le mani dalle abrasioni e garantiscono una presa salda sui comandi della moto.",
         "parole_trappola": [
             "non esistono",
             "sostituiti da sci",
@@ -2246,6 +2462,7 @@
     },
     "giacche-indumenti-motociclistico": {
         "regola_base": "Giacche protettive: resistenza taglio, abrasione, inserti rigidi.",
+        "storia": "Giacche tecniche con protezioni rigide riparano il busto e le braccia in caso di scivolata.",
         "parole_trappola": [
             "lavaggio",
             "estivo",
@@ -2255,6 +2472,7 @@
     },
     "veicoli-strade-pubbliche": {
         "regola_base": "Nessun veicolo senza assicurazione, patente o immatricolazione può circolare.",
+        "storia": "La strada pubblica accoglie solo veicoli in regola con immatricolazione, revisione e polizza assicurativa.",
         "parole_trappola": [
             "ricevuta tassa possesso",
             "targa prova",
@@ -2266,6 +2484,7 @@
     },
     "documenti-circolazione": {
         "regola_base": "Targa, carta di circolazione e triangolo obbligatori per circolare.",
+        "storia": "I documenti di bordo e il triangolo sono i requisiti legali indispensabili da portare sempre con sé.",
         "parole_trappola": [
             "kasko",
             "assicurativo"
@@ -2274,6 +2493,7 @@
     },
     "targhe-veicoli": {
         "regola_base": "Targhe saldamente posizionate, leggibili, pulite, non contraffatte, con 'P' per principianti.",
+        "storia": "Le targhe devono essere sempre pulite e perfettamente leggibili, senza alterazioni o coperture.",
         "parole_trappola": [
             "piegate",
             "adattarle meglio"
@@ -2282,6 +2502,7 @@
     },
     "Abilitazioni-patente-AM": {
         "regola_base": "AM per ciclomotori leggeri, fino a 50 cm³, a partire da 14 anni.",
+        "storia": "La patente AM apre le porte della mobilità giovanile a 14 anni sui ciclomotori leggeri.",
         "parole_trappola": [
             "quadricicli non leggeri",
             "motocicli",
@@ -2296,6 +2517,7 @@
     },
     "Patente-categoria-a1": {
         "regola_base": "A1: motocicli fino a 125cc, tricicli fino a 15kW, macchine agricole, AM, 16 anni.",
+        "storia": "A 16 anni la patente A1 permette di guidare le prime moto fino a 125 di cilindrata.",
         "parole_trappola": [
             "solo AM",
             "tutti i motocicli",
@@ -2308,6 +2530,7 @@
     },
     "Patente-categoria-a2": {
         "regola_base": "A2: motocicli fino a 35 kW, trasporto passeggeri solo se previsto, validità per A dopo 2 anni.",
+        "storia": "La patente A2 spalanca la strada ai motocicli di media potenza con accesso graduale.",
         "parole_trappola": [
             "20 anni",
             "25 kW",
@@ -2321,6 +2544,7 @@
     },
     "Patente-categoria-A": {
         "regola_base": "Patente A: motocicli, tricicli, quadricicli, con limiti età e potenza.",
+        "storia": "La patente A senza limiti incorona il motociclista esperto pronto a domare ogni cilindrata.",
         "parole_trappola": [
             "qualsiasi cilindrata",
             "quadricicli non leggeri",
@@ -2333,6 +2557,7 @@
     },
     "Patente-categoria-B1": {
         "regola_base": "B1 per quadricicli non leggeri e alcuni quadricicli a manubrio.",
+        "storia": "La patente B1 è dedicata ai quadricicli a motore non leggeri per la mobilità urbana avanzata.",
         "parole_trappola": [
             "motocicli",
             "tricicli",
@@ -2344,6 +2569,7 @@
     },
     "Patente-categoria-B": {
         "regola_base": "Categoria B: auto fino a 3,5t, rimorchi leggeri, camper, agricole, tricicli, quadricicli.",
+        "storia": "La patente B è la chiave universale che permette di guidare autovetture e camper fino a 3,5 tonnellate.",
         "parole_trappola": [
             "autobus",
             "autocarri >3,5t",
@@ -2356,6 +2582,7 @@
     },
     "Codice-armonizzato-96": {
         "regola_base": "Patente B con 96: guida auto trainanti rimorchi fino a 4.250 kg.",
+        "storia": "Il codice armonizzato 96 estende la patente B per trainare rimorchi più pesanti fino a 4.250 kg complessivi.",
         "parole_trappola": [
             "autosnodati",
             "motocicli",
@@ -2367,6 +2594,7 @@
     },
     "Patente-categoria-BE": {
         "regola_base": "BE permette autoveicolo ≤3.5t + rimorchio ≤3.5t, complessivo >4.25t.",
+        "storia": "La patente BE autorizza complessi di veicoli pesanti con motrice e rimorchio di stazza importante.",
         "parole_trappola": [
             "minibus",
             "A",
@@ -2378,6 +2606,7 @@
     },
     "Ritiro-patente-guida": {
         "regola_base": "Ritiro immediato per ebbrezza, patente scaduta, incidenti gravi, carico non sistemato, mancata revisione.",
+        "storia": "Gli agenti ritirano la patente all'istante quando si commettono infrazioni gravi come la guida in stato di ebbrezza.",
         "parole_trappola": [
             "passeggero in ebbrezza",
             "patente estera",
@@ -2390,6 +2619,7 @@
     },
     "revisione-patente-guida": {
         "regola_base": "Revisione per dubbi fisici, psichici, incidenti, ebbrezza, azzeramento punti, e fallimento esame.",
+        "storia": "La revisione della patente è l'esame di verifica che viene imposto quando sorgono dubbi sui requisiti psico-fisici.",
         "parole_trappola": [
             "requisiti morali",
             "due infrazioni",
@@ -2404,6 +2634,7 @@
     },
     "revoca-patente-guida": {
         "regola_base": "Revoca per gravi infrazioni o perdita permanente requisiti.",
+        "storia": "La revoca cancella definitivamente la patente in seguito a gravi violazioni o perdita dei requisiti morali e fisici.",
         "parole_trappola": [
             "patente scaduta",
             "guida senza patente",
@@ -2415,6 +2646,7 @@
     },
     "sospensione-patente-guida": {
         "regola_base": "Sospensione per violazioni gravi o reati stradali.",
+        "storia": "La sospensione ferma temporaneamente il diritto di guida come sanzione per condotte pericolose.",
         "parole_trappola": [
             "patente sospesa",
             "perdita requisiti",
@@ -2426,12 +2658,12 @@
     },
     "violazioni-decurtazione-punti-patente": {
         "regola_base": "Patente iniziale 20 punti. Decurtazione per infrazioni specifiche. Recupero 6 punti con corso. Rinnovo automatico dopo 2 anni senza infrazioni.",
+        "storia": "Si parte con un capitale di 20 punti; ogni infrazione li consuma, ma la guida virtuosa li ripaga nel tempo.",
         "parole_trappola": [
             "30 punti",
             "qualsiasi infrazione",
             "triplo",
             "9 punti",
-            "30 punti",
             "revoca",
             "sospensione"
         ],
@@ -2439,6 +2671,7 @@
     },
     "perdita-punti-patente": {
         "regola_base": "Infrazioni gravi causano perdita punti patente.",
+        "storia": "Le trasgressioni al codice della strada colpiscono direttamente il salvadanaio dei punti della patente.",
         "parole_trappola": [
             "piste private",
             "lasciare in sosta",
@@ -2456,6 +2689,7 @@
     },
     "Validita-delle-patenti-guida": {
         "regola_base": "Patente confermata con accertamento sanitario da medico autorizzato.",
+        "storia": "La patente si rinnova periodicamente attraverso la visita medica che attesta l'idoneità psicofisica.",
         "parole_trappola": [
             "Prefetto",
             "prova tecnica",
@@ -2468,6 +2702,7 @@
     },
     "causa-probabile-incidenti": {
         "regola_base": "Struttura stradale difettosa causa incidenti.",
+        "storia": "Fondo deformato, scarsa segnaletica e banchine insidiose mettono a dura prova la stabilità dei veicoli.",
         "parole_trappola": [
             "carreggiate",
             "corsie",
@@ -2481,6 +2716,7 @@
     },
     "caso-pioggia": {
         "regola_base": "Riduci velocità, usa tergicristalli, aumenta distanza, evita appannamento, manovra con prudenza.",
+        "storia": "Quando la pioggia bagna l'asfalto, il mondo si oscura e i vetri si appannano: prudenza e tergicristalli attivi.",
         "parole_trappola": [
             "passare velocemente",
             "coprire radiatore",
@@ -2492,6 +2728,7 @@
     },
     "aquaplanning": {
         "regola_base": "Ruote scivolano su acqua, perdono aderenza, rischio controllo veicolo.",
+        "storia": "L'aquaplanning solleva le gomme su un velo d'acqua: il volante diventa leggero e si perde il controllo.",
         "parole_trappola": [
             "bassa velocità",
             "riduce sbandamento",
@@ -2504,6 +2741,7 @@
     },
     "strade-coperte-neve": {
         "regola_base": "Pneumatici invernali o catene, velocità ridotta, distanza maggiore, manovre dolci.",
+        "storia": "Sulla neve fresca o battuta si procede con delicatezza estrema, calzando gomme invernali o catene.",
         "parole_trappola": [
             "frenare a fondo",
             "accelerare al massimo",
@@ -2514,6 +2752,7 @@
     },
     "tratti-strada-ghiacciati": {
         "regola_base": "Velocità moderata, distanza maggiore, marce basse, evita accelerazioni brusche.",
+        "storia": "Il ghiaccio invisibile sulla strada azzera l'aderenza: ogni mossa brusca trasforma l'auto in una slitta.",
         "parole_trappola": [
             "vicino alla barriera",
             "gomme chiodate solo anteriori",
@@ -2524,6 +2763,7 @@
     },
     "nebbia-fitta": {
         "regola_base": "Guida con prudenza, luci fendinebbia, segnaletica, fermati fuori carreggiata se necessario.",
+        "storia": "La nebbia fitta avvolge il mondo in un muro bianco; fendinebbia accesi e velocità ridotta al minimo.",
         "parole_trappola": [
             "zig zag",
             "clacson continuativo",
@@ -2535,6 +2775,7 @@
     },
     "obblighi-dopo-incidente-stradale": {
         "regola_base": "Fermarsi, aiutare, segnalare, fornire dati, non toccare tracce, denunciare assicurazione.",
+        "storia": "Dopo il sinistro non si fugge: ci si ferma, si soccorrono i feriti e si scambiano i dati con onestà.",
         "parole_trappola": [
             "coprire con telo",
             "marciapiede",
@@ -2547,6 +2788,7 @@
     },
     "salita-discesa-passeggero": {
         "regola_base": "Salita/discesa solo dal lato sicuro, fermi e con controllo adulto.",
+        "storia": "I passeggeri scendono sempre dal lato protetto verso il marciapiede, mai verso il traffico.",
         "parole_trappola": [
             "privi di qualsiasi rischio",
             "lato opposto al traffico"
@@ -2555,6 +2797,7 @@
     },
     "infossamento": {
         "regola_base": "Innesta marcia superiore, usa oggetti per aumentare l'aderenza.",
+        "storia": "Se le ruote affondano nella sabbia o nel fango, inserire una marcia alta aiuta a ripartire senza slittare.",
         "parole_trappola": [
             "ghiacciata",
             "aderenza minore",
@@ -2564,6 +2807,7 @@
     },
     "tamponamenti-stradali": {
         "regola_base": "Velocità, distanza e disattenzione causano tamponamenti.",
+        "storia": "La mancata distanza di sicurezza e la distrazione sono le cause principali dei tamponamenti a catena.",
         "parole_trappola": [
             "freno di stazionamento",
             "servosterzo"
@@ -2572,6 +2816,7 @@
     },
     "pannelli-galleria": {
         "regola_base": "Aumenta distanza, segui segnaletica, obbedisci istruzioni vocali in caso di incendio.",
+        "storia": "Nelle gallerie autostradali i pannelli luminosi e i messaggi vocali guidano la via d'uscita in emergenza.",
         "parole_trappola": [
             "segnaletica di emergenza",
             "netto contrasto",
@@ -2581,6 +2826,7 @@
     },
     "segni-stanchezza": {
         "regola_base": "Riposare in piazzola di sosta se stanco.",
+        "storia": "Quando il sonno annebbia la vista, la piazzola di sosta è l'unica ancora di salvezza per riposare.",
         "parole_trappola": [
             "avvicinarsi",
             "veicolo che lo precede",
@@ -2590,6 +2836,7 @@
     },
     "eccesso-bevande-alcoliche": {
         "regola_base": "Alcol richiede tempo per essere metabolizzato. Nessun cibo o caffè accelera il recupero.",
+        "storia": "Il mito del caffè che smaltisce l'alcol è falso: solo il tempo biologico purifica il corpo.",
         "parole_trappola": [
             "cibi salati",
             "caffè amaro",
@@ -2599,6 +2846,7 @@
     },
     "idoneita-alla-guida": {
         "regola_base": "Farmaci, alcol, droghe: compromettono idoneità alla guida.",
+        "storia": "Ogni sostanza alterante spegne i riflessi e trasforma il conducente in un pericolo pubblico.",
         "parole_trappola": [
             "caffè",
             "gassate",
@@ -2609,6 +2857,7 @@
     },
     "assunzione-droghe": {
         "regola_base": "Qualsiasi droga altera la guida. Nessuna esenzione.",
+        "storia": "Le droghe distruggono la percezione della realtà e la capacità di reazione al volante.",
         "parole_trappola": [
             "LSD",
             "anfetamina",
@@ -2619,6 +2868,7 @@
     },
     "guida-alimentazione": {
         "regola_base": "Pasti pesanti e alcolici riducono attenzione e reazione.",
+        "storia": "Un pasto troppo pesante richiama sangue allo stomaco, regalando sonnolenza e riflessi lenti alla guida.",
         "parole_trappola": [
             "bevande superalcoliche",
             "pasto abbondante",
@@ -2628,6 +2878,7 @@
     },
     "guida-stato-ebbrezza": {
         "regola_base": "Ebbrezza alcolica = arresto e sanzioni legali.",
+        "storia": "Guidare ubriachi significa sfidare la legge e la vita altrui, con conseguenze penali pesantissime.",
         "parole_trappola": [
             "veicolo senza motore",
             "tempi di reazione più rapidi"
@@ -2636,6 +2887,7 @@
     },
     "soccorso-ferito": {
         "regola_base": "Soccorrere un ferito è obbligatorio per legge, anche se non si è soccorritori.",
+        "storia": "Fermarsi a prestare soccorso a un ferito è un dovere civile e legale che non ammette indifferenza.",
         "parole_trappola": [
             "dovere morale",
             "solo se grave",
@@ -2647,6 +2899,7 @@
     },
     "primo-soccorso": {
         "regola_base": "Salvare vite con interventi rapidi e sicuri.",
+        "storia": "I primi minuti dopo un incidente sono preziosi; agire con calma salva vite umane.",
         "parole_trappola": [
             "chiedere come è avvenuto",
             "allontanare in ogni caso",
@@ -2656,6 +2909,7 @@
     },
     "infortunato-ferita-sanguinante": {
         "regola_base": "Coprire ferite sanguinanti con materiale sterile o pulito. Non toccare corpi estranei.",
+        "storia": "Tamponare una ferita con garze pulite ferma l'emorragia senza rischiare infezioni.",
         "parole_trappola": [
             "togliere corpi estranei",
             "dargli da bere",
@@ -2666,6 +2920,7 @@
     },
     "emorragia-esterna": {
         "regola_base": "Tampona, pressione, chiamata soccorsi. Non camminare, non dargli acqua.",
+        "storia": "Una forte emorragia esterna richiede pressione diretta e chiamata immediata al 112.",
         "parole_trappola": [
             "medicare",
             "far camminare",
@@ -2675,6 +2930,7 @@
     },
     "corpo-estraneo-occhio": {
         "regola_base": "Bendare occhio con corpo estraneo. Non toccare. Non rimuovere.",
+        "storia": "Se un corpo estraneo penetra nell'occhio, va bendato delicatamente senza tentare di estrarlo.",
         "parole_trappola": [
             "togliere",
             "massaggiare",
@@ -2685,6 +2941,7 @@
     },
     "stato-shock": {
         "regola_base": "Pelle pallida, fredda, sudorazione, battiti accelerati, confusione mentale.",
+        "storia": "Lo shock post-incidente si riconosce dal pallore freddo, dal sudore e dalla confusione del ferito.",
         "parole_trappola": [
             "forte aumento temperatura",
             "macchie scure",
@@ -2695,6 +2952,7 @@
     },
     "ferito-stato-shock": {
         "regola_base": "Disteso, gambe sollevate, coperto, non muovere.",
+        "storia": "Per contrastare lo shock si distende il ferito sollevandogli le gambe e coprendolo con una coperta.",
         "parole_trappola": [
             "camminare",
             "seduta",
@@ -2705,6 +2963,7 @@
     },
     "ferito-stato-incoscienza": {
         "regola_base": "Verifica respiro, non muovere se trauma vertebrale sospetto, liberare ostruzioni, monitorare costantemente.",
+        "storia": "Se il ferito è incosciente, si controlla il respiro e si liberano le vie aeree senza muovere la colonna.",
         "parole_trappola": [
             "bevande alcooliche",
             "bloccare mani",
@@ -2715,6 +2974,7 @@
     },
     "infortunato-della-strada": {
         "regola_base": "Semi-seduto, comprimere ferite, aspettare soccorso.",
+        "storia": "L'infortunato cosciente viene adagiato in posizione protetta mentre si tamponano le ferite in attesa dei medici.",
         "parole_trappola": [
             "profondi respiri",
             "gambe sollevate",
@@ -2724,6 +2984,7 @@
     },
     "infortunato-fratture-agli-arti": {
         "regola_base": "Non muovere, bloccare, coprire, anti-shock.",
+        "storia": "In caso di fratture agli arti, non bisogna mai tentare di raddossare l'osso, ma immobilizzarlo così com'è.",
         "parole_trappola": [
             "camminare",
             "muovere",
@@ -2734,6 +2995,7 @@
     },
     "ferito-ustionato": {
         "regola_base": "Spegni fiamme, non toccare vestiti attaccati, usa acqua fredda, copri con materiale sterile.",
+        "storia": "Sulle ustioni si applica acqua fredda e teli sterili, senza mai strappare i vestiti incollati alla pelle.",
         "parole_trappola": [
             "aspettare che si spengano da sole",
             "togliere vestiti attaccati",
@@ -2743,6 +3005,7 @@
     },
     "attivita-soccorritore": {
         "regola_base": "Valuta, assisti, agisci con le tue capacità, senza superare i tuoi limiti.",
+        "storia": "Il soccorritore agisce con buonsenso e competenza, senza compiere manovre azzardate oltre le proprie capacità.",
         "parole_trappola": [
             "allontanarsi",
             "aspettare solo",
@@ -2753,6 +3016,7 @@
     },
     "cause-shock": {
         "regola_base": "Shock può essere causato da dolore, emozioni, perdita sangue o trauma.",
+        "storia": "Il dolore intenso, la paura o la perdita di sangue scatenano la pericolosa sindrome da shock.",
         "parole_trappola": [
             "mai",
             "non può",
@@ -2763,6 +3027,7 @@
     },
     "assunzione-alcool": {
         "regola_base": "Alcool riduce sicurezza: rallenta riflessi, causa sonnolenza e distrugge concentrazione.",
+        "storia": "L'alcol offusca la mente e allunga i tempi di reazione, trasformando ogni guida in un terno al lotto.",
         "parole_trappola": [
             "più sicura",
             "aumenta concentrazione",
@@ -2770,10 +3035,11 @@
             "migliora vista",
             "più allegra"
         ],
-        "eccezioni_e_contesti": "Nessuna eccezione: alcool sempre pericoloso, anche in piccole dosi."
+        "eccezioni_e_contesti": "Nessuna eccezione: alcol sempre pericoloso, anche in piccole dosi."
     },
     "occhiali-lenti-contatto": {
         "regola_base": "Occhiali o lenti a contatto obbligatori se indicato sulla patente.",
+        "storia": "Se la patente impone l'obbligo di correzione visiva, guidare senza occhiali o lenti è un reato.",
         "parole_trappola": [
             "miopia supera 6 diottrie",
             "mezz'ora dopo tramonto",
@@ -2784,6 +3050,7 @@
     },
     "risarcimento-danni": {
         "regola_base": "Chi risarcisce i danni, libera l'obbligo civile. Può accordarsi, riparare, o chiedere consulenza.",
+        "storia": "Risarcire tempestivamente i danni materiali chiude il contenzioso civile tra le parti coinvolte.",
         "parole_trappola": [
             "revocata",
             "responsabilità penale",
@@ -2793,6 +3060,7 @@
     },
     "responsabile-sinistro-stradale": {
         "regola_base": "Responsabile pagherà danni, può essere punito, sospeso o revocato patente.",
+        "storia": "Chi provoca un incidente si assume la piena responsabilità civile e penale delle conseguenze.",
         "parole_trappola": [
             "sempre arresto",
             "solo categoria inferiore",
@@ -2803,6 +3071,7 @@
     },
     "responsabilita-penale": {
         "regola_base": "Responsabilità penale esclusa solo se reato non sussiste o forza maggiore.",
+        "storia": "La legge punisce penalmente chi provoca lesioni o reati gravi violando il codice stradale.",
         "parole_trappola": [
             "soccorso",
             "risarcimento",
@@ -2813,6 +3082,7 @@
     },
     "casi-responsabilita-penale": {
         "regola_base": "Responsabilità penale solo per lesioni gravi, omicidio colposo o violazioni del Codice Penale.",
+        "storia": "I reati penali scattano solo in presenza di lesioni personali gravi o violazioni estreme della legge.",
         "parole_trappola": [
             "ogni caso",
             "veicolo distrutto",
@@ -2823,8 +3093,9 @@
     },
     "responsabilita-civile": {
         "regola_base": "Responsabilità civile stradale: risarcire danni a persone e cose, indipendentemente da altre responsabilità.",
+        "storia": "Il principio civile impone di risarcire integralmente ogni danno materiale o fisico causato a terzi.",
         "parole_trappola": [
-            "esclusa",
+            "esclusizada",
             "solo cose",
             "lieve entità",
             "aggravata",
@@ -2834,6 +3105,7 @@
     },
     "assicurazione": {
         "regola_base": "RCA copre terzi e beni pubblici. Risarcimento diretto solo per 1 veicolo e lesioni lievi.",
+        "storia": "La polizza R.C.A. obbligatoria garantisce il risarcimento dei danni causati a terzi in ogni sinistro.",
         "parole_trappola": [
             "motociclo",
             "fotografie",
@@ -2843,6 +3115,7 @@
     },
     "responsabilita-danni": {
         "regola_base": "Conducente responsabile civile; proprietario solo se danni causati contro la sua volontà.",
+        "storia": "Il conducente risponde dei danni causati, mentre il proprietario risponde in solido salvo uso contro la sua volontà.",
         "parole_trappola": [
             "proprietario penale",
             "solo conducente",
@@ -2852,6 +3125,7 @@
     },
     "assicurazione-scaduta": {
         "regola_base": "Veicolo senza assicurazione non può circolare né essere lasciato in sosta.",
+        "storia": "Un veicolo sprovvisto di assicurazione non può muoversi né sostare su strade pubbliche.",
         "parole_trappola": [
             "brevi tragitti",
             "solo sul territorio italiano",
@@ -2862,6 +3136,7 @@
     },
     "fondo-garanzia-vittime-strada": {
         "regola_base": "Risarcisce vittime di veicoli non assicurati o non identificati.",
+        "storia": "Il Fondo di Garanzia tutela le vittime colpite da veicoli pirata o non assicurati.",
         "parole_trappola": [
             "vitalizio",
             "premio",
@@ -2872,6 +3147,7 @@
     },
     "furto-incendio": {
         "regola_base": "Polizze non obbligatorie, risarcimento limitato al valore del veicolo, denuncia anche all'estero.",
+        "storia": "Le polizze furto e incendio tutelano il patrimonio del proprietario in caso di eventi dolosi o accidentali.",
         "parole_trappola": [
             "rendita vitalizia",
             "meccanismo staccabatteria",
@@ -2882,6 +3158,7 @@
     },
     "massimali-della-polizza": {
         "regola_base": "Massimali sono importi massimi che l'assicuratore paga in caso di sinistro.",
+        "storia": "Il massimale rappresenta la soglia massima garantita dalla compagnia di assicurazione per i risarcimenti.",
         "parole_trappola": [
             "riscuote",
             "aumentano ogni anno",
@@ -2891,6 +3168,7 @@
     },
     "formula-bonus-malus": {
         "regola_base": "Premio cambia annualmente per incidenti causati.",
+        "storia": "Il sistema bonus-malus premia chi guida senza incidenti abbassando il premio della polizza.",
         "parole_trappola": [
             "motocicli",
             "anni",
@@ -2902,6 +3180,7 @@
     },
     "coperture-assicurazione": {
         "regola_base": "R.C.A. copre danni a terzi in UE, solo per responsabilità civile, non penale o amministrativa.",
+        "storia": "L'assicurazione copre i danni civili nei paesi dell'Unione Europea, ma non cancella le responsabilità penali.",
         "parole_trappola": [
             "responsabilità penale",
             "sanzioni amministrative",
@@ -2913,6 +3192,7 @@
     },
     "imprese-assicuratrici": {
         "regola_base": "R.C.A. obbligatoria. Certificato da tenere a bordo.",
+        "storia": "Il certificato di assicurazione va custodito a bordo come prova della copertura attiva del veicolo.",
         "parole_trappola": [
             "elenco autocarrozzerie",
             "libretto pronto soccorso",
@@ -2923,6 +3203,7 @@
     },
     "psicologia-traffico": {
         "regola_base": "Attenzione, concentrazione e rispetto delle norme sono fondamentali per guidare in sicurezza.",
+        "storia": "La mente concentrata e la calma al volante sono i veri pilastri invisibili della sicurezza stradale.",
         "parole_trappola": [
             "pericoloso",
             "non necessario",
@@ -2937,6 +3218,7 @@
     },
     "consumi-carburante": {
         "regola_base": "Consumo aumenta con peso, velocità, apertura finestre, pneumatici sgonfiati, bagagli sul tetto.",
+        "storia": "Portare bagagli sul tetto o viaggiare con finestrini aperti e gomme sgonfie fa impennare i consumi di carburante.",
         "parole_trappola": [
             "tettuccio scorrevole",
             "climatizzatore",
@@ -2947,6 +3229,7 @@
     },
     "rumori-fastidiosi": {
         "regola_base": "Mantieni silenzio, usa clacson solo in caso di pericolo.",
+        "storia": "Il clacson non è un giocattolo né un modo per sfogare la rabbia: si usa solo in caso di pericolo immediato.",
         "parole_trappola": [
             "mantenere motore acceso",
             "chiudere con forza portiere",
@@ -2956,6 +3239,7 @@
     },
     "rumore-veicoli-motore": {
         "regola_base": "Rumore aumenta con silenziatore guasto. Guida dolce riduce rumore.",
+        "storia": "Una marmitta bucata trasforma un'auto silenziosa in una fonte di inquinamento acustico intollerabile.",
         "parole_trappola": [
             "solo dal motore"
         ],
@@ -2963,6 +3247,7 @@
     },
     "diminuire-rumore": {
         "regola_base": "Marmitta efficiente e freni in ordine riducono rumore. Clacson minimo.",
+        "storia": "Tenere l'impianto di scarico in perfetta efficienza abbatte il rumore e rispetta la quiete pubblica.",
         "parole_trappola": [
             "fori",
             "tubo più piccolo",
@@ -2972,6 +3257,7 @@
     },
     "rimorchi-pneumatici": {
         "regola_base": "Rimorchi vuoti o a forte velocità aumentano rumore per strisciamento pneumatici.",
+        "storia": "I rimorchi leggeri vuoti tendono a sobbalzare e a produrre rotolamento rumoroso sull'asfalto.",
         "parole_trappola": [
             "strisciamento",
             "velocità",
@@ -2983,6 +3269,7 @@
     },
     "inquinamento-aria": {
         "regola_base": "Guida con accelerazioni lente e marce adatte per ridurre inquinamento.",
+        "storia": "Guidare con dolcezza ed evitare accelerazioni brusche riduce drasticamente i gas nocivi nell'aria.",
         "parole_trappola": [
             "frizione",
             "differenziale",
@@ -2994,6 +3281,7 @@
     },
     "inquinamento-atmosferico": {
         "regola_base": "Veicoli ben manutenuti e guidati con attenzione riducono l'inquinamento.",
+        "storia": "La manutenzione regolare del motore assicura emissioni pulite e tutela la salute del pianeta.",
         "parole_trappola": [
             "accelerare a fondo",
             "climatizzatore acceso",
@@ -3003,6 +3291,7 @@
     },
     "iniettori-fumi-scarico": {
         "regola_base": "Iniettori difettosi aumentano inquinamento e fumo scuro.",
+        "storia": "Iniettori sporchi o difettosi rilasciano dense nuvole di fumo nero dallo scarico.",
         "parole_trappola": [
             "umidità"
         ],
@@ -3010,6 +3299,7 @@
     },
     "accorgimenti-ridurre-inquinamento": {
         "regola_base": "Veicoli leggeri, elettrici o a gas, spegni motore, evita brevi percorsi, sanzioni per emissioni alte.",
+        "storia": "Spegnere il motore durante le soste prolungate evita di inquinare inutilmente l'aria delle città.",
         "parole_trappola": [
             "sistemare bagagli sul tetto",
             "marce basse",
@@ -3020,6 +3310,7 @@
     },
     "sostituzione-filtri": {
         "regola_base": "Filtro aria e controlli motori riducono inquinamento. Accelerare poco aiuta.",
+        "storia": "Cambiare regolarmente il filtro dell'aria permette al motore di respirare pulito e consumare meno.",
         "parole_trappola": [
             "colpo di acceleratore",
             "motore al massimo",
@@ -3030,6 +3321,7 @@
     },
     "salvaguardare-ambiente": {
         "regola_base": "Usa climatizzatore solo quando necessario per ridurre inquinamento.",
+        "storia": "Usare il climatizzatore con intelligenza evita di sovraccaricare il motore e bruciare carburante extra.",
         "parole_trappola": [
             "premere più volte",
             "a fondo il pedale",
@@ -3039,6 +3331,7 @@
     },
     "aumento-limitazione-consumi": {
         "regola_base": "Chiudere finestrini, sistemare bagagli, evitare carico sul tetto e tettuccio aperto riducono i consumi.",
+        "storia": "Curare l'aerodinamica chiudendo i finestrini e togliendo il portapacchi vuoto fa risparmiare carburante.",
         "parole_trappola": [
             "ricircolo aria",
             "Euro 4",
@@ -3048,6 +3341,7 @@
     },
     "veicoli-modificati": {
         "regola_base": "Modifiche motore/marmitta richiedono autorizzazione. Sanzioni per non conformità.",
+        "storia": "Modificare lo scarico o il motore senza omologazione e collaudo è illegale e punito severamente.",
         "parole_trappola": [
             "liberamente",
             "diminuire l'inquinamento"
@@ -3056,6 +3350,7 @@
     },
     "scarico-smaltimento": {
         "regola_base": "Scarichi pericolosi vietati. Smaltimento in centri autorizzati. Proteggi pelle da oli.",
+        "storia": "Oli esausti e batterie vanno conferiti nei centri di raccolta autorizzati senza disperderli nell'ambiente.",
         "parole_trappola": [
             "non viene sanzionato",
             "esclusivamente al concessionario"
@@ -3064,6 +3359,7 @@
     },
     "divieti-generici": {
         "regola_base": "Vietato danneggiare, sporcare, gettare rifiuti o immettersi con ruote sporche.",
+        "storia": "Portare fango in strada uscendo da un cantiere senza pulire le ruote è vietato e pericoloso.",
         "parole_trappola": [
             "tutte le strade",
             "vietato il transito",
@@ -3074,6 +3370,7 @@
     },
     "forza-aderente": {
         "regola_base": "Forza aderente permette movimento e contrasta slittamento laterale.",
+        "storia": "L'attrito tra gli pneumatici e l'asfalto è la forza magica che permette di sterzare e frenare.",
         "parole_trappola": [
             "vento laterale",
             "surriscaldamento freni"
@@ -3082,6 +3379,7 @@
     },
     "aumento-della-forza-aderente": {
         "regola_base": "Asfalto rugoso aumenta aderenza. Bagnato ne diminuisce.",
+        "storia": "Un asfalto ruvido e asciutto offre il massimo grip, mentre la pioggia riduce drasticamente l'aderenza.",
         "parole_trappola": [
             "bagnato",
             "foglie",
@@ -3092,6 +3390,7 @@
     },
     "coefficiente-aderenza": {
         "regola_base": "Aderenza bassa = frenata più lunga e rischio pattinamento.",
+        "storia": "Quando il coefficiente di attrito scende, l'auto scivola come sui pattini e la frenata si allunga.",
         "parole_trappola": [
             "riduce lo spazio di frenatura",
             "solo in curva"
@@ -3100,6 +3399,7 @@
     },
     "coefficiente-basso-aderenza": {
         "regola_base": "Basso aderenza = più rischio slittamento, frenata più lunga, velocità curva ridotta.",
+        "storia": "Su strade innevate o viscide bisogna dimezzare la velocità per evitare testacoda improvvisi.",
         "parole_trappola": [
             "non condiziona",
             "riduce lo spazio",
@@ -3110,14 +3410,16 @@
     },
     "conduzione-motociclo": {
         "regola_base": "Aderenza ridotta in pioggia su rotaie e segnaletica.",
+        "storia": "In moto la pioggia rende insidiose le rotaie del tram e le strisce bianche dipinte sull'asfalto.",
         "parole_trappola": [
             "non dipende",
             "trasporta un passeggero"
         ],
-        "eccezioni_e_contesti": "Aderenza non cambia con passeggero. Dipende solo da condizioni stradali."
+        "eccezioni_e_contesti": "Aderenza non cambia con passeggero. Dipends solo da condizioni stradali."
     },
     "asfalto-forza-aderente": {
         "regola_base": "Aderenza migliore su asfalto asciutto e pulito.",
+        "storia": "Il grip ideale si ottiene su un manto stradale asciutto, pulito e privo di detriti.",
         "parole_trappola": [
             "ghiaccio",
             "fango",
@@ -3127,6 +3429,7 @@
     },
     "percorrenza-curva": {
         "regola_base": "Curva: forza centrifuga spinge verso esterno, velocità eccessiva causa sbandamento o ribaltamento.",
+        "storia": "Affrontare una curva troppo veloci scatena la forza centrifuga che spinge l'auto verso l'esterno.",
         "parole_trappola": [
             "verso l'interno",
             "aumentare velocità per evitare"
@@ -3135,6 +3438,7 @@
     },
     "ribaltamento-curva": {
         "regola_base": "Carico alto, non fissato, carreggiata stretta, curva stretta: aumenta rischio ribaltamento.",
+        "storia": "Un carico pesante sul tetto alza il baricentro e aumenta paurosamente il rischio di ribaltamento in curva.",
         "parole_trappola": [
             "carreggiata larga",
             "carico in basso",
@@ -3144,6 +3448,7 @@
     },
     "forza-ribaltante": {
         "regola_base": "Velocità più alta = forza ribaltante più forte.",
+        "storia": "Più si corre in curva, più la forza ribaltante mette alla prova la stabilità del veicolo.",
         "parole_trappola": [
             "diminuisce",
             "velocità",
@@ -3151,8 +3456,9 @@
         ],
         "eccezioni_e_contesti": "Nessuna eccezione. Valida sempre in curva."
     },
-    "funzioni": {
+    "functions": {
         "regola_base": "L'A.B.S. impedisce il bloccaggio delle ruote, migliorando sicurezza e controllo in frenata.",
+        "storia": "L'ABS modula la frenata millimetricamente, impedendo il bloccaggio delle ruote e permettendo di sterzare.",
         "parole_trappola": [
             "favorisce il bloccaggio",
             "impedisce di modificare traiettoria",
@@ -3163,6 +3469,7 @@
     },
     "pressione-gonfiaggio": {
         "regola_base": "Controlla pressione pneumatici quando freddi, adatta a carico e passeggeri.",
+        "storia": "Gonfiare gli pneumatici alla pressione prescritta quando sono freddi garantisce durata e tenuta.",
         "parole_trappola": [
             "gomma calda",
             "materiale cerchioni",
@@ -3173,6 +3480,7 @@
     },
     "pneumatici-tubeless": {
         "regola_base": "Spessore minimo battistrada: 1,6 mm auto, 1,0 mm moto. Tubeless sgonfiano lentamente. Riparazione possibile con cautele.",
+        "storia": "I pneumatici tubeless mantengono l'aria senza camera d'aria e si sgonfiano lentamente in caso di foro.",
         "parole_trappola": [
             "bombolette mastice",
             "gonfiano lentamente (camera d'aria)",
@@ -3183,6 +3491,7 @@
     },
     "pneumatici-neve": {
         "regola_base": "Pneumatici chiodati: uso limitato. Invernali: tutti i ruoti. Catene non omologate: sanzione come sprovvisto.",
+        "storia": "Calzare quattro gomme termiche o catene omologate permette di viaggiare sicuri sulla neve.",
         "parole_trappola": [
             "solo su due ruote",
             "ruote posteriori",
@@ -3193,6 +3502,7 @@
     },
     "sostituzione-ruota": {
         "regola_base": "Staziona, blocca, solleva, stringi dopo abbassare, non metterti sotto.",
+        "storia": "Cambiare una ruota bucata in sicurezza richiede cunei, freno a mano tirato e stabilità sul cric.",
         "parole_trappola": [
             "togliere bulloni prima",
             "punto qualsiasi",
@@ -3204,6 +3514,7 @@
     },
     "frenate-emergenza": {
         "regola_base": "Premi forte e costante il freno. ABS non richiede rilascio.",
+        "storia": "In frenata d'emergenza con ABS si preme a fondo il pedale senza rilasciarlo, governando lo sterzo.",
         "parole_trappola": [
             "diminuire pressione",
             "frenare in folle",
@@ -3213,6 +3524,7 @@
     },
     "rischio-incendio-veicolo": {
         "regola_base": "Spegni elettrico, usa sabbia o coperta bagnata per spegnere incendi.",
+        "storia": "In caso di principio d'incendio nel vano motore, staccare la corrente e usare sabbia soffoca le fiamme.",
         "parole_trappola": [
             "svuotare serbatoio",
             "interruttore inerziale",
@@ -3222,6 +3534,7 @@
     },
     "varie-manutenzione": {
         "regola_base": "Non mettere oggetti sotto sedile, non usare telefono, fissare bambini, climatizzatore per sbrinare.",
+        "storia": "Evitare oggetti liberi sotto i pedali previene il blocco improvviso di freno e acceleratore.",
         "parole_trappola": [
             "compore sms",
             "programmare in movimento",
@@ -3232,6 +3545,7 @@
     },
     "pulizia-cristalli": {
         "regola_base": "Vetri puliti e visibili sono fondamentali per la sicurezza stradale.",
+        "storia": "Parabrezza e cristalli puliti garantiscono una visuale perfetta in ogni condizione di luce.",
         "parole_trappola": [
             "nastro adesivo trasparente",
             "disappannamento"
@@ -3240,6 +3554,7 @@
     },
     "condizioni-pneumatici": {
         "regola_base": "Pneumatici omologati, uguali per asse, pressione corretta, controllo laterale.",
+        "storia": "Montare pneumatici omologati e uguali sullo stesso asse garantisce stabilità e trazione simmetrica.",
         "parole_trappola": [
             "invertire posizione",
             "solo ruote motrici",
@@ -3250,6 +3565,7 @@
     },
     "frenata-freno-stazionamento": {
         "regola_base": "Frenata trasforma energia in calore. Freno di stazionamento solo per sosta. Servofreno non funziona a motore spento.",
+        "storia": "L'energia cinetica si trasforma in calore sui dischi freno; il freno a mano serve solo in sosta.",
         "parole_trappola": [
             "circuiti sigillati",
             "frenatura di servizio",
@@ -3260,6 +3576,7 @@
     },
     "frenatura-poco-efficiente": {
         "regola_base": "Frenatura inefficace da guarnizioni, tamburi, dischi, pressione pneumatici, carico, surriscaldamento, squilibrio laterale.",
+        "storia": "Dischi usurati o liquido freni vecchio allungano gli spazi e rendono la frenatura spugnosa e inefficace.",
         "parole_trappola": [
             "freno di stazionamento",
             "lubrificazione",
@@ -3276,6 +3593,7 @@
     },
     "sospensioni-veicolo-motore": {
         "regola_base": "Sospensioni collegano telaio e ruote, assorbono urti, assicurano aderenza e comfort.",
+        "storia": "Le sospensioni smorzano le asperità della strada, tenendo le ruote incollate all'asfalto per un comfort totale.",
         "parole_trappola": [
             "mantenere fermo",
             "solo anteriori",
@@ -3286,6 +3604,7 @@
     },
     "cause-sospensioni-inefficienti": {
         "regola_base": "Sospensioni inefficienti causano perdita di tenuta, comfort e sicurezza.",
+        "storia": "Ammortizzatori scarichi fanno saltellare l'auto, compromettendo la tenuta di strada in curva.",
         "parole_trappola": [
             "non comporta",
             "sufficiente aumentare pressione",
@@ -3299,6 +3618,7 @@
     },
     "ammortizzatori-sovraccarico": {
         "regola_base": "Ammortizzatori riducono oscillazioni e migliorano tenuta strada. Sovraccarico li logora.",
+        "storia": "Caricare il veicolo oltre i limiti logora precocemente gli ammortizzatori e irrigidisce la risposta.",
         "parole_trappola": [
             "non necessitano di verifiche",
             "stile prudente basta",
@@ -3310,6 +3630,7 @@
     },
     "ammortizzatori-veicoli-motore": {
         "regola_base": "Ammortizzatori scarichi danneggiano sospensioni, pneumatici e tenuta di strada.",
+        "storia": "Un ammortizzatore scarico usura precocemente il battistrada e fa perdere il controllo del mezzo.",
         "parole_trappola": [
             "motore",
             "lubrificante",
@@ -3322,6 +3643,7 @@
     },
     "Sterzo-servosterzo": {
         "regola_base": "Sterzo pesante = servosterzo guasto. Foratura = sterzo tira verso la ruota forata.",
+        "storia": "Se il servosterzo si guasta, il volante diventa improvvisamente duro come la pietra.",
         "parole_trappola": [
             "frenante",
             "opposta",
@@ -3337,6 +3659,7 @@
     },
     "impianto-scarico": {
         "regola_base": "Impianto scarico riduce rumore, inquinamento e convoglia gas trattati.",
+        "storia": "La marmitta e i catalizzatori abbattono i decibel e filtrano i gas nocivi prima di rilasciarli.",
         "parole_trappola": [
             "cambio lubrificante",
             "veicoli elettrici",
@@ -3350,6 +3673,7 @@
     },
     "interruttore-emergenza": {
         "regola_base": "Spegnimento rapido senza toccare la chiave, solo in emergenza o pendenze.",
+        "storia": "L'interruttore di massa o di emergenza spegne istantaneamente il motore in caso di pericolo critico.",
         "parole_trappola": [
             "sostituisce",
             "pedivella",
@@ -3363,6 +3687,7 @@
     },
     "catena-trasmissione": {
         "regola_base": "Catena trasmissione: controlla usura, tensione e lubrificazione. Sostituisci se usurata.",
+        "storia": "La catena della moto va pulita, tesa e lubrificata regolarmente per trasmettere potenza senza strappi.",
         "parole_trappola": [
             "autolubrificante",
             "non pregiudica sicurezza",
@@ -3375,6 +3700,7 @@
     },
     "Livello-olio-liquidi": {
         "regola_base": "Olio e liquidi freni: controllo solo in piano, motore spento, dopo minuti.",
+        "storia": "Il livello dell'olio motore si controlla con l'auto in piano e a motore freddo per avere una misura veritiera.",
         "parole_trappola": [
             "sigillati",
             "cavalletto",

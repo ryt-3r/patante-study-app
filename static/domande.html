@@ -55,7 +55,6 @@
             transition: border 0.2s; outline: none; 
         }
         .menu-bar select:focus { border-color: #38bdf8; }
-        .menu-bar select optgroup { font-weight: 600; color: #94a3b8; }
         
         .btn-flag-review { 
             padding: 10px 16px; cursor: pointer; border: 1px solid #d97706; border-radius: 8px; 
@@ -93,10 +92,6 @@
         .gallery-card-info { width: 100%; display: flex; flex-direction: column; gap: 6px; text-align: center; }
         .gallery-title { font-size: 1.05em; font-weight: 600; color: #f8fafc; line-height: 1.3; }
         .gallery-count { font-size: 0.85em; color: #94a3b8; font-weight: 500; }
-        
-        .gallery-priority-tag { font-size: 0.78em; font-weight: 600; padding: 3px 8px; border-radius: 6px; margin: 0 auto; }
-        .tag-imp { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
-        .tag-less { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
 
         /* Study Cards & Matching Grid */
         .study-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 20px; align-items: center; border: 1px solid #334155; }
@@ -250,21 +245,16 @@
                 const res = await fetch('/api/categories');
                 const data = await res.json();
                 
-                data.sort((a, b) => b.count - a.count);
                 cachedCategoriesData = data;
                 
                 const total = data.reduce((sum, cat) => sum + cat.count, 0);
-                let impGroup = `<optgroup label="15 Argomenti Più Importanti (Alta Priorità)">`;
-                let lessGroup = `<optgroup label="10 Argomenti Meno Importanti">`;
                 
+                let optionsHTML = `<option value="all">1. Scegli il Capitolo (${total})</option>`;
                 data.forEach(cat => {
-                    const optHTML = `<option value="${cat.name}">${cleanText(cat.name)} (${cat.count})</option>`;
-                    if (cat.is_important) impGroup += optHTML; else lessGroup += optHTML;
+                    optionsHTML += `<option value="${cat.name}">${cleanText(cat.name)} (${cat.count})</option>`;
                 });
                 
-                impGroup += `</optgroup>`; lessGroup += `</optgroup>`;
-                const finalHTML = `<option value="all">1. Scegli il Capitolo (${total})</option>` + impGroup + lessGroup;
-                document.querySelectorAll('.category-select').forEach(el => el.innerHTML = finalHTML);
+                document.querySelectorAll('.category-select').forEach(el => el.innerHTML = optionsHTML);
 
                 renderCategoriesGallery(data);
             } catch (err) {}
@@ -279,9 +269,6 @@
             let galleryHTML = '<div class="gallery-grid">';
             data.forEach(cat => {
                 const safeName = cat.name.replace(/'/g, "\\'");
-                const priorityBadge = cat.is_important ? 
-                    `<div class="gallery-priority-tag tag-imp">⭐ Alta Priorità</div>` : 
-                    `<div class="gallery-priority-tag tag-less">Standard</div>`;
 
                 galleryHTML += `
                     <div class="gallery-item" onclick="diveIntoCategory('${safeName}')">
@@ -291,7 +278,6 @@
                         <div class="gallery-card-info">
                             <div class="gallery-title">${cleanText(cat.name)}</div>
                             <div class="gallery-count">${cat.count} domande</div>
-                            ${priorityBadge}
                         </div>
                     </div>
                 `;
@@ -329,23 +315,18 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // LOGICAL BACK BUTTON HANDLER
         function goBack() {
             const catVal = document.querySelector('.category-select').value;
             const subVal = document.querySelector('.subcategory-select').value;
-            const figVal = document.querySelector('.figure-select').value;
 
             if (subVal !== 'all') {
-                // If inside a specific figure or subcategory content view, reset figure & subcategory to 'all' to show subcategory grid
                 syncSelects('figure-select', 'all');
                 syncSelects('subcategory-select', 'all');
                 onCategoryChange(document.querySelector('.category-select'));
             } else if (catVal !== 'all') {
-                // If inside a chapter subcategories grid view, reset chapter to 'all' to return to main chapters gallery
                 syncSelects('category-select', 'all');
                 onCategoryChange(document.querySelector('.category-select'));
             } else {
-                // Already at main home view, go to main root website home or reload main view
                 window.location.href = '/';
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -366,8 +347,6 @@
                 try {
                     const res = await fetch(`/api/subcategories?category=${encodeURIComponent(val)}`);
                     const subcats = await res.json();
-                    
-                    subcats.sort((a, b) => b.count - a.count);
                     
                     const total = subcats.reduce((sum, sub) => sum + sub.count, 0);
                     let subHTML = `<option value="all">2. Scegli l'Argomento (${total})</option>`;
@@ -424,8 +403,6 @@
                 try {
                     const res = await fetch(`/api/figures?category=${encodeURIComponent(catVal)}&subcategory=${encodeURIComponent(subVal)}`);
                     const figures = await res.json();
-                    
-                    figures.sort((a, b) => b.count - a.count);
                     
                     const total = figures.reduce((sum, fig) => sum + fig.count, 0);
                     let figHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
