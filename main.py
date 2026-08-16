@@ -142,10 +142,10 @@ def get_categories():
                 "is_important": is_imp
             })
             
+        # FIXED: Sort by importance group first, then strictly by highest question count descending (-x['count'])
         result.sort(key=lambda x: (not x['is_important'], -x['count']))
         return result
     except Exception as e: return {"error": str(e)}
-
 @app.get("/api/subcategories")
 def get_subcategories(category: str):
     try:
