@@ -40,12 +40,13 @@
             border: 1px solid #334155; 
         }
         
-        .btn-home-small { 
+        .btn-back-small { 
             background: rgba(30, 41, 59, 0.8); color: #cbd5e1; text-decoration: none; 
             padding: 10px 16px; border-radius: 8px; font-size: 0.95em; font-weight: 600; 
-            border: 1px solid #475569; transition: 0.2s; white-space: nowrap;
+            border: 1px solid #475569; transition: 0.2s; white-space: nowrap; cursor: pointer;
+            font-family: inherit;
         }
-        .btn-home-small:hover { background: rgba(39, 55, 77, 0.9); color: #f8fafc; }
+        .btn-back-small:hover { background: rgba(39, 55, 77, 0.9); color: #f8fafc; border-color: #38bdf8; }
 
         .menu-bar select { 
             flex: 1; min-width: 180px; max-width: 280px; padding: 10px 12px; font-size: 0.95em; 
@@ -75,17 +76,27 @@
         .global-lang-toggle button.active { background: #38bdf8; color: #0f172a; }
         .global-lang-toggle button:not(.active):hover { color: #f1f5f9; background: rgba(56, 189, 248, 0.15); }
         
-        #message-area { text-align: center; font-size: 1.2em; color: #64748b; margin-top: 20px; margin-bottom: 20px; font-weight: 500; }
+        #message-area { text-align: center; font-size: 1.2em; color: #38bdf8; margin-top: 25px; margin-bottom: 25px; font-weight: 500; }
         .error-box { background: rgba(127, 29, 29, 0.8); backdrop-filter: blur(5px); color: #fca5a5; padding: 15px; border-radius: 12px; margin: 20px auto; max-width: 600px; font-weight: 500; border: 1px solid #991b1b; }
         
-        /* THE TOPIC GALLERY GRID */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; width: 100%; margin-bottom: 30px; }
-        .gallery-item { background: rgba(30, 41, 59, 0.6); border: 1px solid #334155; border-radius: 16px; padding: 15px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 15px; }
-        .gallery-item:hover { transform: translateY(-4px); background: rgba(39, 53, 73, 0.8); border-color: #38bdf8; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
-        .gallery-img-wrapper { width: 100%; height: 140px; display: flex; align-items: center; justify-content: center; background: #ffffff; border-radius: 10px; overflow: hidden; padding: 10px; box-sizing: border-box; }
-        .gallery-img-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
-        .no-img-square { color: #64748b; font-style: italic; font-size: 0.9em; text-align: center; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.5); border-radius: 8px; }
-        .gallery-title { font-size: 1.05em; font-weight: 500; color: #f8fafc; text-align: center; line-height: 1.3; }
+        /* THE GALLERY GRID & FIXED IMAGE WRAPPERS */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; width: 100%; margin-bottom: 40px; }
+        .gallery-item { background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 16px; padding: 18px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 8px 16px rgba(0,0,0,0.3); display: flex; flex-direction: column; align-items: center; gap: 14px; position: relative; overflow: hidden; }
+        .gallery-item:hover { transform: translateY(-4px); background: rgba(39, 53, 73, 0.9); border-color: #38bdf8; box-shadow: 0 12px 25px rgba(56, 189, 248, 0.2); }
+        
+        .gallery-img-wrapper { 
+            width: 100%; height: 140px; background: #ffffff; border-radius: 10px; 
+            display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 8px; box-sizing: border-box; flex-shrink: 0;
+        }
+        .gallery-img-wrapper img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .gallery-card-info { width: 100%; display: flex; flex-direction: column; gap: 6px; text-align: center; }
+        .gallery-title { font-size: 1.05em; font-weight: 600; color: #f8fafc; line-height: 1.3; }
+        .gallery-count { font-size: 0.85em; color: #94a3b8; font-weight: 500; }
+        
+        .gallery-priority-tag { font-size: 0.78em; font-weight: 600; padding: 3px 8px; border-radius: 6px; margin: 0 auto; }
+        .tag-imp { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+        .tag-less { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
 
         /* Study Cards & Matching Grid */
         .study-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 20px; align-items: center; border: 1px solid #334155; }
@@ -130,7 +141,7 @@
         @media (max-width: 800px) {
             body { padding: 0 10px 40px 10px; }
             .menu-bar { padding: 10px; margin: 15px 0; gap: 8px; border-radius: 12px; }
-            .menu-bar select, .btn-flag-review, .btn-home-small, .global-lang-toggle { width: 100%; text-align: center; }
+            .menu-bar select, .btn-flag-review, .btn-back-small, .global-lang-toggle { width: 100%; text-align: center; }
             .global-lang-toggle button { flex: 1; }
             .comparison-grid { display: flex; flex-direction: column; gap: 6px; }
             .grid-header, .empty-cell { display: none; }
@@ -140,7 +151,7 @@
 <body>
     
     <div class="menu-bar">
-        <a href="/" class="btn-home-small">← Home</a>
+        <button class="btn-back-small" onclick="goBack()">← Indietro</button>
         <select class="category-select" onchange="onCategoryChange(this)">
             <option value="all">1. Scegli il Capitolo...</option>
         </select>
@@ -157,12 +168,12 @@
         </div>
     </div>
     
-    <div id="message-area">Seleziona un Capitolo (1) per iniziare.</div>
+    <div id="message-area">Seleziona un Capitolo per iniziare o esplora i capitoli principali:</div>
     <div id="content-container"></div>
     <div id="translation-panel"></div>
 
     <div class="menu-bar" style="margin-top: 30px;">
-        <a href="/" class="btn-home-small">← Home</a>
+        <button class="btn-back-small" onclick="goBack()">← Indietro</button>
         <select class="category-select" onchange="onCategoryChange(this)">
             <option value="all">1. Scegli il Capitolo...</option>
         </select>
@@ -183,8 +194,8 @@
         let currentMode = 'normal';
         let currentLang = 'it';
         let translationCache = {};
+        let cachedCategoriesData = [];
 
-        // Translation API Request (Free public endpoint)
         async function translateTextAPI(text) {
             if (!text || text === "N/A") return text;
             const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=it&tl=en&dt=t&q=${encodeURIComponent(text)}`);
@@ -192,7 +203,6 @@
             return data[0].map(item => item[0]).join('');
         }
 
-        // Handle Global Language Switching
         function setGlobalLang(lang) {
             currentLang = lang;
             document.querySelectorAll('.g-lang-it').forEach(el => el.classList.toggle('active', lang === 'it'));
@@ -221,7 +231,7 @@
                                 q.innerHTML = makeWordsClickable(enText);
                             }
                         }).catch(() => {
-                            if (currentLang === 'en') q.innerHTML = makeWordsClickable(itText); // Fallback on error
+                            if (currentLang === 'en') q.innerHTML = makeWordsClickable(itText);
                         });
                     }
                 }
@@ -240,8 +250,8 @@
                 const res = await fetch('/api/categories');
                 const data = await res.json();
                 
-                // NUMERIC SORT FIX FOR CATEGORIES
-                data.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+                data.sort((a, b) => b.count - a.count);
+                cachedCategoriesData = data;
                 
                 const total = data.reduce((sum, cat) => sum + cat.count, 0);
                 let impGroup = `<optgroup label="15 Argomenti Più Importanti (Alta Priorità)">`;
@@ -255,12 +265,89 @@
                 impGroup += `</optgroup>`; lessGroup += `</optgroup>`;
                 const finalHTML = `<option value="all">1. Scegli il Capitolo (${total})</option>` + impGroup + lessGroup;
                 document.querySelectorAll('.category-select').forEach(el => el.innerHTML = finalHTML);
+
+                renderCategoriesGallery(data);
             } catch (err) {}
+        }
+
+        function renderCategoriesGallery(data) {
+            const msgArea = document.getElementById('message-area');
+            const container = document.getElementById('content-container');
+            
+            msgArea.innerText = "Seleziona un Capitolo per iniziare o esplora i capitoli principali:";
+            
+            let galleryHTML = '<div class="gallery-grid">';
+            data.forEach(cat => {
+                const safeName = cat.name.replace(/'/g, "\\'");
+                const priorityBadge = cat.is_important ? 
+                    `<div class="gallery-priority-tag tag-imp">⭐ Alta Priorità</div>` : 
+                    `<div class="gallery-priority-tag tag-less">Standard</div>`;
+
+                galleryHTML += `
+                    <div class="gallery-item" onclick="diveIntoCategory('${safeName}')">
+                        <div class="gallery-img-wrapper" id="cat-img-${sanitizeId(cat.name)}">
+                            <div class="no-img-square loading-spinner">⏳</div>
+                        </div>
+                        <div class="gallery-card-info">
+                            <div class="gallery-title">${cleanText(cat.name)}</div>
+                            <div class="gallery-count">${cat.count} domande</div>
+                            ${priorityBadge}
+                        </div>
+                    </div>
+                `;
+            });
+            galleryHTML += '</div>';
+            container.innerHTML = galleryHTML;
+
+            data.forEach(async (cat) => {
+                try {
+                    const subRes = await fetch(`/api/subcategories?category=${encodeURIComponent(cat.name)}`);
+                    const subcats = await subRes.json();
+                    if (subcats.length > 0) {
+                        const figRes = await fetch(`/api/figures?category=${encodeURIComponent(cat.name)}&subcategory=${encodeURIComponent(subcats[0].name)}`);
+                        const figures = await figRes.json();
+                        const wrapper = document.getElementById(`cat-img-${sanitizeId(cat.name)}`);
+                        if(wrapper) {
+                            let firstFig = figures.find(f => f.name && f.name !== 'no_image' && f.name !== 'all');
+                            if(firstFig) wrapper.innerHTML = `<img src="/${firstFig.name}" loading="lazy" alt="Anteprima">`;
+                            else wrapper.innerHTML = `<div class="no-img-square" style="font-size:0.8em;">Nessuna Immagine</div>`;
+                        }
+                    }
+                } catch(e) {}
+            });
+        }
+
+        function diveIntoCategory(catName) {
+            syncSelects('category-select', catName);
+            onCategoryChange(document.querySelector('.category-select'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function diveIntoSubcategory(subName) {
             syncSelects('subcategory-select', subName);
             onSubcategoryChange(document.querySelector('.subcategory-select'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // LOGICAL BACK BUTTON HANDLER
+        function goBack() {
+            const catVal = document.querySelector('.category-select').value;
+            const subVal = document.querySelector('.subcategory-select').value;
+            const figVal = document.querySelector('.figure-select').value;
+
+            if (subVal !== 'all') {
+                // If inside a specific figure or subcategory content view, reset figure & subcategory to 'all' to show subcategory grid
+                syncSelects('figure-select', 'all');
+                syncSelects('subcategory-select', 'all');
+                onCategoryChange(document.querySelector('.category-select'));
+            } else if (catVal !== 'all') {
+                // If inside a chapter subcategories grid view, reset chapter to 'all' to return to main chapters gallery
+                syncSelects('category-select', 'all');
+                onCategoryChange(document.querySelector('.category-select'));
+            } else {
+                // Already at main home view, go to main root website home or reload main view
+                window.location.href = '/';
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -273,22 +360,21 @@
             document.getElementById('content-container').innerHTML = '';
             
             if (val === 'all') {
-                document.getElementById('message-area').innerText = "Seleziona un Capitolo (1) per iniziare.";
+                renderCategoriesGallery(cachedCategoriesData);
             } else {
                 document.querySelectorAll('.subcategory-select').forEach(el => el.disabled = false);
                 try {
                     const res = await fetch(`/api/subcategories?category=${encodeURIComponent(val)}`);
                     const subcats = await res.json();
                     
-                    // NUMERIC SORT FIX FOR SUBCATEGORIES
-                    subcats.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+                    subcats.sort((a, b) => b.count - a.count);
                     
                     const total = subcats.reduce((sum, sub) => sum + sub.count, 0);
                     let subHTML = `<option value="all">2. Scegli l'Argomento (${total})</option>`;
                     subcats.forEach(sub => { subHTML += `<option value="${sub.name}">${cleanText(sub.name)} (${sub.count})</option>`; });
                     document.querySelectorAll('.subcategory-select').forEach(el => el.innerHTML = subHTML);
                     
-                    document.getElementById('message-area').innerHTML = `Esplora la galleria o seleziona un Argomento (2).`;
+                    document.getElementById('message-area').innerHTML = `Capitolo Selezionato: <b>${cleanText(val)}</b>. Esplora gli argomenti sottostanti o seleziona dal menu in alto:`;
                     let galleryHTML = '<div class="gallery-grid">';
                     subcats.forEach(sub => {
                         const safeName = sub.name.replace(/'/g, "\\'");
@@ -297,7 +383,10 @@
                                 <div class="gallery-img-wrapper" id="gal-img-${sanitizeId(sub.name)}">
                                     <div class="no-img-square loading-spinner">⏳</div>
                                 </div>
-                                <div class="gallery-title">${cleanText(sub.name)} <br><span style="color:#94a3b8; font-size:0.85em;">(${sub.count} domande)</span></div>
+                                <div class="gallery-card-info">
+                                    <div class="gallery-title">${cleanText(sub.name)}</div>
+                                    <div class="gallery-count">${sub.count} domande</div>
+                                </div>
                             </div>
                         `;
                     });
@@ -312,7 +401,7 @@
                             if(wrapper) {
                                 let firstFig = figures.find(f => f.name && f.name !== 'no_image' && f.name !== 'all');
                                 if(firstFig) wrapper.innerHTML = `<img src="/${firstFig.name}" loading="lazy" alt="Anteprima">`;
-                                else wrapper.innerHTML = `<div class="no-img-square">Nessuna Immagine</div>`;
+                                else wrapper.innerHTML = `<div class="no-img-square" style="font-size:0.8em;">Nessuna Immagine</div>`;
                             }
                         } catch(e) {}
                     });
@@ -336,8 +425,7 @@
                     const res = await fetch(`/api/figures?category=${encodeURIComponent(catVal)}&subcategory=${encodeURIComponent(subVal)}`);
                     const figures = await res.json();
                     
-                    // NUMERIC SORT FIX FOR FIGURES
-                    figures.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+                    figures.sort((a, b) => b.count - a.count);
                     
                     const total = figures.reduce((sum, fig) => sum + fig.count, 0);
                     let figHTML = `<option value="all">3. Tutte le Figure (${total})</option>`;
@@ -436,7 +524,6 @@
         }
 
         function buildComparisonGrid(veroList, falsoList) {
-            // NUMERIC SORT FIX FOR QUESTION TEXT
             veroList.sort((a, b) => a.domanda.localeCompare(b.domanda, undefined, { numeric: true, sensitivity: 'base' }));
             falsoList.sort((a, b) => a.domanda.localeCompare(b.domanda, undefined, { numeric: true, sensitivity: 'base' }));
             
@@ -508,7 +595,6 @@
                     container.innerHTML += html;
                 });
 
-                // Apply active global language to newly rendered questions
                 if (currentLang === 'en') {
                     applyLanguageToQuestions();
                 }
